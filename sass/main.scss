@@ -1,0 +1,12 @@
+@import "colours.scss", "mixins.scss";
+
+body {
+	background: $background;
+	color: $text;
+	font-family: Helvetica;
+}
+
+header {
+	background: $main-color;
+	color: $text-clear;
+}
