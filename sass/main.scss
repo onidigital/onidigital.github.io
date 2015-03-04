@@ -29,15 +29,25 @@ header {
 			> div, > section {
 				z-index: 99;
 			}
-
 	}
-
 }
 
 /* Estilos generales */
 form {
 	background: $background;
+	padding: 20px 15px;
+	min-width: 360px;
 };
+
+/* Login*/
+.btnEnter{
+	background-color:$main-color;
+	width:100%;
+	color:$text-clear;
+}
+.recoverPassword{
+	color:$anchors;	
+}
 
 /* Login page styles */
 
