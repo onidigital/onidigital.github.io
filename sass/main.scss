@@ -1,4 +1,4 @@
-@import "colours.scss", "mixins.scss";
+@import "compass/reset", "colours.scss", "mixins.scss", "profile.scss";
 
 body {
 	background: $background;
