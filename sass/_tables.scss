@@ -1,0 +1,81 @@
+.viewInfo{
+	width: 80%;
+	background-color: $row-dark ;
+}
+.containerInfo{
+	background-color: $row-dark ;
+}
+.info{
+	width: 100%;
+}
+.colorAdmin{
+	background-color: $titles;
+
+}
+.colorUser{
+	background-color:$main-color;
+}
+.page{
+		background-color: $row-dark ;
+}
+.page {
+	li{
+		color: white;
+		width: 20%;
+		text-align: center;
+	}
+}
+.search {
+	input{
+		vertical-align: bottom;
+	}
+}
+.infoTable{
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 2.5em;
+}
+
+.tableWidth{
+	width:100%;
+}
+.moveRight{
+	text-align: right;
+}
+.moveRight{
+	button{background-color:$main-color;
+	}
+}
+.displayInfo{
+	border-color: $text;
+	border-top: solid;
+
+}
+
+.prueba{margin: 0 auto}
+
+
+
+.infoConsult {
+	p {
+		float: left;
+		color: white;
+		text-align: center;
+		/* width: 20%; */
+	}
+}
+
+
+.divSearch{
+	background-color: $row-dark ;
+	padding-top: 2.5em;
+}
+
+
+.infoTable button{
+
+}
+.dataTable{
+	width: 100%;
+}
+
