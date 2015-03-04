@@ -1,0 +1,49 @@
+/* Login page styles */
+
+#login-page {
+	background: url(../images/login-gradient.jpg) repeat;
+}
+
+.btnEnter{
+	background-color:$main-color;
+	width:100%;
+	color:$text-clear;
+}
+
+.recoverPassword {
+	width: 100%;
+	display: inline-block;
+	margin-top: 1em;
+}
+
+.login-logo {
+	&.img-responsive {
+    	margin: 0 auto;
+	}
+}
+
+/*form add area*/
+#form-add-area{
+	form{
+		label{
+		color:$text;
+		font-weight:normal;
+		margin:5px 8px;
+		}
+		textarea{
+			width:100%;
+			display:block;	
+		}
+		.imgSelect{
+			background:url(../images/btnSelect.png) no-repeat;
+			background-position:right;
+		}
+		.btnAgregar{
+			margin-top:30px;
+			background-color:$main-color;
+			color:$text-clear;
+			margin-left: 177px;
+			width: 160px;
+		}
+	}	
+}
