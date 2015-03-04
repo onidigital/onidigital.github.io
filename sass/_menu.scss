@@ -1,0 +1,13 @@
+md-toolbar.md-theme-purple {
+  background: $main-color;
+  color: lighten($main-color, 90);
+}
+
+.md-button.md-close-nav {
+  width: 50px;
+  height: 50px;
+  padding: 1em;
+  background: lighten($main-color, 8);
+  margin-right: 2em;
+  border-radius: 50%;
+}

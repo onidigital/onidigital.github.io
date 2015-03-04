@@ -1,4 +1,6 @@
-@import "compass/reset", "colours.scss";
+@import "compass/reset", 
+		"colours.scss", 
+		"menu.scss";
 
 body {
 	background: $background;
@@ -8,6 +10,7 @@ body {
 header {
 	background: $main-color;
 	color: $text-clear;
+	padding: 1em;
 }
 
 .full-screen {
