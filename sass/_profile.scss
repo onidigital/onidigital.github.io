@@ -1,0 +1,30 @@
+//Profile Styles
+.side-bar {
+	width: 20%;
+	float: left;
+	background-color: white;
+	.ul-profile {
+		
+		li.profile-pic {
+			height: auto;
+		}
+		li {
+			text-align: center;
+			height: 60px;
+			border-bottom: 1px solid;
+			line-height: 60px;
+		}
+		li:nth-child(2n+1) {
+    		background: grey;
+		}
+		.edit-profile {
+			width: 100%;
+			background-color: purple;
+		}
+	}
+}
+.content {
+	width: 80%;
+	float: left;
+	background-color: green;
+}
