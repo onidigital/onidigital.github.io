@@ -1,0 +1,98 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="Oni Digital Solutions">
+
+    <title>Oni Digital Solutions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../stylesheets/infoConsult.css">
+    <!-- Custom Fonts -->
+
+</head>
+
+<body >
+
+
+        <div class="container-fluid info">
+            <div  class="row">
+                <div  class="col-xs-3 infoConsult">
+                    <p class="rol">{{usurio.tipoDeUsuario}}</p>
+                    <p class="profesor">{{usuario.rol}}</p>
+                </div>
+            </div>    
+            
+
+
+
+
+            <div class="divSearch">
+                <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Buscar">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><img src="delete.gif" alt="x" /></button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="input-group">
+                      <input type="text" class="form-control" aria-label="..." placeholder="Visualizar">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <img src="delete.gif" alt="x" /></button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                        </ul>
+                      </div><!-- /btn-group -->
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                </div>
+                <div class="infoTable">
+                    <div class="input-group">
+                        <table class="dataTable">
+                            <thead>
+                                <tr>
+                                    <th data-field="name">Profesor</th>
+                                    <th data-field="id">Cédula</th>
+                                    <th data-field="email">Email</th>
+                                </tr>
+                                <tr>
+                                    <td>Álvaro Cordero</td>
+                                    <td>12345567</td>
+                                    <td>acorderop@ucenfotec.ac.cr</td>
+                                    <td>
+                                        <button class="" type="button"><img src="delete.gif" alt="x" /></button>
+                                        <button class="" type="button"><img src="delete.gif" alt="x" /></button>
+                                        <button class="" type="button"><img src="delete.gif" alt="x" /></button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div><!-- /input-group -->
+                </div>
+
+
+            </div>
+
+
+
+
+       </div>
+
+
+    
+</body>
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>-->
+    <script src="../scripts/app.js" ></script>
+
+</html>
