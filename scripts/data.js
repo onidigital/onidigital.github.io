@@ -58,6 +58,7 @@ var users = [
 	'careers'	: [1]
 },
 {
+	'id'		: 6,
 	'email'		: 'dir-web@ucenfotec.ac.cr',
 	'password'	: 'director',
 	'name'		: 'ditector2',
@@ -65,6 +66,36 @@ var users = [
 	'rol'		: 3,
 	'pId'		: 'd-2',
 	'careers'	: [2]
+},
+{
+	'id'		: 7,
+	'email'		: 'prof-alonso@ucenfotec.ac.cr',
+	'password'	: 'angular',
+	'name'		: 'Alonso',
+	'lastName'	: 'Guevara',
+	'rol'		: 4,
+	'courses'	: [1],
+	'pId'		: 'p-1'
+},
+{
+	'id'		: 8,
+	'email'		: 'prof-alvaro@ucenfotec.ac.cr',
+	'password'	: 'liga',
+	'name'		: 'Álvaro',
+	'lastName'	: 'Cordero',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-2'
+},
+{
+	'id'		: 9,
+	'email'		: 'prof-pablo@ucenfotec.ac.cr',
+	'password'	: 'pabs',
+	'name'		: 'Pablo',
+	'lastName'	: 'Monestel',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-3'
 }
 ],
 carrers = [
@@ -94,9 +125,130 @@ courses = [
 	'credits'	: 15,
 	'carreer'	: 1
 }
+],
+rol = [
+{
+	'id' 	: 1,
+	'name'	: 'Administrador'
+},
+{
+	'id' 	: 2,
+	'name'	: 'Estudiante'
+},
+{
+	'id' 	: 3,
+	'name'	: 'Director de Carrera'
+},
+{
+	'id' 	: 4,
+	'name'	: 'Profesor'
+}
+],
+rubrics = [
+{
+	'id'		: 1
+	'nombre'	: 'ERS - Software - v.1',
+	'aspectos'	: 	[
+						{
+							'nombre' : 'Forma',
+							'valor'	 : 10
+						},
+						{
+							'nombre' : 'contenido',
+							'valor'	 : 80
+						},
+						{
+							'nombre' : 'Ortografia',
+							'valor'  : 10
+						}
+					]
+},
+],
+documents = [
+{
+	'id'			: 1,
+	'name'  		: 'ERS',
+	'description' 	: 'Especificación de requerimientos de software.'
+}
+],
+areas = [
+{
+	'id'	: 1,
+	'name'  : 'Proceso',
+},
+{
+	'id'	: 2,
+	'name'  : 'Técnico',
+},
+{
+	'id'	: 3,
+	'name'  : 'Factor Humano',
+}
+]
+groups = [
+{
+	'id'		: 1,
+	'course'	: 1,
+	'students'	: [3,4],
+	'documents' : 	[
+						{
+							'id' 	 : 1,
+							'rubric' : 1
+						}
+					],
+	'areas'		: 	[
+						{
+							'area'		: 3,
+							'professor' : 9
+						},
+						{
+							'area'		: 1,
+							'professor' : 8
+						},
+						{
+							'area'		: 2,
+							'professor' : 7
+						}
+					]
+}
+],
+proyects = [
+{
+	'id'			: 1,
+	'name'  		: 'Biblioteca Virtual',
+	'description' 	: 'Una biblioteca virtual muy completa.',
+	'team'			: 1
+}
+],
+teams = [
+{
+	'id'		: 1,
+	'name'	 	: 'Oni',
+	'proyect'	: 1,
+	'students'	: [3, 4]
+}
+],
+vote = [
+{
+	'id'		: 1,
+	'teams'		: 	[
+						{
+							'idTeam'	: 1,
+							'votes'		: 900,
+							'video'	    : 'URL'
+						}
+					] 
+}
 ];
 
 
-var data = {};
-data.users = users;
-data.carrers = carrers;
+var data 		= {};
+data.users 		= users;
+data.carrers 	= carrers;
+data.courses 	= courses;
+data.rubrics 	= rubrics;
+data.areas 		= areas;
+data.documents 	= documents;
+data.groups		= groups;
+data.teams		= teams;
+data.proyects	= proyects;
