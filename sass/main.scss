@@ -32,25 +32,49 @@ header {
 	}
 }
 
-/* Estilos generales */
+/* General Styles */
 form {
 	background: $background;
 	padding: 20px 15px;
 	min-width: 360px;
+	margin: 2em 0;
 };
 
-/* Login*/
-.btnEnter{
-	background-color:$main-color;
-	width:100%;
-	color:$text-clear;
+a {
+	color: $anchors;
+		&:hover {
+			color: lighten($anchors, 20);
+			text-decoration: none;
+		}
 }
-.recoverPassword{
-	color:$anchors;	
+
+.btn {
+	&:hover {
+		color: $text-clear;
+		opacity: 0.8;
+	}
 }
 
 /* Login page styles */
 
 #login-page {
 	background: url(../images/login-gradient.jpg) repeat;
+}
+
+.btnEnter{
+	background-color:$main-color;
+	width:100%;
+	color:$text-clear;
+}
+
+.recoverPassword {
+	width: 100%;
+	display: inline-block;
+	margin-top: 1em;
+}
+
+.login-logo {
+	&.img-responsive {
+    	margin: 0 auto;
+	}
 }
