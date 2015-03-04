@@ -11,3 +11,20 @@ md-toolbar.md-theme-purple {
   margin-right: 2em;
   border-radius: 50%;
 }
+
+.menu-options {
+  font-size: 1.25em;
+  h1  {
+    color: $titles;
+    font-size: 1.25em;   
+  }
+  > li {
+    border-bottom: 1px solid $border;
+  }
+  ul {
+    margin: 1em 0 1em 1em;
+      li:last-child {
+        margin-bottom: 1em;
+      }
+  }
+}
