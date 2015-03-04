@@ -1,19 +1,23 @@
 <html lang="en" ng-app="menuExample">
   <head>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <meta charset="UTF-8" >
   </head>
   <body layout="column">
 
     <header ng-controller="menuCtrl">
-        <img src="images/logoCenfo.png" height="75px" class="login-logo" alt="Cenfotec Logo">
-        <md-button  ng-click="toggle()"
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6">
+                <img src="images/logoCenfo_header.png" height="75px" class="login-logo" alt="Cenfotec Logo">
+            </div>
+            <md-button  ng-click="toggle()"
                     class="btn btn-default pull-right">
-            <i class="icon-align-justify fa fa-bars fa-3x"></i>
-        </md-button>
+               <i aria-label class="icon-align-justify"><img src="images/menu.png" alt=""></i>
+            </md-button>
         <!-- Side Nav -->
             <div layout="column">
                 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="sideNav">
@@ -46,7 +50,8 @@
                 </md-sidenav>
             </div>
         <!-- Side Nav Ends -->
-
+            </div>
+        </div>
     </header>
 
     <!-- Angular Material Dependencies -->
