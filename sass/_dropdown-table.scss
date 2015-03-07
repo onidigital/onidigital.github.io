@@ -1,12 +1,42 @@
 .dropdown-table {
     .dropdown {
-    	display: none;
-		-webkit-transition: all .25s ease;
-	       -moz-transition: all .25s ease;
-	         -o-transition: all .25s ease;
-	            transition: all .25s ease;    	
+    	display: none; 	
+    		li {
+    			padding: 1em;
+    			border-top: 1px dashed $border;
+    				&:first-child {
+    					margin-top: 1em;
+    				}
+    		}
 	}
 	.active .dropdown {
     	display:  block;
     }
+    > ul > li {
+    	padding: .5em 0;
+    	&:nth-child(2n){
+    		background: $row-dark;
+    	}
+    	&.dropdown-body {
+    		border-top: 2px solid lighten($border, 60);
+    			li {
+    				padding: .5em 0;
+    			}
+    			.dropdown li{
+    				padding: 1em;
+    			}
+    			.table-actions {
+    				padding: 0;
+    			}
+    	}
+    }
+}
+
+.btnEdit  {
+	color: $background;
+	font-weight: bold;
+	&:hover, &:focus {
+		background: $background;
+		color: $main-color !important;
+	}
 }

@@ -5,7 +5,7 @@ app.controller("dropdownController", function(){
 
 	this.students = Query('users','rol',2);
 	this.group = Query('groups','id',1);
-	this.documents = this.group.documents;
+	this.documents = [{id:1},{id:2},{id:3},{id:4},{id:5}]//this.group.documents;
 	this.selectedIndex;
 
 	var i = 0,

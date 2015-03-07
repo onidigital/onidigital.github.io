@@ -11,7 +11,7 @@
     <section class="text-center" ng-controller="dropdownController as dpCtrl" >
     	<div class="container dropdown-table">
     		<ul class="text-center" ng-controller="dropdownController as dpCtrl" >
-    			<li class="row">
+    			<li class="row dropdown-header">
     				<ul>
     					<li class="col col-md-3" >
     						<h3>Nombre</h3>
@@ -24,8 +24,8 @@
     					</li>
     				</ul>
     			</li>
-    			<li ng-class="dpCtrl.getClass($index)" ng-repeat="student in dpCtrl.students track by $index" >
-					<ul>
+    			<li class="col col-md-12 dropdown-body" ng-class="dpCtrl.getClass($index)" ng-repeat="student in dpCtrl.students track by $index" >
+					<ul class="col col-md-12" >
 						<li class="col col-md-3" >
 							<h5>{{ student.name }}</h5>
 						</li>
@@ -35,12 +35,20 @@
 						<li class="col col-md-3" >
 							<h5>{{ student.pId }}</h5>
 						</li>
-						<li class="col col-md-3" >
-							<button ng-click="dpCtrl.dropdown($index)" >Calificar</button>
+						<li class="col col-md-3 table-actions" >
+							<button class="col col-md-4 btn btnEdit" 
+									ng-click="dpCtrl.dropdown($index)" >
+									Desgloce
+							</button>
+							<button class="col col-md-4 btn btnEdit" >Action</button>
+							<button class="col col-md-4 btn btnEdit" >Action</button>
 						</li>
 					</ul>
-					<ul class="dropdown" ng-repeat="doc in dpCtrl.documents" >
-						<li class="col col-md-12">{{ doc.id }}</li>
+					<ul class="col col-md-12 dropdown" >
+						<li class="col col-md-12" ng-repeat="doc in dpCtrl.documents">
+							<h2 class="pull-left">{{ doc.id }}</h2>
+							<h5 class="pull-right text-center">algo</h5>
+						</li>
 					</ul>	    				
     			</li>
     		</ul>
