@@ -8,9 +8,11 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
     <!-- Custom Fonts -->
+    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
 
 </head>
 
@@ -27,24 +29,18 @@
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Buscar">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><!--<img src="delete.gif" alt="x" />--></button>
+                        <button class="btn btnEdit" type="button">Buscar</button>
                       </span>
                     </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
                 <div class="col-lg-6">
-                    <div class="input-group">
-                      <input type="text" class="form-control" aria-label="..." placeholder="Visualizar">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <!--<img src="delete.gif" alt="x" />--></button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                        </ul>
-                      </div><!-- /btn-group -->
-                    </div><!-- /input-group -->
+                          <select class="selectInfo form-control"> 
+                              <option>Visualizar</option>
+                              <option>Nombre</option>
+                              <option>Cedula</option>
+                              <option>Email</option>
+                            </select>
+                    <!-- /input-group -->
                 </div><!-- /.col-lg-6 -->            
             </div>
                 <div class="infoTable ">
@@ -52,21 +48,23 @@
                         <table class="dataTable table table-striped">
                             <thead>
                                 <tr>
-                                    <th data-field="name">Profesor</th>
-                                    <th data-field="id">Cédula</th>
-                                    <th data-field="email">Email</th>
-                                </tr>
-                                <tr ng-repeat="student in info.students" class="displayInfo" >
-                                    <td>{{ student.name }}</td>
-                                    <td>{{ student.pId }}</td>
-                                    <td>{{ student.id }}</td>
-                                    <td class="moveRight">
-                                        <button class="btnEdit" type="button"><i class="fa fa-trash-o"></i><!--<img src="delete.gif" alt="x" />--></button>
-                                        <button class="btnEdit" type="button"><!--<img src="delete.gif" alt="x" />--></button>
-                                        <button class="btnEdit" type="button"><!--<img src="delete.gif" alt="x" />--></button>
-                                    </td>
+                                    <td class="text-center" data-field="name">Profesor</td>
+                                    <td class="text-center" data-field="id">Cédula</td>
+                                    <td class="text-center" data-field="email">Email</td>
                                 </tr>
                             </thead>
+                            <tbody>
+                              <tr ng-repeat="student in info.students" class="displayInfo" >
+                                    <td class="text-center" >{{ student.name }}</td>
+                                    <td class="text-center" >{{ student.pId }}</td>
+                                    <td class="text-center" >{{ student.email }}</td>
+                                    <td class="actions col col-md-3" >
+                                        <button class="btn btnEdit col col-md-4" type="button">agregar</button>
+                                        <button class="btn btnEdit col col-md-4" type="button">editar</button>
+                                        <button class="btn btnEdit col col-md-4" type="button">borrar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div><!-- /input-group -->
                 </div>
@@ -86,9 +84,12 @@
     
 </body>
     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
     <script src="../scripts/data.js" ></script>
     <script src="../scripts/queries.js" ></script>
+
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>-->
     <script src="../scripts/app.js" ></script>
     <script src="../scripts/infoConsult.js" ></script>

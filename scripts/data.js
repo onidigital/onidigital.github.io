@@ -146,7 +146,7 @@ rol = [
 ],
 rubrics = [
 {
-	'id'		: 1
+	'id'		: 1,
 	'nombre'	: 'ERS - Software - v.1',
 	'aspectos'	: 	[
 						{
@@ -208,6 +208,13 @@ groups = [
 						{
 							'area'		: 2,
 							'professor' : 7
+						}
+					],
+	'grades'	: 	[
+						{
+							'student'  : 3,
+							'document' : 1,
+							'grade'	   : 90
 						}
 					]
 }

@@ -1,1 +1,12 @@
-.z-red{background: red}
+.dropdown-table {
+    .dropdown {
+    	display: none;
+		-webkit-transition: all .25s ease;
+	       -moz-transition: all .25s ease;
+	         -o-transition: all .25s ease;
+	            transition: all .25s ease;    	
+	}
+	.active .dropdown {
+    	display:  block;
+    }
+}

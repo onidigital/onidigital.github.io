@@ -4,12 +4,14 @@
 		"main.scss",
 		"forms.scss",
 		"tables.scss",
+		"tables.scss",
 		"dropdown-table.scss";
 		
 body {
 	background: $background;
 	color: $text;
-	font-family: Arial;
+	font-family: Helvetica;
+	overflow-x: hidden;
 }
 header {
 	background: $main-color;
@@ -25,7 +27,7 @@ header {
 }
 
 .full-screen {
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	position: relative;
 	

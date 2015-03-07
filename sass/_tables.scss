@@ -1,4 +1,7 @@
 .viewInfo{
+	color:$text;
+}
+.viewInfo{
 	width: 80%;
 	background-color: $row-dark ;
 }
@@ -30,6 +33,7 @@
 		vertical-align: bottom;
 	}
 }
+
 .infoTable{
 	width: 100%;
 	margin: 0 auto;
@@ -40,16 +44,36 @@
 	width:100%;
 }
 .moveRight{
-	text-align: right;
+	text-align:right;
+	margin:0;
+	padding:0;
 }
-.moveRight{
-	button{background-color:$main-color;
+
+.btnEdit{
+	background-color:$main-color;
+	border-radius: 0;
+	&:hover{
+		background-color:$background;
 	}
 }
-.displayInfo{
-	border-color: $text;
-	border-top: solid;
 
+
+
+
+
+.displayInfo{
+	td {
+		border-top:0;
+		padding:0;
+		margin:0;
+	}
+}
+
+.displayInfo{
+	td {
+		border-color: $text;
+		border-top:1px solid;
+	}
 }
 
 .prueba{margin: 0 auto}
@@ -75,7 +99,44 @@
 .infoTable button{
 
 }
+
 .dataTable{
 	width: 100%;
 }
 
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+.slate   { background-color: #ddd; }
+.formSelect{
+	width:100%;
+}
+
+.selectInfo {
+	   background: url(../images/btnSelect.png) no-repeat right #ddd;
+	-webkit-appearance: none;
+	-moz-webkit-appearance: none;
+	width:100%;
+	color:$text;
+	background-color: white;
+	color: $border;
+}
+
+table {
+	tbody {
+		tr {
+			border-top: 2px solid lighten($border, 50);
+				td {
+					vertical-align: middle !important;
+					&.actions {
+						background: $main-color;
+						color: $text-clear;
+						font-weight: bold;
+					}
+				}
+		}
+	}
+}
