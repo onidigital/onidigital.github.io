@@ -11,14 +11,15 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
 
 <body ng-app="info" >
 
 
+        <!--<div class="fullscreen fs-modal" ui-view></div>-->
         <div class="container viewInfo center-block" ng-controller="InfoController as info" >
           <div class="row">
             <ol class="breadcrumb page">
@@ -27,8 +28,8 @@
             </ol>
           </div><!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
-                      <input type="text" class="form-control" class="search" type="text" ng-model="buscador"placeholder="Buscar por: Nombre, Cedula, Email. ">
+                <div class="col-lg-3 pull-right" >
+                        <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cedula, Email.">
                   </div><!-- /.col-lg-6 -->
 
             </div>
@@ -51,10 +52,20 @@
                                     <td class="text-center" >{{ student.email }}</td>
                                     <td class="actions col col-md-3" >
                                         <button class="btn btnEdit col col-md-4" type="button">
-                                          <a ui-sref="form-add-teacher" href="/info_Consult.html" >ver perfil</a>
+                                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                                <i class="fa fa-plus fa-2x"></i>
+                                            </a>
                                         </button>
-                                        <button class="btn btnEdit col col-md-4" type="button">editar</button>
-                                        <button class="btn btnEdit col col-md-4" type="button">borrar</button>
+                                        <button class="btn btnEdit col col-md-4" type="button">
+                                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                                <i class="fa fa-pencil fa-2x"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btnEdit col col-md-4" type="button">
+                                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                                <i class="fa fa-trash-o fa-2x"></i>
+                                            </a>                                            
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -63,7 +74,7 @@
                 </div>
 
         </div>
-        <div class="fullscreen fs-modal" ui-view></div>
+
 </body>
     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
