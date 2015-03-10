@@ -4,13 +4,14 @@ infoConsult.controller('InfoController', function() {
 	this.students = Query('users','rol',2); //this hace referencia al controlador
 });
 
-infoConsult.config(function($stateProvider, $urlRouterProvider) {
+/**infoConsult.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('form-add-teacher', {
         templateUrl: '../Partials/form-add-teacher.html'
     });
   $urlRouterProvider.otherwise('/form-add-teacher');
-})
+})**/
+
 
 
 
