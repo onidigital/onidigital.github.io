@@ -22,3 +22,17 @@ function Query( object, query, value ){
 	}
 
 }
+
+function Insert(target, newItem){
+	var newId = 0;
+	for(var item in target){
+		if(target.hasOwnProperty(item)){
+			newId++;
+		}
+	}
+
+	newItem.id = newId;
+
+	data[target].push( newItem );
+
+}
