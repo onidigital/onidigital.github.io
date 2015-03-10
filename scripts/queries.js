@@ -25,13 +25,11 @@ function Query( object, query, value ){
 
 function Insert(target, newItem){
 	var newId = 0;
-	for(var item in target){
-		if(target.hasOwnProperty(item)){
-			newId = target[item].id;
+	for(var item in data[target]){
+		if(data[target].hasOwnProperty(item)){
+			newId++;
 		}
 	}
-
-	newId++;
 
 	newItem.id = newId;
 
