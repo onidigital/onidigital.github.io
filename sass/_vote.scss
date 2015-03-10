@@ -1,32 +1,26 @@
-.list-group-item{
-  background: none;
-  border: none;  
-}
+.vote-list{
 
-li{
-  list-style-type: none;
-}
-
-a{
-  text-decoration: none;
-}
-
-.team{
-  .control-group{
-    width: 200px;
-    padding: 10px 0;
-  }
-  .team-logo{
-    padding-bottom:10px;
+  .list-group-item{
+    background: none;
+    border: none;  
   }
 
-  button{
-    width: 100px;
-    padding: 5px 0;
-    border: none;
-    background: $main-color;
-    color: $text-clear;
+  li{
+    list-style-type: none;
   }
+
+  a{
+    text-decoration: none;
+  }
+
+  .team{
+    .control-group{
+      width: 200px;
+      padding: 10px 0;
+    }
+    .team-logo{
+      padding-bottom:10px;
+    }
 }
 
 .control-group{
@@ -53,3 +47,5 @@ a{
   .score{
     font-size: 30px;
   }
+
+}  

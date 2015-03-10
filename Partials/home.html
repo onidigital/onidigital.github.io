@@ -3,7 +3,7 @@
 		<img src="images/logoCenfo.png" alt="" class="login-logo img-responsive" alt="Cenfotec Logo">
 		<form action="" class="login-form" name="login-form" novalidate>
 			<div class="form-group">
-				<input type="email" class="form-control" id="login-email" name="login-email" placeholder="usuario@ucenfotec.ac.cr">
+				<input type="email" ng-requiered class="form-control" id="login-email" name="login-email" placeholder="usuario@ucenfotec.ac.cr">
 			</div>
 			<div class="form-group">
 				<input type="password" class="form-control" id="login-password" name="login-password"
@@ -13,5 +13,5 @@
 			<a ui-sref="home.modal-recover-password" class="recoverPassword text-center">Recuperar Contraseña</a>
 		</form>
 	</div>
-	<div ui-view="modal"></div>
+	<div ui-view="modal" class="fullscreen fs-modal"></div>
 </div>
