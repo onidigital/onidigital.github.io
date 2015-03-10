@@ -3,8 +3,9 @@ var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
-	// $urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/home');
 
+	// Landing page views.
 	$stateProvider
 		// Home.
 		.state('home', {
@@ -23,7 +24,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 					controller : 'PasswordRecoverController as recover'
 				}
 			}
-		})
+		});
+	
+	// Admin views and partials.
+	$stateProvider
 		// Admin profile view.
 		.state('admin',{
 			url: '/admin/profile',
@@ -36,7 +40,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 					template: '<h1>Hola! yo soy un admin.</h1>'
 				}
 			}
-		})
+		});
+
+	// Teacher's views and partials
+	%stateProvider
+		// Teacher's profile view.
 		.state('teacher',{
 			url : '/teacher/profile',
 			views: {
