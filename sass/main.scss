@@ -1,11 +1,11 @@
 @import "compass/reset", 
 		"colours.scss", 
-		"menu.scss",
-		"main.scss",
+		"dropdown-table.scss"
 		"forms.scss",
+		"menu.scss",
+		"profile.scss",
 		"tables.scss",
-		"tables.scss",
-		"dropdown-table.scss";
+		"vote.scss";
 		
 body {
 	background: $background;
