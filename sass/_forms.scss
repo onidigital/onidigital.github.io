@@ -1,9 +1,7 @@
 /* Login page styles */
-
 #login-page {
 	background: url(../images/login-gradient.jpg) repeat;
 }
-
 .btnEnter{
 	background-color:$main-color;
 	width:100%;
@@ -21,29 +19,31 @@
     	margin: 0 auto;
 	}
 }
-
-
-form {
-
+form{
 	background: $background;
 	padding: 20px 15px;
 	min-width: 360px;
 
-	label {
-	color:$text;
-	font-weight:normal;
-	margin:5px 8px;
+	label{
+		color:$text;
+		font-weight:normal;
+		margin:5px 8px;
+		padding-top:5px
 	}
-	textarea{
-		width:100%;
-		display:block;	
-	}
-	.imgSelect{
+	.select-arrow{
 		background:url(../images/btnSelect.png) no-repeat;
-		background-position:right;
 	}
-	.btnAgregar{
-		margin-top:30px;
+	.arrow-input{
+		background:url(../images/arrowInput.png) no-repeat;
+	}
+	.select-arrow,.arrow-input{ 
+		background-position:right;
+		background-color:white;
+		-webkit-appearance: none;
+    	-moz-appearance: none;
+	}
+	.btn-add,.btn-edit{
+		margin-top:2em;
 		background-color:$main-color;
 		color:$text-clear;
 		float: right;
@@ -53,4 +53,63 @@ form {
 	&.login-form {
 		margin: 2em 0;
 	}
+	.img-plus{
+		margin: 2em 0 0 3%;
+		width:auto;
+	}
+	.foto{
+		background: #ffffff;
+		padding: 60px 30px;
+		text-align: center;
+		border: solid 1px #ccc;
+		border-radius: 4px;
+	}
+	span{
+		color: $anchors;
+	}
 }
+.centered{
+	float: none;
+	margin: 0 auto;
+}
+.user-form{
+
+		.btn-file {
+    		position: relative;
+    		overflow: hidden;
+		}
+		.btn-file input[type=file] {
+	    	position: absolute;
+	    	top: 0;
+	    	right: 0;
+	    	min-width: 100%;
+	    	min-height: 100%;
+	    	font-size: 100px;
+	    	text-align: right;
+	    	filter: alpha(opacity=0);
+	    	opacity: 0;
+	    	outline: none;
+	    	background: white;
+	    	cursor: inherit;
+	    	display: block;
+		} 
+		// .img-plus{
+		// 	margin-top: 35px;
+		// }
+		small{
+			margin: 10px;
+			font-size: 12px;
+			color: lighten($text, 50); 
+		}
+	}
+
+.btn-close{
+	padding-bottom: 10px;
+}
+
+.ng-invalid.ng-dirty{
+	border-color: #FA787E;
+}
+ .ng-valid.ng-dirty{
+ 	border-color: #78FA89;
+ }
