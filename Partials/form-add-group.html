@@ -13,59 +13,58 @@
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
 	<body ng-app="info">
-		<div class="full-screen fs-modal"ng-controller="InfoController as info" >
+		<div class="full-screen fs-modal"ng-controller="InfoController as infoCtrl" >
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Grupo</h1>
 				</header>
-				<form>
+				<form name="formAddGroup" ng-submit="formAddGroup.$valid && infoCtrl.addGroup()" novalidate>
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Grupo</label>
-						    <input type="text" class="form-control"placeholder="">
+						    <input type="text" ng-model="infoCtrl.newGroup.name" class="form-control"placeholder="" required>
 						</div>
 					  	<div class="col-md-6">
 					  		<label>Curso</label>
-					  			<select class="form-control select-arrow">
-					  			<option ng-repeat="course in info.courses" value="">{{ course.name }}</option>			 
-					  		</select>	
+					  			<select ng-model="infoCtrl.newGroup.course" class="form-control select-arrow" required>
+					  			<option ng-repeat="course in infoCtrl.courses" value="{{ course.id }}">{{ course.name }}</option>
+					  		</select>
 					  	</div>
 				  	</div>
 					<div class="row">
 					  	<div class="col-md-6">
 						  	<label>Fecha de Inicio</label>
-						    <input type="date" class="form-control arrow-input"placeholder="">
+						    <input type="date" ng-model="infoCtrl.newGroup.initialDate" class="form-control arrow-input"placeholder=""required>
 						</div>
 						<div class="col-md-6">
 						  	<label>Fecha Final</label>
-						    <input type="date" class="form-control arrow-input"placeholder="">
+						    <input type="date" ng-model="infoCtrl.newGroup.finalDate" class="form-control arrow-input"placeholder=""required>
 						</div>
 				  	</div>
 				  	<div class="row">
 					  	<div class="col-md-6">
 					  		<label>Profesor</label>
-					  			<select class="form-control select-arrow">
-					  			<option ng-repeat="teacher in info.teachers" value="">{{ teacher.name }}</option>			 
-					  		</select>	
+					  			<select ng-model="infoCtrl.newGroup.teacher" class="form-control select-arrow" required>
+						  			<option ng-repeat="teacher in infoCtrl.teachers" value="{{ teacher.id }}" >{{ teacher.name }} </option>
+						  		</select>
 					  	</div>
 					  	<div class="col-md-5">
 					  		<label>&Aacute;rea</label>
-					  			<select class="form-control select-arrow" ng-options="area in info.areas">
-					  			<option ng-repeat="area in info.areas" ng-select="selected" value="" ng->{{ area.name }}</option>			 
-					  		</select>
-					  		<p>selected:{{ area.name }}</p>	
+					  			<select ng-model="infoCtrl.newGroup.area" class="form-control select-arrow" required>
+						  			<option ng-repeat="area in infoCtrl.areas" value="{{ area.id }}">{{ area.name }}</option>
+						  		</select>
 					  	</div>
-						<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-				  	</div>	
+						<a href="#" ng-click="" ><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
+				  	</div>
 
 				  	<div class="row">
 					  	<div class="col-md-6">
 					  		<label>R&uacute;brica</label>
-					  			<select class="form-control select-arrow">
-					  			<option ng-repeat="rubric in info.rubrics" value="">{{ rubric.nombre }}</option>			 
-					  		</select>	
+					  			<select required ng-model="infoCtrl.newGroup.rubric" class="form-control select-arrow">
+						  			<option ng-repeat="rubric in infoCtrl.rubrics" value="{{ rubric.id }}">{{ rubric.nombre }}</option>
+						  		</select>
 					  	</div>
-					  	<button type="submit" class="btn btn-add">Agregar</button>
+					  	<button type="submit"  class="btn btn-add">Agregar</button>
 				  	</div>	
 				</form>	
 			</div>
