@@ -3,7 +3,7 @@ var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
-	$urlRouterProvider.otherwise('/home');
+	// $urlRouterProvider.otherwise('/home');
 
 	$stateProvider
 		// Home.
@@ -41,6 +41,29 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 });
 
+// Login controller
+app.controller('loginController', ['$state',function(){
+	var $this = this;
+	this.user = {};
+	this.user.email;
+	this.user.password;
+
+	this.validate = function(){
+		var user = Query('users','email',$this.user.email);
+
+		if( user ){
+			if(user.password === this.user.password){
+				$state.go('admin');
+			} else {
+				alert("contraseña invalida.");
+			}
+		} else {
+			alert("Usuario invalido.");
+		}
+
+	}
+
+}]);
 // Recover password controller.
 app.controller('PasswordRecoverController', function(){
 	var $this = this;

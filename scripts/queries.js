@@ -5,7 +5,7 @@ function Query( object, query, value ){
 		queryResult = [];
 
 
-	if( value ){
+	if( value !== 'all' ){
 		for( var item in searchObject ){
 			if( searchObject[item][query] === value ){
 				queryResult.push(searchObject[item]);
