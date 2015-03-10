@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Oni Digital Solutions">
@@ -9,53 +8,47 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+
 </head>
-	<body>
+	<body ng-app="modify">
 		<div class="full-screen fs-modal" >
 			<div class="col col-md-6">
 				<header>
 					<h1>Modificar R&uacute;brica</h1>
 				</header>
-				<form>
-					<div class="row">
-						<div class="col-md-12">
-						  	<label>Nombre</label>
-						    <input type="text" class="form-control" id="area" placeholder="">
-						</div>
+				<form name="modify-rubrics" ng-controller= "RubricsController as rubricsCtrl" ng-submit="editRubrics(nombre, aspecto, valor)" novalidate>
+					<div class="control-group">
+						<div class="row">
+							<div class="col-md-12">
+							  	<label>Nombre</label>
+							    <input ng-model="rubricsCtrl.nombre" type="text" class="form-control"  href="" alt="" placeholder="">
+							</div>
+				  		</div>
+				  		<div class="row">
+					  		<div class="col-md-5">
+					  			<label>Aspecto</label>
+					  			<select ng-model="rubricsCtrl.aspecto" class="form-control select-arrow">
+					  				<option value=""></option>			 
+					  			</select>	
+					  		</div>
+					  		<div class="col-md-5">
+					  			<label>Valor</label>
+					  			<select ng-model="rubricsCtrl.valor" class="form-control select-arrow">
+					  				<option value=""></option>			 
+					  			</select>	
+					  		</div>
+						  	<div class="col-md-2">
+								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ng=hide="buttonLess"></a>
+								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ng-show="buttonPlus"></a>
+							</div>
+				  		</div>
 				  	</div>
-				  	<div class="row">
-					  	<div class="col-md-5">
-					  		<label>Aspecto</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
-					  	</div>
-					  	<div class="col-md-5">
-					  		<label>Valor</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
-					  	</div>
-						<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-				  	</div>
-					<div class="row">
-					  	<div class="col-md-5">
-					  		<label>Aspecto</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
-					  	</div>
-					  	<div class="col-md-5">
-					  		<label>Valor</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
-					  	</div>
-						<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-						<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less"></a>
-				  	</div>
+					
 				  	<div class="row">
 					  	<button type="submit" class="btn btn-edit">Modificar</button>
 					</div>
@@ -63,4 +56,14 @@
 			</div>
 		</div>
 	</body>
+	<!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/infoConsult.js" ></script>
 </html>
