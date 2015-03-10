@@ -19,7 +19,7 @@ md-toolbar.md-theme-purple {
 }
 
 .menu-options {
-  font-size: 1.25em;
+  font-size: 1em;
   h1  {
     color: $titles;
     font-size: 1.25em; 
@@ -47,10 +47,41 @@ md-toolbar.md-theme-purple {
                     transition: all .25s ease;
           }
       }
+  .fa{
+    color: $titles;
+    margin-right: 10px;
+  } 
+  .logout{
+    color: $anchors;
+    padding-top: 0px;
+    background-color: none;
+      &:hover {
+        color: lighten($anchors, 20);
+        text-decoration: none;
+        border-left: none;
+      }
+  }
+
   }
   > li ul li {
     &:nth-child(2n+1) a {
       background: $background;
     }
   }
+}
+
+.admin-menu{
+
+  .md-sidenav-right {
+    width: 470px;
+    min-width: 320px;
+    max-width: 500px;
+  }
+
+   .left{
+    float: left;
+  }
+  .right{
+    float: right;
+  } 
 }
