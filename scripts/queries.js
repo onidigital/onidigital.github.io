@@ -27,9 +27,11 @@ function Insert(target, newItem){
 	var newId = 0;
 	for(var item in target){
 		if(target.hasOwnProperty(item)){
-			newId++;
+			newId = target[item].id;
 		}
 	}
+
+	newId++;
 
 	newItem.id = newId;
 
