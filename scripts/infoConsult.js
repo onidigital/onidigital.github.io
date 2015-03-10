@@ -1,12 +1,16 @@
-var app = angular.module("info",[]);
+var infoConsult = angular.module("info",["ui.router"]);
 
-app.controller('InfoController', function() {
+infoConsult.controller('InfoController', function() {
 	this.students = Query('users','rol',2); //this hace referencia al controlador
-
-
 });
 
-
+infoConsult.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('form-add-teacher', {
+        templateUrl: '../Partials/form-add-teacher.html'
+    });
+  $urlRouterProvider.otherwise('/form-add-teacher');
+})
 
 
 

@@ -1,17 +1,13 @@
 .viewInfo{
 	color:$text;
-	width: 80%;
-	background-color: $row-dark ;
+	background-color: $background ;
 }
-
 .containerInfo{
 	background-color: $row-dark ;
 }
-
 .info{
 	width: 100%;
 }
-
 .colorAdmin{
 	background-color: $titles;
 
@@ -19,9 +15,7 @@
 .colorUser{
 	background-color:$main-color;
 }
-.page{
-		background-color: $row-dark ;
-}
+
 .page {
 	li{
 		color: white;
@@ -44,6 +38,7 @@
 .tableWidth{
 	width:100%;
 }
+
 .moveRight{
 	text-align:right;
 	margin:0;
@@ -57,9 +52,11 @@
 		background-color:$background;
 	}
 }
-
-
-
+.btnEdit{
+ 	a{
+ 		color: white;
+ 	}
+}
 
 
 .displayInfo{
@@ -140,4 +137,12 @@ table {
 				}
 		}
 	}
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #fcfcfc;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+  background-color: #dadad9;
 }

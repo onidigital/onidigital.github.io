@@ -1,0 +1,55 @@
+.list-group-item{
+  background: none;
+  border: none;  
+}
+
+li{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+.team{
+  .control-group{
+    width: 200px;
+    padding: 10px 0;
+  }
+  .team-logo{
+    padding-bottom:10px;
+  }
+
+  button{
+    width: 100px;
+    padding: 5px 0;
+    border: none;
+    background: $main-color;
+    color: $text-clear;
+  }
+}
+
+.control-group{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.border{
+  border-bottom: solid 1px $border;
+}
+
+.winner{
+  padding: 40px 0;
+  
+  .info-winner{
+    margin-top: 80px;
+  } 
+  
+  li{
+    padding: 10px;
+  }
+}
+
+  .score{
+    font-size: 30px;
+  }

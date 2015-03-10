@@ -1,30 +1,229 @@
 //Profile Styles
+
 .side-bar {
-	width: 20%;
-	float: left;
 	background-color: white;
 	.ul-profile {
 		
 		li.profile-pic {
+
 			height: auto;
+			position: relative;
+
+			& img {
+				width: 100%;
+			}
+
+			& a {
+				position: absolute;
+				bottom: 24px;;
+				right: 0;
+				line-height: 10px;
+			}
 		}
 		li {
 			text-align: center;
 			height: 60px;
-			border-bottom: 1px solid;
+			border-bottom: 1px solid $border;
 			line-height: 60px;
 		}
 		li:nth-child(2n+1) {
     		background: grey;
 		}
-		.edit-profile {
-			width: 100%;
-			background-color: purple;
+		li:last-child {
+			border: none;
 		}
 	}
+	a {
+		text-align: center;
+		color: white;	
+		position: relative;
+		display: block;
+		padding: 5px 15px;
+	}
 }
+
 .content {
-	width: 80%;
-	float: left;
-	background-color: green;
+	background-color: $background;
+
+	.profile-selected {
+
+		margin-bottom: 25px;
+		margin-top: 25px;
+
+		li {
+			display: inline-block;
+			margin-right: 15px;
+			width: 135px;
+			height: 30px;
+			background-color: $anchors;
+			color: white;
+			text-align: center;
+			line-height: 30px;
+			position: relative;
+
+			a {
+				color: white; 
+				text-decoration: none;
+			}
+
+			div.arrow-back-up {
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 15px 15px 0;
+				border-color: transparent $anchors transparent transparent;
+				top: 0px;
+				left: -15px;
+			}
+
+			div.arrow-back-down {
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 0 15px 15px;
+				border-color: transparent transparent $anchors transparent;
+				bottom: 0px;
+				left: -15px;
+			}
+
+			div.arrow-front {
+				position: absolute;
+		        height: 0;
+				width: 0;
+				top: 0px;
+				right: -15px;
+				border-left: 15px solid $anchors;
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+
+			}
+		}
+		li:hover {
+			opacity: 0.7;
+		}
+	}
+
+	.board-view {
+
+		.board-titles {
+			height: 20px;
+			* {
+				float: right;
+				 margin-right: 100px;
+			}
+			p:last-child {
+				margin-right: 80px;
+			}
+		}
+
+		li {
+			p {
+				display: inline-block;
+			}	
+		}
+
+		li.board-options {
+			border-top: 1px solid $border;
+			height: 40px;
+			p{
+				float: left;
+				margin-left: 10px;
+  				padding-top: 13px;
+			}
+			a {
+				float: right;
+			    margin-right: 115px;
+			    margin-top: 4px;
+			    background: none;
+			    color: #ac208e;
+
+			    &:hover {
+					color: lighten($anchors, 20);
+				}
+			}
+		}
+
+	}
+
+	.common-view {
+
+		height: 35px;
+   		margin-bottom: 25px; 
+
+		.common-options {
+			float: left;
+			width: 50%;
+			position: relative;
+
+			input {
+			  	height: 35px;
+			  	width: 240px;
+			  	float: left;
+			  	border: 1px solid $border;
+			  	padding-left: 15px;
+			}
+
+			.styled-select select {
+			   width: 200px;
+			   padding: 5px;
+			   border-radius: 0;
+			   height: 35px;
+			   -webkit-appearance: none;
+			   float: left;
+			}
+
+			.styled-select {
+			   	width: 240px;
+			   	height: 35px;
+			   	overflow: hidden;
+			   	background: url(../images/arrow.png) no-repeat right #ddd;
+				border: 1px solid $border;
+		   	}
+
+			a.search {
+				width: 35px;
+				height: 35px;
+				background-color: $anchors;
+				float: left;
+				padding-left: 2px;
+  				padding-top: 1px;
+  				color: white;
+				position: absolute;
+				left: 205px;
+
+  				&:hover {
+					background-color: lighten($anchors, 20);
+				}
+			}
+		}
+	}
+
+	.info-view {
+		li {
+
+			border-top: 1px solid $border;
+			height: 40px;
+			position: relative;
+			p{
+				display: inline-block;
+				padding-right: 186px;
+  				line-height: 41px;
+			}
+			a {
+				position: absolute;
+			  	right: 0;
+			  	width: 40px;
+			 	height: 40px;
+			 	padding-top: 5px;
+			    padding-left: 8px;
+		   	    color: white;
+			}
+		}
+		li:last-child {
+			border-bottom: 1px solid $border;
+		}
+	}
+
 }
