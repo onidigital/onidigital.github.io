@@ -129,18 +129,22 @@ courses = [
 rol = [
 {
 	'id' 	: 1,
+	'code'	: 'admin',
 	'name'	: 'Administrador'
 },
 {
 	'id' 	: 2,
+	'code'	: 'student',
 	'name'	: 'Estudiante'
 },
 {
 	'id' 	: 3,
+	'code'	: 'director',
 	'name'	: 'Director de Carrera'
 },
 {
 	'id' 	: 4,
+	'code'	: 'teacher',
 	'name'	: 'Profesor'
 }
 ],
@@ -269,6 +273,7 @@ vote = [
 
 var data 		= {};
 data.users 		= users;
+data.rol 		= rol;
 data.carrers 	= carrers;
 data.courses 	= courses;
 data.rubrics 	= rubrics;

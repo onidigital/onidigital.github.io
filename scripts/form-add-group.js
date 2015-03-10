@@ -6,7 +6,7 @@ infoConsult.controller('InfoController', function() {
 	this.courses = Query('courses');
 	this.rubrics = Query('rubrics');
 	this.areas = Query('areas');
-	this.newGroup = 
+	this.newGroup = {};
 	this.groups = [];
 
 
@@ -15,5 +15,6 @@ infoConsult.controller('InfoController', function() {
 		$this.newGroup = {};
 		console.table($this.groups);
 	}
+
 
 });
