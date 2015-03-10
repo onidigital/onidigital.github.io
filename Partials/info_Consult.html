@@ -1,77 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
-
-</head>
-
-<body ng-app="info" >
-
-
-        <div class="container viewInfo center-block" ng-controller="InfoController as info" >
-          <div class="row">
-            <ol class="breadcrumb page">
-              <li class="colorAdmin">Administrador</li>
-              <li class="colorUser">Profesor</li>
-            </ol>
-          </div><!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                      <input type="text" class="form-control" class="search" type="text" ng-model="buscador"placeholder="Buscar por: Nombre, Cedula, Email. ">
-                  </div><!-- /.col-lg-6 -->
-
-            </div>
-                <div class="infoTable ">
-                    <div class="input-group tableWidth">
-                        <table class="dataTable table table-striped">
-                          <div class="row">  
-                            <thead>
-                                <tr>
-                                    <td class="text-center"  data-field="name">Profesor</td>
-                                    <td class="text-center"  data-field="id">Cédula</td>
-                                    <td class="text-center"  data-field="email">Email</td>
-                                </tr>
-                            </thead>
-                        </div>
-                            <tbody>
-                              <tr ng-repeat="student in info.students | filter: buscador" class="displayInfo" >
-                                    <td class="text-center" >{{ student.name }}</td>
-                                    <td class="text-center" >{{ student.pId }}</td>
-                                    <td class="text-center" >{{ student.email }}</td>
-                                    <td class="actions col col-md-3" >
-                                        <button class="btn btnEdit col col-md-4" type="button">
-                                          <a ui-sref="form-add-teacher" href="/info_Consult.html" >ver perfil</a>
-                                        </button>
-                                        <button class="btn btnEdit col col-md-4" type="button">editar</button>
-                                        <button class="btn btnEdit col col-md-4" type="button">borrar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /input-group -->
-                </div>
-
+<div class="container viewInfo center-block" >
+    <div class="row">
+        <ol class="breadcrumb page">
+            <li class="colorAdmin">Administrador</li>
+            <li class="colorUser">Profesor</li>
+        </ol>
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col-lg-3 pull-right" >
+                <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cedula, Email.">
+          </div><!-- /.col-lg-6 -->
+    </div>
+        <div class="infoTable ">
+            <div class="input-group tableWidth">
+                <table class="dataTable table table-striped"> 
+                    <thead>
+                        <tr>
+                            <td class="text-center"  data-field="name">Profesor</td>
+                            <td class="text-center"  data-field="id">Cédula</td>
+                            <td class="text-center"  data-field="email">Email</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="student in info.students | filter: buscador" class="displayInfo" >
+                            <td class="text-center" >{{ student.name }}</td>
+                            <td class="text-center" >{{ student.pId }}</td>
+                            <td class="text-center" >{{ student.email }}</td>
+                            <td class="actions col col-md-3" >
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                        <i class="fa fa-plus fa-2x"></i>
+                                    </a>
+                                </button>
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                        <i class="fa fa-pencil fa-2x"></i>
+                                    </a>
+                                </button>
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                        <i class="fa fa-trash-o fa-2x"></i>
+                                    </a>                                            
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- /input-group -->
         </div>
-        <div class="fullscreen fs-modal" ui-view></div>
-</body>
-    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
-    <script src="../scripts/data.js" ></script>
-    <script src="../scripts/queries.js" ></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="../scripts/app.js" ></script>
-    <script src="../scripts/infoConsult.js" ></script>
-</html>
+</div>

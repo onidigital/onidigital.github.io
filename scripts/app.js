@@ -1,4 +1,5 @@
-var app = angular.module("libreriaVirtual", ["ui.router"]);
+var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
+
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -8,7 +9,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 		// Home.
 		.state('home', {
 			url : '/home',
-			templateUrl : 'Partials/home.html'
+			views: {
+				body: {
+					templateUrl : 'Partials/home.html'
+				}
+			}
 		})
 		// Recover password.
 		.state('home.modal-recover-password',{
@@ -18,6 +23,20 @@ app.config(function($stateProvider, $urlRouterProvider){
 				}
 			},
 			controller : 'libreriaVirtual.PasswordRecoverController as recover'
+		})
+		// Admin profile view.
+		.state('admin',{
+			url: '/admin/profile',
+			views: {
+				header : {
+					templateUrl : 'Partials/header.html',
+					controller  : 'menuController as menuCtrl'
+				},
+				body : {
+					templateUrl : 'Partials/info_Consult.html',
+					controller  : 'infoController as info'
+				}
+			}
 		});
 
 });
@@ -40,3 +59,17 @@ app.controller('PasswordRecoverController', function(){
 	}
 
 })
+// Menu Controller.
+app.controller('menuController', function($scope, $timeout, $mdSidenav, $log) {
+    $scope.toggle = function() {
+        $mdSidenav('sideNav').toggle();
+    };
+    $scope.close = function() {
+        $mdSidenav('sideNav').close();
+    };
+});
+//Tables controller.
+app.controller('infoController', function() {
+	this.students = Query('users','rol',2); //this hace referencia al controlador
+	this.courses = Query('courses');
+});

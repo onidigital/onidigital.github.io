@@ -28,7 +28,7 @@
 			line-height: 60px;
 		}
 		li:nth-child(2n+1) {
-    		background: grey;
+    		background: $row-dark;
 		}
 		li:last-child {
 			border: none;
@@ -223,6 +223,10 @@
 			 	padding-top: 5px;
 			    padding-left: 8px;
 		   	    color: white;
+		   	    background-color: $anchors;
+		   	    &:hover {
+		   	    	background-color: lighten($anchors, 20);
+		   	    }
 			}
 		}
 		li:last-child {
