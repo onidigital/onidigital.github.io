@@ -1,18 +1,21 @@
-<div class="container viewInfo center-block" >
-    <div class="row">
-        <ol class="breadcrumb page">
-            <li class="colorAdmin">Administrador</li>
-            <li class="colorUser">Profesor</li>
-        </ol>
-    </div><!-- /.row -->
+<!--<div class="fullscreen fs-modal" ui-view></div>-->
+<div class="container viewInfo center-block" ng-controller="InfoController as info" >
+  <div class="row">
+    <ol class="breadcrumb page">
+      <li class="colorAdmin">Administrador</li>
+      <li class="colorUser">Profesor</li>
+    </ol>
+  </div><!-- /.row -->
     <div class="row">
         <div class="col-lg-3 pull-right" >
                 <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cedula, Email.">
           </div><!-- /.col-lg-6 -->
+
     </div>
         <div class="infoTable ">
             <div class="input-group tableWidth">
-                <table class="dataTable table table-striped"> 
+                <table class="dataTable table table-striped">
+                  <div class="row">  
                     <thead>
                         <tr>
                             <td class="text-center"  data-field="name">Profesor</td>
@@ -20,11 +23,12 @@
                             <td class="text-center"  data-field="email">Email</td>
                         </tr>
                     </thead>
+                </div>
                     <tbody>
-                      <tr ng-repeat="student in info.students | filter: buscador" class="displayInfo" >
-                            <td class="text-center" >{{ student.name }}</td>
-                            <td class="text-center" >{{ student.pId }}</td>
-                            <td class="text-center" >{{ student.email }}</td>
+                      <tr ng-repeat="teacher in info.teachers | filter: buscador" class="displayInfo" >
+                            <td class="text-center" >{{ teacher.name }}</td>
+                            <td class="text-center" >{{ teacher.pId }}</td>
+                            <td class="text-center" >{{ teacher.email }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-4" type="button">
                                     <a ui-sref="form-add-teacher" href="/info_Consult.html">
@@ -47,4 +51,53 @@
                 </table>
             </div><!-- /input-group -->
         </div>
+
+=======
+<div class="container viewInfo center-block" >
+<div class="row">
+<ol class="breadcrumb page">
+    <li class="colorAdmin">Administrador</li>
+    <li class="colorUser">Profesor</li>
+</ol>
+</div><!-- /.row -->
+<div class="row">
+<div class="col-lg-3 pull-right" >
+        <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cedula, Email.">
+  </div><!-- /.col-lg-6 -->
 </div>
+<div class="infoTable ">
+    <div class="input-group tableWidth">
+        <table class="dataTable table table-striped"> 
+            <thead>
+                <tr>
+                    <td class="text-center"  data-field="name">Profesor</td>
+                    <td class="text-center"  data-field="id">Cédula</td>
+                    <td class="text-center"  data-field="email">Email</td>
+                </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="student in info.students | filter: buscador" class="displayInfo" >
+                    <td class="text-center" >{{ student.name }}</td>
+                    <td class="text-center" >{{ student.pId }}</td>
+                    <td class="text-center" >{{ student.email }}</td>
+                    <td class="actions col col-md-3" >
+                        <button class="btn btnEdit col col-md-4" type="button">
+                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+                        </button>
+                        <button class="btn btnEdit col col-md-4" type="button">
+                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                <i class="fa fa-pencil fa-2x"></i>
+                            </a>
+                        </button>
+                        <button class="btn btnEdit col col-md-4" type="button">
+                            <a ui-sref="form-add-teacher" href="/info_Consult.html">
+                                <i class="fa fa-trash-o fa-2x"></i>
+                            </a>                                            
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /input-group -->
