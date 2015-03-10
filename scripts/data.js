@@ -163,6 +163,24 @@ rubrics = [
 						}
 					]
 },
+{
+	'id'		: 2,
+	'nombre'	: 'ERS - Diseno web - v.1',
+	'aspectos'	: 	[
+						{
+							'nombre' : 'Forma',
+							'valor'	 : 10
+						},
+						{
+							'nombre' : 'contenido',
+							'valor'	 : 80
+						},
+						{
+							'nombre' : 'Ortografia',
+							'valor'  : 10
+						}
+					]
+},
 ],
 documents = [
 {

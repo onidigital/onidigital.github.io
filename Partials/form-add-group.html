@@ -12,8 +12,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body>
-		<div class="full-screen fs-modal" >
+	<body ng-app="info">
+		<div class="full-screen fs-modal"ng-controller="InfoController as info" >
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Grupo</h1>
@@ -27,7 +27,7 @@
 					  	<div class="col-md-6">
 					  		<label>Curso</label>
 					  			<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  			<option ng-repeat="course in info.courses" value="">{{ course.name }}</option>			 
 					  		</select>	
 					  	</div>
 				  	</div>
@@ -45,14 +45,15 @@
 					  	<div class="col-md-6">
 					  		<label>Profesor</label>
 					  			<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  			<option ng-repeat="teacher in info.teachers" value="">{{ teacher.name }}</option>			 
 					  		</select>	
 					  	</div>
 					  	<div class="col-md-5">
 					  		<label>&Aacute;rea</label>
-					  			<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
+					  			<select class="form-control select-arrow" ng-options="area in info.areas">
+					  			<option ng-repeat="area in info.areas" ng-select="selected" value="" ng->{{ area.name }}</option>			 
+					  		</select>
+					  		<p>selected:{{ area.name }}</p>	
 					  	</div>
 						<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
 				  	</div>	
@@ -61,7 +62,7 @@
 					  	<div class="col-md-6">
 					  		<label>R&uacute;brica</label>
 					  			<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  			<option ng-repeat="rubric in info.rubrics" value="">{{ rubric.nombre }}</option>			 
 					  		</select>	
 					  	</div>
 					  	<button type="submit" class="btn btn-add">Agregar</button>
@@ -70,4 +71,12 @@
 			</div>
 		</div>
 	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/form-add-group.js" ></script>
 </html>
