@@ -1,7 +1,8 @@
 //Profile Styles
-
 .side-bar {
+
 	background-color: white;
+
 	.ul-profile {
 		
 		li.profile-pic {
@@ -39,6 +40,12 @@
 		position: relative;
 		display: block;
 		padding: 5px 15px;
+		background: $anchors;
+
+		&:hover {
+			background-color: lighten($anchors, 20);
+			color: white;
+		}
 	}
 }
 
@@ -99,9 +106,6 @@
 				border-bottom: 15px solid transparent;
 
 			}
-		}
-		li:hover {
-			opacity: 0.7;
 		}
 	}
 
