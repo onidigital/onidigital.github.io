@@ -1,7 +1,8 @@
 <html lang="en" ng-app="menuExample">
   <head>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+
     <link href="stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <meta charset="UTF-8" >
@@ -19,7 +20,7 @@
                <i aria-label class="icon-align-justify"><img src="images/menu.png" alt=""></i>
             </md-button>
         <!-- Side Nav -->
-            <div layout="column">
+            <div layout="column" class="admin-menu">
                 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="sideNav">
                   <md-toolbar class="md-theme-purple">
                     <h1 class="md-toolbar-tools"> 
@@ -28,24 +29,44 @@
                     </h1>
                   </md-toolbar>
                   <md-content class="md-padding">
-                    <ul class="menu-options" >
-                        <li>
-                            <h1>Registrar</h1>
-                            <ul>
-                                <li><a href="#">Carrera</a></li>
-                                <li><a href="#">Curso</a></li>
-                                <li><a href="#">Director académico</a></li>
-                            </ul>   
-                        </li>
-                        <li>
-                            <h1>Consultar</h1>
-                            <ul>
-                                <li><a href="#">Carrera</a></li>
-                                <li><a href="#">Curso</a></li>
-                                <li><a href="#">Grupo</a></li>
-                            </ul>   
-                        </li>
-                    </ul>
+                    <div class="right">
+                      <ul class="menu-options" >
+                          <li>
+                              <h1><i class="fa fa-upload"></i>Registrar</h1>
+                              <ul>
+                                  <li><a href="#">Carreras</a></li>
+                                  <li><a href="#">Cursos</a></li>
+                                  <li><a href="#">Grupos</a></li>
+                                  <li><a href="#">Áreas</a></li>
+                                  <li><a href="#">Proyectos</a></li>
+                                  <li><a href="#">Equipos</a></li>
+                                  <li><a href="#">Rúbricas</a></li>
+                                  <li><a href="#">Entregables</a></li>
+                              </ul>   
+                          </li>
+                          <li><a href="#" class="logout">Cerrar Sesión</a></li>
+                      </ul>
+                    </div> 
+                    <div class="left">
+                        <ul class="menu-options">  
+                            <li>
+                                <h1><i class="fa fa-plus"></i>Consultar</h1>
+                               <ul>
+                                   <li><a href="#">Estudiante</a></li>
+                                   <li><a href="#">Profesor</a></li> 
+                                   <li><a href="#">Carreras</a></li>
+                                   <li><a href="#">Cursos</a></li>
+                                   <li><a href="#">Grupos</a></li>
+                                   <li><a href="#">Áreas</a></li>
+                                   <li><a href="#">Proyectos</a></li>
+                                   <li><a href="#">Equipos</a></li>
+                                   <li><a href="#">Rúbricas</a></li>
+                                   <li><a href="#">Entregables</a></li>
+                                   <li><a href="#">Votación</a></li>
+                               </ul>   
+                           </li>
+                        </ul>
+                    </div>
                   </md-content>
                 </md-sidenav>
             </div>

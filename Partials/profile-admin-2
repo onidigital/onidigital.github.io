@@ -1,0 +1,120 @@
+<div id="wrapper" class="container">
+    <div class="side-bar col-md-3">
+        <ul class="ul-profile">
+            <li class="profile-pic">
+                <img src="../images/goku.jpg" />
+                <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+            </li>
+            <li>Diego Vargas</li>
+            <li>603680056</li>
+            <li>email@email.com</li>
+        </ul>
+        <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+    </div>  
+    <div class="content col-md-9">
+        <div class="col-md-12">
+            <div class="profile-selected">
+                <ul>
+                    <li>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li>
+                        <div class="arrow-back-up"></div>
+                        <div class="arrow-back-down"></div>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li>
+                        <div class="arrow-back-up"></div>
+                        <div class="arrow-back-down"></div>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+        <div class="col-md-12">
+            <div class="board-view">
+                <ul>
+                    <li class="board-titles">
+                        <p>Registro</p>
+                        <p>Consulta</p>
+                    </li>
+                    <li class="board-options">
+                        <p>Estudiante</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Profesor</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Director de Carrera</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Decano</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Cursos</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Carreras</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Areas</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                        <li class="board-options">
+                        <p>Equipos</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                        <li class="board-options">
+                        <p>Grupos</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                        
+                    </li>
+                    <li class="board-options">
+                        <p>Rubricas</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                    <li class="board-options">
+                        <p>Portafolio</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                    <li class="board-options">
+                        <p>Votacion</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                     <li class="board-options">
+                        <p>Entregables</p>
+                        <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
+                        <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+</div>
