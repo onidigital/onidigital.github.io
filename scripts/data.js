@@ -204,16 +204,19 @@ documents = [
 ],
 areas = [
 {
-	'id'	: 1,
-	'name'  : 'Proceso',
+	'id'			: 1,
+	'name'  		: 'Proceso',
+	'description' 	: 'Descripción del área'
 },
 {
-	'id'	: 2,
-	'name'  : 'Técnico',
+	'id'			: 2,
+	'name'  		: 'Técnico',
+	'description' 	: 'Descripción del área'
 },
 {
-	'id'	: 3,
-	'name'  : 'Factor Humano',
+	'id'			: 3,
+	'name'  		: 'Factor Humano',
+	'description' 	: 'Descripción del área'
 }
 ]
 groups = [

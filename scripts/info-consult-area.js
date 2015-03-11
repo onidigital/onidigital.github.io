@@ -1,18 +1,18 @@
 var app = angular.module("app", []);
 
 app.controller("ConsultAreaController", function(){
+
 	var $this = this;
 
-	this.area = Query('areas');
 	this.group = Query('groups','id',1);
-	this.documents = [{id:1},{id:2},{id:3},{id:4},{id:5}]//this.group.documents;
+	this.area = Query('groups','areas','area');
+	this.teacher = Query('groups', 'areas','professor');
 	this.selectedIndex;
 
 	var i = 0,
-		l = this.area.length;
+		l = this.group.length;
 
 	this.dropdown = function( $index ) {
-		console.log('dp '+$index);
 		if( $this.selectedIndex === $index ){
 			$this.selectedIndex = -1;
 		} else {
@@ -20,10 +20,11 @@ app.controller("ConsultAreaController", function(){
 		}
 	}
 	this.getClass = function( $index ){
-		console.log('getclass '+$index);
 		if( $index === $this.selectedIndex ){
 			return 'active';
 		}
 	}
+
+
 
 });

@@ -15,37 +15,40 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-	<body>
+	<body ng-app="app">
 		<div class="full-screen fs-modal" >
 			<div class="col col-md-6">
 				<header>
 					<h1>Modificar R&uacute;brica</h1>
 				</header>
 				<form name="modify-rubrics" novalidate>
-					<div class="control-group">
+					<div class="control-group" ng-controller="PlusLessButtonsController as plbCtrl">
 						<div class="row">
 							<div class="col-md-12">
 							  	<label>Nombre</label>
-							    <input type="text" class="form-control"  href="" alt="" placeholder="">
+							    <input type="text" class="form-control"  href="" alt="" placeholder="" required>
 							</div>
 				  		</div>
-				  		<div class="row">
+				  		<div class="row" id="originalContent">
 					  		<div class="col-md-5">
 					  			<label>Aspecto</label>
-					  			<select class="form-control select-arrow">
+					  			<select class="form-control select-arrow" ng-model="aspectoRubrica" required>
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 					  		<div class="col-md-5">
 					  			<label>Valor</label>
-					  			<select class="form-control select-arrow">
+					  			<select class="form-control select-arrow" ng-model="valorRubrica" required>
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 						  	<div class="col-md-2">
-								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ></a>
-								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
+								<a href="#" ng-show="plusOne===true" ng-model="plus"><img src="../images/btnLess.png" class="img-less" alt="less" ng-click="modify-rubrics.$valid && plbCtrl.addContent()"></a>
+								<a href="#" ng-hide="oneLess===false" ng-model='less'><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
 							</div>
+				  		</div>
+				  		<div id="newContent">
+				  			
 				  		</div>
 				  	</div>
 					
