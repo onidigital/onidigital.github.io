@@ -1,160 +1,139 @@
- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="../stylesheets/Vendor/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-    <!-- Custom Fonts -->
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="../scripts/app.js" ></script>
-</head>
-
-<body ng-app="libreriaVirtual" >
-
-    <div id="wrapper" class="container">
-        <div class="side-bar col-md-3">
-            <ul class="ul-profile">
-                <li class="profile-pic">
-                    <img src="../images/goku.jpg">
-                    <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
-                </li>
-                <li>Diego Vargas</li>
-                <li>603680056</li>
-                <li>email@email.com</li>
-            </ul>
-            <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
-        </div>  
-        <div class="content col-md-9">
-            <div class="col-md-12">
-                <div class="profile-selected">
-                    <ul>
-                        <li>
-                            <p>Administrador</p>
-                            <div class="arrow-front"></div>
-                        </li>
-                        <li>
-                            <div class="arrow-back-up"></div>
-                            <div class="arrow-back-down"></div>
-                            <p>Administrador</p>
-                            <div class="arrow-front"></div>
-                        </li>
-                        <li>
-                            <div class="arrow-back-up"></div>
-                            <div class="arrow-back-down"></div>
-                            <p>Administrador</p>
-                            <div class="arrow-front"></div>
-                        </li>
-                    </ul>
-                </div>    
-            </div>
-            <div class="col-md-12">
-                <div class="board-view">
-                    <ul>
-                        <li class="board-titles">
-                            <p>Registro</p>
-                            <p>Consulta</p>
-                        </li>
-                        <li class="board-options">
-                            <p>Estudiante</p>
+<div id="wrapper" class="container">
+    <div class="side-bar col-md-3">
+        <ul class="ul-profile">
+            <li class="profile-pic">
+                <img src="../images/goku.jpg" />
+                <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+            </li>
+            <li>Diego Vargas</li>
+            <li>603680056</li>
+            <li>email@email.com</li>
+        </ul>
+        <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+    </div>  
+    <div class="content col-md-9">
+        <div class="col-md-12">
+            <div class="profile-selected">
+                <ul>
+                    <li>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li>
+                        <div class="arrow-back-up"></div>
+                        <div class="arrow-back-down"></div>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li>
+                        <div class="arrow-back-up"></div>
+                        <div class="arrow-back-down"></div>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+        <div class="col-md-12">
+            <div class="board-view">
+                <ul class="rows">
+                    <li class="col col-lg-12 board-titles">
+                        <p>Registro</p>
+                        <p>Consulta</p>
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
+                                <p>Estudiante</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Profesor</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Director de Carrera</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Decano</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>     
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Cursos</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Carreras</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                            <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Areas</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                            <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Equipos</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                            <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Grupos</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Rubricas</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Portafolio</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                        <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Votacion</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                         <li class="board-options">
+                        </div>    
+                    </li>
+                    <li class="col col-lg-12 board-options">
+                        <div>
                             <p>Entregables</p>
                             <a href="javascript:"><i class="fa fa-plus fa-2x"></i></a>
                             <a href="javascript:"><i class="fa fa-arrow-up fa-2x"></i></a>
-                            
-                        </li>
-                    </ul>
-                </div>
-
+                        </div>    
+                    </li>
+                </ul>
             </div>
-        
-        </div> 
-    </div>
-
-    </div>
-    
-</body>
-
-</html>
+        </div>
+    </div> 
+</div>
