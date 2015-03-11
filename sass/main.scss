@@ -63,3 +63,17 @@ a {
 		opacity: 0.8;
 	}
 }
+.btn-download{
+	background-color:$main-color;
+	color:white;
+	&:hover{
+		background-color:$anchors;
+	}
+}
+.btn-print{
+	background-color:$main-color;
+	color:white;
+	&:hover{
+		background-color:$anchors;
+	}
+}
