@@ -13,7 +13,6 @@
     	display:  block;
     }
     > ul > li {
-    	padding: .5em 0;
     	&:nth-child(2n){
     		background: $row-dark;
     	}
@@ -30,13 +29,36 @@
     			}
     	}
     }
-}
+
+    .col-md-12{
+        padding-right: 0;
+    }
+
+    h5{
+        padding: 9px 0;
+    }
 
 .btnEdit  {
+    padding: 10px 0;
+    background-color: $main-color;
 	color: $background;
-	font-weight: bold;
-	&:hover, &:focus {
+    border-radius: 0;
+	
+    &:hover, &:focus {
 		background: $background;
 		color: $main-color !important;
-	}
+	   }
+    }
+.btn-add{
+    padding: 10px 0;
+    background-color:$main-color;
+    border-radius: 0;
+    color: $text-clear;
+    border-top: 2px solid #929292;
+    &:hover{
+        color: $text-clear;
+        opacity: 0.8;
+    }
+}    
 }
+
