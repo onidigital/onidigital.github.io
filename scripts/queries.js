@@ -24,7 +24,7 @@ function Query( object, query, value ){
 }
 
 function Insert(target, newItem){
-	var newId = 0;
+	var newId = 1;
 	for(var item in data[target]){
 		if(data[target].hasOwnProperty(item)){
 			newId++;
@@ -34,6 +34,8 @@ function Insert(target, newItem){
 	newItem.id = newId;
 
 	data[target].push( newItem );
+
+	return data[target];
 
 }
 

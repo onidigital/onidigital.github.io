@@ -45,7 +45,13 @@
 	padding:0;
 }
 
-.btnEdit, .btn-add{
+.infoTable{
+	
+	.table{
+		margin-bottom: 0;
+	}
+
+.btnEdit{
 	background-color:$main-color;
 	border-radius: 0;
 	&:hover{
@@ -59,8 +65,17 @@
 }
 
 .btn-add{
+	padding: 10px 0;
+	background-color:$main-color;
+	border-radius: 0;
 	color: $text-clear;
-	border-radius: 5px;
+	border-top: 2px solid #929292;;
+	&:hover{
+		color: $text-clear;
+		opacity: 0.8;
+	}
+}
+
 }
 
 
@@ -96,11 +111,6 @@
 .divSearch{
 	background-color: $row-dark ;
 	padding-top: 2.5em;
-}
-
-
-.infoTable button{
-
 }
 
 .dataTable{

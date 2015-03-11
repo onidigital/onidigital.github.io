@@ -15,18 +15,18 @@
 		<div class="full-screen fs-modal" ng-controller="registerCarrer as rgCareer" >
 			<div class="col col-md-6">
 				<header>
-					<h1>Agregar Carrera</h1>
+					<h1>Agregar Carrera {{ formAddCareer.$valid }}</h1>
 				</header>
-				<form>
+				<form name="formAddCareer" ng-submit="formAddCareer.$valid && rgCareer.addCareer();" novalidate>
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Carrera</label>
-						    <input type="text" class="form-control" id="area" placeholder="">
+						    <input type="text" class="form-control" required ng-model="rgCareer.newCareer.name" id="area" placeholder="">
 						</div>
 					  	<div class="col-md-6">
 					  		<label>Director Acad&eacute;mico</label>
-					  		<select class="form-control select-arrow">
-					  			<option ng-repeat="dir in rgCareer.directors" value="{{ dir.id }}">{{ dir.name }}</option>			 
+					  		<select ng-model="rgCareer.newCareer.director" required class="form-control select-arrow">
+					  			<option ng-repeat="dir in rgCareer.directors" value="{{ dir.id }}">{{ dir.name }}</option>
 					  		</select>
 					  	</div>
 				  	</div>

@@ -1,4 +1,4 @@
-function Update( rubrics, old, updated ){
+function Update( target, old, updated ){
 
 	for( var key in data[target] ){
 		if( data[target][key]['id'] === old['id'] ){
