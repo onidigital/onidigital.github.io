@@ -1,0 +1,73 @@
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Oni Digital Solutions">
+    <title>Oni Digital Solutions</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+</head>
+<body layout="column" ng-app="app">
+
+    <div class="container viewInfo center-block" ng-controller="InfoController as info" >
+        <div class="row">
+            <ol class="breadcrumb page">
+                <li class="colorAdmin">Administrador</li>
+                <li class="colorUser">Modificar Record Acad&eacute;mico</li>
+            </ol>
+      </div><!-- /.row -->
+        <div class="row">
+            <div class="col-lg-3 pull-right" >
+                <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, C&eacute;dula, Email.">
+            </div><!-- /.col-lg-6 -->
+        </div>
+	
+    <section class="text-center" ng-controller="dropdownController as dpCtrl" >
+    	<div class="container dropdown-table">
+    		<ul class="text-center" ng-controller="dropdownController as dpCtrl" >
+    			<li class="row dropdown-header">
+    				<ul>
+    					<li class="col col-md-3">
+                            <h3>Nombre</h3></li>
+    					<li class="col col-md-3">
+    						<h3>Apellido</h3>
+    					</li>
+    					<li class="col col-md-3">
+    						<h3>C&eacute;dula</h3>
+    					</li>
+    				</ul>
+    			</li>
+    			<li class="col col-md-12 dropdown-body" ng-class="dpCtrl.getClass($index)" ng-repeat="student in dpCtrl.students track by $index">
+					<ul class="col col-md-12" >
+						<li class="col col-md-3" >
+							<h5>{{ student.name }}</h5>
+						</li>
+						<li class="col col-md-3" >
+							<h5>{{ student.lastName }}</h5>
+						</li>
+						<li class="col col-md-3" >
+							<h5>{{ student.pId }}</h5>
+						</li>
+						<li class="col col-md-3 table-actions" >
+							<button class="col col-md-4 btn btnEdit" ng-click="dpCtrl.dropdown($index)">Desgloce</button>
+						</li>
+					</ul>
+					<ul class="col col-md-12 dropdown" >
+						<li class="col col-md-12" ng-repeat="doc in dpCtrl.documents">
+							<h2 class="pull-left">{{ doc.id }}</h2>
+							<h5 class="pull-right text-center">algo</h5>
+						</li>
+					</ul>	    				
+    			</li>
+    		</ul>
+    	</div>
+    </section>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+		<script src="scripts/data.js"></script>
+		<script src="scripts/queries.js"></script>
+        <script src="scripts/qualify-documents.js"></script>
+   </body>
+</html>
