@@ -98,7 +98,7 @@ var users = [
 	'pId'		: 'p-3'
 }
 ],
-carrers = [
+careers = [
 {	
 	'id'		: 1,
 	'name'		: 'Ingeniería de software',
@@ -116,14 +116,14 @@ courses = [
 	'name'		: "Proyecto de desarrollo Web 1",
 	'code'		: "web-proy-1",
 	'credits'	: 10,
-	'carreer'	: 2
+	'career'	: 2
 },
 {	
 	'id'		: 2,
 	'name'		: "Proyecto de Ingeniería de Software 1",
 	'code'		: "web-soft-1",
 	'credits'	: 15,
-	'carreer'	: 1
+	'career'	: 1
 }
 ],
 rol = [
@@ -274,7 +274,7 @@ vote = [
 var data 		= {};
 data.users 		= users;
 data.rol 		= rol;
-data.carrers 	= carrers;
+data.careers 	= careers;
 data.courses 	= courses;
 data.rubrics 	= rubrics;
 data.areas 		= areas;
