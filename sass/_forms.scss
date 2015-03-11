@@ -19,6 +19,21 @@
     	margin: 0 auto;
 	}
 }
+
+.add-participants{
+	margin-top: 40px;
+	
+	h1{
+		padding-left: 10px;
+		font-size: 18px;
+		color: $titles;
+	}
+
+	form{
+		padding-top: 40px;
+	}	
+}
+
 form{
 	background: $background;
 	padding: 20px 15px;

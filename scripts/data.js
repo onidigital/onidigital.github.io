@@ -6,7 +6,8 @@ var users = [
 	'name'		: 'John',
 	'lastName'	: 'Doe',
 	'rol'		: 1,
-	'pId'		: 'a-1'
+	'pId'		: 'a-1',
+	'image'		: ''
 },
 {
 	'id'		: 2,
@@ -19,7 +20,8 @@ var users = [
 	'careers'	: [1, 2],
 	'courses'	: [1, 2],
 	'proyects'	: [1, 2],
-	'teams'		: [1, 2]		
+	'teams'		: [1, 2],
+	'image'		: ''		
 },
 {
 	'id'		: 3,
@@ -32,7 +34,8 @@ var users = [
 	'careers'	: [2],
 	'courses'	: [2],
 	'proyects'	: [2],
-	'teams'		: [2]		
+	'teams'		: [2],
+	'image'		: ''		
 },
 {
 	'id'		: 4,
@@ -45,7 +48,8 @@ var users = [
 	'careers'	: [1],
 	'courses'	: [1],
 	'proyects'	: [1],
-	'teams'		: [1]		
+	'teams'		: [1],
+	'image'		: ''		
 },
 {
 	'id'		: 5,
@@ -55,7 +59,8 @@ var users = [
 	'lastName'	: 'A-placeholder',
 	'rol'		: 3,
 	'pId'		: 'd-1',
-	'careers'	: [1]
+	'careers'	: [1],
+	'image'		: ''
 },
 {
 	'id'		: 6,
@@ -65,7 +70,8 @@ var users = [
 	'lastName'	: 'B-placeholder',
 	'rol'		: 3,
 	'pId'		: 'd-2',
-	'careers'	: [2]
+	'careers'	: [2],
+	'image'		: ''
 },
 {
 	'id'		: 7,
@@ -75,7 +81,8 @@ var users = [
 	'lastName'	: 'Guevara',
 	'rol'		: 4,
 	'courses'	: [1],
-	'pId'		: 'p-1'
+	'pId'		: 'p-1',
+	'image'		: ''
 },
 {
 	'id'		: 8,
@@ -85,7 +92,8 @@ var users = [
 	'lastName'	: 'Cordero',
 	'rol'		: 4,
 	'courses'	: [1, 2],
-	'pId'		: 'p-2'
+	'pId'		: 'p-2',
+	'image'		: ''
 },
 {
 	'id'		: 9,
@@ -95,7 +103,8 @@ var users = [
 	'lastName'	: 'Monestel',
 	'rol'		: 4,
 	'courses'	: [1, 2],
-	'pId'		: 'p-3'
+	'pId'		: 'p-3',
+	'image'		: ''
 }
 ],
 careers = [
@@ -254,10 +263,11 @@ teams = [
 	'id'		: 1,
 	'name'	 	: 'Oni',
 	'proyect'	: 1,
-	'students'	: [3, 4]
+	'students'	: [3, 4],
+	'logo'		: ''
 }
 ],
-vote = [
+votes = [
 {
 	'id'		: 1,
 	'teams'		: 	[

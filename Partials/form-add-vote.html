@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="author" content="Oni Digital Solutions">
+
+    	<title>Oni Digital Solutions</title>
+
+    	<!-- Bootstrap Core CSS -->
+    	<link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+
+    	<!-- Custom CSS -->
+    	<link rel="stylesheet" href="../stylesheets/main.css">
+    	<!-- Custom Fonts -->
+    	<link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+
+	</head>
+
+	<body ng-app="addVote">
+		<div class="content container viewInfo center-block" ng-controller="AddVoteController as addVoteCtrl" >
+          <div class="profile-selected">
+            <ul>
+              <li>
+                  <p>Administrador</p>
+                  <div class="arrow-front"></div>
+              </li>
+              <li>
+                  <div class="arrow-back-up"></div>
+                  <div class="arrow-back-down"></div>
+                  <p>Agregar Votación</p>
+                  <div class="arrow-front"></div>
+              </li>
+            </ul>
+          </div> 
+
+          <div class="row add-participants">
+          	<div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1>Participantes</h1>
+                </div><!-- .col-md-12 -->  
+              </div><!-- .row -->
+              <div class="row">
+          		  <div class="infoTable">
+          		  	<div class="input-group tableWidth">
+          		  		<table class="dataTable table table-striped">
+          		  			<thead>
+          		  				<tr>
+          		  					<td class="text-center">Proyecto</td>
+          		  					<td class="text-center">Equipo</td>
+          		  					<td class="text-center">Elegir</td>
+          		  				</tr>
+          		  			</thead>
+          		  			<tbody>
+          		  				<tr ng-repeat="team in addVoteCtrl.teams" class="displayInfo">
+          		  					<td class="text-center">{{ team.proyect }}</td>
+          		  					<td class="text-center">{{ team.name }}</td>
+          		  					<td class="text-center"><input type="radio"></td>
+          		  				</tr>
+          		  			</tbody>
+          		  		</table>
+          		  	</div><!-- .infoTable -->
+          		  </div><!--.dataTable .table .table-striped--> 
+          	  </div><!-- .col-md-6 -->
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1>Votantes</h1>
+                </div><!-- .col-md-12 -->  
+              </div><!-- .row -->
+                <form action="" name="add-vote" novalidate>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <label for="">Nombre</label>
+                      <select class="form-control select-arrow">
+                        <option value=""></option>       
+                      </select> 
+                    </div><!-- .col-md-10 -->
+                    <div class="col-md-2">
+                      <a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ></a>
+                      <a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
+                    </div><!-- .col-md-2 -->
+                  </div><!-- .row-->
+                  <div class="row">
+                    <button type="submit" class="btn btn-add">Agregar</button>
+                  </div><!-- .row-->
+                </form>
+            </div><!-- .col-md-6 --> 
+    </div><!-- content container viewInfo center-block-->    
+	</body>
+
+	<!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/add-vote.js" ></script>
+</html>
