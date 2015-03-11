@@ -8,7 +8,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 	});
 
 	var header = {
-		admin : 'Partials/menu-admin.html'
+		admin 		: 'Partials/menu-admin.html',
+		controller 	: 'menuController as menuCtrl'
 	}
 
 	$urlRouterProvider.otherwise('/home');
@@ -42,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 			views: {
 				header : {
 					templateUrl : header.admin,
-					controller  : 'menuController as menuCtrl'
+					controller  : header.controller
 				},
 				body : {
 					templateUrl: 'Partials/profile-admin.html'
@@ -53,9 +54,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 		.state('admin-consult-students',{
 			url : '/admin/consult/students',
 			views : {
-				header : header.admin;
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
 				body : {
-					template : 'HURRAY'
+					templateUrl : '/Partials/info-consult-student.html'
 				}
 			}
 		});
