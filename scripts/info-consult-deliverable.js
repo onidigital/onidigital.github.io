@@ -1,6 +1,6 @@
-var infoConsult = angular.module("info",[]);
+var infoConsultDeliverable = angular.module("info.documents",[]);
 
-infoConsult.controller('InfoController', function() {
-	thi.student = Query('user','rol',2);
-	this.documents = Query('documentsPerGroup'); //this hace referencia al controlador
+infoConsultDeliverable.controller('InfoController', function() {
+	this.student = Query('user','rol',2);
+	this.documents = Query('documents','id',1); //this hace referencia al controlador
 });

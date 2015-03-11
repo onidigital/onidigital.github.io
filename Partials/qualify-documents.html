@@ -6,68 +6,69 @@
         <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
     <meta charset="UTF-8" >
   </head>
-  <body layout="column" ng-app="app">
-        <div class="container  content viewInfo center-block">
-           <div class="profile-selected">
-            <ul>
-              <li>
-                  <p>Administrador</p>
-                  <div class="arrow-front"></div>
-              </li>
-              <li>
-                  <div class="arrow-back-up"></div>
-                  <div class="arrow-back-down"></div>
-                  <p>Calificar Docs</p>
-                  <div class="arrow-front"></div>
-              </li>
-            </ul>
-          </div> 
-        </div>
-    
-    <section class="text-center" ng-controller="dropdownController as dpCtrl" >
-        <div class="container dropdown-table">
-            <ul class="text-center" ng-controller="dropdownController as dpCtrl" >
-                <li class="row dropdown-header">
-                    <ul>
-                        <li class="col col-md-4" >
-                            <h3>Nombre del Grupo</h3>
-                        </li>
-                        <li class="col col-md-4" >
-                            <h3>Nombre Estudiante</h3>
-                        </li>
-                    </ul>
-                </li>
-                <li class="col col-md-12 dropdown-body" ng-class="dpCtrl.getClass($index)" ng-repeat="student in dpCtrl.students track by $index" >
-                    <ul class="col col-md-12" >
-                        <li class="col col-md-4" >
-                            <h5>{{ student.group }}</h5>
-                        </li>
-                        <li class="col col-md-4" >
-                            <h5>{{ student.student }}</h5>
-                        </li>
-                        <li class="col col-md-1 table-actions" >
-                            <button class="col col-md-8 btn btnEdit" ng-click="dpCtrl.dropdown($index)" type="button">
-                                <a ui-sref="form-add-teacher" href="">
-                                    <i class="fa fa-plus fa-2x"></i>
-                                </a>
-                            </button>
-                        </li>
-                    </ul>
-                    <ul class="col col-md-12 dropdown" >
-                        <li class="col col-md-12" ng-repeat="doc in dpCtrl.documents">
-                            <h2 class="pull-left">{{ doc.id }}</h2>
-                            <h5 class="pull-right text-center">algo</h5>
-                            <button class=" btn btnEdit ">Calificar</button>
-                        </li>
-                    </ul>                       
-                </li>
-            </ul>
-        </div>
-    </section>
-
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-        <script src="/scripts/data.js"></script>
-        <script src="/scripts/queries.js"></script>
-        <script src="/scripts/dropdown-table.js"></script>
-   </body>
+<body layout="column" ng-app="app">
+  <div class="container  content viewInfo center-block">
+    <div class="profile-selected">
+      <ul>
+        <li>
+          <p>Administrador</p>
+          <div class="arrow-front"></div>
+        </li>
+        <li>
+          <div class="arrow-back-up"></div>
+          <div class="arrow-back-down"></div>
+          <p>Calificar Docs</p>
+          <div class="arrow-front"></div>
+        </li>
+      </ul>
+    </div> 
+  </div>
+  <div class="row col-md-12"><!-- input search -->
+    <div class="col-lg-3 pull-right" >
+        <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cédula, Email.">
+    </div><!--/.col-lg-6 -->
+  </div>
+  <section class="text-center" ng-controller="dropdownQualify as dpQlf">
+    <div class="container dropdown-table">
+      <ul class="text-center" ng-controller="dropdownQualify as dpQlf" >
+        <li class="row dropdown-header">
+          <ul>
+            <li class="col col-md-4" >
+              <h3>Nombre del Grupo</h3>
+            </li>
+            <li class="col col-md-4" >
+              <h3>Nombre Estudiante</h3>
+            </li>
+          </ul>
+        </li>
+        <li class="col col-md-12 dropdown-body" ng-class="dpQlf.getClass($index)" ng-repeat="group in dpQlf.group track by $index" >
+          <ul class="col col-md-12" >
+            <li class="col col-md-4" >
+                <h5>{{ group.id }}</h5>
+            </li>
+            <!-- <li class="col col-md-4" >
+                <h5>{{ group.group }}</h5>
+            </li> -->
+            <li class="col col-md-1 table-actions" >
+              <button class="col col-md-8 btn btnEdit" ng-click="dpQlf.dropdown($index)" type="button">
+                <i class="fa fa-plus fa-2x"></i>
+              </button>
+            </li>
+          </ul>
+          <ul class="col col-md-12 dropdown" >
+            <li class="col col-md-12" ng-repeat="doc in dpQlf.documents">
+              <h2 class="pull-left">{{ doc.id }}</h2>
+              <h5 class="pull-right text-center">algo</h5>
+              <button class=" btn btnEdit">Calificar</button>
+            </li>
+          </ul>                       
+        </li>
+      </ul>
+    </div>
+  </section>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+  <script src="/scripts/data.js"></script>
+  <script src="/scripts/queries.js"></script>
+  <script src="/scripts/dropdown-table.js"></script>
+</body>
 </html>

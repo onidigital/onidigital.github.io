@@ -1,11 +1,11 @@
 var app = angular.module("app", []);
 
-app.controller("dropdownController", function(){
+app.controller("dropdownQualify", function(){
 	var $this = this;
 
 	this.students  = Query('users','rol',2);
 	this.group     = Query('groups','id',1);
-	this.documents = [{id:1},{id:2},{id:3},{id:4},{id:5}]//this.group.documents;
+	this.documents = Query('documents','id', 1);
 	this.selectedIndex;
 
 	var i = 0,
