@@ -7,18 +7,21 @@
     <meta charset="UTF-8" >
   </head>
   <body layout="column" ng-app="app">
-        <div class="container viewInfo center-block">
-            <div class="row">
-                <ol class="breadcrumb page">
-                    <li class="colorAdmin"> Administrador</li>
-                    <li class="colorUser">Calificar Documentos</li>
-                </ol>
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 pull-right" >
-                    <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cedula, Email.">
-                </div><!-- /.col-lg-6 -->
-            </div>
+        <div class="container  content viewInfo center-block">
+           <div class="profile-selected">
+            <ul>
+              <li>
+                  <p>Administrador</p>
+                  <div class="arrow-front"></div>
+              </li>
+              <li>
+                  <div class="arrow-back-up"></div>
+                  <div class="arrow-back-down"></div>
+                  <p>Calificar Docs</p>
+                  <div class="arrow-front"></div>
+              </li>
+            </ul>
+          </div> 
         </div>
     
     <section class="text-center" ng-controller="dropdownController as dpCtrl" >
