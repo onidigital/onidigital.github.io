@@ -267,6 +267,20 @@ teams = [
 	'logo'		: ''
 }
 ],
+competitorTeam[
+{
+	'logo':'href:',
+	'video':'url',
+	'information':'este equipo esta participando',
+	'puntaje':80
+}],
+winnerTeam[
+{
+	'logo':'href',
+	'video':'url',
+	'information':'este equipo es el ganador',
+	'puntaje':100
+}],
 votes = [
 {
 	'id'		: 1,
