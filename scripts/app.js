@@ -1,7 +1,11 @@
 var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
 
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 
-app.config(function($stateProvider, $urlRouterProvider){
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: false
+	});
 
 	$urlRouterProvider.otherwise('/home');
 
@@ -33,7 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 			url: '/admin/profile',
 			views: {
 				header : {
-					templateUrl : 'Partials/header.html',
+					templateUrl : 'Partials/menu-admin.html',
 					controller  : 'menuController as menuCtrl'
 				},
 				body : {
@@ -43,13 +47,13 @@ app.config(function($stateProvider, $urlRouterProvider){
 		});
 
 	// Teacher's views and partials
-	%stateProvider
+	$stateProvider
 		// Teacher's profile view.
 		.state('teacher',{
 			url : '/teacher/profile',
 			views: {
 				header : {
-					templateUrl : 'Partials/header.html',
+					templateUrl : 'Partials/menu-teacher.html',
 					controller  : 'menuController as menuCtrl'
 				},
 				body : {
