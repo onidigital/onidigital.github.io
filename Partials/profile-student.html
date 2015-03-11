@@ -21,12 +21,6 @@
                     <p>Estudiante</p>
                     <div class="arrow-front"></div>
                 </li>
-                <li>
-                   <div class="arrow-back-up"></div>
-                   <div class="arrow-back-down"></div>
-                   <p>Cursos</p>
-                   <div class="arrow-front"></div>
-                </li>
             </ul>
         </div>
         <div class="row">
@@ -40,9 +34,9 @@
                     <div class="row">  
                         <thead>
                             <tr>
-                                <td class="text-center"  data-field="name">Estudiante</td>
-                                <td class="text-center"  data-field="id">Cédula</td>
-                                <td class="text-center"  data-field="email">Email</td>
+                                <td class="text-center"  data-field="name">Nombre</td>
+                                <td class="text-center"  data-field="id">Carrera(s)</td>
+                                <td class="text-center"  data-field="email">Periodo</td>
                             </tr>
                         </thead>
                     </div>
@@ -51,7 +45,7 @@
                             <td class="text-center" >{{ student.name }}</td>
                             <td class="text-center" >{{ student.pId }}</td>
                             <td class="text-center" >{{ student.email }}</td>
-                            <td class="actions col col-md-3" >
+                            <td class="actions col col-md-3">
                                 <button class="btn btnEdit col col-md-4" type="button">
                                     <a ui-sref="form-add-teacher" href="/info_Consult.html">
                                         <i class="fa fa-plus fa-2x"></i>
