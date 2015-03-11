@@ -1,14 +1,15 @@
 var app = angular.module("modify", ['ui.router']);
 
 app.controller('RubricsController', function() {
-	this.editRubrics = function(nombre, aspecto, valor) {
-		var	i = 0, 
-			l = rubrics.length;
+	function updateRubrics( target, old, updated ){
 
-			for(i; (i<l); i++){
-				
-				}
+		for( var key in data[target] ){
+			if( data[target][key]['id'] === old['id'] ){
+				data[target][key] = updated;
+				return data;
 			}
 		}
+
+	}	
 });
 
