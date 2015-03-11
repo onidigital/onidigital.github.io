@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 					controller  : 'menuController as menuCtrl'
 				},
 				body : {
-					template: '<h1>Hola! yo soy un admin.</h1>'
+					templateUrl: 'Partials/profile-admin.html'
 				}
 			}
 		});
