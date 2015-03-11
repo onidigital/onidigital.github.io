@@ -3,73 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Oni Digital Solutions">
-
     <title>Oni Digital Solutions</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-
-<body ng-app="info" >
-        <div  class="container viewInfo center-block" ng-controller="InfoController as info" >
-            <div class="row">
-              <ol class="breadcrumb page">
-                <li class="colorAdmin">Administrador</li>
-                <li class="colorUser">Cursos</li>
-              </ol>
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                  </div><!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                          <select class="selectInfo form-control"> 
-                              <option>Visualizar</option>
-                              <option>Curso</option>
-                              <option>Código</option>
-                              <option>Créditos</option>
-                              <option>Carrera</option>
-                            </select>
-                    <!-- /input-group -->
-                </div><!-- /.col-lg-6 -->            
-            </div>
-                <div class="infoTable ">
-                    <div class="input-group tableWidth">
-                        <table class="dataTable table table-striped">
-                            <div class="row">
-                              <thead>
-                                  <tr>
-                                      <td class="text-center" data-field="name">Curso</td>
-                                      <td class="text-center" data-field="code">Código</td>
-                                      <td class="text-center" data-field="credits">Créditos</td>
-                                      <td class="text-center" data-field="carreer">Carrera</td>
-                                      <td ></td>
-                                  </tr>
-                              </thead>
-                            </div>
-                            <tbody>
-                              <tr ng-repeat="course in info.courses" class="displayInfo" >
-                                    <td class="text-center" >{{ course.name }}</td>
-                                    <td class="text-center" >{{ course.code }}</td>
-                                    <td class="text-center" >{{ course.credits }}</td>
-                                    <td class="text-center" >{{ course.carreer }}</td>
-                                    <td class="actions col col-md-2" >
-                                        <button class="btn btnEdit col col-md-6" type="button">editar</button>
-                                        <button class="btn btnEdit col col-md-6" type="button">borrar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /input-group -->
-                </div>
-        </div>
-        
+<body ng-app="info" class="content">
+    <div class="profile-selected ">
+            <ul>
+              <li>
+                  <p>Administrador</p>
+                  <div class="arrow-front"></div>
+              </li>
+              <li>
+                  <div class="arrow-back-up"></div>
+                  <div class="arrow-back-down"></div>
+                  <p>Portafolio</p>
+                  <div class="arrow-front"></div>
+              </li>
+            </ul>
+          </div> 
 </body>
     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -77,8 +34,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
     <script src="../scripts/data.js" ></script>
     <script src="../scripts/queries.js" ></script>
-
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
     <script src="../scripts/app.js" ></script>
-    <script src="../scripts/infoConsult.js" ></script>
+    <script src="../scripts/info-consult-student.js" ></script>
 </html>

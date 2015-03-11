@@ -7,6 +7,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 	  requireBase: false
 	});
 
+	var header = {
+		admin 		: 'Partials/menu-admin.html',
+		controller 	: 'menuController as menuCtrl'
+	}
+
 	$urlRouterProvider.otherwise('/home');
 
 	// Landing page views.
@@ -37,11 +42,24 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 			url: '/admin/profile',
 			views: {
 				header : {
-					templateUrl : 'Partials/menu-admin.html',
-					controller  : 'menuController as menuCtrl'
+					templateUrl : header.admin,
+					controller  : header.controller
 				},
 				body : {
 					templateUrl: 'Partials/profile-admin.html'
+				}
+			}
+		})
+		// Admin consult student
+		.state('admin-consult-students',{
+			url : '/admin/consult/students',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/info-consult-student.html'
 				}
 			}
 		});
