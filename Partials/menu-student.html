@@ -1,0 +1,45 @@
+<header>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+            <img src="images/logoCenfo_header.png" height="75px" class="login-logo" alt="Cenfotec Logo">
+        </div>
+        <md-button  ng-click="toggle()"
+                class="btn btn-default pull-right">
+           <i aria-label class="icon-align-justify"><img src="images/menu.png" alt=""></i>
+        </md-button>
+    <!-- Side Nav -->
+        <div layout="column">
+            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="sideNav">
+              <md-toolbar class="md-theme-purple">
+                <h1 class="md-toolbar-tools"> 
+                    <md-button ng-click="close()" class="md-close-nav">X</md-button>
+                    Menú 
+                </h1>
+              </md-toolbar>
+              <md-content class="md-padding">
+                  <ul class="menu-options" >
+                      <li>
+                          <h1><i class="fa fa-upload"></i>Registrar</h1>
+                          <ul>
+                              <li><a href="#">Entregables</a></li>
+                          </ul>   
+                      </li>                          
+                        <li>
+                            <h1><i class="fa fa-plus"></i>Consultar</h1>
+                           <ul>
+                               <li><a href="#">Portafolio</a></li>
+                           </ul>   
+                       </li>
+                       <li>
+                            <a href="#" class="logout">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+              </md-content>
+            </md-sidenav>
+        </div>
+    <!-- Side Nav Ends -->
+        </div>
+    </div>
+</header>

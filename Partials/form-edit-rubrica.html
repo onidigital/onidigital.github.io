@@ -17,34 +17,34 @@
 </head>
 	<body ng-app="modify">
 		<div class="full-screen fs-modal" >
-			<div class="col col-md-6">
+			<div class="col col-md-6" ng-controller= "RubricsController as rubricsCtrl">
 				<header>
 					<h1>Modificar R&uacute;brica</h1>
 				</header>
-				<form name="modify-rubrics" ng-controller= "RubricsController as rubricsCtrl" ng-submit="editRubrics(nombre, aspecto, valor)" novalidate>
+				<form name="modify-rubrics" ng-submit="rubricsCtrl.editRubrics(nombre, aspecto, valor)" novalidate>
 					<div class="control-group">
 						<div class="row">
 							<div class="col-md-12">
 							  	<label>Nombre</label>
-							    <input ng-model="rubricsCtrl.nombre" type="text" class="form-control"  href="" alt="" placeholder="">
+							    <input ng-model="nombre" type="text" class="form-control"  href="" alt="" placeholder="">
 							</div>
 				  		</div>
 				  		<div class="row">
 					  		<div class="col-md-5">
 					  			<label>Aspecto</label>
-					  			<select ng-model="rubricsCtrl.aspecto" class="form-control select-arrow">
+					  			<select ng-model="aspecto" class="form-control select-arrow">
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 					  		<div class="col-md-5">
 					  			<label>Valor</label>
-					  			<select ng-model="rubricsCtrl.valor" class="form-control select-arrow">
+					  			<select ng-model="valor" class="form-control select-arrow">
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 						  	<div class="col-md-2">
-								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ng=hide="buttonLess"></a>
-								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ng-show="buttonPlus"></a>
+								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ng-show="rubricsCtrl.buttonLess===true"></a>
+								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ng-show="rubricsCtrl.buttonPlus===true"></a>
 							</div>
 				  		</div>
 				  	</div>
@@ -66,4 +66,5 @@
     <script src="../scripts/queries.js" ></script>
     <script src="../scripts/app.js" ></script>
     <script src="../scripts/infoConsult.js" ></script>
+    <script src="../scripts/modify-rubrics.js" ></script>
 </html>

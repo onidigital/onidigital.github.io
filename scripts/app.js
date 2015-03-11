@@ -1,10 +1,15 @@
 var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
 
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 
-app.config(function($stateProvider, $urlRouterProvider){
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: false
+	});
 
-	// $urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/home');
 
+	// Landing page views.
 	$stateProvider
 		// Home.
 		.state('home', {
@@ -19,22 +24,40 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('home.modal-recover-password',{
 			views : {
 				modal : {
-					templateUrl : 'Partials/form-recover-password.html'
+					templateUrl : 'Partials/form-recover-password.html',
+					controller : 'PasswordRecoverController as recover'
 				}
-			},
-			controller : 'libreriaVirtual.PasswordRecoverController as recover'
-		})
+			}
+		});
+	
+	// Admin views and partials.
+	$stateProvider
 		// Admin profile view.
 		.state('admin',{
 			url: '/admin/profile',
 			views: {
 				header : {
-					templateUrl : 'Partials/header.html',
+					templateUrl : 'Partials/menu-admin.html',
 					controller  : 'menuController as menuCtrl'
 				},
 				body : {
-					templateUrl : 'Partials/info_Consult.html',
-					controller  : 'infoController as info'
+					template: '<h1>Hola! yo soy un admin.</h1>'
+				}
+			}
+		});
+
+	// Teacher's views and partials
+	$stateProvider
+		// Teacher's profile view.
+		.state('teacher',{
+			url : '/teacher/profile',
+			views: {
+				header : {
+					templateUrl : 'Partials/menu-teacher.html',
+					controller  : 'menuController as menuCtrl'
+				},
+				body : {
+					template: '<h1>Hola! yo soy un profe.</h1>'
 				}
 			}
 		});
@@ -42,18 +65,19 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 // Login controller
-app.controller('loginController', ['$state',function(){
+app.controller('loginController', ['$state',function($state){
 	var $this = this;
 	this.user = {};
 	this.user.email;
 	this.user.password;
 
 	this.validate = function(){
-		var user = Query('users','email',$this.user.email);
+		var user = Query('users','email',$this.user.email),
+			rol  = Query('rol','id',user.rol).code;
 
 		if( user ){
 			if(user.password === this.user.password){
-				$state.go('admin');
+				$state.go(rol);
 			} else {
 				alert("contraseña invalida.");
 			}
@@ -68,15 +92,15 @@ app.controller('loginController', ['$state',function(){
 app.controller('PasswordRecoverController', function(){
 	var $this = this;
 
-	this.password = null;
+	this.showMessage = null;
 
-	this.sendEmail = function(givenEmail, givenPassword){
-		var user = Query('users','email',givenPassword);
+	this.sendEmail = function(givenEmail){
+		var user = Query('users','email',givenEmail);
 
 		if( user ){
-			$this.password = true;
+			$this.showMessage = true;
 		} else {
-			$this.password = false;
+			$this.showMessage = false;
 		}
 
 	}
