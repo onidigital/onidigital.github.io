@@ -306,4 +306,6 @@ data.documents 	= documents;
 data.groups		= groups;
 data.teams		= teams;
 data.proyects	= proyects;
+data.competitorTeam = competitorTeam;
+data.winnerTeam = winnerTeam;
 
