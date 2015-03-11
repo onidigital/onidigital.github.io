@@ -45,7 +45,7 @@
 	padding:0;
 }
 
-.btnEdit{
+.btnEdit, .btn-add{
 	background-color:$main-color;
 	border-radius: 0;
 	&:hover{
@@ -56,6 +56,11 @@
  	a{
  		color: white;
  	}
+}
+
+.btn-add{
+	color: $text-clear;
+	border-radius: 5px;
 }
 
 

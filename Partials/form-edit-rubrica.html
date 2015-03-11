@@ -15,36 +15,36 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-	<body ng-app="modify">
+	<body>
 		<div class="full-screen fs-modal" >
-			<div class="col col-md-6" ng-controller= "RubricsController as rubricsCtrl">
+			<div class="col col-md-6">
 				<header>
 					<h1>Modificar R&uacute;brica</h1>
 				</header>
-				<form name="modify-rubrics" ng-submit="rubricsCtrl.updateRubrics(nombre, aspecto, valor)" novalidate>
+				<form name="modify-rubrics" novalidate>
 					<div class="control-group">
 						<div class="row">
 							<div class="col-md-12">
 							  	<label>Nombre</label>
-							    <input ng-model="nombre" type="text" class="form-control"  href="" alt="" placeholder="">
+							    <input type="text" class="form-control"  href="" alt="" placeholder="">
 							</div>
 				  		</div>
 				  		<div class="row">
 					  		<div class="col-md-5">
 					  			<label>Aspecto</label>
-					  			<select ng-model="aspecto" class="form-control select-arrow">
+					  			<select class="form-control select-arrow">
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 					  		<div class="col-md-5">
 					  			<label>Valor</label>
-					  			<select ng-model="valor" class="form-control select-arrow">
+					  			<select class="form-control select-arrow">
 					  				<option value=""></option>			 
 					  			</select>	
 					  		</div>
 						  	<div class="col-md-2">
-								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ng-show="rubricsCtrl.buttonLess===true"></a>
-								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ng-show="rubricsCtrl.buttonPlus===true"></a>
+								<a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ></a>
+								<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
 							</div>
 				  		</div>
 				  	</div>
