@@ -10,8 +10,9 @@
     	<meta charset="UTF-8" >
 	</head>
 
-	<body>
-		<div class="container vote-list">
+	<body ng-app="libreriaVirtual" >
+
+		<div class="container vote-list" ng-controller="votesController as votesCtrl">
 			<div class="row">
 				<ul class="list-group">
 					<li class="list-group-item col-md-3 team">
@@ -35,5 +36,6 @@
     <script src="../scripts/data.js" ></script>
     <script src="../scripts/queries.js" ></script>
     <script src="../scripts/app.js" ></script>
+    <script src="../scripts/votes.js" ></script>
 	</body>
 </html>	

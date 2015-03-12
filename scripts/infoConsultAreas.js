@@ -1,10 +1,10 @@
 app.controller("consultAreasController", function(){
 	var $this = this;
-	this.areas = Query('areas');
+	this.areas = Query('areas','-','all');
 	this.selectedIndex;
 
 	var i = 0,
-		l = this.students.length;
+		l = this.areas.length;
 
 	this.dropdown = function( $index ) {
 		if( $this.selectedIndex === $index ){

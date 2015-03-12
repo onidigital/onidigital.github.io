@@ -23,15 +23,40 @@
 .add-participants{
 	margin-top: 40px;
 	
-	h1{
-		padding-left: 10px;
-		font-size: 18px;
+	h4{
+		font-size: 1.25em;
+		padding-bottom: 1em;
 		color: $titles;
 	}
 
 	form{
 		padding-top: 40px;
-	}	
+	}
+	input[type="date"] {
+		line-height: 1em;
+		padding: .25em 0 .25em 1em;
+	}
+	.team-list {
+		.team-list-header {
+			padding: 0;
+			> ul li {
+				padding: 1em;
+				background: $anchors;
+				color: $text-clear;
+			}
+		}
+	}
+	.team-list-item {
+		padding: 1em;
+		background: $background;
+			&:not(:last-child){
+				border-bottom: 1px dashed lighten($border,50);
+			}
+	
+	}
+	.participants-list {
+		margin-top: 1em;
+	}
 }
 
 form{

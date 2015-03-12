@@ -80,7 +80,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 				}
 			}
 		})
-		.state('admin-consult-areas'.{
+		.state('admin-consult-areas',{
 			url : '/admin/consult/areas',
 			views : {
 				header : {

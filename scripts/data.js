@@ -331,20 +331,22 @@ votes = [
 						}
 					] 
 }
-];
+],
+voting = [];
 
 
-var data 		= {};
-data.users 		= users;
-data.rol 		= rol;
-data.careers 	= careers;
-data.courses 	= courses;
-data.rubrics 	= rubrics;
-data.areas 		= areas;
-data.documents 	= documents;
-data.groups		= groups;
-data.teams		= teams;
-data.proyects	= proyects;
+var data 			= {};
+data.users 			= users;
+data.rol 			= rol;
+data.careers 		= careers;
+data.courses 		= courses;
+data.rubrics 		= rubrics;
+data.areas 			= areas;
+data.documents 		= documents;
+data.groups			= groups;
+data.teams			= teams;
+data.proyects		= proyects;
 data.competitorTeam = competitorTeam;
-data.winnerTeam = winnerTeam;
+data.winnerTeam		= winnerTeam;
+data.voting			= voting;
 
