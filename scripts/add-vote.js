@@ -2,7 +2,8 @@ app.controller('AddVoteController', function() {
 	var $this = this;
 	this.teams 					= Query('teams','-','all'); //this hace referencia al controlador
 	this.possibleParticipants 	= Query('users','rol', 4);
-	this.participants 			= [{}];
+	this.newParticipant 		= '';
+	this.participants 			= [];
 	this.selectedTeams 			= [];
 
 	this.selectTeam = function( id, isSelected ){
@@ -21,6 +22,13 @@ app.controller('AddVoteController', function() {
 		} else {
 			this.selectedTeams.push(id);
 		}
+	}
+
+	this.addParticipant = function(){
+		var newParticipant = Query('users','id',Number($this.newParticipant));
+		
+		$this.participants.push( newParticipant );
+		$this.newParticipant = '';
 	}
 
 });

@@ -78,19 +78,25 @@
                   <h1>Votantes</h1>
                 </div><!-- .col-md-12 -->  
               </div><!-- .row -->
+                <ul>
+                  <li class="row" ng-repeat="participant in addVoteCtrl.participants" >
+                    <h2 class="pull-left">{{ participant.name +' '+ participant.lastName +' - '+ participant.pId }}</h2>
+                    <a href="#"><img src="../images/btnLess.png" class="pull-right text-center img-less" alt="less" ></a>
+                </div>
+                  </li>
+                </ul>
                 <form action="" name="add-vote" novalidate>
-                  <div class="row" ng-repeat="participant in addVoteCtrl.participants" >
+                  <div class="row" >
                     <div class="col-md-10">
                       <label for="">Nombre</label>
-                      <select class="form-control select-arrow">
+                      <select ng-model="addVoteCtrl.newParticipant" class="form-control select-arrow">
                         <option ng-repeat="possibleParticipant in addVoteCtrl.possibleParticipants" value="{{ possibleParticipant.id }}">
                           {{ possibleParticipant.name +' '+ possibleParticipant.lastName +' - '+ possibleParticipant.pId }}
                         </option>       
                       </select> 
                     </div><!-- .col-md-10 -->
                     <div class="col-md-2">
-                      <a href="#"><img src="../images/btnLess.png" ng-hide="$last" class="img-less" alt="less" ></a>
-                      <a href="#"><img src="../images/btnPlus.png" ng-show="$last" class="img-plus" alt="plus" ></a>
+                      <a href="#" ng-click="addVoteCtrl.addParticipant();" ><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
                     </div><!-- .col-md-2 -->
                   </div><!-- .row-->
                   <div class="row">
