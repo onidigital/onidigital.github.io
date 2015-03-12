@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="libreriaVirtual">
 
 <head>
     <meta charset="utf-8">
@@ -13,22 +13,22 @@
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
 	<body>
-		<div class="full-screen fs-modal" >
+		<div class="full-screen fs-modal" ng-controller="editCourseAreaController as eCourseAreaCtrl" >
 			<div class="col col-md-6">
 				<header>
-					<h1>Modificar &Aacute;rea</h1>
+					<h1>Modificar &Aacute;rea {{ formEditCourseArea.$valid }}</h1>
 				</header>
-				<form>
+				<form name="formEditCourseArea" ng-submit="formEditCourseArea.$valid && rgCareer.editCourseArea();" novalidate>
 					<div class="row">
 						<div class="col-md-6">
-						  	<label>&Aacute;rea</label>
-						    <input type="text" class="form-control" id="area" placeholder="">
-						</div>
+					  		<label>&Aacute;rea</label>
+						    <input type="text" class="form-control" id="area" placeholder="" required ng-model="eCourseAreaCtrl.editArea.name">
+					  	</div>
 				  	</div>
 					<div class="row">
 					  	<div class="col-md-12">
 					  		<label>Descripci&oacute;n</label>
-					  		<textarea class="form-control col-md-6" rows="6"></textarea>
+					  		<textarea class="form-control col-md-6" rows="6" required ng-model="eCourseAreaCtrl.editArea.descripcion"></textarea>
 					  	</div>
 				  	</div>
 				  	<div class="row">
@@ -37,5 +37,14 @@
 				</form>	
 			</div>
 		</div>
+				    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/edit-area.js"></script>
 	</body>
 </html>
