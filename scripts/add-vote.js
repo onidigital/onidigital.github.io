@@ -26,9 +26,26 @@ app.controller('AddVoteController', function() {
 
 	this.addParticipant = function(){
 		var newParticipant = Query('users','id',Number($this.newParticipant));
-		
-		$this.participants.push( newParticipant );
-		$this.newParticipant = '';
+			if( $this.searchDupes( newParticipant ) ) {
+				$this.participants.push( newParticipant );
+				$this.newParticipant = '';
+			}
+	}
+
+	this.searchDupes = function( item ){
+		var i = 0,
+			l = $this.participants.length;
+		for(; (i<l); i++){
+			if( $this.participants[i] === item ){
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	this.alert = function(){
+		alert('worked!....?');
 	}
 
 });

@@ -18,92 +18,43 @@
 
 	<body ng-app="libreriaVirtual">
 		<div class="content container viewInfo center-block" ng-controller="AddVoteController as addVoteCtrl" >
-          <div class="profile-selected">
-            <ul>
-              <li>
-                  <p>Administrador</p>
-                  <div class="arrow-front"></div>
-              </li>
-              <li>
-                  <div class="arrow-back-up"></div>
-                  <div class="arrow-back-down"></div>
-                  <p>Agregar Votación</p>
-                  <div class="arrow-front"></div>
-              </li>
-            </ul>
-          </div> 
+      <div class="profile-selected">
+        <ul>
+          <li>
+              <p>Administrador</p>
+              <div class="arrow-front"></div>
+          </li>
+          <li>
+              <div class="arrow-back-up"></div>
+              <div class="arrow-back-down"></div>
+              <p>Agregar Votación</p>
+              <div class="arrow-front"></div>
+          </li>
+        </ul>
+      </div> 
+      <form class="row add-participants">
+        <div class="col col-md-4">
+          <h4 class="text-center" >Posibles participantes</h4>
+          <ul>
+            <li class="col col-md-12">
+              <ul>
+                <li class="col col-md-4" >Proyecto</li>
+                <li class="col col-md-4" >Equipo</li>
+                <li class="col col-md-4" >Elegir</li>
+              </ul>
+            </li>
+            <li>
 
-          <div class="row add-participants">
-          	<div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1>Participantes</h1>
-                </div><!-- .col-md-12 -->  
-              </div><!-- .row -->
-              <div class="row">
-          		  <div class="infoTable">
-          		  	<div class="input-group tableWidth">
-          		  		<table class="dataTable table table-striped">
-          		  			<thead>
-          		  				<tr>
-          		  					<td class="text-center">Proyecto</td>
-          		  					<td class="text-center">Equipo</td>
-          		  					<td class="text-center">Elegir</td>
-          		  				</tr>
-          		  			</thead>
-          		  			<tbody>
-          		  				<tr ng-repeat="team in addVoteCtrl.teams" class="displayInfo">
-          		  					<td class="text-center">
-                            {{ team.proyect }}
-                          </td>
-          		  					<td class="text-center">
-                            {{ team.name }}
-                          </td>
-          		  					<td class="text-center">
-                            <input type="checkbox"  ng-model="teamIsSelected" 
-                                                    ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );"
-                                                  >
-                          </td>
-          		  				</tr>
-          		  			</tbody>
-          		  		</table>
-          		  	</div><!-- .infoTable -->
-          		  </div><!--.dataTable .table .table-striped--> 
-          	  </div><!-- .col-md-6 -->
-            </div>
-
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1>Votantes</h1>
-                </div><!-- .col-md-12 -->  
-              </div><!-- .row -->
-                <ul>
-                  <li class="row" ng-repeat="participant in addVoteCtrl.participants" >
-                    <h2 class="pull-left">{{ participant.name +' '+ participant.lastName +' - '+ participant.pId }}</h2>
-                    <a href="#"><img src="../images/btnLess.png" class="pull-right text-center img-less" alt="less" ></a>
-                </div>
-                  </li>
-                </ul>
-                <form action="" name="add-vote" novalidate>
-                  <div class="row" >
-                    <div class="col-md-10">
-                      <label for="">Nombre</label>
-                      <select ng-model="addVoteCtrl.newParticipant" class="form-control select-arrow">
-                        <option ng-repeat="possibleParticipant in addVoteCtrl.possibleParticipants" value="{{ possibleParticipant.id }}">
-                          {{ possibleParticipant.name +' '+ possibleParticipant.lastName +' - '+ possibleParticipant.pId }}
-                        </option>       
-                      </select> 
-                    </div><!-- .col-md-10 -->
-                    <div class="col-md-2">
-                      <a href="#" ng-click="addVoteCtrl.addParticipant();" ><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
-                    </div><!-- .col-md-2 -->
-                  </div><!-- .row-->
-                  <div class="row">
-                    <button type="submit" class="btn btn-add">Agregar</button>
-                  </div><!-- .row-->
-                </form>
-            </div><!-- .col-md-6 --> 
+            </li>
+          </ul>
+        </div>
+        <div class="col col-md-4">
+          <h4 class="text-center" >Participantes</h4>
+        </div>
+        <div class="col col-md-4">
+          <h4 class="text-center" >Manejo de fechas</h4>
+        </div>
+      </form>
     </div><!-- content container viewInfo center-block-->    
 	</body>
 
