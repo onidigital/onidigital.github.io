@@ -290,6 +290,20 @@ teams = [
 	'proyect'	: 1,
 	'students'	: [3, 4],
 	'logo'		: ''
+},
+{
+	'id'		: 2,
+	'name'	 	: 'Superb',
+	'proyect'	: 2,
+	'students'	: [3, 4],
+	'logo'		: ''
+},
+{
+	'id'		: 3,
+	'name'	 	: 'Fjorgyn',
+	'proyect'	: 1,
+	'students'	: [3, 4],
+	'logo'		: ''
 }
 ],
 competitorTeam=[

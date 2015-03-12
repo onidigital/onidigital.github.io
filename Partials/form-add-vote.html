@@ -16,7 +16,7 @@
 
 	</head>
 
-	<body ng-app="addVote">
+	<body ng-app="libreriaVirtual">
 		<div class="content container viewInfo center-block" ng-controller="AddVoteController as addVoteCtrl" >
           <div class="profile-selected">
             <ul>
@@ -53,9 +53,16 @@
           		  			</thead>
           		  			<tbody>
           		  				<tr ng-repeat="team in addVoteCtrl.teams" class="displayInfo">
-          		  					<td class="text-center">{{ team.proyect }}</td>
-          		  					<td class="text-center">{{ team.name }}</td>
-          		  					<td class="text-center"><input type="radio"></td>
+          		  					<td class="text-center">
+                            {{ team.proyect }}
+                          </td>
+          		  					<td class="text-center">
+                            {{ team.name }}
+                          </td>
+          		  					<td class="text-center">
+                            <input type="checkbox"  ng-model="teamIsSelected" 
+                                                    ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );">
+                          </td>
           		  				</tr>
           		  			</tbody>
           		  		</table>
@@ -71,11 +78,13 @@
                 </div><!-- .col-md-12 -->  
               </div><!-- .row -->
                 <form action="" name="add-vote" novalidate>
-                  <div class="row">
+                  <div class="row" ng-repeat="participant in addVoteCtrl.participants" >
                     <div class="col-md-10">
                       <label for="">Nombre</label>
                       <select class="form-control select-arrow">
-                        <option value=""></option>       
+                        <option ng-repeat="possibleParticipant in addVoteCtrl.possibleParticipants" value="{{ possibleParticipant.id }}">
+                          {{ possibleParticipant.name +' '+ possibleParticipant.lastName +' - '+ possibleParticipant.pId }}
+                        </option>       
                       </select> 
                     </div><!-- .col-md-10 -->
                     <div class="col-md-2">
