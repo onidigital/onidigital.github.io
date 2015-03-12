@@ -60,7 +60,7 @@ var users = [
 	'rol'		: 3,
 	'pId'		: 'd-1',
 	'careers'	: [1],
-	'image'		: ''
+	'image'		: '../images/user.png'
 },
 {
 	'id'		: 6,
@@ -71,7 +71,7 @@ var users = [
 	'rol'		: 3,
 	'pId'		: 'd-2',
 	'careers'	: [2],
-	'image'		: ''
+	'image'		: '../images/user.png'
 },
 {
 	'id'		: 7,
@@ -104,6 +104,16 @@ var users = [
 	'rol'		: 4,
 	'courses'	: [1, 2],
 	'pId'		: 'p-3',
+	'image'		: ''
+},
+{
+	'id'		: 10,
+	'email'		: 'decano@ucenfotec.ac.cr',
+	'password'	: 'decano',
+	'name'		: 'Decano',
+	'lastName'	: 'Soy',
+	'rol'		: 5,
+	'pId'		: 'd-1',
 	'image'		: ''
 }
 ],
@@ -155,6 +165,11 @@ rol = [
 	'id' 	: 4,
 	'code'	: 'teacher',
 	'name'	: 'Profesor'
+},
+{
+	'id'	: 5,
+	'code'	: 'dean',
+	'name'	: 'Decano'
 }
 ],
 rubrics = [

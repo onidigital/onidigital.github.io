@@ -15,12 +15,7 @@ function Query( object, query, value ){
 		return searchObject;
 	}
 
-	if( queryResult.length > 1 ){
-		return queryResult;
-	} else if(queryResult.length === 1) {
-		return queryResult[0];
-	}
-
+	return queryResult;
 }
 
 function Insert(target, newItem){
@@ -39,19 +34,12 @@ function Insert(target, newItem){
 
 }
 
-function Update( target, oldItemId, updated ){
+function Update( target, old, updated ){
 
 	for( var key in data[target] ){
-		if( data[target][key]['id'] === oldItemId ){
-			var merged = data[target][key];
-
-			for( var item in updated ){
-				merged[item] = updated[item];
-			}
-
-			data[target][key] = merged;
-
-			return data[target];
+		if( data[target][key]['id'] === old['id'] ){
+			data[target][key] = updated;
+			return data;
 		}
 	}
 

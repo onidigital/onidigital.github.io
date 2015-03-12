@@ -12,36 +12,37 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body>
-		<div class="full-screen fs-modal" >
+	<body ng-app="addStudent">
+		<div class="full-screen fs-modal" ng-controller="addStudentController as asCtrl">
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Estudiante</h1>
 				</header>
-				<form class="user-form">
+				<form class="user-form" name="formAddStudent" ng-submit="formAddStudent.$valid && asCtrl.addStudent()" novalidate>
 					<div class="row">
 						<div class="col-md-3">
 							<div class="foto">
-								<span class="btn btn-file">
-    								Agregar Foto <input type="file">
-								</span>
+									<img ng-src="{{asCtrl.newStudent.image}}" alt="">
+								<!--<span class="btn btn-file">
+    								Agregar Foto <input type="file" ng-model="asCtrl.newStudent.image">
+								</span>-->
 							</div>
 						</div>
 						<div class="col-md-9">
 							<div class="row">
 								<div class="col-md-12">
 						  			<label>Nombre</label>
-						    		<input type="text" class="form-control"placeholder="">
+						    		<input type="text" class="form-control"placeholder="" ng-model="asCtrl.newStudent.name" required>
 								</div>
 							</div>
 							<div class="row">	
 					  			<div class="col-md-6">
-					  				<label>Apellido 1</label>
-					  				<input type="text" class="form-control">
+					  				<label>Apellido</label>
+					  				<input type="text" class="form-control" ng-model="asCtrl.newStudent.lastName" required>
 					  			</div>
 					  			<div class="col-md-6">
-					  				<label>Apellido 2</label>
-					  				<input type="text" class="form-control">
+					  				<label>Imagen</label>
+					  				<input type="txt" class="form-control" ng-model="asCtrl.newStudent.image">
 					  			</div>
 					  		</div>
 				  		</div>
@@ -49,25 +50,40 @@
 					<div class="row">
 						<div class="col-md-5">
 							<label for="">Cédula</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" ng-model="asCtrl.newStudent.pId" required>
 						</div>
 						<div class="col-md-7">
 							<label for="">Correo Electrónico</label>
-							<input type="text" class="form-control">
+							<input type="email" class="form-control" ng-model="asCtrl.newStudent.email" required>
 						</div>
 					</div>
 					<div class="row">
-					  	<div class="col-md-6">
-						  	<label>Carrera</label>
-						    <input type="text" class="form-control"placeholder="">
+					  	<div class="col-md-8" ng-repeat="repeatCareer in asCtrl.repeatCareers">
+					  		<div class="form-group col-md-10" ng-model="asCtrl.repeatCareer">
+					  			<label >Carrera</label>
+					  			<select ng-model="asCtrl.newStudent.career" class="form-control  select-arrow">
+					  				<option ng-repeat="career in asCtrl.careers" value="">{{ career.name }}</option>
+					  			</select>
+					  		</div>
+							<div class="col-md-2">
+								<a href="" ng-hide="$last" ng-click="asCtrl.deleteNewRepeatCareer()"><img src="../images/btnLess.png" alt="less" class="img-less"></a>
+								<a href="#" ng-show="$last" ng-click="asCtrl.addNewRepeatCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+							</div>
 						</div>
-						<div class="col-md-2">
-							<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-add">Agregar</button>
 						</div>
-						<button type="submit" class="btn btn-add">Agregar</button>
 					</div>
 				</form>	
 			</div>
 		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/form-add-student.js" ></script>
 	</body>
 </html>
