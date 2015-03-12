@@ -290,6 +290,20 @@ teams = [
 	'proyect'	: 1,
 	'students'	: [3, 4],
 	'logo'		: ''
+},
+{
+	'id'		: 2,
+	'name'	 	: 'Superb',
+	'proyect'	: 2,
+	'students'	: [3, 4],
+	'logo'		: ''
+},
+{
+	'id'		: 3,
+	'name'	 	: 'Fjorgyn',
+	'proyect'	: 1,
+	'students'	: [3, 4],
+	'logo'		: ''
 }
 ],
 competitorTeam=[
@@ -317,20 +331,29 @@ votes = [
 						}
 					] 
 }
+],
+voting = [
+{
+	'id'			: 2015,
+	'voters'    	: [1,5,6],
+	'teams'		  	: [2,1], 
+	'initialDate' 	: 'Thu Mar 12 2015 07:17:56 GMT-0600 (Central America Standard Time)', 
+	'finalDate'		: 'Thu Mar 19 2015 00:00:00 GMT-0600 (Central America Standard Time)', 
+}
 ];
 
 
-var data 		= {};
-data.users 		= users;
-data.rol 		= rol;
-data.careers 	= careers;
-data.courses 	= courses;
-data.rubrics 	= rubrics;
-data.areas 		= areas;
-data.documents 	= documents;
-data.groups		= groups;
-data.teams		= teams;
-data.proyects	= proyects;
+var data 			= {};
+data.users 			= users;
+data.rol 			= rol;
+data.careers 		= careers;
+data.courses 		= courses;
+data.rubrics 		= rubrics;
+data.areas 			= areas;
+data.documents 		= documents;
+data.groups			= groups;
+data.teams			= teams;
+data.proyects		= proyects;
 data.competitorTeam = competitorTeam;
-data.winnerTeam = winnerTeam;
-
+data.winnerTeam		= winnerTeam;
+data.voting			= voting;

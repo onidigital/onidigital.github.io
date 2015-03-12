@@ -1,0 +1,65 @@
+    <section class="text-center"  >
+        <div class=" content container viewInfo center-block"  >
+            <div class="profile-selected">
+                <ul>
+                    <li>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li class="secondColor">
+                       <div class="arrow-back-up"></div>
+                       <div class="arrow-back-down"></div>
+                       <p>Profesor</p>
+                       <div class="arrow-front"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 pull-right" >
+                    <input type="text" class="form-control" class="search" type="text" ng-model="search" placeholder="Buscar por: Nombre de R&uacute;brica">
+                </div><!--/.col-lg-6 -->
+            </div>
+        </div>
+
+    	<div class="container dropdown-table">
+    		<ul class="text-center" >
+    			<li class="row dropdown-header">
+    				<ul>
+    					<li class="col col-md-6" >
+    						<h3>R&uacute;brica de Documento</h3>
+    					</li>
+    				</ul>
+    			</li>
+    			<li class="col col-md-12 dropdown-body" ng-class="dpCtrl.getClass($index)" ng-repeat="rubric in dpCtrl.rubrics | filter:search" >
+					<ul class="col col-md-12" >
+						<li class="col col-md-6" >
+							<h5>{{ rubric.nombre }}</h5>
+						</li>
+						<li class="col col-md-6 table-actions" >
+							<button class="col col-md-4 btn btnEdit" 
+									ng-click="dpCtrl.dropdown($index)" >
+								<a href="">
+                                    <i class="fa fa-plus fa-2x colorWhite"></i>
+                                </a>
+							</button>
+							<button class="col col-md-4 btn btnEdit" >
+								<a href="">
+                                    <i class="fa fa-pencil fa-2x colorWhite"></i>
+                                </a></button>
+							<button ng-click="dpCtrl.deleteRubric( rubric.id );" class="col col-md-4 btn btnEdit" >
+								<a>
+                                    <i class="fa fa-trash-o fa-2x colorWhite"></i>
+                                </a>
+                            </button>
+						</li>
+					</ul>
+					<ul class="col col-md-12 dropdown" >
+						<li class="col col-md-12" ng-repeat="aspect in dpCtrl.rubrics[$index].aspectos">
+							<h2 class="pull-left">Aspecto : {{ aspect.nombre }}</h2>
+							<h5 class="pull-right text-center">Valor : {{ aspect.valor }}</h5>
+						</li>
+					</ul>	    				
+    			</li>
+    		</ul>
+    	</div>
+    </section>

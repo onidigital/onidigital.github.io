@@ -45,9 +45,18 @@
     border-radius: 0;
 	
     &:hover, &:focus {
-		background: $background;
 		color: $main-color !important;
+        opacity: 1;
 	   }
+    }
+
+.btnEdit  {
+        a{
+            color: white;
+        }
+        &:hover{
+            background-color:#ac208e;
+        }
     }
 .btn-add{
     padding: 10px 0;
@@ -59,6 +68,6 @@
         color: $text-clear;
         opacity: 0.8;
     }
-}    
+}
 }
 

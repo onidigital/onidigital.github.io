@@ -66,6 +66,32 @@ app.config(function($stateProvider, $urlRouterProvider ){
 					templateUrl : '/Partials/info-consult-student.html'
 				}
 			}
+		})
+		.state('admin-consult-rubrics',{
+			url : '/admin/consult/rubrics',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/info-rubric-dropdown-table.html',
+					controller  : 'dropdownController as dpCtrl' 
+				}
+			}
+		})
+		.state('admin-consult-areas',{
+			url : '/admin/consult/areas',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/info-consult-areas.html',
+					controller  : 'consultAreasController as areaConsultCtrl' 
+				}
+			}
 		});
 
 	// Teacher's views and partials

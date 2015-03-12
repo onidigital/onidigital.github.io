@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 	<head>
 		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
     	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -10,11 +10,12 @@
     	<meta charset="UTF-8" >
 	</head>
 
-	<body>
-		<div class="container vote-list">
+	<body ng-app="libreriaVirtual" >
+
+		<div class="container vote-list" ng-controller="votesController as votesCtrl">
 			<div class="row">
 				<ul class="list-group">
-					<li class="list-group-item col-md-3 team">
+					<li class="list-group-item col-md-3 team" ng-repeat="team in votesCtrl.teams">
 						<ul>
 							<li class="control-group border"><img src="../images/LOGOONI.png" alt="logo equipo" class="team-logo"></li>
 							<li class="control-group border"><a href="#">Video</a></li>
@@ -35,5 +36,6 @@
     <script src="../scripts/data.js" ></script>
     <script src="../scripts/queries.js" ></script>
     <script src="../scripts/app.js" ></script>
+    <script src="../scripts/votes.js" ></script>
 	</body>
 </html>	
