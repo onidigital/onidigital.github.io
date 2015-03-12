@@ -1,7 +1,21 @@
-var infoConsult = angular.module("info",["ui.router"]);
+var infoConsult = angular.module("info",[]);
 
 infoConsult.controller('InfoController', function() {
-	this.students = Query('users','rol',2); //this hace referencia al controlador
-	this.courses = Query('courses');
+	var $this = this;
 	this.rubrics = Query('rubrics');
+	this.deleteRubric = function( id ) {
+		var i = 0,
+			l = $this.rubrics.length,
+			coord = 0;
+
+		for(; (i<l); i++){
+			if( $this.rubrics[i]['id'] === id ){
+				coord = i;
+				break;
+			}
+		}
+
+		$this.rubrics.splice(coord,1);
+
+	}
 });
