@@ -1,10 +1,6 @@
 app.controller("dropdownController", function(){
 	var $this = this;
 	this.areas = Query('areas');
-	this.rubrics = data['rubrics'];
-	this.students = Query('users','rol',2);
-	this.group = Query('groups','id',1);
-	this.documents = [{id:1},{id:2},{id:3},{id:4},{id:5}]//this.group.documents;
 	this.selectedIndex;
 
 	var i = 0,
