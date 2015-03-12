@@ -3,14 +3,13 @@ app.controller('editCourseAreaController', function(){
 	var $this = this;
 
 	this.areas = Query('areas','-','all');
-	this.newArea = {};
+	this.editArea = {};
 
 	console.table(this.careers);
 
 	this.editCourseArea = function(){
-		$this.areas = Insert('areas',$this.newArea);
-		$this.newArea = {};
-		console.table($this.areas);
+		$this.areas = Update('areas', areas[1], $this.editArea);
+		$this.editArea = {};
+		console.table(areas);
 	}
-
 });
