@@ -1,4 +1,4 @@
-app.controller("dropdownController", function(){
+app.controller("consultAreasController", function(){
 	var $this = this;
 	this.areas = Query('areas');
 	this.selectedIndex;
