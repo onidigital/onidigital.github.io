@@ -20,13 +20,13 @@ InfoController
 
 
         <!--<div class="fullscreen fs-modal" ui-view></div>-->
-        <div class="container viewInfo center-block" ng-controller="InfoController  as info" >
+        <div class="container viewInfo center-block" ng-controller="InfoController  as infoRubric" >
           <div class="row">
             <ol class="breadcrumb page">
               <li class="colorAdmin">Administrador</li>
               <li class="colorUser">Profesor</li>
             </ol>
-            <h1>Ver Rubricas de carrera {{info.rubrics.nombre}}</h1>
+            <h1>Ver Rubricas de carrera {{infoRubric.rubrics.nombre}}</h1>
           </div><!-- /.row -->
                 <div class="infoTable ">
                     <div class="input-group tableWidth">
@@ -41,7 +41,7 @@ InfoController
                             </thead>
                         </div>
                             <tbody>
-                              <tr ng-repeat="rubrica in info.rubrics" class="displayInfo" >
+                              <tr ng-repeat="rubrica in infoRubric.rubrics" class="displayInfo" >
                                     <td class="text-center" >{{ rubrica.id }}</td>
                                     <td class="text-center" >{{ rubrica.nombre }}</td>
                                     <td class="text-center" >{{ rubrica.aspectos[i] }}</td>
