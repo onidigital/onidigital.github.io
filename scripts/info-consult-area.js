@@ -4,8 +4,9 @@ app.controller("ConsultAreaController", function(){
 
 	var $this = this;
 
-	this.group = Query('groups','id',1);
-	this.area = Query('groups','areas','area');
+	this.rubrics = data['rubrics'];
+	this.groups = Query('groups','id',1);
+	this.areas = data['groups'];
 	this.teacher = Query('groups', 'areas','professor');
 	this.selectedIndex;
 
