@@ -134,22 +134,22 @@ app.config(function($stateProvider, $urlRouterProvider ){
 
 });
 
-app.run(function($rootScope, $state){
-    $rootScope
-        .$on('$viewContentLoaded',
-            function(event, viewConfig){ 
-                var sesion 	= JSON.parse( localStorage.getItem('sesion') ),
-                	urlRol	= window.location.hash.split('/')[1],
-                	rol 	= sesion.rol;
+// app.run(function($rootScope, $state){
+//     $rootScope
+//         .$on('$viewContentLoaded',
+//             function(event, viewConfig){ 
+//                 var sesion 	= JSON.parse( localStorage.getItem('sesion') ),
+//                 	urlRol	= window.location.hash.split('/')[1],
+//                 	rol 	= sesion.rol;
                	
-               	if( sesion ){
-               		if( rol !== urlRol ){
-               			$state.go('home');
-               		}
-               	}
+//                	if( sesion ){
+//                		if( rol !== urlRol ){
+//                			$state.go('home');
+//                		}
+//                	}
+//         });
 
-        });
-})
+// })
 
 
 // Login controller

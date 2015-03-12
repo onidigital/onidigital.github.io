@@ -1,4 +1,4 @@
-app.controller('registerCarrer', function(){
+app.controller('registerCareer', function(){
 
 	var $this = this;
 
