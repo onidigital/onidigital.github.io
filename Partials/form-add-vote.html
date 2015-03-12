@@ -61,7 +61,8 @@
                           </td>
           		  					<td class="text-center">
                             <input type="checkbox"  ng-model="teamIsSelected" 
-                                                    ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );">
+                                                    ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );"
+                                                  >
                           </td>
           		  				</tr>
           		  			</tbody>
@@ -88,8 +89,8 @@
                       </select> 
                     </div><!-- .col-md-10 -->
                     <div class="col-md-2">
-                      <a href="#"><img src="../images/btnLess.png" class="img-less" alt="less" ></a>
-                      <a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
+                      <a href="#"><img src="../images/btnLess.png" ng-hide="$last" class="img-less" alt="less" ></a>
+                      <a href="#"><img src="../images/btnPlus.png" ng-show="$last" class="img-plus" alt="plus" ></a>
                     </div><!-- .col-md-2 -->
                   </div><!-- .row-->
                   <div class="row">
