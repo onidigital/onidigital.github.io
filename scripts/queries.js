@@ -49,6 +49,8 @@ function Update( target, oldItemId, updated ){
 				merged[item] = updated[item];
 			}
 
+			data[target][key] = merged;
+
 			return data[target];
 		}
 	}
