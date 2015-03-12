@@ -199,9 +199,13 @@ documents = [
 {
 	'id'			: 1,
 	'name'  		: 'ERS',
-	'description' 	: 'Especificación de requerimientos de software.'
+	'description' 	: 'Especificación de requerimientos de software.',
+	'area'			: 'Proceso'
 }
 ],
+documentsPerGroup=[{
+	
+}]
 areas = [
 {
 	'id'			: 1,
@@ -270,14 +274,14 @@ teams = [
 	'logo'		: ''
 }
 ],
-competitorTeam[
+competitorTeam=[
 {
 	'logo':'href:',
 	'video':'url',
 	'information':'este equipo esta participando',
 	'puntaje':80
 }],
-winnerTeam[
+winnerTeam=[
 {
 	'logo':'href',
 	'video':'url',
