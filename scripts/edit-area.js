@@ -8,7 +8,7 @@ app.controller('editCourseAreaController', function(){
 	console.table(this.careers);
 
 	this.editCourseArea = function(){
-		$this.areas = Update('areas', areas[1], $this.editArea);
+		$this.areas = Update('areas', 3, $this.editArea);
 		$this.editArea = {};
 		console.table(areas);
 	}
