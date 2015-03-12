@@ -39,12 +39,17 @@ function Insert(target, newItem){
 
 }
 
-function Update( target, old, updated ){
+function Update( target, oldItemId, updated ){
 
 	for( var key in data[target] ){
-		if( data[target][key]['id'] === old['id'] ){
-			data[target][key] = updated;
-			return data;
+		if( data[target][key]['id'] === oldItemId ){
+			var merged = data[target][key];
+
+			for( var item in updated ){
+				merged[item] = updated[item];
+			}
+
+			return data[target];
 		}
 	}
 
