@@ -1,14 +1,18 @@
 var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+app.config(function($stateProvider, $urlRouterProvider ){
 
-	$locationProvider.html5Mode({
-	  enabled: true,
-	  requireBase: false
-	});
+	// $locationProvider.html5Mode({
+	//   enabled: true,
+	//   requireBase: false
+	// });
 
 	var header = {
 		admin 		: 'Partials/menu-admin.html',
+		director    : 'Partials/menu-director.html',
+		profesor	: 'Partials/menu-profesor.html',
+		dean		: 'Partials/menu-dean.html',
+		student     : 'Partials/menu-student.html',
 		controller 	: 'menuController as menuCtrl'
 	}
 
@@ -71,8 +75,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 			url : '/teacher/profile',
 			views: {
 				header : {
-					templateUrl : 'Partials/menu-teacher.html',
-					controller  : 'menuController as menuCtrl'
+					templateUrl : header.teacher,
+					controller  : header.controller
 				},
 				body : {
 					template: '<h1>Hola! yo soy un profe.</h1>'
@@ -80,7 +84,74 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 			}
 		});
 
+	// Student's views and partials
+	$stateProvider
+		// Student's profile view.
+		.state('student', {
+			url : '/student/profile',
+			views: {
+				header : {
+					templateUrl : header.student,
+					controller  : header.controller
+				},
+				body : {
+					template: '<h1>Hola! yo soy un Estudiante.</h1>'
+				}
+			}
+		});
+
+	// Director's views and partials
+	$stateProvider
+		// Director's profile view.
+		.state('director', {
+			url : '/director/profile',
+			views: {
+				header : {
+					templateUrl : header.director,
+					controller  : header.controller
+				},
+				body : {
+					template: '<h1>Hola! yo soy un Director.</h1>'
+				}
+			}
+		});
+
+	// Dean's views and partials
+	$stateProvider
+		// Dean's profile view.
+		.state('dean', {
+			url : '/dean/profile',
+			views: {
+				header : {
+					templateUrl : header.dean,
+					controller  : header.controller
+				},
+				body : {
+					template: '<h1>Hola! yo soy un deacano.</h1>'
+				}
+			}
+		});
+
 });
+
+app.run(function($rootScope, $state){
+    $rootScope
+        .$on('$viewContentLoaded',
+            function(event, viewConfig){ 
+                var sesion 	= JSON.parse( localStorage.getItem('sesion') ),
+                	urlRol	= window.location.hash.split('/')[1],
+                	rol 	= sesion.rol;
+               	
+               	if( sesion ){
+               		if( rol !== urlRol ){
+               			$state.go('home');
+               		}
+               	}
+
+        });
+
+})
+
 
 // Login controller
 app.controller('loginController', ['$state',function($state){
@@ -96,6 +167,11 @@ app.controller('loginController', ['$state',function($state){
 		if( user ){
 			if(user.password === this.user.password){
 				$state.go(rol);
+				var sesion = {
+					rol   : rol,
+					user  : user
+				}
+				localStorage.setItem('sesion',JSON.stringify(sesion));
 			} else {
 				alert("contraseña invalida.");
 			}
