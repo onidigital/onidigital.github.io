@@ -79,6 +79,19 @@ app.config(function($stateProvider, $urlRouterProvider ){
 					controller  : 'dropdownController as dpCtrl' 
 				}
 			}
+		})
+		.state('admin-consult-areas'.{
+			url : '/admin/consult/areas',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/info-consult-areas.html',
+					controller  : 'consultAreasController as areaConsultCtrl' 
+				}
+			}
 		});
 
 	// Teacher's views and partials
