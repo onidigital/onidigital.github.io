@@ -134,30 +134,24 @@ app.config(function($stateProvider, $urlRouterProvider ){
 
 });
 
+/*
 app.run(function($rootScope, $state){
      $rootScope
     	.$on('$viewContentLoaded',
              function(event, viewConfig){ 
                 var	sesion 	= JSON.parse( localStorage.getItem('sesion') ),
                 	urlRol	= window.location.hash.split('/')[1],
-                	rol 	= '';
-
+                	rol 	= sesion.rol;
+               	
             	if( sesion ){
-            		rol = sesion.rol;
             		if( rol !== urlRol ){
             			$state.go('home');
             		}
             	}
-                	
-        });
-
-        $rootScope
-	        .$on('$stateNotFound',
-	            function(){ 
-		            $state.go('404');
-		        });
+         });
 
 });
+*/
 
 
 // Login controller
@@ -173,12 +167,12 @@ app.controller('loginController', ['$state',function($state){
 
 		if( user ){
 			if(user.password === this.user.password){
-				$state.go(rol);
 				var sesion = {
 					rol   : rol,
 					user  : user
 				}
 				localStorage.setItem('sesion',JSON.stringify(sesion));
+				$state.go(rol);
 			} else {
 				alert("contraseña invalida.");
 			}
@@ -214,6 +208,9 @@ app.controller('menuController', function($scope, $timeout, $mdSidenav, $log) {
     };
     $scope.close = function() {
         $mdSidenav('sideNav').close();
+    };
+    this.logOut = function(){
+    	localStorage.setItem('sesion','{}');
     };
 });
 //Tables controller.
