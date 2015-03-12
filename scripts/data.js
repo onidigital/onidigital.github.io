@@ -332,7 +332,15 @@ votes = [
 					] 
 }
 ],
-voting = [];
+voting = [
+{
+	'id'			: 2015,
+	'voters'    	: [1,5,6],
+	'teams'		  	: [2,1], 
+	'initialDate' 	: 'Thu Mar 12 2015 07:17:56 GMT-0600 (Central America Standard Time)', 
+	'finalDate'		: 'Thu Mar 19 2015 00:00:00 GMT-0600 (Central America Standard Time)', 
+}
+];
 
 
 var data 			= {};
@@ -349,4 +357,3 @@ data.proyects		= proyects;
 data.competitorTeam = competitorTeam;
 data.winnerTeam		= winnerTeam;
 data.voting			= voting;
-
