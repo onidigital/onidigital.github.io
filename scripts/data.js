@@ -194,6 +194,24 @@ rubrics = [
 						}
 					]
 },
+{
+	'id'		: 3,
+	'nombre'	: 'ERS - TIC - v.1',
+	'aspectos'	: 	[
+						{
+							'nombre' : 'Forma',
+							'valor'	 : 10
+						},
+						{
+							'nombre' : 'contenido',
+							'valor'	 : 80
+						},
+						{
+							'nombre' : 'Ortografia',
+							'valor'  : 10
+						}
+					]
+},
 ],
 documents = [
 {
