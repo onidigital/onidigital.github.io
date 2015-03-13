@@ -6,7 +6,7 @@ qualifyModule.controller("dropdownQualify", function(){
 	this.students  = Query('users','rol',2);
 	this.groups     = Query('groups');
 	this.courses = Query('courses');
-	 this.documents = Query('documents');
+	this.documents = Query('documents');
 	this.selectedIndex;
 
 	var i = 0,
