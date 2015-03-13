@@ -13,8 +13,27 @@
 
 </head>
 <body ng-app="info" >
+
     <!--<div class="fullscreen fs-modal" ui-view></div>-->
     <div class=" content container viewInfo center-block" ng-controller="InfoController as info" >
+         <div id="wrapper" class="container">
+        <div class="side-bar col-md-3">
+            <ul class="ul-profile">
+                <li class="profile-pic">
+                    <img src="../images/gohan.jpg">
+                    <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+                </li>
+                <li>Diego Vargas</li>
+                <li>603680056</li>
+                <li>email@email.com</li>
+            </ul>
+            <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+        </div>  
+        <div class="content col-md-9">
+            <div class="col-md-12">
+                <div class="profile-selected">
+                    <ul>
+                       
         <div class="profile-selected">
             <ul>
                 <li>
@@ -23,12 +42,15 @@
                 </li>
             </ul>
         </div>
+        <h1 class="text-center" >Mis cursos</h1>
         <div class="row">
-            <div class="col-lg-3 pull-right" >
+            <div class="col-lg-5 pull-right" >
                 <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cédula, Email.">
             </div><!--/.col-lg-6 -->
         </div>
-        <div class="infoTable ">
+
+        <div class="infoTable col-md-12">
+
             <div class="input-group tableWidth">
                 <table class="dataTable table table-striped">
                     <div class="row">  
@@ -45,21 +67,11 @@
                             <td class="text-center" >{{ student.name }}</td>
                             <td class="text-center" >{{ student.pId }}</td>
                             <td class="text-center" >{{ student.email }}</td>
-                            <td class="actions col col-md-3">
+                            <td class="actions col col-md-1">
                                 <button class="btn btnEdit col col-md-4" type="button">
-                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
-                                        <i class="fa fa-plus fa-2x"></i>
+                                    <a ui-sref="form-add-teacher" class="col col-md-2" href="/info_Consult.html">
+                                        <i class="fa fa-plus fa-2x "></i>
                                     </a>
-                                </button>
-                                <button class="btn btnEdit col col-md-4" type="button">
-                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
-                                        <i class="fa fa-pencil fa-2x"></i>
-                                    </a>
-                                </button>
-                                <button class="btn btnEdit col col-md-4" type="button">
-                                    <a ui-sref="form-add-teacher" href="/info_Consult.html">
-                                        <i class="fa fa-trash-o fa-2x"></i>
-                                    </a>                                            
                                 </button>
                             </td>
                         </tr>

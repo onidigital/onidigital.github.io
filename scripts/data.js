@@ -22,7 +22,8 @@ var users = [
 	'proyects'	: [1, 2],
 	'teams'		: [1, 2],
 	'image'		: ''	,
-	'document' :	[1,2,3]	//agregó Carolina	
+	'document' :	[1,2,3]//agregó Carolina	
+
 },
 {
 	'id'		: 3,
@@ -268,7 +269,7 @@ documents = [
 {
 	'id'			: 3,
 	'name'  		: 'Analisis',
-	'description' 	: 'Documento de Disenno.',
+	'description' 	: 'Documento de Analisis.',
 	'area'			: 'Proceso'
 }
 ],
