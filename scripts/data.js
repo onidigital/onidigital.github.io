@@ -256,8 +256,7 @@ documents = [
 	'name'  		: 'ERS',
 	'description' 	: 'Especificación de requerimientos de software.',
 	'area'			: 'Proceso'
-}
-],
+},
 // agregó carolina
 {
 	'id'			: 2,
