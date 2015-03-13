@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Oni Digital Solutions">
+    <title>Oni Digital Solutions</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+</head>
+<body ng-app="libreriaVirtual" >
+    <!--<div class="fullscreen fs-modal" ui-view></div>-->
+        <section ng-controller="InfoDeanController as infoDeanCtrl" >
+        <div class=" content container viewInfo center-block"  >
+            <div class="profile-selected">
+                <ul>
+                    <li>
+                        <p>Administrador</p>
+                        <div class="arrow-front"></div>
+                    </li>
+                    <li>
+                       <div class="arrow-back-up"></div>
+                       <div class="arrow-back-down"></div>
+                       <p>Decano</p>
+                       <div class="arrow-front"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 pull-right" >
+                    <input type="text" class="form-control" class="search" type="text" ng-model="search" placeholder="Buscar por: Nombre, Cédula, Email.">
+                </div><!--/.col-lg-6 -->
+            </div>
+            <div class="infoTable ">
+                <div class="input-group tableWidth">
+                    <table class="dataTable table table-striped">
+                        <div class="row">  
+                            <thead>
+                                <tr>
+                                    <td class="text-center"  data-field="name">Decano</td>
+                                    <td class="text-center"  data-field="id">Cédula</td>
+                                    <td class="text-center"  data-field="email">Email</td>
+                                </tr>
+                            </thead>
+                        </div>
+                        <tbody>
+                            <tr ng-repeat="dean in infoDeanCtrl.deans | filter: search" class="displayInfo" >
+                                <td class="text-center" >{{ dean.name +' '+ dean.lastName }}</td>
+                                <td class="text-center" >{{ dean.pId   }}</td>
+                                <td class="text-center" >{{ dean.email }}</td>
+                                <td class="actions col col-md-3" >
+                                    <button class="btn btnEdit col col-md-4" type="button">
+                                        <a  href="/info_Consult.html">
+                                            <i class="fa fa-plus fa-2x"></i>
+                                        </a>
+                                    </button>
+                                    <button class="btn btnEdit col col-md-4" type="button">
+                                        <a  href="/info_Consult.html">
+                                            <i class="fa fa-pencil fa-2x"></i>
+                                        </a>
+                                    </button>
+                                    <button class="btn btnEdit col col-md-4" type="button">
+                                        <a  href="/info_Consult.html">
+                                            <i class="fa fa-trash-o fa-2x"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/infoConsultDean.js" ></script>
+</body>
+
+</html>

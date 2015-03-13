@@ -15,59 +15,66 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-	<body ng-app="app">
-		<div class="full-screen fs-modal" >
+	<body ng-app="libreriaVirtual">
+		<div class="full-screen fs-modal" ng-controller="ModifyRubricsController as mrbCtrl">
 			<div class="col col-md-6">
 				<header>
-					<h1>Modificar R&uacute;brica</h1>
+					<h1>Modificar Rúbrica</h1>
 				</header>
-				<form name="modify-rubrics" novalidate>
-					<div class="control-group" ng-controller="PlusLessButtonsController as plbCtrl">
+				<form action="" name="modify-rubrics" ng-submit="modify-rubrics.$valid && mrbCtrl.editRubrics()" novalidate>
+					<div class="control-group">
 						<div class="row">
 							<div class="col-md-12">
-							  	<label>Nombre</label>
-							    <input type="text" class="form-control"  href="" alt="" placeholder="" required>
+								<label for="">Nombre</label>
+								<input type="text" class="form-control" ng-model="mrbCtrl.newRubric.nombre" required>
 							</div>
-				  		</div>
-				  		<div class="row" id="originalContent">
-					  		<div class="col-md-5">
-					  			<label>Aspecto</label>
-					  			<select class="form-control select-arrow" ng-model="aspectoRubrica" required>
-					  				<option value=""></option>			 
-					  			</select>	
-					  		</div>
-					  		<div class="col-md-5">
-					  			<label>Valor</label>
-					  			<select class="form-control select-arrow" ng-model="valorRubrica" required>
-					  				<option value=""></option>			 
-					  			</select>	
-					  		</div>
-						  	<div class="col-md-2">
-								<a href="#" ng-show="plusOne===true" ng-model="plus"><img src="../images/btnLess.png" class="img-less" alt="less" ng-click="modify-rubrics.$valid && plbCtrl.addContent()"></a>
-								<a href="#" ng-hide="oneLess===false" ng-model='less'><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
+						</div>
+						<div class="col col-md-12">
+							<ul class="list">
+								<li class="col col-md-12 list-item" ng-repeat="aspect in mrbCtrl.aspects" >
+									<h5 class="pull-left" >{{ aspect.name +' - '+ aspect.value}}</h5>
+									<h5 class="pull-right" >
+										<a href="#" ng-click="mrbCtrl.deleteNewAspect( $index )">
+											<img src="../images/btnLess.png" alt="less" class="img-less">
+										</a>
+									</h5>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<div ng-model="mrbCtrl.aspect">
+								<div class="col-md-5">
+									<label for="">Aspecto</label>
+									<input type="text" class="form-control" ng-model="mrbCtrl.newAspect.name" required>
+								</div>
+								<div class="col-md-5">
+									<label for="">Valor</label>
+									<input type="number" class="form-control" ng-model="mrbCtrl.newAspect.value" required>
+								</div>
 							</div>
-				  		</div>
-				  		<div id="newContent">
-				  			
-				  		</div>
-				  	</div>
-					
-				  	<div class="row">
-					  	<button type="submit" class="btn btn-edit">Modificar</button>
+							<div class="col-md-2">
+								<a href="#" ng-click="mrbCtrl.addNewAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-edit">Modificar</button>
+							</div>
+						</div>
 					</div>
-				</form>	
+				</form>
 			</div>
 		</div>
+		<!-- Angular Material Dependencies -->
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    	<script src="../scripts/data.js" ></script>
+    	<script src="../scripts/queries.js" ></script>
+    	<script src="../scripts/app.js" ></script>
+    	<script src="../scripts/infoConsult.js" ></script>
+    	<script src="../scripts/modify-rubrics.js" ></script>
 	</body>
-	<!-- Angular Material Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="../scripts/data.js" ></script>
-    <script src="../scripts/queries.js" ></script>
-    <script src="../scripts/app.js" ></script>
-    <script src="../scripts/infoConsult.js" ></script>
-    <script src="../scripts/modify-rubrics.js" ></script>
 </html>

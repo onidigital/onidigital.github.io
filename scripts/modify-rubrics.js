@@ -1,26 +1,28 @@
-var app = angular.module("app", []);
+app.controller('ModifyRubricsController', function(){
+	var $this = this;
+	this.aspects = [];
+	this.rubrics = Query('rubrics', '-', 'all');
+	this.newRubric = {};
+	this.newAspect = {};
 
-function Update( rubrics, rubrics, newRubrics ){
+	console.table(this.rubrics);
 
-	for( var key in data[target] ){
-		if( data[target][key]['id'] === old['id'] ){
-			data[target][key] = updated;
-			return data;
-		}
+	this.addNewAspect = function() {
+  		var newItemNo = $this.aspects.length+1;
+  		if ($this.newAspect.name && $this.newAspect.value != '') {
+  		$this.aspects.unshift( $this.newAspect );
+  		$this.newAspect = {};
+  		};
+	};
+
+	this.deleteNewAspect = function( index ) {
+		$this.aspects.splice(index,1);
+	};
+
+	this.editRubrics = function() {
+		$this.rubrics = Update('rubrics',rubric[0],$this.newRubric);
+		$this.newRubric = {};
+		console.table(rubrics);
 	}
 
-}
-
-app.controller('PlusLessButtonsController', function(){
-	this.oneLess = false;
-
-	this.addContent = function($compile){
-		return function(scope,element,attrs){
-			element.bind('click', function(){
-				scope.count++;
-				angular.element(document.getElementbyId('newContent')).append($compile(document.getElementbyId('oldContent'))(scope));
-			});
-		};
-	};
-});	
-
+});
