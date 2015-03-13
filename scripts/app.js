@@ -204,17 +204,18 @@ app.controller('loginController', ['$state',function($state){
 	this.user.password;
 
 	this.validate = function(){
-		var user = Query('users','email',$this.user.email),
-			rol  = Query('rol','id',user.rol).code;
+		var user 	= Query('users','email',$this.user.email)[0],
+			rol  	= Query('rol','id',user.rol)[0];
 
 		if( user ){
-			if(user.password === this.user.password){
-				var sesion = {
-					rol   : rol,
-					user  : user
+			if(user.password === $this.user.password){
+				var session = {
+					rolCode	: rol['code'],
+					user  	: user,
+					rol 	: rol['name']
 				}
-				localStorage.setItem('sesion',JSON.stringify(sesion));
-				$state.go(rol);
+				localStorage.setItem('sesion',JSON.stringify(session));
+				$state.go(session.rolCode);
 			} else {
 				alert("contraseña invalida.");
 			}
