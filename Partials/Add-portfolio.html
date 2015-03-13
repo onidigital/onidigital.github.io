@@ -12,26 +12,45 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-<body ng-app="info" class="content container viewInfo">
-    <div class="profile-selected ">
-            <ul>
-              <li>
-                  <p>Administrador</p>
-                  <div class="arrow-front"></div>
-              </li>
-              <li>
-                  <div class="arrow-back-up"></div>
-                  <div class="arrow-back-down"></div>
-                  <p>Portafolio</p>
-                  <div class="arrow-front"></div>
-              </li>
-            </ul>
-          </div>
-          
-          <button class="btn btn-print">Imprimir</button>
-          <button class="btn btn-download">Descargar</button>
-</body>
-    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
+<body ng-app="info" >
+<!--<div class="fullscreen fs-modal" ui-view></div>-->
+    <div class=" content container viewInfo center-block" ng-controller="InfoController as info" >
+        <div>
+            <div class="side-bar col-md-3">
+                <ul class="ul-profile">
+                    <li class="profile-pic">
+                        <img src="../images/goku.jpg">
+                        <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+                    </li>
+                    <li>Diego Vargas</li>
+                    <li>603680056</li>
+                    <li>email@email.com</li>
+                </ul>
+                <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+            </div>  
+            <div class=" col-md-9">              
+                <div class="profile-selected">
+                    <div class=" col-md-12">
+                         <div class="profile-selected container">
+                            <ul>
+                                <li>
+                                    <p>Portafolio</p>
+                                    <div class="arrow-front"></div>
+                                </li>  
+                            </ul>
+                        </div>
+                        <div clas="content">
+                            <img src="../images/portfolio.jpg">
+                        </div>
+        
+                        <button class="btn btn-print">Imprimir</button>
+                        <button class="btn btn-download">Descargar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
@@ -39,5 +58,23 @@
     <script src="../scripts/queries.js" ></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
     <script src="../scripts/app.js" ></script>
-    <script src="../scripts/info-consult-student.js" ></script>
+     <!-- <script src="../scripts/info-consult-student.js" ></script> -->
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
