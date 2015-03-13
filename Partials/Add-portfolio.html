@@ -12,21 +12,21 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-<body ng-app="info" >
+<body ng-app="portfolio" >
 <!--<div class="fullscreen fs-modal" ui-view></div>-->
     <div class=" content container viewInfo center-block" ng-controller="InfoController as info" >
         <div>
             <div class="side-bar col-md-3">
                 <ul class="ul-profile">
                     <li class="profile-pic">
-                        <img src="../images/goku.jpg">
-                        <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+                        <img src="../images/user.png">
+                    
                     </li>
                     <li>Diego Vargas</li>
                     <li>603680056</li>
                     <li>email@email.com</li>
                 </ul>
-                <a href="#"><i class="fa fa-pencil fa-2x"></i></a>
+                
             </div>  
             <div class=" col-md-9">              
                 <div class="profile-selected">
@@ -39,12 +39,12 @@
                                 </li>  
                             </ul>
                         </div>
-                        <div clas="content">
-                            <img src="../images/portfolio.jpg">
+                        <div clas="content" ng-model:>
+                            <a href=""><img class="imgPDF" src="../images/portfolio.jpg"></a>
                         </div>
         
-                        <button class="btn btn-print">Imprimir</button>
-                        <button class="btn btn-download">Descargar</button>
+                        <button class="btn pull-left btn-print">Imprimir</button>
+                        <button class="btn pull-left btn-download">Descargar</button>
                     </div>
                 </div>
             </div>
