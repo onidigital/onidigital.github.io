@@ -1,11 +1,12 @@
-var app = angular.module("app", []);
+var qualifyModule = angular.module("qualify", []);
 
-app.controller("dropdownQualify", function(){
+qualifyModule.controller("dropdownQualify", function(){
 	var $this = this;
 
 	this.students  = Query('users','rol',2);
-	this.group     = Query('groups','id',1);
-	this.documents = Query('documents','id', 1);
+	this.groups     = Query('groups');
+	this.courses = Query('courses');
+	 this.documents = Query('documents');
 	this.selectedIndex;
 
 	var i = 0,
@@ -25,4 +26,16 @@ app.controller("dropdownQualify", function(){
 			return 'active';
 		}
 	}
+	this.getCourse = function ($nameCourse){
+		return Query('courses','id',$nameCourse).name;
+	}
+
+	this.getStudent = function ($nameStudent){
+		var user = Query('users','id',$nameStudent);
+		return user.name + ' ' + user.lastName
+	}
+	this.getDocuments= function ($nameDocuments){
+		return Query('documents','id',$nameDocuments).name;
+	}
+
 });

@@ -70,4 +70,12 @@
     }
 }
 }
-
+.btn-qualify{
+    background-color:$anchors;
+    color:white;
+    width:100px;
+    &:hover{
+       background-color: $main-color;
+    }
+    
+}

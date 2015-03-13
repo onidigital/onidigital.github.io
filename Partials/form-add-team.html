@@ -12,64 +12,64 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body>
-		<div class="full-screen fs-modal" >
+	<body ng-app="team">
+		<div class="full-screen fs-modal" ng-controller="teamController as teamCtrl">
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Equipo</h1>
 				</header>
-				<form>
+				<form name="formAddTeam" ng-submit="formAddTeam.$valid && teamCtrl.addTeam()" novalidate>
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Equipo</label>
-						    <input type="text" class="form-control" id="area" placeholder="">
+						    <input type="text" ng-model="teamCtrl.newTeam.name"class="form-control" id="area" placeholder="" required>
 						</div>
 					  	<div class="col-md-6">
 					  		<label>Grupo</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>		 
-					  		</select>	
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.course"  required>
+					  			<option ng-repeat="course in teamCtrl.courses" value="{{ course.id }}">{{ course.name }}</option>
+							</select>	
 					  	</div>
 				  	</div>
 					<div class="row">
 					  	<div class="col-md-6">
 					  		<label>Estudiante</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student1"  required>
+					  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>		 
 					  		</select>	
 					  	</div>
 					  	<div class="col-md-6">
 					  		<label>Rol</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol1"  required>
+					  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>				 
 					  		</select>	
 					  	</div>
 				  	</div>
 				  	<div class="row">
 					  	<div class="col-md-6">
 					  		<label>Estudiante</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student2"  required>
+					  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>			 
 					  		</select>	
 					  	</div>
 					  	<div class="col-md-6">
 					  		<label>Rol</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol2"  required>
+					  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>			 
 					  		</select>	
 					  	</div>
 				  	</div>
 				  	<div class="row">
 					  	<div class="col-md-6">
 					  		<label>Estudiante</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student3"  required>
+					  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>		 
 					  		</select>	
 					  	</div>
 					  	<div class="col-md-6">
 					  		<label>Rol</label>
-					  		<select class="form-control select-arrow">
-					  			<option value=""></option>			 
+					  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol3"  required>
+					  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>			 
 					  		</select>	
 					  	</div>
 					  	<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
@@ -80,5 +80,13 @@
 				</form>	
 			</div>
 		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
+	    <script src="../scripts/data.js" ></script>
+	    <script src="../scripts/queries.js" ></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+	    <script src="../scripts/app.js" ></script>
+	    <script src="../scripts/form-add-team.js" ></script>
 	</body>
 </html>

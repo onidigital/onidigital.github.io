@@ -21,7 +21,8 @@ var users = [
 	'courses'	: [1, 2],
 	'proyects'	: [1, 2],
 	'teams'		: [1, 2],
-	'image'		: ''		
+	'image'		: ''	,
+	'document' :	[1,2,3]	//agregó Carolina	
 },
 {
 	'id'		: 3,
@@ -35,7 +36,8 @@ var users = [
 	'courses'	: [2],
 	'proyects'	: [2],
 	'teams'		: [2],
-	'image'		: ''		
+	'image'		: ''	,
+	'document' :	[1,2,3]	//agregó Carolina	
 },
 {
 	'id'		: 4,
@@ -49,7 +51,8 @@ var users = [
 	'courses'	: [1],
 	'proyects'	: [1],
 	'teams'		: [1],
-	'image'		: ''		
+	'image'		: '',
+	'document' :	[1,2,3]	//agregó Carolina		
 },
 {
 	'id'		: 5,
@@ -172,6 +175,25 @@ rol = [
 	'name'	: 'Decano'
 }
 ],
+// agregó carolina
+studentRol = [
+{
+	'id' 	: 1,
+	'name'	: 'Coordinador'
+},
+{
+	'id' 	: 2,
+	'name'	: 'Soporte'
+},
+{
+	'id' 	: 3,
+	'name'	: 'Calidad'
+},
+{
+	'id' 	: 4,
+	'name'	: 'Desarollo'
+}
+],
 rubrics = [
 {
 	'id'		: 1,
@@ -236,6 +258,21 @@ documents = [
 	'area'			: 'Proceso'
 }
 ],
+// agregó carolina
+{
+	'id'			: 2,
+	'name'  		: 'Disenno',
+	'description' 	: 'Documento de Disenno.',
+	'area'			: 'Proceso'
+},
+// agregó carolina
+{
+	'id'			: 3,
+	'name'  		: 'Analisis',
+	'description' 	: 'Documento de Disenno.',
+	'area'			: 'Proceso'
+}
+],
 documentsPerGroup=[{
 	
 }]
@@ -260,6 +297,39 @@ groups = [
 {
 	'id'		: 1,
 	'course'	: 1,
+	'students'	: [3,4],
+	'documents' : 	[
+						{
+							'id' 	 : 1,
+							'rubric' : 1
+						}
+					],
+	'areas'		: 	[
+						{
+							'area'		: 3,
+							'professor' : 9
+						},
+						{
+							'area'		: 1,
+							'professor' : 8
+						},
+						{
+							'area'		: 2,
+							'professor' : 7
+						}
+					],
+	'grades'	: 	[
+						{
+							'student'  : 3,
+							'document' : 1,
+							'grade'	   : 90
+						}
+					]
+},
+// agregó carolina
+,{
+	'id'		: 2,
+	'course'	: 2,
 	'students'	: [3,4],
 	'documents' : 	[
 						{
@@ -361,6 +431,7 @@ voting = [
 var data 			= {};
 data.users 			= users;
 data.rol 			= rol;
+data.studentRol     = studentRol;
 data.careers 		= careers;
 data.courses 		= courses;
 data.rubrics 		= rubrics;
