@@ -1,17 +1,17 @@
-var app = angular.module('addStudent',[]);
+var app = angular.module('addDirector',[]);
 
-app.controller('addStudentController', function(){
+app.controller('addDirectorController', function(){
 
 	var $this = this;
 
 	this.careerAspects = [];
 	this.newCareerAspect = {};
-	this.students = Query('users', 'rol', 2);
+	this.directors = Query('users', 'rol', 3);
 	this.careers   = Query('careers','-','all');
-	this.newStudent = {};
+	this.newDirector = {};
 
 
-	console.table(this.students);
+	console.table(this.directors);
 
 	this.addNewCareerAspect = function() {
   		var newItemNo = $this.careerAspects.length+1;
@@ -25,10 +25,10 @@ app.controller('addStudentController', function(){
 		$this.careerAspects.splice(index,1);
 	};	
 
-	this.addStudent = function(){
-		$this.students.push($this.newStudent);
-		$this.newStudent = {};
-		console.table($this.students);
+	this.addDirector = function(){
+		$this.directors.push($this.newDirector);
+		$this.newDirector = {};
+		console.table($this.directors);
 	}
 
 

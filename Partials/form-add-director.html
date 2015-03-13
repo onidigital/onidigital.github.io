@@ -12,62 +12,87 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body>
-		<div class="full-screen fs-modal" >
+	<body ng-app="addDirector">
+		<div class="full-screen fs-modal" ng-controller="addDirectorController as adCtrl">
 			<div class="col col-md-6">
 				<header>
-					<h1>Agregar Director de Carrera</h1>
+					<h1>Agregar Director</h1>
 				</header>
-				<form class="user-form">
+				<form class="user-form" name="formAddDirector" ng-submit="formAddDirector.$valid && adCtrl.addDirector()" novalidate>
 					<div class="row">
-						<div class="col-md-3">
-							<div class="foto">
-								<span class="btn btn-file">
-    								Agregar Foto <input type="file">
-								</span>
-							</div>
-						</div>
-						<div class="col-md-9">
-							<div class="row">
-								<div class="col-md-12">
-						  			<label>Nombre</label>
-						    		<input type="text" class="form-control"placeholder="">
-								</div>
-							</div>
-							<div class="row">	
-					  			<div class="col-md-6">
-					  				<label>Apellido 1</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  			<div class="col-md-6">
-					  				<label>Apellido 2</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  		</div>
-				  		</div>
-				  	</div>
-					<div class="row">
-						<div class="col-md-5">
-							<label for="">Cédula</label>
-							<input type="text" class="form-control">
-						</div>
-						<div class="col-md-7">
-							<label for="">Correo Electrónico</label>
-							<input type="text" class="form-control">
-						</div>
-					</div>
-					<div class="row">
+						<div class="col-md-6">
+						 	<label>Nombre</label>
+						  	<input type="text" class="form-control"placeholder="" ng-model="adCtrl.newDirector.name" required>
+						</div><!--col-md-6-->	
 					  	<div class="col-md-6">
-						  	<label>Carrera</label>
-						    <input type="text" class="form-control"placeholder="">
-						</div>
-						<div class="col-md-2">
-							<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-						</div>
-							<button type="submit" class="btn btn-add">Agregar</button>
-					</div>
+					  		<label>Apellido</label>
+					  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.lastName" required>
+					  	</div><!--col-md-6-->
+					</div><!--row-->
+					<div class="row">	
+					  	<div class="col-md-6">
+					  		<label>Imagen</label>
+					  		<input type="txt" class="form-control" ng-model="adCtrl.newDirector.image" required>
+					  	</div><!--col-md-6-->
+					  	<div class="col-md-6">
+					  		<label>Contraseña</label>
+					  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.password" required>
+					  	</div><!--col-md-6-->
+					</div><!--row-->
+					<div class="row">
+						<div class="col-md-6">
+							<label for="">Cédula</label>
+							<input type="text" class="form-control" ng-model="adCtrl.newDirector.pId" required>
+						</div><!--col-md-6-->
+						<div class="col-md-6">
+							<label for="">Correo Electrónico</label>
+							<input type="email" class="form-control" ng-model="adCtrl.newDirector.email" required>
+						</div><!--col-md-6-->
+					</div><!--row-->
+					<div class="row">
+						<div ng-model="adCtrl.careerAspect">
+							<div class="col-md-5">
+								<label >Carrera</label>
+					  			<select ng-model="adCtrl.newCareerAspect.name" class="form-control  select-arrow">
+					  				<option ng-repeat="career in adCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
+					  			</select>
+							</div><!--col-md-5-->
+							<div class="col-md-2">
+								<a href="#" ng-click="adCtrl.addNewCareerAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+							</div><!--col-md-2-->
+							<div class="col col-md-5 add-careers">
+								<ul class="careers-list">
+									<li class="col col-md-12 list-group-item" ng-repeat="careerAspect in adCtrl.careerAspects" >
+									<h5 class="pull-left" >{{ careerAspect.name }}</h5>
+											<a href="#" ng-click="adCtrl.deleteNewCareerAspect( $index )">
+												<img src="../images/btnLess.png" alt="less" class="img-less">
+											</a>
+										</h5>
+									</li>
+								</ul>
+							</div><!--add-careers-->	
+						</div><!--careerAspect-->
+					</div> <!--row-->
+					<div class="row">
+						<div class="col-md-6 message">
+							<p  ng-show="submitted&&formAddDirector.$invalid">¡Debe llenar todos los espacios!</p>
+						</div><!--col-md-6-->
+						<div class="col-md-6">
+							<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
+						</div><!--col-md-12-->	
+					</div><!--row-->
 				</form>	
-			</div>
-		</div>
+			</div><!--col col-md-6-->
+		</div><!--full-screen fs-modal-->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    	<script src="../scripts/data.js" ></script>
+    	<script src="../scripts/queries.js" ></script>
+    	<script src="../scripts/app.js" ></script>
+    	<script src="../scripts/infoConsult.js" ></script>
+    	<script src="../scripts/form-add-director.js" ></script>
 	</body>
 </html>
