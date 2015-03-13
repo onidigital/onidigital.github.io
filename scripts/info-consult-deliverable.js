@@ -1,21 +1,19 @@
 var infoConsultDeliverable = angular.module("infoDeliverable",[]);
 
-infoConsultDeliverable.controller('InfoController', function() {
-	this.student = Query('user','rol',2);
-	this.documents = Query('documents'); //this hace referencia al controlador
-});
+infoConsultDeliverable.controller('InfoControllerDeliverable', function() {
+	//this.documentsPerGroup = Query('documentsPerGroup'); //this hace referencia al controlador
+	this.groups = Query('groups');
+	this.areas = Query('areas');
+	this.documents = Query('documents');
 
 
-	this.getCourse = function ($nameCourse){
-		return Query('students','id',$nameCourse).name;
+	this.getGroup= function ($id){
+		return Query('groups','id',$id).name;
 	}
-
-	this.getStudent = function ($nameStudent){
-		var user = Query('users','id',$nameStudent);
-		return user.name + ' ' + user.lastName
+	this.getDocuments= function ($id){
+		return Query('documents','id',$id).name;
 	}
-	this.getDocuments= function ($nameDocuments){
-		return Query('documents','id',$nameDocuments).name;
+	this.getAreas= function ($id){
+		return Query('areas','id',$id).name;
 	}
-
 });

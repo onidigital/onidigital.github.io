@@ -14,7 +14,7 @@ teamModule.controller('teamController', function() {
 
 	this.addTeam = function(){
 		$this.teams.push($this.newTeam);
-		// data.teams.push($this.newTeam);
+		data.teams.push($this.newTeam);//insert in data
 		$this.newTeam = {};
 		console.table($this.teams);
 	}
