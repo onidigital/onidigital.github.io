@@ -67,6 +67,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 				}
 			}
 		})
+		// Admin consult rubrics
 		.state('admin-consult-rubrics',{
 			url : '/admin/consult/rubrics',
 			views : {
@@ -80,6 +81,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 				}
 			}
 		})
+		// Admin consult areas.
 		.state('admin-consult-areas',{
 			url : '/admin/consult/areas',
 			views : {
@@ -90,6 +92,20 @@ app.config(function($stateProvider, $urlRouterProvider ){
 				body : {
 					templateUrl : '/Partials/info-consult-areas.html',
 					controller  : 'consultAreasController as areaConsultCtrl' 
+				}
+			}
+		})
+		// Admin consult votes.
+		.state('admin-consult-vote',{
+			url : '/admin/consult/voting',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/vote.html',
+					controller  : 'votesController as votesCtrl' 
 				}
 			}
 		});
