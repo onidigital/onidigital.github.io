@@ -12,46 +12,47 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body ng-app="addDean">
-		<div class="full-screen fs-modal" ng-controller="addDeanController as adeanCtrl">
+	<body ng-app="libreriaVirtual">
+		<div class="full-screen fs-modal" ng-controller="addDeanController as addDean">
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Decano</h1>
 				</header>
-				<form class="user-form" name="formAddDean" ng-submit="formAddDean.$valid && adeanCtrl.addDean()" novalidate>
+				<form class="user-form" name="formAddDean" ng-submit="formAddDean.$valid && addDean.addDean()" novalidate>
+					<h1>formAddDean.$valid</h1>
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Nombre</label>
-						    <input type="text" class="form-control" placeholder="" ng-model="adeanCtrl.newDean.name" required>
+						    <input type="text" class="form-control" placeholder="" ng-model="addDean.newDean.name" required>
 						</div>
 						<div class="col-md-6">
 					  		<label>Apellido</label>
-					  		<input type="text" class="form-control" ng-model="adeanCtrl.newDean.lastName" required>
+					  		<input type="text" class="form-control" ng-model="addDean.newDean.lastName" required>
 					  	</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Imagen</label>
-						    <input type="text" class="form-control"placeholder="" ng-model="adeanCtrl.newDean.image" required>
+						    <input type="text" class="form-control" ng-model="addDean.newDean.image" required>
 						</div>
 						<div class="col-md-6">
 					  		<label>Contraseña</label>
-					  		<input type="text" class="form-control" ng-model="adeanCtrl.newDean.password" required>
+					  		<input type="text" class="form-control" ng-model="addDean.newDean.password" required>
 					  	</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<label for="">Cédula</label>
-							<input type="text" class="form-control" ng-model="adeanCtrl.newDean.pId" required>
+							<input type="text" class="form-control" ng-model="addDean.newDean.pId" required>
 						</div>
 						<div class="col-md-6">
 							<label for="">Correo Electrónico</label>
-							<input type="email" class="form-control" ng-model="adeanCtrl.newDean.email" required>
+							<input type="email" class="form-control" ng-model="addDean.newDean.email" required>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 message">
-							<p  ng-show="submitted&&formAddDean.$invalid">¡Debe llenar todos los espacios!</p>
+							<p  ng-show="submitted && formAddDean.$invalid">¡Debe llenar todos los espacios!</p>
 						</div>
 						<div class="col-md-6">
 							<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>

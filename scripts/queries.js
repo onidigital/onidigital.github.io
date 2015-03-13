@@ -26,9 +26,8 @@ function Insert(target, newItem){
 		}
 	}
 
-	newItem.id = newId;
-
-	data[target].push( newItem );
+	newItem['id'] = newId;
+	data[target].unshift(newItem);
 
 	return data[target];
 
