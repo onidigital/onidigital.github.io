@@ -22,27 +22,32 @@
 					<div class="row">
 						<div class="col-md-6">
 						  	<label>Curso</label>
-						    <input type="text" ng-model="acCtrl.newCourse.name" class="form-control"  placeholder="">
+						    <input type="text" ng-model="acCtrl.newCourse.name" class="form-control"  placeholder="" required>
 						</div>
 					  	<div class="col-md-6">
 						  	<label>C&oacute;digo</label>
-						    <input type="text" ng-model="acCtrl.newCourse.code" class="form-control"  placeholder="">
+						    <input type="text" ng-model="acCtrl.newCourse.code" class="form-control"  placeholder="" required>
 						</div>
 				  	</div>
 					<div class="row">
 					  	<div class="col-md-6">
 						  	<label>Cr&eacute;ditos</label>
-						    <input type="number" ng-model="acCtrl.newCourse.credits" class="form-control"  placeholder="">
+						    <input type="number" ng-model="acCtrl.newCourse.credits" class="form-control"  placeholder="" required>
 						</div>
 						<div class="form-group col-md-6">
 					  		<label >Carrera</label>
-					  		<select ng-model="acCtrl.newCourse.career" class="form-control  select-arrow">
+					  		<select ng-model="acCtrl.newCourse.career" class="form-control  select-arrow" required>
 					  			<option ng-repeat="career in acCtrl.careers" value="{{ career.id }}">{{ career.name }}</option>
 					  		</select>
 					  	</div>
 				  	</div>
 				  	<div class="row">
-					  	<button type="submit" class="btn btn-add">Agregar</button>
+				  		<div class="col-md-6 message">
+							<p  ng-show="submitted&&formAddCourse.$invalid">¡Debe llenar todos los espacios!</p>
+						</div>
+						<div class="col-md-6">
+					  		<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
+					  	</div>
 				  	</div>	
 				</form>	
 			</div>

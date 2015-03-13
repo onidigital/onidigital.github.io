@@ -20,7 +20,7 @@ app.controller('ModifyRubricsController', function(){
 	};
 
 	this.editRubrics = function() {
-		$this.rubrics = Update('rubrics',rubric[0],$this.newRubric);
+		$this.rubrics = Update('rubrics',1,$this.newRubric);
 		$this.newRubric = {};
 		console.table(rubrics);
 	}

@@ -136,6 +136,14 @@ form{
 		color: $anchors;
 	}
 
+	.message{
+		margin-top: 40px;
+		p{
+			color: $anchors;
+			text-align: right; 
+		}
+	}
+
 }
 .centered{
 	float: none;
@@ -164,15 +172,7 @@ form{
 		} 
 		// .img-plus{
 		// 	margin-top: 35px;
-		// }
-		
-	.message{
-		margin-top: 40px;
-		p{
-			color: $anchors;
-			text-align: right; 
-		}
-	}	
+		// }	
 		
 }
 

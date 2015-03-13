@@ -8,28 +8,46 @@ app.controller('addDirectorController', function(){
 	this.newCareerAspect = {};
 	this.directors = Query('users', 'rol', 3);
 	this.careers   = Query('careers','-','all');
-	this.newDirector = {};
-
 
 	console.table(this.directors);
 
 	this.addNewCareerAspect = function() {
-  		var newItemNo = $this.careerAspects.length+1;
-  		if ($this.newCareerAspect.name != '') {
-  		$this.careerAspects.unshift( $this.newCareerAspect );
-  		$this.newCareerAspect = {};
-  		};
+  		var newCareerAspect = Query('careers','id',Number($this.newCareerAspect));
+  		if ( newCareerAspect ) {
+  			if ($this.newCareerAspect.name != '') {
+  			$this.careers.unshift( newCareerAspect );
+  			$this.newCareerAspect = {};
+  			}
+  		}	
 	};
+
 
 	this.deleteNewCareerAspect = function( index ) {
 		$this.careerAspects.splice(index,1);
-	};	
+	};
 
-	this.addDirector = function(){
+	/*this.addDirector = function(){
 		$this.directors.push($this.newDirector);
+		$this.newDirector.rol = 3;
 		$this.newDirector = {};
 		console.table($this.directors);
-	}
+	}*/
+
+	this.addDirector = function() {
+		var newDirector = {
+			name		: $this.name,
+			lastname	: $this.lastname,
+			pId			: $this.pId,
+			careers 	: $this.careers,
+			image		: $this.image,
+			email		: $this.email,
+			password	: $this.password
+		};
+		$this.rol = 3;
+		$this.directors = Insert('directors',newDirector);
+		$this.newDirector = {};
+		console.table($this.directors);
+	};
 
 
 });
