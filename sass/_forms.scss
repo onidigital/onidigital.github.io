@@ -78,6 +78,18 @@
 	}
 }
 
+.add-careers{
+	.careers-list{
+		margin-top: 1em;
+	}
+	h5{
+		padding: 2px 8px 2px 2px;
+	}
+	.img-less{
+		float: right;
+	}
+}
+
 form{
 	background: $background;
 	padding: 20px 15px;
@@ -123,6 +135,7 @@ form{
 	span{
 		color: $anchors;
 	}
+
 }
 .centered{
 	float: none;
@@ -152,12 +165,19 @@ form{
 		// .img-plus{
 		// 	margin-top: 35px;
 		// }
-		small{
-			margin: 10px;
-			font-size: 12px;
-			color: lighten($text, 50); 
+		
+	.message{
+		margin-top: 20px;
+		p{
+			margin-top: 20px;
+			color: $anchors;
+			text-align: right; 
 		}
-	}
+	}	
+		
+}
+
+
 
 .btn-close{
 	padding-bottom: 10px;

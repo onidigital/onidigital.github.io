@@ -23,63 +23,67 @@
 						<div class="col-md-6">
 						 	<label>Nombre</label>
 						  	<input type="text" class="form-control"placeholder="" ng-model="asCtrl.newStudent.name" required>
-						</div>	
+						</div><!--col-md-6-->	
 					  	<div class="col-md-6">
 					  		<label>Apellido</label>
 					  		<input type="text" class="form-control" ng-model="asCtrl.newStudent.lastName" required>
-					  	</div>
-					</div>	
+					  	</div><!--col-md-6-->
+					</div><!--row-->
 					<div class="row">	
 					  	<div class="col-md-6">
 					  		<label>Imagen</label>
 					  		<input type="txt" class="form-control" ng-model="asCtrl.newStudent.image" required>
-					  	</div>
+					  	</div><!--col-md-6-->
 					  	<div class="col-md-6">
 					  		<label>Contraseña</label>
 					  		<input type="text" class="form-control" ng-model="asCtrl.newStudent.password" required>
-					  	</div>
-					</div>
+					  	</div><!--col-md-6-->
+					</div><!--row-->
 					<div class="row">
 						<div class="col-md-6">
 							<label for="">Cédula</label>
 							<input type="text" class="form-control" ng-model="asCtrl.newStudent.pId" required>
-						</div>
+						</div><!--col-md-6-->
 						<div class="col-md-6">
 							<label for="">Correo Electrónico</label>
 							<input type="email" class="form-control" ng-model="asCtrl.newStudent.email" required>
-						</div>
-					</div>
+						</div><!--col-md-6-->
+					</div><!--row-->
 					<div class="row">
 						<div ng-model="asCtrl.careerAspect">
 							<div class="col-md-5">
 								<label >Carrera</label>
-					  				<select ng-model="asCtrl.newCareerAspect.name" class="form-control  select-arrow">
-					  					<option ng-repeat="career in asCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
-					  				</select>
-							</div>
-						</div>
+					  			<select ng-model="asCtrl.newCareerAspect.name" class="form-control  select-arrow">
+					  				<option ng-repeat="career in asCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
+					  			</select>
+							</div><!--col-md-5-->
 							<div class="col-md-2">
 								<a href="#" ng-click="asCtrl.addNewCareerAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
-							</div>
-							<div class="col col-md-5">
-							<ul class="list">
-								<li class="col col-md-12 list-item" ng-repeat="careerAspect in asCtrl.careerAspects" >
-									<h5 class="pull-left" >{{ newCareerAspect.name }}</h5>
-										<a href="#" ng-click="asCtrl.deleteNewCareerAspect( $index )">
-											<img src="../images/btnLess.png" alt="less" class="img-less">
-										</a>
-									</h5>
-								</li>
-							</ul>
-						</div>
-					</div>
+							</div><!--col-md-2-->
+							<div class="col col-md-5 add-careers">
+								<ul class="careers-list">
+									<li class="col col-md-12 list-group-item" ng-repeat="careerAspect in asCtrl.careerAspects" >
+									<h5 class="pull-left" >{{ careerAspect.name }}</h5>
+											<a href="#" ng-click="asCtrl.deleteNewCareerAspect( $index )">
+												<img src="../images/btnLess.png" alt="less" class="img-less">
+											</a>
+										</h5>
+									</li>
+								</ul>
+							</div><!--add-careers-->	
+						</div><!--careerAspect-->
+					</div> <!--row-->
 					<div class="row">
-						<div class="col-md-12">
-							<button type="submit" class="btn btn-add">Agregar</button>
-					</div>
+						<div class="col-md-6 message">
+							<p  ng-show="submitted&&formAddStudent.$invalid">¡Debe llenar todos los espacios!</p>
+						</div><!--col-md-6-->
+						<div class="col-md-6">
+							<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
+						</div><!--col-md-12-->	
+					</div><!--row-->
 				</form>	
-			</div>
-		</div>
+			</div><!--col col-md-6-->
+		</div><!--full-screen fs-modal-->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
