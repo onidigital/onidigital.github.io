@@ -1,26 +1,28 @@
-var app = angular.module("modifyRubrics", []);
-
 app.controller('ModifyRubricsController', function(){
-
-	this.aspects = [{id:'aspect1'}];
+	var $this = this;
+	this.aspects = [];
 	this.rubrics = Query('rubrics', '-', 'all');
 	this.newRubric = {};
+	this.newAspect = {};
+
+	console.table(this.rubrics);
 
 	this.addNewAspect = function() {
-  		var newItemNo = this.aspects.length+1;
-  		this.aspects.push({'id':'aspect'+newItemNo});
-  		this.oneLess = true;
+  		var newItemNo = $this.aspects.length+1;
+  		if ($this.newAspect.name && $this.newAspect.value != '') {
+  		$this.aspects.unshift( $this.newAspect );
+  		$this.newAspect = {};
+  		};
 	};
 
-	this.deleteNewAspect = function() {
-		var newItemNo = this.aspects.length-1;
-		this.aspects.pop();
+	this.deleteNewAspect = function( index ) {
+		$this.aspects.splice(index,1);
 	};
 
 	this.editRubrics = function() {
-		this.rubrics = Update('rubrics',rubric[0],this.newRubric);
-		this.newRubric = {};
-
-	};
+		$this.rubrics = Update('rubrics',rubric[0],$this.newRubric);
+		$this.newRubric = {};
+		console.table(rubrics);
+	}
 
 });

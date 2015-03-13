@@ -59,6 +59,25 @@
 	}
 }
 
+.list {
+	.list-header {
+		padding: 0;
+		> ul li {
+			padding: 1em;
+			background: $anchors;
+			color: $text-clear;
+		}
+	}
+	.list-item {
+		padding: 1em;
+		background: $background;
+			&:not(:last-child){
+				border-bottom: 1px dashed lighten($border,50);
+			}
+	
+	}
+}
+
 form{
 	background: $background;
 	padding: 20px 15px;
@@ -98,9 +117,6 @@ form{
 		width:auto;
 	}
 	.foto{
-		background: #ffffff;
-		padding: 60px 30px;
-		text-align: center;
 		border: solid 1px #ccc;
 		border-radius: 4px;
 	}

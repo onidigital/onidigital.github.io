@@ -4,33 +4,31 @@ app.controller('addStudentController', function(){
 
 	var $this = this;
 
-	this.repeatCareers = [{id:'repeatCareer1'}];
+	this.careerAspects = [];
+	this.newCareerAspects = {};
 	this.students = Query('users', 'rol', 2);
-	this.careers   = Query('careers');
+	this.careers   = Query('careers','-','all');
 	this.newStudent = {};
 
 	console.table(this.students);
 
-	this.addNewRepeatCareer = function() {
-		var newItemNo = this.repeatCareers.length+1;
-		this.repeatCareers.push({'id':'repeatCareer'+newItemNo});
+	this.addNewCareerAspect = function() {
+  		var newItemNo = $this.careerAspects.length+1;
+  		if ($this.newCareerAspects.name != '') {
+  		$this.careerAspects.unshift( $this.newCareerAspects );
+  		$this.newCareerAspects = {};
+  		};
 	};
 
-	this.deleteNewRepeatCareer = function() {
-		var newItemNo = this.repeatCareers.length-1;
-		this.repeatCareers.pop();
+	this.deleteNewCareerAspect = function( index ) {
+		$this.careerAspects.splice(index,1);
 	};	
 
-	this.addStudent = function(students, newStudent){
-		var newId = 1;
-		for (var student in students[$this.students]){
-			if (data[$this.students].hasOwnProperty(item)) {
-				newId++;
-			};
-		}
-		newStudent.id = newId;
-		data[$this.students].push(newStudent);
-		return data[students];
+	
+	this.addStudent = function(){
+		$this.students.push($this.newStudent);
+		$this.newStudent = {};
+		console.table($this.students);
 	}
 
 });

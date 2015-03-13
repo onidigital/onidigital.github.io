@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
 
 </head>
-	<body ng-app="modifyRubrics">
+	<body ng-app="libreriaVirtual">
 		<div class="full-screen fs-modal" ng-controller="ModifyRubricsController as mrbCtrl">
 			<div class="col col-md-6">
 				<header>
@@ -29,20 +29,31 @@
 								<input type="text" class="form-control" ng-model="mrbCtrl.newRubric.nombre" required>
 							</div>
 						</div>
-						<div class="row" ng-repeat="aspect in mrbCtrl.aspects">
+						<div class="col col-md-12">
+							<ul class="list">
+								<li class="col col-md-12 list-item" ng-repeat="aspect in mrbCtrl.aspects" >
+									<h5 class="pull-left" >{{ aspect.name +' - '+ aspect.value}}</h5>
+									<h5 class="pull-right" >
+										<a href="#" ng-click="mrbCtrl.deleteNewAspect( $index )">
+											<img src="../images/btnLess.png" alt="less" class="img-less">
+										</a>
+									</h5>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
 							<div ng-model="mrbCtrl.aspect">
 								<div class="col-md-5">
 									<label for="">Aspecto</label>
-									<input type="text" class="form-control" ng-model="mrbCtrl.newRubric.aspecto.nombre">
+									<input type="text" class="form-control" ng-model="mrbCtrl.newAspect.name" required>
 								</div>
 								<div class="col-md-5">
 									<label for="">Valor</label>
-									<input type="text" class="form-control" ng-model="mrbCtrl.newRubric.aspecto.valor">
+									<input type="number" class="form-control" ng-model="mrbCtrl.newAspect.value" required>
 								</div>
 							</div>
 							<div class="col-md-2">
-								<a href="#" ng-hide="$last" ng-click="mrbCtrl.deleteNewAspect()"><img src="../images/btnLess.png" alt="less" class="img-less"></a>
-								<a href="#" ng-show="$last" ng-click="mrbCtrl.addNewAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+								<a href="#" ng-click="mrbCtrl.addNewAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
 							</div>
 						</div>
 						<div class="row">
