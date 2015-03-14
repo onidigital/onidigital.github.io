@@ -1,8 +1,8 @@
 
 app.controller('addStudentController', function(){
 	var $this = this;
-	this.careerAspects = [];
-	this.newCareerAspect = {};
+	this.studentCareers = [];
+	this.newStudentCareer = {};
 	this.students = Query('users', 'rol', 2);
 	this.careers   = Query('careers','-','all');
 	this.newStudent = {};
@@ -10,18 +10,16 @@ app.controller('addStudentController', function(){
 
 	console.table(this.students);
 
-	this.addNewCareerAspect = function() {
-  		var newCareerAspect = Query('careers','id',Number($this.newCareerAspect));
-  		if ( newCareerAspect ) {
-  			$this.careerAspects.unshift( $this.newCareerAspect );
-  			$this.newCareerAspect = {};
-  			$this.newCareerAspect = $this.newStudent['career'];
-  		}
-	}
+	this.asignCareer = function() {
+		$this.studentCareers.push( $this.newStudentCareer );
+		$this.newStudentCareer = {};
+	};
 
-	this.deleteNewCareerAspect = function( index ) {
-		$this.careerAspects.splice(index,1);
-	};	
+
+	this.deleteStudentCareer = function( index ) {
+		$this.studentCareers.splice(index,1);
+	};
+
 
 	this.addStudent = function() {
 		Insert('users',$this.newStudent);
