@@ -1,6 +1,5 @@
-var infoConsultDeliverable = angular.module("infoDeliverable",[]);
 
-infoConsultDeliverable.controller('InfoControllerDeliverable', function() {
+app.controller('InfoControllerDeliverable', function() {
 	//this.documentsPerGroup = Query('documentsPerGroup'); //this hace referencia al controlador
 	this.groups = Query('groups');
 	this.areas = Query('areas');
