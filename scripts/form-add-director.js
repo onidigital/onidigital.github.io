@@ -1,15 +1,15 @@
-var app = angular.module('addDirector',[]);
 
 app.controller('addDirectorController', function(){
 
 	var $this = this;
-
 	this.careerAspects = [];
 	this.newCareerAspect = {};
 	this.directors = Query('users', 'rol', 3);
 	this.careers   = Query('careers','-','all');
-
+	this.newDirector = {};
+	this.newDirector['rol'] = 3;
 	console.table(this.directors);
+
 
 	this.addNewCareerAspect = function() {
   		var newCareerAspect = Query('careers','id',Number($this.newCareerAspect));
@@ -26,28 +26,12 @@ app.controller('addDirectorController', function(){
 		$this.careerAspects.splice(index,1);
 	};
 
-	/*this.addDirector = function(){
-		$this.directors.push($this.newDirector);
-		$this.newDirector.rol = 3;
-		$this.newDirector = {};
-		console.table($this.directors);
-	}*/
-
 	this.addDirector = function() {
-		var newDirector = {
-			name		: $this.name,
-			lastname	: $this.lastname,
-			pId			: $this.pId,
-			careers 	: $this.careers,
-			image		: $this.image,
-			email		: $this.email,
-			password	: $this.password
-		};
-		$this.rol = 3;
-		$this.directors = Insert('directors',newDirector);
+		Insert('users',$this.newDirector);
+		this.directors = Query('users','rol',3)
 		$this.newDirector = {};
+		$this.newDirector['rol'] = 3;
 		console.table($this.directors);
 	};
-
 
 });

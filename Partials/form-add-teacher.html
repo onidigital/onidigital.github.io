@@ -12,57 +12,63 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../stylesheets/main.css">
 </head>
-	<body>
-		<div class="full-screen fs-modal" >
+	<body ng-app="libreriaVirtual">
+		<div class="full-screen fs-modal" ng-controller="addTeacherController as atCtrl">
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Profesor</h1>
 				</header>
-				<form class="user-form">
+				<form class="user-form" name="formAddTeacher" ng-submit="formAddTeacher.$valid && atCtrl.addTeacher()" novalidate>
 					<div class="row">
-						<div class="col-md-3">
-							<div class="foto">
-								<span class="btn btn-file">
-    								Agregar Foto <input type="file">
-								</span>
-							</div>
+						<div class="col-md-6">
+						  	<label>Nombre</label>
+						    <input type="text" class="form-control" placeholder="" ng-model="atCtrl.newTeacher.name" required>
 						</div>
-						<div class="col-md-9">
-							<div class="row">
-								<div class="col-md-12">
-						  			<label>Nombre</label>
-						    		<input type="text" class="form-control"placeholder="">
-								</div>
-							</div>
-							<div class="row">	
-					  			<div class="col-md-6">
-					  				<label>Apellido 1</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  			<div class="col-md-6">
-					  				<label>Apellido 2</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  		</div>
-				  		</div>
-				  	</div>
+						<div class="col-md-6">
+					  		<label>Apellido</label>
+					  		<input type="text" class="form-control" ng-model="atCtrl.newTeacher.lastName" required>
+					  	</div>
+					</div>
 					<div class="row">
-						<div class="col-md-5">
+						<div class="col-md-6">
+						  	<label>Imagen</label>
+						    <input type="text" class="form-control"placeholder="" ng-model="atCtrl.newTeacher.image" required>
+						</div>
+						<div class="col-md-6">
+					  		<label>Contraseña</label>
+					  		<input type="text" class="form-control" ng-model="atCtrl.newTeacher.password" required>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
 							<label for="">Cédula</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" ng-model="atCtrl.newTeacher.pId" required>
 						</div>
-						<div class="col-md-7">
+						<div class="col-md-6">
 							<label for="">Correo Electrónico</label>
-							<input type="text" class="form-control">
+							<input type="email" class="form-control" ng-model="atCtrl.newTeacher.email" required>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
-							<button type="submit" class="btn btn-add">Agregar</button>
+						<div class="col-md-6 message">
+							<p  ng-show="submitted&&formAddTeacher.$invalid">¡Debe llenar todos los espacios!</p>
+						</div>
+						<div class="col-md-6">
+							<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
 						</div>
 					</div>
 				</form>	
 			</div>
 		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    	<script src="../scripts/data.js" ></script>
+    	<script src="../scripts/queries.js" ></script>
+    	<script src="../scripts/app.js" ></script>
+    	<script src="../scripts/infoConsult.js" ></script>
+    	<script src="../scripts/form-add-teacher.js" ></script>
 	</body>
 </html>
