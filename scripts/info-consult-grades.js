@@ -44,6 +44,13 @@ var gradesPerStudent = [
 								'initialDate' 	: '1/1/2015',
 								'finalDate' 	: '1/4/2015',
 								'grade'			: 85
+							},
+							{
+								'name'	 		: 'Proyecto de Desarrollo de Software 2',
+								'group'  		: 1,
+								'initialDate' 	: '1/1/2015',
+								'finalDate' 	: '1/4/2015',
+								'grade'			: 85
 							}
 						]
  	},

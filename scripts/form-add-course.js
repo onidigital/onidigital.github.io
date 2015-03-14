@@ -1,5 +1,3 @@
-var app = angular.module('addCourse',[]);
-
 app.controller('addCourseController', function(){
 
 	var $this = this;

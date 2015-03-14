@@ -16,7 +16,7 @@
 
 			& a {
 				position: absolute;
-				bottom: 24px;;
+				bottom: 0;
 				right: 0;
 				line-height: 10px;
 			}
@@ -106,6 +106,16 @@
 				border-bottom: 15px solid transparent;
 
 			}
+		}
+	}
+
+	.big-buttons {
+		margin-bottom: 20px;
+		margin-top: 20px;
+		.big-button{
+			width: 100%;
+  			height: 50px;
+  			font-size: 20px;
 		}
 	}
 

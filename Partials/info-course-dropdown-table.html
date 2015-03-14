@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="/stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+        <meta charset="UTF-8" >
+    </head>
+    <body ng-app="libreriaVirtual" ng-controller="sessionController as session" >
+        
+        <section class="text-center"  ng-controller="consultTeamController as consultTeamCtrl" >
+            <div class=" content container viewInfo center-block"  >
+                <div class="profile-selected">
+                    <ul>
+                        <li>
+                            <p>{{ session.info.rol }}</p>
+                            <div class="arrow-front"></div>
+                        </li>
+                        <li class="secondColor">
+                           <div class="arrow-back-up"></div>
+                           <div class="arrow-back-down"></div>
+<<<<<<< HEAD
+                           <p>Equipo</p>
+=======
+                           <p>Cursos</p>
+>>>>>>> 3c515a7e9cb2b75c1d2b2bd9b0e8f28d82d475ef
+                           <div class="arrow-front"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 pull-right" >
+                        <input type="text" class="form-control" class="search" type="text" ng-model="search" placeholder="Buscar por: Nombre de R&uacute;brica">
+                    </div><!--/.col-lg-6 -->
+                </div>
+            </div>
+
+            <div class="container dropdown-table" ng-controller="dropdownController as dpCtrl" >
+                <ul class="text-center" >
+                    <li class="row dropdown-header">
+                        <ul>
+                            <li class="col col-md-3" >
+                                <h3>Curso</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Carrera</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Créditos</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Acciones</h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col col-md-12 dropdown-body" ng-class="dpCtrl.getClass($index)" ng-repeat="team in consultTeamCtrl.teams | filter:search" >
+                        <ul class="col col-md-12" >
+                            <li class="col col-md-3" >
+                                <h5>{{ team.name }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+<<<<<<< HEAD
+                                <h5>{{ team.proyect }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h5>{{ team.proyect }}</h5>
+                            </li>
+                            <li class="col col-md-3 table-actions" >
+                                <button class="col col-md-4 btn btnEdit" 
+                                        ng-click="dpCtrl.dropdown($index)" >
+                                    <a href="">
+                                        <i class="fa fa-plus fa-2x colorWhite"></i>
+                                    </a>
+                                </button>
+                                <button class="col col-md-4 btn btnEdit" >
+                                    <a href="">
+                                        <i class="fa fa-pencil fa-2x colorWhite"></i>
+                                    </a></button>
+                                <button ng-click="dpCtrl.deleteRubric( rubric.id );" class="col col-md-4 btn btnEdit" >
+=======
+                                <h5>{{ team.career }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h5>{{ team.credits }}</h5>
+                            </li>
+                            <li class="col col-md-3 table-actions" >
+                                <button class="col col-md-6 btn btnEdit" >
+                                    <a href="">
+                                        <i class="fa fa-pencil fa-2x colorWhite"></i>
+                                    </a></button>
+                                <button class="col col-md-6 btn btnEdit" >
+>>>>>>> 3c515a7e9cb2b75c1d2b2bd9b0e8f28d82d475ef
+                                    <a>
+                                        <i class="fa fa-trash-o fa-2x colorWhite"></i>
+                                    </a>
+                                </button>
+                            </li>
+                        </ul>
+<<<<<<< HEAD
+                        <ul class="col col-md-12 dropdown" >
+                            <li class="col col-md-12" ng-repeat="member in team.students">
+                                <h2 class="pull-left">{{ member.name +' '+ member.lastName }}</h2>
+                                <h2 class="pull-right">{{ member.pId }}</h2>
+                            </li>
+                        </ul>                       
+=======
+>>>>>>> 3c515a7e9cb2b75c1d2b2bd9b0e8f28d82d475ef
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Angular Material Dependencies -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+        <script src="/scripts/data.js" ></script>
+        <script src="/scripts/queries.js" ></script>
+        <script src="/scripts/app.js" ></script>
+        <script src="/scripts/session-controller.js" ></script>
+        <script src="/scripts/rubric-dropdown-table.js"></script>
+        <script src="/scripts/info-consult-course.js" ></script>
+    </body>
+</html>

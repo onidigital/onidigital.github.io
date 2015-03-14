@@ -1,5 +1,3 @@
-var app = angular.module("addArea",["ui.router"]);
-
 app.controller('addAreaController', function() {
 	var $this = this;
 	this.areas = Query('areas','-','all'); //this hace referencia al controlador

@@ -7,14 +7,14 @@ var users = [
 	'lastName'	: 'Doe',
 	'rol'		: 1,
 	'pId'		: 'a-1',
-	'image'		: ''
+	'image'		: '../images/user.png'
 },
 {
 	'id'		: 2,
-	'email'		: 'est1@ucenfotec.ac.cr',
+	'email'		: 'dvargasa@ucenfotec.ac.cr',
 	'password'	: 'estudiante',
-	'name'		: 'estudiante1',
-	'lastName'	: 'A-placeholder',
+	'name'		: 'Diego',
+	'lastName'	: 'Vargas',
 	'rol'		: 2,
 	'pId'		: 's-1',
 	'careers'	: [1, 2],
@@ -27,10 +27,10 @@ var users = [
 },
 {
 	'id'		: 3,
-	'email'		: 'est2@ucenfotec.ac.cr',
+	'email'		: 'cborge@ucenfotec.ac.cr',
 	'password'	: 'estudiante',
-	'name'		: 'estudiante2',
-	'lastName'	: 'B-placeholder',
+	'name'		: 'Carolina',
+	'lastName'	: 'Borge',
 	'rol'		: 2,
 	'pId'		: 's-2',
 	'careers'	: [2],
@@ -42,10 +42,10 @@ var users = [
 },
 {
 	'id'		: 4,
-	'email'		: 'est3@ucenfotec.ac.cr',
+	'email'		: 'iaraya@ucenfotec.ac.cr',
 	'password'	: 'estudiante',
-	'name'		: 'estudiante3',
-	'lastName'	: 'C-placeholder',
+	'name'		: 'Irene',
+	'lastName'	: 'Araya',
 	'rol'		: 2,
 	'pId'		: 's-3',
 	'careers'	: [1],
@@ -57,10 +57,10 @@ var users = [
 },
 {
 	'id'		: 5,
-	'email'		: 'dir-soft@ucenfotec.ac.cr',
+	'email'		: 'pmonestel@ucenfotec.ac.cr',
 	'password'	: 'director',
-	'name'		: 'ditector1',
-	'lastName'	: 'A-placeholder',
+	'name'		: 'Pablo',
+	'lastName'	: 'Monestel',
 	'rol'		: 3,
 	'pId'		: 'd-1',
 	'careers'	: [1],
@@ -68,10 +68,10 @@ var users = [
 },
 {
 	'id'		: 6,
-	'email'		: 'dir-web@ucenfotec.ac.cr',
+	'email'		: 'jmatias@ucenfotec.ac.cr',
 	'password'	: 'director',
-	'name'		: 'ditector2',
-	'lastName'	: 'B-placeholder',
+	'name'		: 'Juan',
+	'lastName'	: 'Matias',
 	'rol'		: 3,
 	'pId'		: 'd-2',
 	'careers'	: [2],
@@ -79,7 +79,7 @@ var users = [
 },
 {
 	'id'		: 7,
-	'email'		: 'prof-alonso@ucenfotec.ac.cr',
+	'email'		: 'aguevara@ucenfotec.ac.cr',
 	'password'	: 'angular',
 	'name'		: 'Alonso',
 	'lastName'	: 'Guevara',
@@ -90,7 +90,7 @@ var users = [
 },
 {
 	'id'		: 8,
-	'email'		: 'prof-alvaro@ucenfotec.ac.cr',
+	'email'		: 'acordero@ucenfotec.ac.cr',
 	'password'	: 'liga',
 	'name'		: 'Álvaro',
 	'lastName'	: 'Cordero',
@@ -101,10 +101,10 @@ var users = [
 },
 {
 	'id'		: 9,
-	'email'		: 'prof-pablo@ucenfotec.ac.cr',
-	'password'	: 'pabs',
-	'name'		: 'Pablo',
-	'lastName'	: 'Monestel',
+	'email'		: 'jbeita@ucenfotec.ac.cr',
+	'password'	: 'beita',
+	'name'		: 'Jose',
+	'lastName'	: 'Beita',
 	'rol'		: 4,
 	'courses'	: [1, 2],
 	'pId'		: 'p-3',
@@ -112,10 +112,10 @@ var users = [
 },
 {
 	'id'		: 10,
-	'email'		: 'decano@ucenfotec.ac.cr',
+	'email'		: 'lvindas@ucenfotec.ac.cr',
 	'password'	: 'decano',
-	'name'		: 'Decano',
-	'lastName'	: 'Soy',
+	'name'		: 'Luis',
+	'lastName'	: 'Vindas',
 	'rol'		: 5,
 	'pId'		: 'd-1',
 	'image'		: ''
@@ -297,25 +297,27 @@ areas = [
 {
 	'id'			: 1,
 	'name'  		: 'Proceso',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Area del curso que se encarga de todo lo que es documentaciones y'
 },
 {
 	'id'			: 2,
 	'name'  		: 'Técnico',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Tecnicas, lenguajes de programacion y trabajos practicos'
 },
 {
 	'id'			: 3,
 	'name'  		: 'Factor Humano',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Parte encargada de mejorar la relacion entre los grupos'
 }
 ]
 groups = [
 {
-	'id'		: 1,
-	'course'	: 1,
-	'students'	: [3,4],
-	'documents' : 	[
+	'id'		    : 1,
+	'course'	    : 1,
+	'students'	    : [3,4],
+	'initialDate'  : "2015-01-09",
+	'finalDate'     : "2015-05-14",
+	'documents'     : 	[
 						{
 							'id' 	 : 1,
 							'rubric' : 1
@@ -344,10 +346,12 @@ groups = [
 					]
 },
 // agregó carolina
-,{
+{
 	'id'		: 2,
 	'course'	: 2,
 	'students'	: [3,4],
+	'initialDate'  : "2015-01-09",
+	'finalDate'     : "2015-05-14",
 	'documents' : 	[
 						{
 							'id' 	 : 1,

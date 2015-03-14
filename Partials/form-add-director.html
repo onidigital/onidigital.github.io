@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-</head>
-	<body ng-app="libreriaVirtual">
 		<div class="full-screen fs-modal" ng-controller="addDirectorController as adCtrl">
 			<div class="col col-md-6">
 				<header>
@@ -50,49 +35,44 @@
 						</div><!--col-md-6-->
 					</div><!--row-->
 					<div class="row">
-						<div ng-model="adCtrl.careerAspect">
+						<div >
 							<div class="col-md-5">
 								<label >Carrera</label>
-					  			<select ng-model="adCtrl.newCareerAspect.name" class="form-control  select-arrow">
-					  				<option ng-repeat="career in adCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
+					  			<select ng-model="adCtrl.newDirectorCareer" class="form-control  select-arrow">
+					  				<option ng-repeat="career in adCtrl.careers" 
+					  						value="{{career.name }}">
+					  						{{ career.name }}
+					  				</option>
 					  			</select>
 							</div><!--col-md-5-->
 							<div class="col-md-2">
-								<a href="#" ng-click="adCtrl.addNewCareerAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+								<a href="#" ng-click="adCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
 							</div><!--col-md-2-->
 							<div class="col col-md-5 add-careers">
 								<ul class="careers-list">
-									<li class="col col-md-12 list-group-item" ng-repeat="careerAspect in adCtrl.careerAspects" >
-									<h5 class="pull-left" >{{ careerAspect.name }}</h5>
-											<a href="#" ng-click="adCtrl.deleteNewCareerAspect( $index )">
-												<img src="../images/btnLess.png" alt="less" class="img-less">
-											</a>
+									<li class="col col-md-12 list-group-item" 
+										ng-repeat="career in adCtrl.directorCareers" 
+									>
+										<h5 class="pull-left" >{{ career }}</h5>
+										<a href="#" 
+											ng-click="adCtrl.deleteDirectorCareer( $index )"
+										>
+											<img src="../images/btnLess.png" alt="less" class="img-less">
+										</a>
 										</h5>
 									</li>
 								</ul>
 							</div><!--add-careers-->	
-						</div><!--careerAspect-->
+						</div><!--newDirectorCareer-->
 					</div> <!--row-->
 					<div class="row">
 						<div class="col-md-6 message">
 							<p  ng-show="submitted&&formAddDirector.$invalid">¡Debe llenar todos los espacios!</p>
 						</div><!--col-md-6-->
 						<div class="col-md-6">
-							<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
+							<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-director.html">Agregar</a</button>
 						</div><!--col-md-6-->	
 					</div><!--row-->
 				</form>	
 			</div><!--col col-md-6-->
 		</div><!--full-screen fs-modal-->
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
-    	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    	<script src="../scripts/data.js" ></script>
-    	<script src="../scripts/queries.js" ></script>
-    	<script src="../scripts/app.js" ></script>
-    	<script src="../scripts/infoConsult.js" ></script>
-    	<script src="../scripts/form-add-director.js" ></script>
-	</body>
-</html>

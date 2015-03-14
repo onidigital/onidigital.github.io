@@ -28,6 +28,12 @@ header {
 	box-sizing: border-box;
 }
 
+button {
+	a {
+		color: $background;
+	}
+}
+
 .full-screen {
 	width: 100vw;
 	height: 100vh;
@@ -67,6 +73,7 @@ a {
 .btn-download{
 	background-color:$main-color;
 	color:white;
+	margin:3em 5%;
 	&:hover{
 		background-color:$anchors;
 	}
@@ -74,6 +81,7 @@ a {
 .btn-print{
 	background-color:$main-color;
 	color:white;
+	margin:3em 5%;
 	&:hover{
 		background-color:$anchors;
 	}

@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-</head>
-	<body ng-app="addCourse">
-		<div class="full-screen fs-modal" ng-controller="addCourseController as acCtrl">
+<div class="full-screen fs-modal" ng-controller="addCourseController as acCtrl">
 			<div class="col col-md-6">
 				<header>
 					<h1>Agregar Curso</h1>
@@ -46,19 +31,9 @@
 							<p  ng-show="submitted&&formAddCourse.$invalid">¡Debe llenar todos los espacios!</p>
 						</div>
 						<div class="col-md-6">
-					  		<button type="submit" ng-click="submitted=true" class="btn btn-add">Agregar</button>
+					  		<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-career.html">Agregar</a</button>
 					  	</div>
 				  	</div>	
 				</form>	
 			</div>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
-    <script src="../scripts/data.js" ></script>
-    <script src="../scripts/queries.js" ></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="../scripts/app.js" ></script>
-    <script src="../scripts/form-add-course.js" ></script>
-	</body>
-</html>
