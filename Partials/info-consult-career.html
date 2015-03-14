@@ -1,5 +1,7 @@
 
-        <section ng-controller="InfoController as info" >
+
+    <!--<div class="fullscreen fs-modal" ui-view></div>-->
+    <section ng-controller="InfoCareerController as ctrCareer" >
         <div class=" content container viewInfo center-block"  >
             <div class="profile-selected">
                 <ul>
@@ -10,7 +12,7 @@
                     <li>
                        <div class="arrow-back-up"></div>
                        <div class="arrow-back-down"></div>
-                       <p>Estudiante</p>
+                       <p>Carrera</p>
                        <div class="arrow-front"></div>
                     </li>
                 </ul>
@@ -26,30 +28,28 @@
                         <div class="row">  
                             <thead>
                                 <tr>
-                                    <td class="text-center"  data-field="name">Estudiante</td>
-                                    <td class="text-center"  data-field="id">Cédula</td>
-                                    <td class="text-center"  data-field="email">Email</td>
+                                    <td class="text-center"  data-field="name">Carrera</td>
+                                    <td class="text-center"  data-field="id">Director Acad&eacute;mico</td>
                                 </tr>
                             </thead>
                         </div>
                         <tbody>
-                            <tr ng-repeat="student in info.student | filter: buscador" class="displayInfo" >
-                                <td class="text-center" >{{ student.name  }}</td>
-                                <td class="text-center" >{{ student.pId   }}</td>
-                                <td class="text-center" >{{ student.email }}</td>
-                                <td class="actions col col-md-3" >
+                            <tr ng-repeat="career in ctrCareer.careers | filter: buscador" class="displayInfo" >
+                                <td class="text-center" >{{ career.name }}</td>
+                                <td class="text-center" >{{ ctrCareer.getDirector(career.id)}}</td>
+                                <td class="actions col col-md-3">
                                     <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/Partials/profile-student.html">
+                                        <a  href="/Partials/form-add-group.html">
                                             <i class="fa fa-plus fa-2x"></i>
                                         </a>
                                     </button>
                                     <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/Partials/profile-student.html">
+                                        <a  href="/Partials/form-add-group.html">
                                             <i class="fa fa-pencil fa-2x"></i>
                                         </a>
                                     </button>
                                     <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/Partials/profile-student.html">
+                                        <a  href="/Partials/form-add-group.html">
                                             <i class="fa fa-trash-o fa-2x"></i>
                                         </a>
                                     </button>
@@ -61,3 +61,5 @@
             </div>
         </div>
     </section>
+
+

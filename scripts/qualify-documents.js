@@ -1,6 +1,6 @@
-var qualifyModule = angular.module("qualify", []);
 
-qualifyModule.controller("dropdownQualify", function(){
+
+app.controller("dropdownQualify", function(){
 	var $this = this;
 
 	this.students  = Query('users','rol',2);
