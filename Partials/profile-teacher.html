@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Oni Digital Solutions">
+    <title>Oni Digital Solutions</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <!--<div class="fullscreen fs-modal" ui-view></div>-->
+    <div class=" content container viewInfo center-block">
+         <div id="wrapper" class="container">
+            <div class="side-bar col-md-3">
+                <ul class="ul-profile">
+                    <li class="profile-pic">
+                        <img src="../images/user.png">
+                    </li>
+                    <li>Alvaro Cordero</li>
+                    <li>000000000</li>
+                    <li>acordero@ucenfotec.ac.cr</li>
+                </ul>
+            </div>  
+        <div class="content col-md-9">
+        <div class="col-md-12">  
+            <div class="col-md-12">
+                <div class="profile-selected">
+                    <ul>
+                        <li>
+                            <p>Profesor</p>
+                            <div class="arrow-front"></div>
+                        </li>
+                    </ul>
+                </div>
+                <h1>Ver Informacion Como:</h1>
+                <div class="row big-buttons">
+                    <div class="col-lg-5 text-center">
+                        <input type="button" Value="Profesor" class="big-button">
+                    </div><!--/.col-lg-6 -->
+                    <div class="col-lg-5 text-center">
+                        <input type="button" Value="Estudiante" class="big-button">
+                    </div><!--/.col-lg-6 -->
+                </div>
+                <h1>Mis cursos</h1>
+                <div class="row">
+                    <div class="col-lg-5 text-center" >
+                        <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cédula, Email.">
+                    </div><!--/.col-lg-6 -->
+                </div>
+            </div>    
+
+            <div class="infoTable col-md-12">
+                <table class="dataTable table table-striped">
+                    <div class="row">  
+                        <thead>
+                            <tr>
+                                <td class="text-center"  data-field="name">Carrera</td>
+                                <td class="text-center"  data-field="id">Curso</td>
+                                <td class="text-center"  data-field="email">Periodo</td>
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <tr class="displayInfo" >
+                            <td class="text-center" >Desarrollo WEB</td>
+                            <td class="text-center" >Proyecto 1</td>
+                            <td class="text-center" >1er Cuatrimestre 2015</td>
+                            <td class="actions col col-md-1">
+                                <button class="btn btnEdit col col-md-12" type="button">
+                                    <a ui-sref="form-add-teacher" class="col col-md-6" href="/info_Consult.html">
+                                        <i class="fa fa-plus fa-2x "></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="displayInfo" >
+                            <td class="text-center" >Ing. Software</td>
+                            <td class="text-center" >Fundamentos de Programación</td>
+                            <td class="text-center" >1er Cuatrimestre 2015</td>
+                            <td class="actions col col-md-1">
+                                <button class="btn btnEdit col col-md-12" type="button">
+                                    <a ui-sref="form-add-teacher" class="col col-md-6" href="/info_Consult.html">
+                                        <i class="fa fa-plus fa-2x "></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+    </div>
+</body>
+
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" ></script>
+    <script src="../scripts/data.js" ></script>
+    <script src="../scripts/queries.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../scripts/app.js" ></script>
+    <script src="../scripts/info-consult-student.js" ></script>
+   
+
+</html>
