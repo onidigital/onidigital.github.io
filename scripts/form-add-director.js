@@ -2,8 +2,8 @@
 app.controller('addDirectorController', function(){
 
 	var $this = this;
-	this.careerAspects = [];
-	this.newCareerAspect = {};
+	this.directorCareers = [];
+	this.newDirectorCareer = {};
 	this.directors = Query('users', 'rol', 3);
 	this.careers   = Query('careers','-','all');
 	this.newDirector = {};
@@ -11,19 +11,14 @@ app.controller('addDirectorController', function(){
 	console.table(this.directors);
 
 
-	this.addNewCareerAspect = function() {
-  		var newCareerAspect = Query('careers','id',Number($this.newCareerAspect));
-  		if ( newCareerAspect ) {
-  			if ($this.newCareerAspect.name != '') {
-  			$this.careers.unshift( newCareerAspect );
-  			$this.newCareerAspect = {};
-  			}
-  		}	
+	this.asignCareer = function() {
+		$this.directorCareers.push( $this.newDirectorCareer );
+		$this.newDirectorCareer = {};
 	};
 
 
-	this.deleteNewCareerAspect = function( index ) {
-		$this.careerAspects.splice(index,1);
+	this.deleteDirectorCareer = function( index ) {
+		$this.directorCareers.splice(index,1);
 	};
 
 	this.addDirector = function() {
