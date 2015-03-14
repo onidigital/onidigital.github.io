@@ -192,7 +192,7 @@ studentRol = [
 },
 {
 	'id' 	: 4,
-	'name'	: 'Desarollo'
+	'name'	: 'Desarrollo'
 }
 ],
 rubrics = [
@@ -273,9 +273,26 @@ documents = [
 	'area'			: 'Proceso'
 }
 ],
+// agregó carolina
 documentsPerGroup=[{
-	
-}]
+	'id'			: 1,
+	'document'  	: 1,
+	'area'			: 1,
+	'group'			: 1
+},
+{
+	'id'			: 2,
+	'document'  	: 2,
+	'area'			: 2,
+	'group'			: 2
+},
+{
+	'id'			: 3,
+	'document'  	: 3,
+	'area'			: 3,
+	'group'			: 3
+}
+],
 areas = [
 {
 	'id'			: 1,
@@ -443,3 +460,4 @@ data.proyects		= proyects;
 data.competitorTeam = competitorTeam;
 data.winnerTeam		= winnerTeam;
 data.voting			= voting;
+data.documentsPerGroup =documentsPerGroup;

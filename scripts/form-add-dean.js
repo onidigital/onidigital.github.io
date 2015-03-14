@@ -11,7 +11,7 @@ app.controller('addDeanController', function() {
 	 	$this.deans = Query('users','rol',5);
 		$this.newDean = {};
 		$this.newDean['rol'] = 5;
-		console.log($this.deans);
+		console.table($this.deans);
 	}
 
 });

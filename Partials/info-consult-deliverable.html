@@ -33,7 +33,7 @@
                 <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cédula, Email.">
             </div><!--/.col-lg-6 -->
         </div>
-        <div class="infoTable " ng-controller="infoConsultDeliverable as ctrDlv">
+        <div class="infoTable " ng-controller="InfoControllerDeliverable as ctlDeliv">
             <div class="input-group tableWidth">
                 <table class="dataTable table table-striped">
                     <div class="row">  
@@ -46,10 +46,10 @@
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="doc in ctrDlv.documents | filter: buscador" class="displayInfo" >
-                            <td class="text-center" >{{ doc.id }}</td>
-                            <td class="text-center" >{{ doc.name }}</td>
-                            <td class="text-center" >{{ doc.description }}</td>
+                        <tr ng-repeat="docGroup in ctlDeliv.groups | filter: buscador" class="displayInfo" >
+                            <td class="text-center" >{{ ctlDeliv.getDocuments(docGroup.id)  }}</td>
+                            <td class="text-center" >{{ ctlDeliv.getGroup(docGroup.id) }}</td>
+                            <td class="text-center" >{{ ctlDeliv.getAreas(docGroup.id) }}</td>
                             <td class="actions col col-md-3">
                                 <button class="btn btnEdit col col-md-4" type="button">
                                     <a ui-sref="form-add-teacher" href="/info_Consult.html">

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="/stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+        <meta charset="UTF-8" >
+    </head>
+    <body ng-app="libreriaVirtual" ng-controller="sessionController as session" >
+        
+        <section class="text-center"  ng-controller="consultGradesController as consultGradesCtrl" >
+            <div class=" content container viewInfo center-block"  >
+                <div class="profile-selected">
+                    <ul>
+                        <li>
+                            <p>{{ session.info.rol }}</p>
+                            <div class="arrow-front"></div>
+                        </li>
+                        <li class="secondColor">
+                           <div class="arrow-back-up"></div>
+                           <div class="arrow-back-down"></div>
+                           <p>Equipo</p>
+                           <div class="arrow-front"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <form class="col-lg-3 pull-right" >
+                        <select ng-model="consultGradesCtrl.currentStudent" 
+                                ng-change="consultGradesCtrl.displayGrades();" 
+                            >
+                            <option ng-repeat="student in consultGradesCtrl.students" 
+                                    value="{{ student.id }}"
+                                >
+                                {{ student.name +' '+ student.lastName +' - '+ student.pId }}
+                            </option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            <div class="container dropdown-table" ng-controller="dropdownController as dpCtrl" >
+                <ul class="text-center" >
+                    <li class="row dropdown-header">
+                        <ul>
+                            <li class="col col-md-3" >
+                                <h3>Curso</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Periodo</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Grupo</h3>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h3>Calificación</h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col col-md-12 dropdown-body" 
+                        ng-class="dpCtrl.getClass($index)" 
+                        ng-repeat="course in consultGradesCtrl.academicRecord.courses" 
+                    >
+                        <ul class="col col-md-12" >
+                            <li class="col col-md-3" >
+                                <h5>{{ course.name }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h5>{{ course.initialDate+' - '+course.finalDate }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h5>{{ course.group }}</h5>
+                            </li>
+                            <li class="col col-md-3" >
+                                <h5>{{ course.grade}}</h5>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Angular Material Dependencies -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+        <script src="/scripts/data.js" ></script>
+        <script src="/scripts/queries.js" ></script>
+        <script src="/scripts/app.js" ></script>
+        <script src="/scripts/session-controller.js" ></script>
+        <script src="/scripts/rubric-dropdown-table.js"></script>
+        <script src="/scripts/info-consult-grades.js" ></script>
+    </body>
+</html>
+

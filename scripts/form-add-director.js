@@ -1,4 +1,3 @@
-var app = angular.module('addDirector',[]);
 
 app.controller('addDirectorController', function(){
 
@@ -48,6 +47,8 @@ app.controller('addDirectorController', function(){
 		$this.newDirector = {};
 		console.table($this.directors);
 	};
+
+	
 
 
 });
