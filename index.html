@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="libreriaVirtual">
     <head>
         <link href="stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
         <meta charset="UTF-8" >
     </head>
-    <body ng-app="libreriaVirtual" >
+    <body>
         
         <section ui-view="header" >
             <!-- Content -->
@@ -26,6 +26,7 @@
         <script src="scripts/data.js" ></script>
         <script src="scripts/queries.js" ></script>
         <script src="scripts/app.js" ></script>
+        <script src="scripts/session-controller.js"></script>
         <script src="scripts/rubric-dropdown-table.js"></script>
         <script src="scripts/infoConsultAreas.js"></script>
         <script src="scripts/votes.js" ></script>

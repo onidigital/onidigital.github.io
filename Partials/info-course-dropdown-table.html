@@ -20,7 +20,7 @@
                         <li class="secondColor">
                            <div class="arrow-back-up"></div>
                            <div class="arrow-back-down"></div>
-                           <p>Equipo</p>
+                           <p>Cursos</p>
                            <div class="arrow-front"></div>
                         </li>
                     </ul>
@@ -56,35 +56,23 @@
                                 <h5>{{ team.name }}</h5>
                             </li>
                             <li class="col col-md-3" >
-                                <h5>{{ team.proyect }}</h5>
+                                <h5>{{ team.career }}</h5>
                             </li>
                             <li class="col col-md-3" >
-                                <h5>{{ team.proyect }}</h5>
+                                <h5>{{ team.credits }}</h5>
                             </li>
                             <li class="col col-md-3 table-actions" >
-                                <button class="col col-md-4 btn btnEdit" 
-                                        ng-click="dpCtrl.dropdown($index)" >
-                                    <a href="">
-                                        <i class="fa fa-plus fa-2x colorWhite"></i>
-                                    </a>
-                                </button>
-                                <button class="col col-md-4 btn btnEdit" >
+                                <button class="col col-md-6 btn btnEdit" >
                                     <a href="">
                                         <i class="fa fa-pencil fa-2x colorWhite"></i>
                                     </a></button>
-                                <button ng-click="dpCtrl.deleteRubric( rubric.id );" class="col col-md-4 btn btnEdit" >
+                                <button class="col col-md-6 btn btnEdit" >
                                     <a>
                                         <i class="fa fa-trash-o fa-2x colorWhite"></i>
                                     </a>
                                 </button>
                             </li>
                         </ul>
-                        <ul class="col col-md-12 dropdown" >
-                            <li class="col col-md-12" ng-repeat="member in team.students">
-                                <h2 class="pull-left">{{ member.name +' '+ member.lastName }}</h2>
-                                <h2 class="pull-right">{{ member.pId }}</h2>
-                            </li>
-                        </ul>                       
                     </li>
                 </ul>
             </div>
