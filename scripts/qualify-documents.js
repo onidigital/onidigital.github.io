@@ -26,16 +26,16 @@ qualifyModule.controller("dropdownQualify", function(){
 			return 'active';
 		}
 	}
-	this.getCourse = function ($nameCourse){
-		return Query('courses','id',$nameCourse).name;
+	this.getCourse = function ($id){
+		return Query('courses','id',$id)[0].name;
 	}
 
-	this.getStudent = function ($nameStudent){
-		var user = Query('users','id',$nameStudent);
+	this.getStudent = function ($id){
+		var user = Query('users','id',$id)[0]
 		return user.name + ' ' + user.lastName
 	}
-	this.getDocuments= function ($nameDocuments){
-		return Query('documents','id',$nameDocuments).name;
+	this.getDocument = function ($id){
+		return Query('documents','id',$id)[0].name;
 	}
 
 });
