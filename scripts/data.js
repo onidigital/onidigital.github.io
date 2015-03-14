@@ -7,7 +7,7 @@ var users = [
 	'lastName'	: 'Doe',
 	'rol'		: 1,
 	'pId'		: 'a-1',
-	'image'		: ''
+	'image'		: '../images/user.png'
 },
 {
 	'id'		: 2,
@@ -297,17 +297,17 @@ areas = [
 {
 	'id'			: 1,
 	'name'  		: 'Proceso',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Area del curso que se encarga de todo lo que es documentaciones y'
 },
 {
 	'id'			: 2,
 	'name'  		: 'Técnico',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Tecnicas, lenguajes de programacion y trabajos practicos'
 },
 {
 	'id'			: 3,
 	'name'  		: 'Factor Humano',
-	'description' 	: 'Descripción del área'
+	'description' 	: 'Parte encargada de mejorar la relacion entre los grupos'
 }
 ]
 groups = [
