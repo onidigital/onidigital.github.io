@@ -13,5 +13,4 @@ app.controller('addDeanController', function() {
 		$this.newDean['rol'] = 5;
 		console.table($this.deans);
 	}
-
 });

@@ -1,7 +1,6 @@
+app.controller('addDirectorController',function(){
 
-app.controller('addDirectorController', function(){
-
-	var $this = this;
+var $this = this;
 	this.directorCareers = [];
 	this.newDirectorCareer = {};
 	this.directors = Query('users', 'rol', 3);
