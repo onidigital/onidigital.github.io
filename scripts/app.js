@@ -108,6 +108,20 @@ app.config(function($stateProvider, $urlRouterProvider ){
 					controller  : 'votesController as votesCtrl' 
 				}
 			}
+		})
+		// Admin consult director.
+		.state('admin-consult-director',{
+			url : '/admin/consult/director',
+			views : {
+				header : {
+					templateUrl : header.admin,
+					controller  : header.controller
+				},
+				body : {
+					templateUrl : '/Partials/info-consult-director.html',
+					controller  : 'votesController as votesCtrl' 
+				}
+			}
 		});
 
 	// Teacher's views and partials
