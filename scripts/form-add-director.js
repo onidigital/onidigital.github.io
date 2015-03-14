@@ -1,3 +1,5 @@
+app.controller('addDirectorController',function(){
+
 var $this = this;
 	this.directorCareers = [];
 	this.newDirectorCareer = {};
