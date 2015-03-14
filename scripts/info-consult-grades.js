@@ -12,7 +12,21 @@ var gradesPerStudent = [
 								'group'  		: 1,
 								'initialDate' 	: '1/1/2015',
 								'finalDate' 	: '1/4/2015',
-								'grade'			: 80
+								'grade'			: 73
+							},
+							{
+								'name'	 		: 'Proyecto de Desarrollo Web 2',
+								'group'  		: 1,
+								'initialDate' 	: '1/2/2011',
+								'finalDate' 	: '1/5/2011',
+								'grade'			: 88
+							},
+							{
+								'name'	 		: 'Proyecto de Desarrollo Web 3',
+								'group'  		: 1,
+								'initialDate' 	: '1/6/2012',
+								'finalDate' 	: '1/10/2015',
+								'grade'			: 83
 							}
 						]
  	},
