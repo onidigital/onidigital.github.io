@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="full-screen fs-modal" ng-controller="addAreaController as aaCtrl">
 	<div class="col col-md-6">
 		<header>
@@ -9,6 +10,45 @@
 					<label>&Aacute;rea</label>
 					<input type="text" ng-model="aaCtrl.newArea.name" class="form-control" id="area" placeholder="">
 				</div>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Oni Digital Solutions">
+
+    <title>Oni Digital Solutions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../stylesheets/main.css">
+</head>
+	<body ng-app="addArea">
+		<div class="full-screen fs-modal" ng-controller="addAreaController as aaCtrl">
+			<div class="col col-md-6">
+				<header>
+					<h1>Agregar &Aacute;rea</h1>
+				</header>
+				<form name="formAddArea" ng-submit="formAddArea.$valid && aaCtrl.addArea()" novalidate>
+					<div class="row">
+						<div class="col-md-6">
+						  	<label>&Aacute;rea</label>
+						    <input type="text" ng-model="aaCtrl.newArea.name" class="form-control" id="area" placeholder="">
+						</div>
+				  	</div>
+					<div class="row">
+					  	<div class="col-md-12">
+					  		<label>Descripci&oacute;n</label>
+					  		<textarea ng-model="aaCtrl.newArea.description" class="form-control col-md-6" rows="6"></textarea>
+					  	</div>
+				  	</div>
+				  	<div class="row">
+					  	<button type="submit" class="btn btn-add"><a href="/Partials/info-consult-areas.html">Agregar</a</button>
+				  	</div>	
+				</form>	
+>>>>>>> 3c515a7e9cb2b75c1d2b2bd9b0e8f28d82d475ef
 			</div>
 			<div class="row">
 				<div class="col-md-12">
