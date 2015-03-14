@@ -312,10 +312,12 @@ areas = [
 ]
 groups = [
 {
-	'id'		: 1,
-	'course'	: 1,
-	'students'	: [3,4],
-	'documents' : 	[
+	'id'		    : 1,
+	'course'	    : 1,
+	'students'	    : [3,4],
+	'initialDate'  : "2015-01-09",
+	'finalDate'     : "2015-05-14",
+	'documents'     : 	[
 						{
 							'id' 	 : 1,
 							'rubric' : 1
@@ -344,10 +346,12 @@ groups = [
 					]
 },
 // agregó carolina
-,{
+{
 	'id'		: 2,
 	'course'	: 2,
 	'students'	: [3,4],
+	'initialDate'  : "2015-01-09",
+	'finalDate'     : "2015-05-14",
 	'documents' : 	[
 						{
 							'id' 	 : 1,
