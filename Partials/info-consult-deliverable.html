@@ -48,7 +48,7 @@
                     <tbody>
                         <tr ng-repeat="docGroup in ctlDeliv.groups | filter: buscador" class="displayInfo" >
                             <td class="text-center" >{{ ctlDeliv.getDocuments(docGroup.id)  }}</td>
-                            <td class="text-center" >{{ ctlDeliv.getGroup(docGroup.id) }}</td>
+                            <td class="text-center" >{{ ctlDeliv.getCourses(docGroup.id) }}</td>
                             <td class="text-center" >{{ ctlDeliv.getAreas(docGroup.id) }}</td>
                             <td class="actions col col-md-3">
                                 <button class="btn btnEdit col col-md-4" type="button">

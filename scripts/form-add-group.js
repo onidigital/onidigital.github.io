@@ -12,6 +12,7 @@ infoConsult.controller('InfoController', function() {
 
 	this.addGroup = function(){
 		$this.groups.push($this.newGroup);
+		data.groups.push($this.newGroup);
 		$this.newGroup = {};
 		console.table($this.groups);
 	}

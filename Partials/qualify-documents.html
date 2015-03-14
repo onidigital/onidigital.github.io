@@ -44,28 +44,32 @@
                         </li>
                     </ul>
                 </li>
-                <li class="col col-md-12 dropdown-body"  ng-class="dpQlf.getClass($index)" ng-repeat="student in dpQlf.students  track by $index">
-                    <ul class="col col-md-12" >
-                        <li class="col col-md-3" >
-                            <h5>{{ student.courses}}</h5>
-                            
+                <li class="col col-md-12 dropdown-body"  ng-class="dpQlf.getClass($index)" ng-repeat="group in dpQlf.groups  track by $index">
+                    <ul ng-repeat="student in group.students">
+                        <li>
+                            <ul class="col col-md-12" >
+                                <li class="col col-md-3" >
+                                    <h5>{{ dpQlf.getCourse(group.course) }}</h5>
+                                    
+                                </li>
+                                <li class="col col-md-3" >
+                                    <h5>{{ dpQlf.getStudent(student) }}</h5>
+                                </li>
+                                <li class="col col-md-3 table-actions" >
+                                    <button  class="col col-md-4 btn btnEdit" ng-click="dpQlf.dropdown($index)" type="button" >
+                                         <i class="fa fa-plus fa-2x"></i>     
+                                    </button>
+                                </li>
+                            </ul>
+                            <ul class="col col-md-12 dropdown" >
+                                <li class="col col-md-12"ng-repeat="doc in group.documents">
+                                    <h2 class="pull-left col-md-5">{{ dpQlf.getDocument(doc.id)}}</h2>
+                                    <h5 class="text-center col-md-5">Nota</h5>
+                                    <button class="pull-right btn btn-qualify col-md-2">Calificar</button>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="col col-md-3" >
-                            <h5>{{ dpQlf.getStudent(student.id)}}</h5>
-                        </li>
-                        <li class="col col-md-3 table-actions" >
-                            <button  class="col col-md-4 btn btnEdit" ng-click="dpQlf.dropdown($index)" type="button" >
-                                 <i class="fa fa-plus fa-2x"></i>     
-                            </button>
-                        </li>
-                    </ul>
-                    <ul class="col col-md-12 dropdown" >
-                        <li class="col col-md-12"ng-repeat="doc in dpQlf.documents">
-                            <h2 class="pull-left col-md-5">{{ doc.id}}</h2>
-                            <h5 class="text-center col-md-5">Nota</h5>
-                            <button class="pull-right btn btn-qualify col-md-2">Calificar</button>
-                        </li>
-                    </ul>                       
+                    </ul>                      
                 </li>
             </ul>
         </div>

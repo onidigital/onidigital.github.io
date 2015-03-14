@@ -19,19 +19,19 @@ app.controller("consultAreasController", function(){
 		}
 	}
 
-	this.deleteRubric = function( id ) {
+	this.deleteAreas = function( id ) {
 		var i = 0,
-			l = $this.rubrics.length,
+			l = $this.areas.length,
 			coord = 0;
 
 		for(; (i<l); i++){
-			if( $this.rubrics[i]['id'] === id ){
+			if( $this.areas[i]['id'] === id ){
 				coord = i;
 				break;
 			}
 		}
 
-		$this.rubrics.splice(coord,1);
+		$this.areas.splice(coord,1);
 
 	}
 

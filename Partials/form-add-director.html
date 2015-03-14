@@ -50,28 +50,35 @@
 						</div><!--col-md-6-->
 					</div><!--row-->
 					<div class="row">
-						<div ng-model="adCtrl.careerAspect">
+						<div >
 							<div class="col-md-5">
 								<label >Carrera</label>
-					  			<select ng-model="adCtrl.newCareerAspect.name" class="form-control  select-arrow">
-					  				<option ng-repeat="career in adCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
+					  			<select ng-model="adCtrl.newDirectorCareer" class="form-control  select-arrow">
+					  				<option ng-repeat="career in adCtrl.careers" 
+					  						value="{{career.name }}">
+					  						{{ career.name }}
+					  				</option>
 					  			</select>
 							</div><!--col-md-5-->
 							<div class="col-md-2">
-								<a href="#" ng-click="adCtrl.addNewCareerAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+								<a href="#" ng-click="adCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
 							</div><!--col-md-2-->
 							<div class="col col-md-5 add-careers">
 								<ul class="careers-list">
-									<li class="col col-md-12 list-group-item" ng-repeat="careerAspect in adCtrl.careerAspects" >
-									<h5 class="pull-left" >{{ careerAspect.name }}</h5>
-											<a href="#" ng-click="adCtrl.deleteNewCareerAspect( $index )">
-												<img src="../images/btnLess.png" alt="less" class="img-less">
-											</a>
+									<li class="col col-md-12 list-group-item" 
+										ng-repeat="career in adCtrl.directorCareers" 
+									>
+										<h5 class="pull-left" >{{ career }}</h5>
+										<a href="#" 
+											ng-click="adCtrl.deleteDirectorCareer( $index )"
+										>
+											<img src="../images/btnLess.png" alt="less" class="img-less">
+										</a>
 										</h5>
 									</li>
 								</ul>
 							</div><!--add-careers-->	
-						</div><!--careerAspect-->
+						</div><!--newDirectorCareer-->
 					</div> <!--row-->
 					<div class="row">
 						<div class="col-md-6 message">

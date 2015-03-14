@@ -53,24 +53,28 @@
 						<div ng-model="asCtrl.careerAspect">
 							<div class="col-md-5">
 								<label >Carrera</label>
-					  			<select ng-model="asCtrl.newCareerAspect.name" class="form-control select-arrow">
+					  			<select ng-model="asCtrl.newStudentCareer" class="form-control select-arrow">
 					  				<option ng-repeat="career in asCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
 					  			</select>
 							</div><!--col-md-5-->
 							<div class="col-md-2">
-								<a href="#" ng-click="asCtrl.addNewCareerAspect()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+								<a href="#" ng-click="asCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
 							</div><!--col-md-2-->
 							<div class="col col-md-5 add-careers">
 								<ul class="careers-list">
-									<li class="col col-md-12 list-group-item" ng-repeat="careerAspect in asCtrl.careerAspects" >
-									<h5 class="pull-left" >{{ careerAspect.name }}</h5>
-											<a href="#" ng-click="asCtrl.deleteNewCareerAspect( $index )">
-												<img src="../images/btnLess.png" alt="less" class="img-less">
-											</a>
+									<li class="col col-md-12 list-group-item" 
+										ng-repeat="career in asCtrl.studentCareers" 
+									>
+										<h5 class="pull-left" >{{ career }}</h5>
+										<a href="#" 
+											ng-click="asCtrl.deleteStudentCareer( $index )"
+										>
+											<img src="../images/btnLess.png" alt="less" class="img-less">
+										</a>
 										</h5>
 									</li>
 								</ul>
-							</div><!--add-careers-->	
+							</div>
 						</div><!--careerAspect-->
 					</div> <!--row-->
 					<div class="row">
