@@ -1,78 +1,78 @@
-		<div class="full-screen fs-modal" ng-controller="addDirectorController as adCtrl">
-			<div class="col col-md-6">
-				<header>
-					<h1>Agregar Director</h1>
-				</header>
-				<form class="user-form" name="formAddDirector" ng-submit="formAddDirector.$valid && adCtrl.addDirector()" novalidate>
-					<div class="row">
-						<div class="col-md-6">
-						 	<label>Nombre</label>
-						  	<input type="text" class="form-control"placeholder="" ng-model="adCtrl.newDirector.name" required>
-						</div><!--col-md-6-->	
-					  	<div class="col-md-6">
-					  		<label>Apellido</label>
-					  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.lastName" required>
-					  	</div><!--col-md-6-->
-					</div><!--row-->
-					<div class="row">	
-					  	<div class="col-md-6">
-					  		<label>Imagen</label>
-					  		<input type="txt" class="form-control" ng-model="adCtrl.newDirector.image" required>
-					  	</div><!--col-md-6-->
-					  	<div class="col-md-6">
-					  		<label>Contraseña</label>
-					  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.password" required>
-					  	</div><!--col-md-6-->
-					</div><!--row-->
-					<div class="row">
-						<div class="col-md-6">
-							<label for="">Cédula</label>
-							<input type="text" class="form-control" ng-model="adCtrl.newDirector.pId" required>
-						</div><!--col-md-6-->
-						<div class="col-md-6">
-							<label for="">Correo Electrónico</label>
-							<input type="email" class="form-control" ng-model="adCtrl.newDirector.email" required>
-						</div><!--col-md-6-->
-					</div><!--row-->
-					<div class="row">
-						<div >
-							<div class="col-md-5">
-								<label >Carrera</label>
-					  			<select ng-model="adCtrl.newDirectorCareer" class="form-control  select-arrow">
-					  				<option ng-repeat="career in adCtrl.careers" 
-					  						value="{{career.name }}">
-					  						{{ career.name }}
-					  				</option>
-					  			</select>
-							</div><!--col-md-5-->
-							<div class="col-md-2">
-								<a href="#" ng-click="adCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
-							</div><!--col-md-2-->
-							<div class="col col-md-5 add-careers">
-								<ul class="careers-list">
-									<li class="col col-md-12 list-group-item" 
-										ng-repeat="career in adCtrl.directorCareers" 
-									>
-										<h5 class="pull-left" >{{ career }}</h5>
-										<a href="#" 
-											ng-click="adCtrl.deleteDirectorCareer( $index )"
-										>
-											<img src="../images/btnLess.png" alt="less" class="img-less">
-										</a>
-										</h5>
-									</li>
-								</ul>
-							</div><!--add-careers-->	
-						</div><!--newDirectorCareer-->
-					</div> <!--row-->
-					<div class="row">
-						<div class="col-md-6 message">
-							<p  ng-show="submitted&&formAddDirector.$invalid">¡Debe llenar todos los espacios!</p>
-						</div><!--col-md-6-->
-						<div class="col-md-6">
-							<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-director.html">Agregar</a</button>
-						</div><!--col-md-6-->	
-					</div><!--row-->
-				</form>	
-			</div><!--col col-md-6-->
-		</div><!--full-screen fs-modal-->
+<div class="full-screen fs-modal">
+	<div class="col col-md-6">
+		<header>
+			<h1>Agregar Director</h1>
+		</header>
+		<form class="user-form" name="formAddDirector" ng-submit="formAddDirector.$valid && adCtrl.addDirector()" novalidate>
+			<div class="row">
+				<div class="col-md-6">
+				 	<label>Nombre</label>
+				  	<input type="text" class="form-control"placeholder="" ng-model="adCtrl.newDirector.name" required>
+				</div><!--col-md-6-->	
+			  	<div class="col-md-6">
+			  		<label>Apellido</label>
+			  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.lastName" required>
+			  	</div><!--col-md-6-->
+			</div><!--row-->
+			<div class="row">	
+			  	<div class="col-md-6">
+			  		<label>Imagen</label>
+			  		<input type="txt" class="form-control" ng-model="adCtrl.newDirector.image" required>
+			  	</div><!--col-md-6-->
+			  	<div class="col-md-6">
+			  		<label>Contraseña</label>
+			  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.password" required>
+			  	</div><!--col-md-6-->
+			</div><!--row-->
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Cédula</label>
+					<input type="text" class="form-control" ng-model="adCtrl.newDirector.pId" required>
+				</div><!--col-md-6-->
+				<div class="col-md-6">
+					<label for="">Correo Electrónico</label>
+					<input type="email" class="form-control" ng-model="adCtrl.newDirector.email" required>
+				</div><!--col-md-6-->
+			</div><!--row-->
+			<div class="row">
+				<div >
+					<div class="col-md-5">
+						<label >Carrera</label>
+			  			<select ng-model="adCtrl.newDirectorCareer" class="form-control  select-arrow">
+			  				<option ng-repeat="career in adCtrl.careers" 
+			  						value="{{career.name }}">
+			  						{{ career.name }}
+			  				</option>
+			  			</select>
+					</div><!--col-md-5-->
+					<div class="col-md-2">
+						<a href="#" ng-click="adCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
+					</div><!--col-md-2-->
+					<div class="col col-md-5 add-careers">
+						<ul class="careers-list">
+							<li class="col col-md-12 list-group-item" 
+								ng-repeat="career in adCtrl.directorCareers" 
+							>
+								<h5 class="pull-left" >{{ career }}</h5>
+								<a href="#" 
+									ng-click="adCtrl.deleteDirectorCareer( $index )"
+								>
+									<img src="../images/btnLess.png" alt="less" class="img-less">
+								</a>
+								</h5>
+							</li>
+						</ul>
+					</div><!--add-careers-->	
+				</div><!--newDirectorCareer-->
+			</div> <!--row-->
+			<div class="row">
+				<div class="col-md-6 message">
+					<p  ng-show="submitted&&formAddDirector.$invalid">¡Debe llenar todos los espacios!</p>
+				</div><!--col-md-6-->
+				<div class="col-md-6">
+					<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-director.html">Agregar</a</button>
+				</div><!--col-md-6-->	
+			</div><!--row-->
+		</form>	
+	</div><!--col col-md-6-->
+</div><!--full-screen fs-modal-->

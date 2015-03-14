@@ -1,6 +1,5 @@
-var portfolio= angular.module("portfolioView",[]);
 
-portfolio.controller('PortfolioController', function() {
+app.controller('PortfolioController', function() {
 	
 	
 	}

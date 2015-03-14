@@ -1,6 +1,5 @@
-var teamModule = angular.module("team",["ui.router"]);
 
-teamModule.controller('teamController', function() {
+app.controller('teamController', function() {
 	var $this = this;
 	
 	this.groups   =   Query('groups');
