@@ -7,27 +7,19 @@ app.config(function($stateProvider, $urlRouterProvider ){
 	//   requireBase: false
 	// });
 
-	var header = {
-		admin 		: 'Partials/menu-admin.html',
-		director    : 'Partials/menu-director.html',
-		profesor	: 'Partials/menu-profesor.html',
-		dean		: 'Partials/menu-dean.html',
-		student     : 'Partials/menu-student.html',
-		controller 	: 'menuController as menuCtrl'
-	}
-
-	$urlRouterProvider.otherwise('/home');
+	
+	$urlRouterProvider.when('/dean','dean/profile');
+	$urlRouterProvider.when('/director','director/profile');
+	$urlRouterProvider.when('/teacher','teacher/profile');
+	$urlRouterProvider.when('/student','student/profile');
+	$urlRouterProvider.otherwise('/');
 
 	// Landing page views.
 	$stateProvider
 		// Home.
 		.state('home', {
-			url : '/home',
-			views: {
-				body: {
-					templateUrl : 'Partials/home.html'
-				}
-			}
+			url : '/',
+			templateUrl : 'Partials/home.html'
 		})
 		// Recover password.
 		.state('home.modal-recover-password',{
@@ -40,152 +32,16 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		});
 	
 	// Admin views and partials.
+	$urlRouterProvider.when('/admin','admin/profile');
 	$stateProvider
-		// Admin profile view.
+		// Admin base template.
 		.state('admin',{
-			url: '/admin/profile',
-			views: {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl: 'Partials/profile-admin.html'
-				}
-			}
+			url 		: '/admin',
+			templateUrl : 'Partials/admin.html'
 		})
-		// Admin consult student
-		.state('admin-consult-students',{
-			url : '/admin/consult/students',
-			views : {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl : '/Partials/info-consult-student.html'
-				}
-			}
-		})
-		// Admin consult rubrics
-		.state('admin-consult-rubrics',{
-			url : '/admin/consult/rubrics',
-			views : {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl : '/Partials/info-rubric-dropdown-table.html',
-					controller  : 'dropdownController as dpCtrl' 
-				}
-			}
-		})
-		// Admin consult areas.
-		.state('admin-consult-areas',{
-			url : '/admin/consult/areas',
-			views : {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl : '/Partials/info-consult-areas.html',
-					controller  : 'consultAreasController as areaConsultCtrl' 
-				}
-			}
-		})
-		// Admin consult votes.
-		.state('admin-consult-vote',{
-			url : '/admin/consult/voting',
-			views : {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl : '/Partials/vote.html',
-					controller  : 'votesController as votesCtrl' 
-				}
-			}
-		})
-		// Admin consult director.
-		.state('admin-consult-director',{
-			url : '/admin/consult/director',
-			views : {
-				header : {
-					templateUrl : header.admin,
-					controller  : header.controller
-				},
-				body : {
-					templateUrl : '/Partials/info-consult-director.html',
-					controller  : 'votesController as votesCtrl' 
-				}
-			}
-		});
-
-	// Teacher's views and partials
-	$stateProvider
-		// Teacher's profile view.
-		.state('teacher',{
-			url : '/teacher/profile',
-			views: {
-				header : {
-					templateUrl : header.teacher,
-					controller  : header.controller
-				},
-				body : {
-					template: '<h1>Hola! yo soy un profe.</h1>'
-				}
-			}
-		});
-
-	// Student's views and partials
-	$stateProvider
-		// Student's profile view.
-		.state('student', {
-			url : '/student/profile',
-			views: {
-				header : {
-					templateUrl : header.student,
-					controller  : header.controller
-				},
-				body : {
-					template: '<h1>Hola! yo soy un Estudiante.</h1>'
-				}
-			}
-		});
-
-	// Director's views and partials
-	$stateProvider
-		// Director's profile view.
-		.state('director', {
-			url : '/director/profile',
-			views: {
-				header : {
-					templateUrl : header.director,
-					controller  : header.controller
-				},
-				body : {
-					template: '<h1>Hola! yo soy un Director.</h1>'
-				}
-			}
-		});
-
-	// Dean's views and partials
-	$stateProvider
-		// Dean's profile view.
-		.state('dean', {
-			url : '/dean/profile',
-			views: {
-				header : {
-					templateUrl : header.dean,
-					controller  : header.controller
-				},
-				body : {
-					template: '<h1>Hola! yo soy un deacano.</h1>'
-				}
-			}
+		.state('admin.profile',{
+			url 		: '/profile',
+			template 	: '<h1>Admin. :D</h1>'
 		});
 
 });
