@@ -11,7 +11,6 @@ app.config(function($stateProvider, $urlRouterProvider ){
 	$urlRouterProvider.when('/dean','dean/profile');
 	$urlRouterProvider.when('/director','director/profile');
 	$urlRouterProvider.when('/teacher','teacher/profile');
-	$urlRouterProvider.when('/student','student/profile');
 	$urlRouterProvider.otherwise('/');
 
 	// Landing page views.
@@ -41,14 +40,40 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.profile',{
 			url 		: '/profile',
-			template 	: '<h1>Admin. :D</h1>'
+			templateUrl	: '/Partials/profile-admin.html'
+		})
+		.state('admin.search',{
+			url 		: '/search',
+			templateUrl : '/Partials/admin-search.html',
+			controller  : 'searchInformationController as sInfoCtrl'
+		})
+		.state('admin.search.areas', {
+			templateUrl : '/Partials/info-consult-area.html',
+			controller  : 'ConsultAreaController as caCtrl'
+		})
+		.state('admin.search.students', {
+			template 	: '<h1>Students!</h1>'
+		});
+
+	// Admin views and partials.
+	$urlRouterProvider.when('/student','student/profile');
+	$stateProvider
+		// Admin base template.
+		.state('student',{
+			url 		: '/student',
+			templateUrl : 'Partials/student.html'
+		})
+		.state('student.profile',{
+			url 		: '/profile',
+			templateUrl	: '/Partials/profile-student.html'
 		});
 
 });
 
-/*
+
 app.run(function($rootScope, $state){
-     $rootScope
+	/*
+    $rootScope
     	.$on('$viewContentLoaded',
              function(event, viewConfig){ 
                 var	sesion 	= JSON.parse( localStorage.getItem('sesion') ),
@@ -61,9 +86,9 @@ app.run(function($rootScope, $state){
             		}
             	}
          });
-
+    */
 });
-*/
+
 
 
 // Login controller

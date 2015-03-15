@@ -1,91 +1,17 @@
-md-toolbar.md-theme-purple {
-  background: $main-color;
-  color: lighten($main-color, 90);
-}
-
-.main-header {
-  margin-bottom: 2em;
-}
-
-.btn-default{
-  margin-top: 15px;
-  background: none;
-  border: none;
-}
-
-.md-button.md-close-nav {
-  width: 50px;
-  height: 50px;
-  padding: 1em;
-  background: lighten($main-color, 8);
-  margin-right: 2em;
-  border-radius: 50%;
-}
-
-.menu-options {
-  font-size: 1em;
-  h1  {
-    color: $titles;
-    font-size: 1.25em; 
-    margin-bottom: .5em;  
-  }
-  > li {
-    padding: 1em;
-      &:not(:last-child) {
-        border-bottom: 1px solid lighten($border, 50);
-      }
-  }
-  li {
+nav .navbar-nav {
+  .menu-item {
+    background  : $main-color;
+    &:hover { 
+      opacity: .9; 
+    }
+    &:not(:last-child) {
+      border-right: 2px solid $background;
+    }
       a {
-        color: $text;
-        display: inline-block;
-        width: 100%;
-        padding: 1em;
-        border-left: 0px solid $anchors;
-          &:hover {
-            color: $anchors;
-            border-left: 5px solid $anchors;
-            -webkit-transition: all .25s ease;
-               -moz-transition: all .25s ease;
-                 -o-transition: all .25s ease;
-                    transition: all .25s ease;
+        color   : $text-clear; 
+          &:hover, &:focus{ 
+            color : $text-clear;
           }
       }
-  .fa{
-    color: $titles;
-    margin-right: 10px;
-  } 
-  .logout{
-    color: $anchors;
-    padding-top: 0px;
-    background-color: none;
-      &:hover {
-        color: lighten($anchors, 20);
-        text-decoration: none;
-        border-left: none;
-      }
   }
-
-  }
-  > li ul li {
-    &:nth-child(2n+1) a {
-      background: $background;
-    }
-  }
-}
-
-.admin-menu{
-
-  .md-sidenav-right {
-    width: 470px;
-    min-width: 320px;
-    max-width: 500px;
-  }
-
-   .left{
-    float: left;
-  }
-  .right{
-    float: right;
-  } 
 }

@@ -1,0 +1,20 @@
+<form class="row" >
+	<h1 class="text-center title" >
+		¿Qué desea consultar?
+	</h1>
+	<select class="col col-md-6 col-md-offset-3" 
+			ng-model="sInfoCtrl.displayedInformation" 
+			ng-change="sInfoCtrl.changeState();" 
+		>
+		<option value="admin.search.areas" selected >
+			Áreas
+		</option>
+		<option value="admin.search.students" >
+			Estudiantes
+		</option>
+	</select>
+</form>
+
+<section ui-view >
+	<!-- Content -->
+</section>

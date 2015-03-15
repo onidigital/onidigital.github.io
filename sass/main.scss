@@ -13,12 +13,12 @@ body {
 	color: $text;
 	font-family: Helvetica;
 	overflow-x: hidden;
-	height: auto;
+	min-height: 100vh;	
 }
 header {
 	background: $main-color;
 	color: $text-clear;
-	padding: 1em;
+	padding: .5em;
 }
 
 * {
@@ -32,6 +32,13 @@ button {
 	a {
 		color: $background;
 	}
+}
+
+.title  {
+	color: $titles;
+	font-size: 1.5em; 
+	margin-bottom: .5em; 
+	padding-bottom: .5em;
 }
 
 .full-screen {

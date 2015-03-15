@@ -1,83 +1,43 @@
-<html lang="en" >
-  <head>
-    <link href="/stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.css">
-        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
-    <meta charset="UTF-8" >
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
-  </head>
-<body layout="column" ng-app="app">
-	<div class="content container viewInfo center-block">
-          <div class="profile-selected">
-            <ul>
-              <li>
-                  <p>Administrador</p>
-                  <div class="arrow-front"></div>
-              </li>
-              <li>
-                  <div class="arrow-back-up"></div>
-                  <div class="arrow-back-down"></div>
-                  <p>Área</p>
-                  <div class="arrow-front"></div>
-              </li>
-            </ul>
-          </div>
-
-          <section class="text-center" ng-controller="ConsultAreaController as caCtrl" >
-    	      <div class="container dropdown-table">
-    	       	<ul class="text-center">
-    	       		<li class="row dropdown-header">
-    	       			<ul>
-    	       				<li class="col col-md-3" >
-    	       					<h3>Área</h3>
-    	       				</li>
-    	       				<li class="col col-md-3" >
-    	       					<h3>Grupo</h3>
-    	       				</li>
-    	       				<li class="col col-md-3" >
-    	       					<h3>Profesor</h3>
-    	       				</li>
-    	       			</ul>
-    	       		</li>
-    			     <li class="col col-md-12 dropdown-body" ng-class="caCtrl.getClass($index)"  >
-					  <ul class="col col-md-12" ng-repeat="group in caCtrl.groups[0]">
-						  <li class="col col-md-3" >
-							  <h5>{{ group.areas.area }}</h5>
-						  </li>
-						  <li class="col col-md-3" >
-							  <h5>{{ group.id }}</h5>
-						  </li>
-						  <li class="col col-md-3" >
-							  <h5>{{ group.areas.professor }}</h5>
-						  </li>
-						  <li class="col col-md-3 table-actions" >
-							  <button class="col col-md-4 btn btnEdit" 
-							  		ng-click="caCtrl.dropdown($index)" >
-                     <i class="fa fa-plus fa-2x"></i>
-							  </button>
-							  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-pencil fa-2x"></i></button>
-							  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-trash-o fa-2x"></i></button>
-						  </li>
-					  </ul>
-					  <ul class="col col-md-12 dropdown" >
-						  <li class="col col-md-12" ng-repeat="doc in caCtrl.documents">
-							  <h2 class="pull-left">{{ doc.id }}</h2>
-							  <h5 class="pull-right text-center">algo</h5>
-						  </li>
-					  </ul>	    				
-    			</li>
-    		</ul>
-        <button type="submit" class="col-md-2 btn btn-add pull-right">Agregar</button>
-    	</div>
-    </section>
-
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-		<script src="/scripts/data.js"></script>
-		<script src="/scripts/queries.js"></script>
-		<script src="/scripts/info-consult-area.js"></script>
-   </body>
-
-	
-</script>
+<div class="content container viewInfo center-block"> 
+  <section class="text-center"  >
+  	<div class="container dropdown-table">
+  	 	<ul class="text-center">
+  	 		<li class="row dropdown-header">
+  	 			<ul>
+  	       	<li class="col col-md-3" >
+  	       		<h3>Área</h3>
+  	       	</li>
+     				<li class="col col-md-3" >
+     					<h3>Grupo</h3>
+     				</li>
+     				<li class="col col-md-3" >
+     					<h3>Profesor</h3>
+     				</li>
+     			</ul>
+  	    </li>
+  		  <li class="col col-md-12 dropdown-body" ng-class="caCtrl.getClass($index)"  >
+  			  <ul class="col col-md-12" ng-repeat="group in [1,2,3]">
+  				  <li class="col col-md-3" >
+  					  <h5>{{ $index }}</h5>
+  				  </li>
+  				  <li class="col col-md-3" >
+  					  <h5>{{ $index }}</h5>
+  				  </li>
+  				  <li class="col col-md-3" >
+  					  <h5>{{ $index }}</h5>
+  				  </li>
+  				  <li class="col col-md-3 table-actions" >
+  					  <button class="col col-md-4 btn btnEdit" 
+  					  		ng-click="caCtrl.dropdown($index)" >
+                   <i class="fa fa-plus fa-2x"></i>
+  					  </button>
+  					  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-pencil fa-2x"></i></button>
+  					  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-trash-o fa-2x"></i></button>
+  				  </li>
+  			  </ul>  				
+  			</li>
+  		</ul>
+      <button type="submit" class="col-md-2 btn btn-add pull-right">Agregar</button>
+  	</div>
+  </section>
+</div>

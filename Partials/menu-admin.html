@@ -1,98 +1,30 @@
-<header class="main-header">
-    <div class="container">
-        <div class="row">
-        <div class="col-md-6">
-            <img ui-sref="admin" src="/images/logoCenfo_header.png" height="75px" class="login-logo" alt="Cenfotec Logo">
-        </div>
-        <md-button  ng-click="toggle()"
-                class="btn btn-default pull-right">
-           <i aria-label class="icon-align-justify"><img src="/images/menu.png" alt=""></i>
-        </md-button>
-    <!-- Side Nav -->
-        <div layout="column" class="admin-menu">
-            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="sideNav">
-              <md-toolbar class="md-theme-purple">
-                <h1 class="md-toolbar-tools"> 
-                    <md-button ng-click="close()" class="md-close-nav">X</md-button>
-                    Menú 
-                </h1>
-              </md-toolbar>
-              <md-content class="md-padding">
-                <div class="right">
-                  <ul class="menu-options" >
-                      <li>
-                          <h1><i class="fa fa-upload"></i>Registrar</h1>
-                          <ul>
-                              <li><a href="#">Estudiante</a></li>
-                              <li><a href="#">Profesor</a></li>
-                              <li><a href="#">Director académico</a></li>
-                              <li><a href="#">Decano</a></li>
-                              <li><a href="#">Carreras</a></li>
-                              <li><a href="#">Cursos</a></li>
-                              <li><a href="#">Grupos</a></li>
-                              <li><a href="#">Áreas</a></li>
-                              <li><a href="#">Proyectos</a></li>
-                              <li><a href="#">Equipos</a></li>
-                              <li><a href="#">Rúbricas</a></li>
-                              <li><a href="#">Entregables</a></li>
-                              <li><a href="#">Votación</a></li>
-                          </ul>   
-                      </li>
-                      <li><a ng-click="menuCtrl.logOut();" ui-sref="home" href="javascript" class="logout">Cerrar Sesión</a></li>
-                  </ul>
-                </div> 
-                <div class="left">
-                    <ul class="menu-options">  
-                        <li>
-                            <h1><i class="fa fa-plus"></i>Consultar</h1>
-                           <ul>
-                              <li>
-                                <a ui-sref="admin-consult-students">Estudiante</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-teachers">Profesor</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-directors">Director académico</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-deans">Decano</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-careers">Carreras</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-courses">Cursos</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-groups">Grupos</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-areas" >Áreas</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-proyects">Proyectos</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-teams">Equipos</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-rubrics" >Rúbricas</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-documents">Entregables</a>
-                              </li>
-                              <li>
-                                <a ui-sref="admin-consult-vote" >Votación</a>
-                              </li>
-                           </ul>   
-                       </li>
-                    </ul>
-                </div>
-              </md-content>
-            </md-sidenav>
-        </div>
-    <!-- Side Nav Ends -->
-        </div>
+<nav class="navbar navbar-default">
+  <div>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="admin" >Administrador</a>
     </div>
-</header>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="menu-item" >
+          <a ui-sref="admin.search" >
+            Consultar información
+          </a>
+        </li>
+        <li class="menu-item" >
+          <a href="#" >
+            Registrar información
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
