@@ -1,7 +1,7 @@
 app.controller('searchInformationController',['$state',function($state){
 	var $this= this,
 		sesion = Storage.get('sesion');
-	this.displayedInformation = sesion.rolCode+'search.areas';
+	this.displayedInformation = sesion.rolCode+'.search.areas';
 
 	this.changeState = function(){
 		$state.go( $this.displayedInformation );

@@ -83,8 +83,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		.state('admin.register.group', {
 			templateUrl : '/Partials/form-add-group.html'
 		})
-		.state('admin.register.proyect', {
-			templateUrl : '/Partials/form-add-proyect.html'
+		.state('admin.register.project', {
+			templateUrl : '/Partials/form-add-project.html'
 		})
 		.state('admin.register.rubric', {
 			templateUrl : '/Partials/form-add-rubric.html'
@@ -92,8 +92,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		.state('admin.register.student', {
 			templateUrl : '/Partials/form-add-student.html'
 		})
-		.state('admin.register.profesor', {
-			templateUrl : '/Partials/form-add-profesor.html'
+		.state('admin.register.teacher', {
+			templateUrl : '/Partials/form-add-teacher.html'
 		})
 		.state('admin.register.team', {
 			templateUrl : '/Partials/form-add-team.html'

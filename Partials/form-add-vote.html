@@ -1,118 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<meta charset="utf-8">
-    	<meta name="author" content="Oni Digital Solutions">
-
-    	<title>Oni Digital Solutions</title>
-
-    	<!-- Bootstrap Core CSS -->
-    	<link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-
-    	<!-- Custom CSS -->
-    	<link rel="stylesheet" href="../stylesheets/main.css">
-    	<!-- Custom Fonts -->
-    	<link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css">
-
-	</head>
-
-	<body ng-app="libreriaVirtual">
-		<div class="content container viewInfo center-block" ng-controller="AddVoteController as addVoteCtrl" >
-      <div class="profile-selected">
-        <ul>
-          <li>
-              <p>Administrador</p>
-              <div class="arrow-front"></div>
-          </li>
-          <li>
-              <div class="arrow-back-up"></div>
-              <div class="arrow-back-down"></div>
-              <p>Agregar Votación</p>
-              <div class="arrow-front"></div>
-          </li>
-        </ul>
-      </div> 
-      <form class="row add-participants"  name="addVoting" ng-submit="addVoteCtrl.valid() && addVoteCtrl.registerVoting()"
-                                          novalidate>
-        <div class="col col-md-4">
-          <h4 class="text-center" >Posibles participantes</h4>
-          <ul class="text-center team-list">
-            <li class="col col-md-12 team-list-header">
-              <ul>
-                <li class="col col-md-4" >Proyecto</li>
-                <li class="col col-md-4" >Equipo</li>
-                <li class="col col-md-4" >Elegir</li>
-              </ul>
+<div class="col col-md-12 ">
+  <form class="row add-participants"  
+        name="addVoting" 
+        ng-submit="addVoteCtrl.valid() && addVoteCtrl.registerVoting()"
+        novalidate
+      >
+    <div class="col col-md-4">
+      <h4 class="text-center" >Posibles participantes</h4>
+      <ul class="text-center team-list">
+        <li class="col col-md-12 team-list-header">
+          <ul>
+            <li class="col col-md-4" >Proyecto</li>
+            <li class="col col-md-4" >Equipo</li>
+            <li class="col col-md-4" >Elegir</li>
+          </ul>
+        </li>
+        <li class="col col-md-12 team-list-item"  ng-repeat="team in addVoteCtrl.teams" >
+          <ul>
+            <li class="col col-md-4" >{{ team.proyect }}</li>
+            <li class="col col-md-4" >{{ team.name }}</li>
+            <li class="col col-md-4" >
+              <input type="checkbox"  ng-model="teamIsSelected" 
+                                      ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );"
+                                    >
             </li>
-            <li class="col col-md-12 team-list-item"  ng-repeat="team in addVoteCtrl.teams" >
-              <ul>
-                <li class="col col-md-4" >{{ team.proyect }}</li>
-                <li class="col col-md-4" >{{ team.name }}</li>
-                <li class="col col-md-4" >
-                  <input type="checkbox"  ng-model="teamIsSelected" 
-                                          ng-change="addVoteCtrl.selectTeam( team.id, teamIsSelected );"
-                                        >
-                </li>
-              </ul>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col col-md-4">
+      <h4 class="text-center" >Votante</h4>
+      <section>
+        <div class="col col-md-12" >
+          <div class="col-md-10">
+            <label for="newParticipant">Nombre</label>
+            <select id="newParticipant" ng-model="addVoteCtrl.newParticipant" class="form-control select-arrow">
+              <option ng-repeat="possibleParticipant in addVoteCtrl.possibleParticipants" value="{{ possibleParticipant.id }}">
+                {{ possibleParticipant.name +' '+ possibleParticipant.lastName +' - '+ possibleParticipant.pId }}
+              </option>       
+            </select> 
+          </div>
+          <div class="col-md-2">
+            <a href="#" ng-click="addVoteCtrl.addParticipant();" ><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
+          </div>
+        </div>
+        <div class="col col-md-12">
+          <ul class="participants-list" >
+            <li class="col col-md-12 list-group-item" ng-repeat="voter in addVoteCtrl.voters track by $index" >
+              <h2 class="pull-left">{{ voter.name +' '+ voter.lastName +' - '+ voter.pId }}</h2>
+              <a href="#" ng-click="addVoteCtrl.deleteParticipant( voter['id'] );" ><img src="../images/btnLess.png" class="pull-right text-center img-less" alt="less" ></a>
             </li>
           </ul>
         </div>
-        <div class="col col-md-4">
-          <h4 class="text-center" >Votante</h4>
-          <section>
-            <div class="col col-md-12" >
-              <div class="col-md-10">
-                <label for="newParticipant">Nombre</label>
-                <select id="newParticipant" ng-model="addVoteCtrl.newParticipant" class="form-control select-arrow">
-                  <option ng-repeat="possibleParticipant in addVoteCtrl.possibleParticipants" value="{{ possibleParticipant.id }}">
-                    {{ possibleParticipant.name +' '+ possibleParticipant.lastName +' - '+ possibleParticipant.pId }}
-                  </option>       
-                </select> 
-              </div>
-              <div class="col-md-2">
-                <a href="#" ng-click="addVoteCtrl.addParticipant();" ><img src="../images/btnPlus.png" class="img-plus" alt="plus" ></a>
-              </div>
-            </div>
-            <div class="col col-md-12">
-              <ul class="participants-list" >
-                <li class="col col-md-12 list-group-item" ng-repeat="voter in addVoteCtrl.voters track by $index" >
-                  <h2 class="pull-left">{{ voter.name +' '+ voter.lastName +' - '+ voter.pId }}</h2>
-                  <a href="#" ng-click="addVoteCtrl.deleteParticipant( voter['id'] );" ><img src="../images/btnLess.png" class="pull-right text-center img-less" alt="less" ></a>
-                </li>
-              </ul>
-            </div>
-          </section>
+      </section>
+    </div>
+    <div class="col col-md-4">
+      <h4 class="text-center" >Manejo de fechas</h4>
+      <section class="col col-md-12">
+        <div class="col col-md-12">
+          <label for="initialDate" >Fecha de inicio</label>
+          <input ng-model="addVoteCtrl.initialDate" class="col col-md-12" id="initialDate" type="date">
         </div>
-        <div class="col col-md-4">
-          <h4 class="text-center" >Manejo de fechas</h4>
-          <section class="col col-md-12">
-            <div class="col col-md-12">
-              <label for="initialDate" >Fecha de inicio</label>
-              <input ng-model="addVoteCtrl.initialDate" class="col col-md-12" id="initialDate" type="date">
-            </div>
-            <div class="col col-md-12">
-              <label  for="finalDate" >Fecha de fin</label>
-              <input ng-model="addVoteCtrl.finalDate" class="col col-md-12" id="finalDate" type="date">
-            </div>
-          </section>
+        <div class="col col-md-12">
+          <label  for="finalDate" >Fecha de fin</label>
+          <input ng-model="addVoteCtrl.finalDate" class="col col-md-12" id="finalDate" type="date">
         </div>
-        <div>
-          <button type="submit" class="btn btn-add">
-            <a href="/Partials/voto.html">Agregar</a>
-          </button>
-        </div>
-      </form>
-    </div><!-- content container viewInfo center-block-->    
-	</body>
-
-	<!-- Angular Material Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.2/angular-material.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="../scripts/data.js" ></script>
-    <script src="../scripts/queries.js" ></script>
-    <script src="../scripts/app.js" ></script>
-    <script src="../scripts/add-vote.js" ></script>
-</html>
+      </section>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-add">
+        Agregar
+      </button>
+    </div>
+  </form>
+</div>
