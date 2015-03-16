@@ -297,17 +297,17 @@ areas = [
 {
 	'id'			: 1,
 	'name'  		: 'Proceso',
-	'description' 	: 'Area del curso que se encarga de todo lo que es documentaciones y'
+	'description' 	: 'Area del curso que se encarga de las documentaciones.'
 },
 {
 	'id'			: 2,
 	'name'  		: 'Técnico',
-	'description' 	: 'Tecnicas, lenguajes de programacion y trabajos practicos'
+	'description' 	: 'Tecnicas, lenguajes de programacion y trabajos practicos.'
 },
 {
 	'id'			: 3,
 	'name'  		: 'Factor Humano',
-	'description' 	: 'Parte encargada de mejorar la relacion entre los grupos'
+	'description' 	: 'Parte encargada de mejorar la relacion entre los grupos.'
 }
 ]
 groups = [

@@ -1,26 +1,22 @@
-
-		<div class="full-screen fs-modal">
-			<div class="col col-md-6">
-				<header>
-					<h1>Agregar Carrera {{ formAddCareer.$valid }}</h1>
-				</header>
-				<form name="formAddCareer" ng-submit="formAddCareer.$valid && rgCareer.addCareer();" novalidate>
-					<div class="row">
-						<div class="col-md-6">
-						  	<label>Carrera</label>
-						    <input type="text" class="form-control" required ng-model="rgCareer.newCareer.name" id="area" placeholder="">
-						</div>
-					  	<div class="col-md-6">
-					  		<label>Director Acad&eacute;mico</label>
-					  		<select ng-model="rgCareer.newCareer.director" required class="form-control select-arrow">
-					  			<option ng-repeat="dir in rgCareer.directors" value="{{ dir.id }}">{{ dir.name }}</option>
-					  		</select>
-					  	</div>
-				  	</div>
-				  	<div class="row">
-					  	<button type="submit" class="btn btn-add"><a href="/Partials/info-consult-career.html">Agregar</a</button>
-				  	</div>
-				</form>			
-			</div>	
+<div class="col col-md-6 col-md-offset-3">
+	<form 	name="formAddCareer" 
+			ng-submit="formAddCareer.$valid && rgCareer.addCareer();" 
+			novalidate
+		>
+		<div class="row">
+			<div class="col-md-6">
+			  	<label>Carrera</label>
+			    <input type="text" class="form-control" required ng-model="rgCareer.newCareer.name" id="area" placeholder="">
 			</div>
-		</div>
+		  	<div class="col-md-6">
+		  		<label>Director Acad&eacute;mico</label>
+		  		<select ng-model="rgCareer.newCareer.director" required class="form-control select-arrow">
+		  			<option ng-repeat="dir in rgCareer.directors" value="{{ dir.id }}">{{ dir.name }}</option>
+		  		</select>
+		  	</div>
+	  	</div>
+	  	<div class="row">
+		  	<button type="submit" class="btn btn-add"><a href="/Partials/info-consult-career.html">Agregar</a</button>
+	  	</div>
+	</form>			
+</div>

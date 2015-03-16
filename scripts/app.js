@@ -42,6 +42,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			url 		: '/profile',
 			templateUrl	: '/Partials/profile-admin.html'
 		})
+		// Admin search information.
 		.state('admin.search',{
 			url 		: '/search',
 			templateUrl : '/Partials/admin-search.html',
@@ -49,10 +50,56 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.areas', {
 			templateUrl : '/Partials/info-consult-area.html',
-			controller  : 'ConsultAreaController as caCtrl'
+			controller  : 'ConsultAreaController as cAreaCtrl'
 		})
 		.state('admin.search.students', {
 			template 	: '<h1>Students!</h1>'
+		})
+		// Admin register information
+		.state('admin.register', {
+			url 		: '/register',
+			templateUrl : '/Partials/admin-register.html',
+			controller  : 'registerInformationController as rInfoCtrl'
+		})
+		.state('admin.register.areas', {
+			templateUrl : '/Partials/form-add-area.html',
+			controller  : 'addAreaController as addAreaCtrl'
+		})
+		.state('admin.register.career', {
+			templateUrl : '/Partials/form-add-career.html'
+		})
+		.state('admin.register.course', {
+			templateUrl : '/Partials/form-add-course.html'
+		})
+		.state('admin.register.dean',{
+			templateUrl : '/Partials/form-add-dean.html'
+		})
+		.state('admin.register.document', {
+			templateUrl : '/Partials/form-add-document.html'
+		})
+		.state('admin.register.director', {
+			templateUrl : '/Partials/form-add-director.html'
+		})
+		.state('admin.register.group', {
+			templateUrl : '/Partials/form-add-group.html'
+		})
+		.state('admin.register.proyect', {
+			templateUrl : '/Partials/form-add-proyect.html'
+		})
+		.state('admin.register.rubric', {
+			templateUrl : '/Partials/form-add-rubric.html'
+		})
+		.state('admin.register.student', {
+			templateUrl : '/Partials/form-add-student.html'
+		})
+		.state('admin.register.profesor', {
+			templateUrl : '/Partials/form-add-profesor.html'
+		})
+		.state('admin.register.team', {
+			templateUrl : '/Partials/form-add-team.html'
+		})
+		.state('admin.register.vote', {
+			templateUrl : '/Partials/form-add-vote.html'
 		});
 
 	// Admin views and partials.

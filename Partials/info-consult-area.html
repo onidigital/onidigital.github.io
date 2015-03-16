@@ -1,43 +1,49 @@
-<div class="content container viewInfo center-block"> 
-  <section class="text-center"  >
-  	<div class="container dropdown-table">
-  	 	<ul class="text-center">
-  	 		<li class="row dropdown-header">
-  	 			<ul>
-  	       	<li class="col col-md-3" >
-  	       		<h3>Área</h3>
-  	       	</li>
-     				<li class="col col-md-3" >
-     					<h3>Grupo</h3>
-     				</li>
-     				<li class="col col-md-3" >
-     					<h3>Profesor</h3>
-     				</li>
-     			</ul>
-  	    </li>
-  		  <li class="col col-md-12 dropdown-body" ng-class="caCtrl.getClass($index)"  >
-  			  <ul class="col col-md-12" ng-repeat="group in [1,2,3]">
-  				  <li class="col col-md-3" >
-  					  <h5>{{ $index }}</h5>
-  				  </li>
-  				  <li class="col col-md-3" >
-  					  <h5>{{ $index }}</h5>
-  				  </li>
-  				  <li class="col col-md-3" >
-  					  <h5>{{ $index }}</h5>
-  				  </li>
-  				  <li class="col col-md-3 table-actions" >
-  					  <button class="col col-md-4 btn btnEdit" 
-  					  		ng-click="caCtrl.dropdown($index)" >
-                   <i class="fa fa-plus fa-2x"></i>
-  					  </button>
-  					  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-pencil fa-2x"></i></button>
-  					  <button class="col col-md-4 btn btnEdit" ><i class="fa fa-trash-o fa-2x"></i></button>
-  				  </li>
-  			  </ul>  				
-  			</li>
-  		</ul>
-      <button type="submit" class="col-md-2 btn btn-add pull-right">Agregar</button>
-  	</div>
-  </section>
-</div>
+<section>
+    <div class=" content container viewInfo center-block"  >
+        <div class="infoTable ">
+            <div class="input-group tableWidth">
+                <table class="dataTable table table-striped">
+                    <div class="row">  
+                        <thead>
+                            <tr>
+                                <td class="text-center">
+                                  Nombre
+                                </td>
+                                <td class="text-center">
+                                  Descripción
+                                </td>
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <tr ng-repeat="area in cAreaCtrl.areas" class="displayInfo" >
+                            <td class="text-center" >
+                              {{ area.name }}
+                            </td>
+                            <td class="text-center" >
+                              {{ area.description }}
+                            </td>
+                            <td class="actions" >
+                                <button class="btn btnEdit col col-md-6" 
+                                        type="button"
+                                      >
+                                    <a  href="/info_Consult.html">
+                                        <i class="fa fa-pencil fa-2x"></i>
+                                    </a>
+                                </button>
+                                <button class="btn btnEdit col col-md-6" 
+                                        type="button"
+                                        ng-click="cAreaCtrl.deleteArea( $index );"
+                                      >
+                                    <a  href="/info_Consult.html">
+                                        <i class="fa fa-trash-o fa-2x"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+<form class="row" >
+	<h1 class="text-center title" >
+		¿Qué desea registrar?
+	</h1>
+	<select class="col col-md-6 col-md-offset-3" 
+			ng-model="rInfoCtrl.displayedForm" 
+			ng-change="rInfoCtrl.changeState();" 
+		>
+		<option value="admin.register.areas" selected >
+			Área
+		</option>
+		<option value="admin.register.career" >
+			Carrera
+		</option>
+		<option value="admin.register.course" >
+			Cursos
+		</option>
+		<option value="admin.register.dean" >
+			Decano
+		</option>
+		<option value="admin.register.document" >
+			Documento
+		</option>
+		<option value="admin.register.director" >
+			Director académico
+		</option>
+		<option value="admin.register.group" >
+			Grupo
+		</option>
+		<option value="admin.register.proyect" >
+			Proyecto
+		</option>
+		<option value="admin.register.rubric" >
+			Rúbrica
+		</option>
+		<option value="admin.register.student" >
+			Estudiantes
+		</option>
+		<option value="admin.register.profesor" >
+			Profesores
+		</option>
+		<option value="admin.register.team" >
+			Equipo
+		</option>
+		<option value="admin.register.vote" >
+			Votación
+		</option>
+	</select>
+</form>
+
+<section ui-view >
+	<!-- Content -->
+</section>
+
+<div class="col col-md-6 col-md-offset-3 ">
