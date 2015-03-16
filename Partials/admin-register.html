@@ -1,12 +1,12 @@
 <form class="row" >
 	<h1 class="text-center title" >
-		¿Qué desea registrar?
+		¿Qué desea registrar? {{ rInfoCtrl.currentRol }}
 	</h1>
 	<select class="col col-md-6 col-md-offset-3" 
 			ng-model="rInfoCtrl.displayedForm" 
 			ng-change="rInfoCtrl.changeState();" 
 		>
-		<option value="admin.register.areas" selected >
+		<option value="admin.register.areas" >
 			Área
 		</option>
 		<option value="admin.register.career" >

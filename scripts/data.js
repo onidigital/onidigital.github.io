@@ -1,3 +1,15 @@
+var Storage = {
+	get   : function(key){
+		return JSON.parse( localStorage.getItem(key) );
+	},
+	set   : function(key,item){
+		localStorage.setItem(key, JSON.stringify(item) );
+	},
+	clear : function(){ 
+		localStorage.clear() 
+	}
+};
+
 var users = [
 {
 	'id'		: 1,

@@ -199,7 +199,7 @@ app.controller('menuController', function($scope, $timeout, $mdSidenav, $log) {
     };
 });
 //Tables controller.
-app.controller('infoController', function() {
+app.controller('InfoController', function() {
 	this.students = Query('users','rol',2); //this hace referencia al controlador
 	this.courses = Query('courses');
 });

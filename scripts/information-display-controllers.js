@@ -1,7 +1,7 @@
 app.controller('searchInformationController',['$state',function($state){
-	var $this= this;
-
-	this.displayedInformation = 'admin.search.areas';
+	var $this= this,
+		sesion = Storage.get('sesion');
+	this.displayedInformation = sesion.rolCode+'search.areas';
 
 	this.changeState = function(){
 		$state.go( $this.displayedInformation );
@@ -12,9 +12,10 @@ app.controller('searchInformationController',['$state',function($state){
 }]);
 
 app.controller('registerInformationController',['$state',function($state){
-	var $this= this;
+	var $this  = this,
+		sesion = Storage.get('sesion');
 
-	this.displayedForm = 'admin.register.areas';
+	this.displayedForm = sesion.rolCode+'.register.areas';
 
 	this.changeState = function(){
 		$state.go( $this.displayedForm );
