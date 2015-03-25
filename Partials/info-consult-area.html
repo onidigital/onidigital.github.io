@@ -16,7 +16,7 @@
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="area in cAreaCtrl.areas" class="displayInfo" >
+                        <tr ng-repeat="area in cAreaCtrl.areas | filter: search" class="displayInfo" >
                             <td class="text-center" >
                               {{ area.name }}
                             </td>

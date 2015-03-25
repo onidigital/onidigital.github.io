@@ -32,6 +32,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 	
 	// Admin views and partials.
 	$urlRouterProvider.when('/admin','admin/profile');
+	$urlRouterProvider.when('/admin/register','/admin/register/areas');
+	$urlRouterProvider.when('/admin/search','/admin/search/areas');
 	$stateProvider
 		// Admin base template.
 		.state('admin',{
@@ -49,11 +51,68 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			controller  : 'searchInformationController as sInfoCtrl'
 		})
 		.state('admin.search.areas', {
+			url 		: '/areas', 		
 			templateUrl : '/Partials/info-consult-area.html',
 			controller  : 'ConsultAreaController as cAreaCtrl'
 		})
 		.state('admin.search.students', {
-			template 	: '<h1>Students!</h1>'
+			url 		: '/students', 		
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.career', {
+			url 		: '/career',
+			templateUrl : '/Partials/info-consult-career.html',
+			controller  : 'ConsultCareerController as cCareerCtrl'
+		})
+		.state('admin.search.course', {
+			url 		: '/course',
+			templateUrl : '/Partials/info-consult-course.html',
+			controller  : 'ConsultCourseController as cCourseCtrl'
+		})
+		.state('admin.search.dean',{
+			url 		: '/dean',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.document', {
+			url 		: '/document',
+			template 	: '<h1 class="text-center">Formulario de documento aun no existe.</h1>'
+		})
+		.state('admin.search.director', {
+			url 		: '/director',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.group', {
+			url 		: '/group',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.project', {
+			url 		: '/project',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.rubric', {
+			url 		: '/rubric',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.student', {
+			url 		: '/student',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.teacher', {
+			url 		: '/teacher',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
+		})
+		.state('admin.search.team', {
+			url 		: '/team',
+			templateUrl : '/Partials/info-consult-student.html',
+			controller  : 'ConsultStudentController as cStudentCtrl'
 		})
 		// Admin register information
 		.state('admin.register', {
@@ -62,43 +121,56 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			controller  : 'registerInformationController as rInfoCtrl'
 		})
 		.state('admin.register.areas', {
+			url 		: '/areas',
 			templateUrl : '/Partials/form-add-area.html',
 			controller  : 'addAreaController as addAreaCtrl'
 		})
 		.state('admin.register.career', {
+			url 		: '/career',
 			templateUrl : '/Partials/form-add-career.html'
 		})
 		.state('admin.register.course', {
+			url 		: '/course',
 			templateUrl : '/Partials/form-add-course.html'
 		})
 		.state('admin.register.dean',{
+			url 		: '/dean',
 			templateUrl : '/Partials/form-add-dean.html'
 		})
 		.state('admin.register.document', {
-			templateUrl : '/Partials/form-add-document.html'
+			url 		: '/document',
+			template 	: '<h1 class="text-center">Formulario de documento aun no existe.</h1>'
 		})
 		.state('admin.register.director', {
+			url 		: '/director',
 			templateUrl : '/Partials/form-add-director.html'
 		})
 		.state('admin.register.group', {
+			url 		: '/group',
 			templateUrl : '/Partials/form-add-group.html'
 		})
 		.state('admin.register.project', {
+			url 		: '/project',
 			templateUrl : '/Partials/form-add-project.html'
 		})
 		.state('admin.register.rubric', {
+			url 		: '/rubric',
 			templateUrl : '/Partials/form-add-rubric.html'
 		})
 		.state('admin.register.student', {
+			url 		: '/student',
 			templateUrl : '/Partials/form-add-student.html'
 		})
 		.state('admin.register.teacher', {
+			url 		: '/teacher',
 			templateUrl : '/Partials/form-add-teacher.html'
 		})
 		.state('admin.register.team', {
+			url 		: '/team',
 			templateUrl : '/Partials/form-add-team.html'
 		})
 		.state('admin.register.vote', {
+			url 		: '/vote',
 			templateUrl : '/Partials/form-add-vote.html'
 		});
 

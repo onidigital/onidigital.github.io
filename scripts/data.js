@@ -137,11 +137,13 @@ careers = [
 {	
 	'id'		: 1,
 	'name'		: 'Ingeniería de software',
+	'director'  : 'María Eugenia Ucrós',
 	'courses'	: [1]
 },
 {
 	'id'		: 2,
 	'name'		: 'Desarrollo Web',
+	'director'  : 'María Eugenia Ucrós',
 	'courses'	: [2]
 }
 ],
