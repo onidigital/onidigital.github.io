@@ -72,8 +72,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.dean',{
 			url 		: '/dean',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-dean.html',
+			controller  : 'ConsultDeanController as cDeanCtrl'
 		})
 		.state('admin.search.document', {
 			url 		: '/document',
@@ -81,23 +81,22 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.director', {
 			url 		: '/director',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-director.html',
+			controller  : 'ConsultDirectorController as cDirectorCtrl'
 		})
 		.state('admin.search.group', {
 			url 		: '/group',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-group.html',
+			controller  : 'ConsultGroupController as cGroupCtrl'
 		})
 		.state('admin.search.project', {
 			url 		: '/project',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			template 	: '<h1>Esta tabla no existe</h1>'
 		})
 		.state('admin.search.rubric', {
 			url 		: '/rubric',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-rubric.html',
+			controller  : 'ConsultRubricController as cRubricCtrl'
 		})
 		.state('admin.search.student', {
 			url 		: '/student',
@@ -106,13 +105,13 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.teacher', {
 			url 		: '/teacher',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-teacher.html',
+			controller  : 'ConsultTeacherController as cTeacherCtrl'
 		})
 		.state('admin.search.team', {
 			url 		: '/team',
-			templateUrl : '/Partials/info-consult-student.html',
-			controller  : 'ConsultStudentController as cStudentCtrl'
+			templateUrl : '/Partials/info-consult-team.html',
+			controller  : 'ConsultTeamController as cTeamCtrl'
 		})
 		// Admin register information
 		.state('admin.register', {

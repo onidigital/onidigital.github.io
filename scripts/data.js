@@ -395,7 +395,7 @@ groups = [
 					]
 }
 ],
-proyects = [
+projects = [
 {
 	'id'			: 1,
 	'name'  		: 'Biblioteca Virtual',
@@ -407,21 +407,21 @@ teams = [
 {
 	'id'		: 1,
 	'name'	 	: 'Oni',
-	'proyect'	: 1,
+	'project'	: 1,
 	'students'	: [3, 4],
 	'logo'		: ''
 },
 {
 	'id'		: 2,
 	'name'	 	: 'Superb',
-	'proyect'	: 2,
+	'project'	: 1,
 	'students'	: [3, 4],
 	'logo'		: ''
 },
 {
 	'id'		: 3,
 	'name'	 	: 'Fjorgyn',
-	'proyect'	: 1,
+	'project'	: 1,
 	'students'	: [3, 4],
 	'logo'		: ''
 }
@@ -463,19 +463,19 @@ voting = [
 ];
 
 
-var data 			= {};
-data.users 			= users;
-data.rol 			= rol;
-data.studentRol     = studentRol;
-data.careers 		= careers;
-data.courses 		= courses;
-data.rubrics 		= rubrics;
-data.areas 			= areas;
-data.documents 		= documents;
-data.groups			= groups;
-data.teams			= teams;
-data.proyects		= proyects;
-data.competitorTeam = competitorTeam;
-data.winnerTeam		= winnerTeam;
-data.voting			= voting;
-data.documentsPerGroup =documentsPerGroup;
+var data 				= {};
+data.users 				= users;
+data.rol 				= rol;
+data.studentRol     	= studentRol;
+data.careers 			= careers;
+data.courses 			= courses;
+data.rubrics	 		= rubrics;
+data.areas 				= areas;
+data.documents 			= documents;
+data.groups				= groups;
+data.teams				= teams;
+data.projects			= projects;
+data.competitorTeam 	= competitorTeam;
+data.winnerTeam			= winnerTeam;
+data.voting				= voting;
+data.documentsPerGroup 	= documentsPerGroup;

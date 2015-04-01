@@ -74,3 +74,37 @@ app.controller('ConsultCareerController', function() {
 app.controller('ConsultCourseController', function() {
 	this.courses = Query('courses','-','all');
 });
+
+app.controller('ConsultDeanController', function() {
+	this.deans = Query('users','rol',3);
+});
+
+app.controller('ConsultDirectorController', function() {
+	this.directors = Query('users','rol',4);
+});
+
+app.controller('ConsultGroupController', function() {
+	this.groups = Query('groups','-','all'); 
+
+	this.getCourse = function ($id){
+		return Query('courses','id',$id)[0].name;
+	}
+
+});
+
+app.controller('ConsultRubricController', function() {
+	this.rubrics = Query('rubrics','-','all');
+});
+
+app.controller('ConsultTeacherController', function() {
+	this.teachers = Query('users','rol',4);
+});
+
+app.controller('ConsultTeamController', function() {
+	this.teams = Query('teams','-','all');
+
+	this.getProject = function ($id){
+		return Query('projects','id',$id)[0].name;
+	}
+
+});

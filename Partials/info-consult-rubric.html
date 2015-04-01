@@ -1,35 +1,33 @@
-<section >
-    <div class=" content container viewInfo center-block"  >
+<section>
+    <div class=" content container viewInfo center-block">
         <div class="infoTable ">
             <div class="input-group tableWidth">
                 <table class="dataTable table table-striped">
                     <div class="row">  
                         <thead>
                             <tr>
-                                <td class="text-center"  data-field="name">Curso</td>
-                                <td class="text-center"  data-field="id">Fecha Inicio</td>
-                                <td class="text-center"  data-field="email">Fecha Final</td>
+                                <td class="text-center"  data-field="name">R&uacute;brica de Documento</td>
+                                <td class="text-center"  data-field="id">Id</td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="group in cGroupCtrl.groups | filter: search" class="displayInfo" >
-                            <td class="text-center" >{{ cGroupCtrl.getCourse(group.course) }}</td>
-                            <td class="text-center" >{{ group.initialDate }}</td>
-                            <td class="text-center" >{{ group.finalDate   }}</td>
+                        <tr ng-repeat="rubric in cRubricCtrl.rubrics | filter: search" class="displayInfo" >
+                            <td class="text-center" >{{ rubric.nombre }}</td>
+                            <td class="text-center" >{{ rubric.id   }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-4" type="button">
-                                    <a  href="/Partials/form-add-group.html">
+                                    <a href="/info_Consult.html">
                                         <i class="fa fa-plus fa-2x"></i>
                                     </a>
                                 </button>
                                 <button class="btn btnEdit col col-md-4" type="button">
-                                    <a  href="/Partials/form-add-group.html">
+                                    <a href="/info_Consult.html">
                                         <i class="fa fa-pencil fa-2x"></i>
                                     </a>
                                 </button>
                                 <button class="btn btnEdit col col-md-4" type="button">
-                                    <a  href="/Partials/form-add-group.html">
+                                    <a>
                                         <i class="fa fa-trash-o fa-2x"></i>
                                     </a>
                                 </button>
@@ -41,5 +39,3 @@
         </div>
     </div>
 </section>
-
-

@@ -1,24 +1,5 @@
 <section>
     <div class=" content container viewInfo center-block"  >
-        <div class="profile-selected">
-            <ul>
-                <li>
-                    <p>Administrador</p>
-                    <div class="arrow-front"></div>
-                </li>
-                <li>
-                   <div class="arrow-back-up"></div>
-                   <div class="arrow-back-down"></div>
-                   <p>Decano</p>
-                   <div class="arrow-front"></div>
-                </li>
-            </ul>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 pull-right" >
-                <input type="text" class="form-control" class="search" type="text" ng-model="search" placeholder="Buscar por: Nombre, Cédula, Email.">
-            </div><!--/.col-lg-6 -->
-        </div>
         <div class="infoTable ">
             <div class="input-group tableWidth">
                 <table class="dataTable table table-striped">
@@ -32,7 +13,7 @@
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="dean in infoDeanCtrl.deans | filter: search" class="displayInfo" >
+                        <tr ng-repeat="dean in cDeanCtrl.deans | filter: search" class="displayInfo" >
                             <td class="text-center" >{{ dean.name +' '+ dean.lastName }}</td>
                             <td class="text-center" >{{ dean.pId   }}</td>
                             <td class="text-center" >{{ dean.email }}</td>
@@ -56,7 +37,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div><!-- /input-group -->
+            </div>
         </div>
     </div>
 </section>

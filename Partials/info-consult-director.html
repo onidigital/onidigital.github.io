@@ -1,65 +1,45 @@
-
-        <section>
-        <div class=" content container viewInfo center-block"  >
-            <div class="profile-selected">
-                <ul>
-                    <li>
-                        <p>Administrador</p>
-                        <div class="arrow-front"></div>
-                    </li>
-                    <li>
-                       <div class="arrow-back-up"></div>
-                       <div class="arrow-back-down"></div>
-                       <p>Director</p>
-                       <div class="arrow-front"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 pull-right" >
-                    <input type="text" class="form-control" class="search" type="text" ng-model="buscador" placeholder="Buscar por: Nombre, Cédula, Email.">
-                </div><!--/.col-lg-6 -->
-            </div>
-            <div class="infoTable ">
-                <div class="input-group tableWidth">
-                    <table class="dataTable table table-striped">
-                        <div class="row">  
-                            <thead>
-                                <tr>
-                                    <td class="text-center"  data-field="name">Director Académico</td>
-                                    <td class="text-center"  data-field="id">Cédula</td>
-                                    <td class="text-center"  data-field="id">Carrera</td>
-                                    <td class="text-center"  data-field="email">Email</td>
-                                </tr>
-                            </thead>
-                        </div>
-                        <tbody>
-                            <tr ng-repeat="director in infoDirCtrl.directors | filter: buscador" class="displayInfo" >
-                                <td class="text-center" >{{ director.name  }}</td>
-                                <td class="text-center" >{{ director.pId   }}</td>
-                                <td class="text-center" >{{ director.careers }}</td>
-                                <td class="text-center" >{{ director.email }}</td>
-                                <td class="actions col col-md-3" >
-                                    <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/info_Consult.html">
-                                            <i class="fa fa-plus fa-2x"></i>
-                                        </a>
-                                    </button>
-                                    <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/info_Consult.html">
-                                            <i class="fa fa-pencil fa-2x"></i>
-                                        </a>
-                                    </button>
-                                    <button class="btn btnEdit col col-md-4" type="button">
-                                        <a  href="/info_Consult.html">
-                                            <i class="fa fa-trash-o fa-2x"></i>
-                                        </a>
-                                    </button>
-                                </td>
+<section>
+    <div class=" content container viewInfo center-block"  >
+        <div class="infoTable ">
+            <div class="input-group tableWidth">
+                <table class="dataTable table table-striped">
+                    <div class="row">  
+                        <thead>
+                            <tr>
+                                <td class="text-center"  data-field="name">Director Académico</td>
+                                <td class="text-center"  data-field="id">Cédula</td>
+                                <td class="text-center"  data-field="id">Carrera</td>
+                                <td class="text-center"  data-field="email">Email</td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div><!-- /input-group -->
-            </div>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <tr ng-repeat="director in cDirectorCtrl.directors | filter: buscador" class="displayInfo" >
+                            <td class="text-center" >{{ director.name  }}</td>
+                            <td class="text-center" >{{ director.pId   }}</td>
+                            <td class="text-center" >{{ director.careers }}</td>
+                            <td class="text-center" >{{ director.email }}</td>
+                            <td class="actions col col-md-3" >
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a  href="/info_Consult.html">
+                                        <i class="fa fa-plus fa-2x"></i>
+                                    </a>
+                                </button>
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a  href="/info_Consult.html">
+                                        <i class="fa fa-pencil fa-2x"></i>
+                                    </a>
+                                </button>
+                                <button class="btn btnEdit col col-md-4" type="button">
+                                    <a  href="/info_Consult.html">
+                                        <i class="fa fa-trash-o fa-2x"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- /input-group -->
         </div>
-    </section>
+    </div>
+</section>
