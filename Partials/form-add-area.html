@@ -1,19 +1,57 @@
 <div class="col col-md-6 col-md-offset-3">
 	<form name="formAddArea" ng-submit="formAddArea.$valid && addAreaCtrl.addArea()" novalidate>
+		<h2 class="text-center register-sucess" ng-show="addAreaCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addAreaCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
-			<div class="col-md-6">
-			  	<label>&Aacute;rea</label>
-			    <input required type="text" ng-model="addAreaCtrl.newArea.name" class="form-control" id="area" placeholder="">
+			<div class="col-md-12">
+			  	<label for="txtArea">
+			  		Área
+			  	</label>
+			    <input 	id="txtArea"
+			    		required 
+			    		type="text" 
+			    		ng-model="addAreaCtrl.newArea.name" 
+			    		class="form-control" 
+			    		name="area" 
+			    		placeholder="Nombre del área"
+			    	>
+			    <!-- Errors -->
+			    	<p 	ng-show="formAddArea.area.$dirty && 
+			    				 formAddArea.area.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar el nombre del área.
+			    	</p>
 			</div>
 	  	</div>
 		<div class="row">
-		  	<div class="col-md-12">
-		  		<label>Descripci&oacute;n</label>
-		  		<textarea required ng-model="addAreaCtrl.newArea.description" class="form-control col-md-6" rows="6"></textarea>
-		  	</div>
+			<div class="col-md-12">
+			  	<label for="txtDescription">
+			  		Descripción
+			  	</label>
+			    <textarea	id="txtDescription"
+			    			required 
+			    			type="text" 
+			    			ng-model="addAreaCtrl.newArea.description" 
+			    			class="form-control" 
+			    			name="description" 
+			    	>
+			    </textarea>
+			    <!-- Errors -->
+			    	<p 	ng-show="formAddArea.description.$dirty && 
+			    				 formAddArea.description.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar la descripción del área.
+			    	</p>
+			</div>
 	  	</div>
 	  	<div class="row">
-		  	<button type="submit" class="btn btn-add">
+		  	<button  ng-disabled="formAddArea.$invalid" type="submit" class="btn btn-add">
 		  		Agregar
 		  	</button>
 	  	</div>	

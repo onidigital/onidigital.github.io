@@ -131,6 +131,16 @@ var users = [
 	'rol'		: 5,
 	'pId'		: 'd-1',
 	'image'		: ''
+},
+{
+	'id'		: 11,
+	'email'		: 'mucros@ucenfotec.ac.cr',
+	'password'	: 'mucros',
+	'name'		: 'María Eugenia',
+	'lastName'	: 'Ucrós',
+	'rol'		: 3,
+	'pId'		: 'd-6',
+	'image'		: ''
 }
 ],
 careers = [

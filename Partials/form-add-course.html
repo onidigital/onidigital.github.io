@@ -1,32 +1,93 @@
 <div class="col col-md-6 col-md-offset-3 ">
 	<form 	name="formAddCourse" 
-			ng-submit="formAddCourse.$valid && acCtrl.addCourse()" 
+			ng-submit="formAddCourse.$valid && addCourseCtrl.addCourse()" 
 			novalidate
 		>
+		<h2 class="text-center register-sucess" ng-show="addCourseCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addCourseCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Curso</label>
-			    <input type="text" ng-model="acCtrl.newCourse.name" class="form-control"  placeholder="" required>
+			  	<label for="txtCourse">
+			  		Curso
+			  	</label>
+			    <input 	type="text" 
+			    		id="txtCourse"
+			    		name="course"
+			    		ng-model="addCourseCtrl.newCourse.name" 
+			    		class="form-control"  
+			    		required
+			    	>
+			    	<!-- Errors -->
+			    		<p 	ng-show="formAddCourse.course.$dirty &&
+			    					 formAddCourse.course.$error.required"
+			    			class="error-feedback" 
+			    		>
+			    			Necesita ingresar el nombre del curso.
+			    		</p>
 			</div>
 			<div class="col-md-6">
-			  	<label>C&oacute;digo</label>
-			    <input type="text" ng-model="acCtrl.newCourse.code" class="form-control"  placeholder="" required>
+			  	<label for="txtCode">
+			  		Código
+			  	</label>
+			    <input 	type="text"
+			    		id="txtCode"
+			    		name="code" 
+			    		ng-model="addCourseCtrl.newCourse.code" 
+			    		class="form-control"  
+			    		required
+			    	>
+			    	<!-- Errors -->
+			    		<p 	ng-show="formAddCourse.code.$dirty &&
+			    					 formAddCourse.code.$error.required"
+			    			class="error-feedback" 
+			    		>
+			    			Necesita ingresar el código del curso.
+			    		</p>
 			</div>
 		</div>
 		<div class="row">
 		  	<div class="col-md-6">
-			  	<label>Cr&eacute;ditos</label>
-			    <input type="number" ng-model="acCtrl.newCourse.credits" class="form-control"  placeholder="" required>
+			  	<label for="txtCredits">
+			  		Créditos
+			  	</label>
+			    <input 	type="number" 
+			    		id="txtCredits"
+			    		nam="credits"
+			    		ng-model="addCourseCtrl.newCourse.credits" 
+			    		min="1"
+			    		class="form-control"
+			    		required
+			    	>
+			    	<p 	ng-show="formAddCourse.credits.$dirty &&
+			    				 formAddCourse.credits.$error.required"
+			    			class="error-feedback"
+			    		>
+			    			Necesita ingresar la cantidad de créditos del curso.
+			    		</p>
 			</div>
 			<div class="form-group col-md-6">
 		  		<label >Carrera</label>
-		  		<select ng-model="acCtrl.newCourse.career" class="form-control  select-arrow" required>
-		  			<option ng-repeat="career in acCtrl.careers" value="{{ career.id }}">{{ career.name }}</option>
+		  		<select ng-model="addCourseCtrl.newCourse.career" 
+		  				class="form-control" 
+		  				required
+		  			>
+		  			<option ng-repeat="career in addCourseCtrl.careers" 
+		  					value="{{ career.id }}"
+		  				>
+		  				{{ career.name }}
+		  			</option>
 		  		</select>
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  		<button type="submit" ng-click="submitted=true" class="pull-right btn btn-add">
+		  		<button type="submit" 
+		  				ng-disabled="formAddCourse.$invalid" 
+		  				class="pull-right btn btn-add"
+		  			>
 		  			Agregar
 		  		</button>
 	  	</div>	

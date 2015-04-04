@@ -2,6 +2,12 @@
     <div class=" content container viewInfo center-block"  >
         <div class="infoTable ">
             <div class="input-group tableWidth">
+                <dir-pagination-controls    
+                    boundary-links="true" 
+                    on-page-change="pageChangeHandler(newPageNumber)" 
+                    template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
+                >
+                </dir-pagination-controls>
                 <table class="dataTable table table-striped">
                     <div class="row">  
                         <thead>
@@ -16,7 +22,10 @@
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="area in cAreaCtrl.areas | filter: search" class="displayInfo" >
+                        <tr dir-paginate="area in cAreaCtrl.areas   |
+                                          filter        : search    |
+                                          itemsPerPage  : 5" 
+                            class="displayInfo" >
                             <td class="text-center" >
                               {{ area.name }}
                             </td>
@@ -43,7 +52,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div><!-- /input-group -->
+            </div>
         </div>
     </div>
 </section>

@@ -1,22 +1,64 @@
 <div class="col col-md-6 col-md-offset-3">
 	<form 	name="formAddCareer" 
-			ng-submit="formAddCareer.$valid && rgCareer.addCareer();" 
+			ng-submit="formAddCareer.$valid && addCareerCtrl.addCareer();" 
 			novalidate
 		>
+		<h2 class="text-center register-sucess" ng-show="addCareerCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addCareerCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
-			<div class="col-md-6">
-			  	<label>Carrera</label>
-			    <input type="text" class="form-control" required ng-model="rgCareer.newCareer.name" id="area" placeholder="">
+			<div class="col-md-12">
+			  	<label for="txtCareer" >
+			  		Carrera
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control" 
+			    		required 
+			    		ng-model="addCareerCtrl.newCareer.name" 
+			    		id="txtCareer" 
+			    		name="career"
+			    		placeholder="Nombre de la carrera."
+			    	/>
+			    	<!-- Errors -->
+			    		<p 	ng-show="formAddCareer.career.$dirty &&
+			    					 formAddCareer.career.$error.required"
+			    			class="error-feedback" 
+			    		>
+			    			Necesita ingresar el nombre de la carrera.
+			    		</p>
 			</div>
-		  	<div class="col-md-6">
-		  		<label>Director Acad&eacute;mico</label>
-		  		<select ng-model="rgCareer.newCareer.director" required class="form-control select-arrow">
-		  			<option ng-repeat="dir in rgCareer.directors" value="{{ dir.id }}">{{ dir.name }}</option>
+		  	<div class="col-md-12">
+		  		<label for="txtDirector" >
+		  			Director Académico
+		  		</label>
+		  		<select ng-model="addCareerCtrl.newCareer.director" 
+		  				required 
+		  				class="form-control"
+		  				id="txtDirector"
+		  				name="director"
+		  			>
+		  			<option ng-repeat="dir in addCareerCtrl.directors" 
+		  					value="{{ dir.name +' '+ dir.lastName }}"
+		  				>
+		  				{{ dir.name +" "+ dir.lastName +" - "+ dir.pId}}
+		  			</option>
 		  		</select>
+		  			<!-- Errors -->
+			    		<p 	ng-show="formAddCareer.director.$dirty &&
+			    					 formAddCareer.director.$error.required"
+			    			class="error-feedback" 
+			    		>
+			    			Por favor ingrese un director encargado de la carrera.
+			    		</p>
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  	<button type="submit" class="btn btn-add"><a href="/Partials/info-consult-career.html">Agregar</a</button>
+		  	<button ng-disabled="formAddCareer.$invalid" type="submit" class="btn btn-add">
+		  		Agregar
+		  	</button>
 	  	</div>
 	</form>			
 </div>

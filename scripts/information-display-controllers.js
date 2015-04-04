@@ -39,15 +39,96 @@ function($state, configModule){
 }]);
 
 
-app.controller('addAreaController', function(){
+app.controller('addAreaController', function($scope){
 	var $this = this;
 
 	this.newArea = {};
+	this.sucess = false;
 
 	this.addArea = function(){
 		Insert('areas',$this.newArea);
 		$this.newArea = {};
+		$scope.formAddArea.$setPristine();
+		$this.sucess = true;
 	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addCareerController', function($scope){
+	var $this = this;
+
+	this.directors = Query('users','rol',3);
+	this.careers   = Query('careers','-','all');
+	this.newCareer = {};
+	this.sucess = false;
+
+	this.addCareer = function(){
+		$this.careers = Insert('careers',$this.newCareer);;
+		$this.newCareer = {};
+		$scope.formAddCareer.$setPristine();
+		$this.sucess = true;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addCourseController', function($scope){
+	var $this = this;
+
+	this.careers   = Query('careers','-','all');
+	this.newCourse = {};
+	this.sucess = false;
+
+	this.addCourse = function(){
+		Insert('courses',$this.newCourse);;
+		$this.newCourse = {};
+		$scope.formAddCourse.$setPristine();
+		$this.sucess = true;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addDeanController', function($scope){
+	var $this = this;
+
+	this.teams   = Query('teams','-','all');
+	this.newProject = {};
+	this.sucess = false;
+
+	this.addProject = function(){
+		Insert('projects',$this.newProject);;
+		$this.newProject = {};
+		$scope.formAddProject.$setPristine();
+		$this.sucess = true;
+		console.log( data['projects'] );
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addProjectController', function($scope){
+	var $this = this;
+
+	this.teams   = Query('teams','-','all');
+	this.newProject = {};
+	this.sucess = false;
+
+	this.addProject = function(){
+		Insert('projects',$this.newProject);;
+		$this.newProject = {};
+		$scope.formAddProject.$setPristine();
+		$this.sucess = true;
+		console.log( data['projects'] );
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
 });
 
 // Consult information controllers.

@@ -1,4 +1,8 @@
-var app = angular.module("libreriaVirtual", ['ui.router','ngMaterial']);
+var app = angular.module("libreriaVirtual", ['ui.router',	
+											 'ngMaterial',
+											 'resettableForm',
+											 'angularUtils.directives.dirPagination'
+											]);
 
 app.config(function($stateProvider, $urlRouterProvider ){
 
@@ -126,11 +130,13 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.career', {
 			url 		: '/career',
-			templateUrl : '/Partials/form-add-career.html'
+			templateUrl : '/Partials/form-add-career.html',
+			controller  : 'addCareerController as addCareerCtrl'
 		})
 		.state('admin.register.course', {
 			url 		: '/course',
-			templateUrl : '/Partials/form-add-course.html'
+			templateUrl : '/Partials/form-add-course.html',
+			controller  : 'addCourseController as addCourseCtrl'
 		})
 		.state('admin.register.dean',{
 			url 		: '/dean',
@@ -150,7 +156,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.project', {
 			url 		: '/project',
-			templateUrl : '/Partials/form-add-project.html'
+			templateUrl : '/Partials/form-add-project.html',
+			controller  : 'addProjectController as addProjectCtrl' 
 		})
 		.state('admin.register.rubric', {
 			url 		: '/rubric',

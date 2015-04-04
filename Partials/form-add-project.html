@@ -1,29 +1,99 @@
 <div class="col col-md-6 col-md-offset-3 ">
-	<form>
+	<form name="formAddProject" ng-submit="formAddProject.$valid &&
+										   addProjectCtrl.addProject();"
+								novalidate
+		>
+		<h2 class="text-center register-sucess" ng-show="addProjectCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addProjectCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Proyecto</label>
-			    <input type="text" class="form-control"placeholder="">
+			  	<label for="txtProject">
+			  		Proyecto
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+						id="txtProject"
+						name="project"
+						ng-model="addProjectCtrl.newProject.name"
+						required
+			    	>
+			    		<!-- Errors -->
+			    		<p 	ng-show="formAddProject.project.$dirty && 
+			    				 	 formAddProject.project.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el nombre del proyecto.
+				    	</p>
 			</div>
 		  	<div class="col-md-6">
-		  		<label>Equipo</label>
-		  		<select class="form-control select-arrow">
-		  			<option value=""></option>			 
+		  		<label>
+		  			Equipo
+		  		</label>
+		  		<select class="form-control"
+		  				required 
+		  			>
+		  			<option ng-repeat="team in addProjectCtrl.teams"
+		  					value="{{ team.id }}"
+		  				>
+		  				{{ team.name }}
+		  			</option>			 
 		  		</select>	
 		  	</div>
 	  	</div>
 		<div class="row">
-		  	<div class="col-md-12">
-		  		<label>Descripci&oacute;n</label>
-		  		<textarea class="form-control col-md-6" rows="6"></textarea>
-		  	</div>
+			<div class="col-md-12">
+			  	<label for="txtDescription">
+			  		Descripción
+			  	</label>
+			    <textarea	id="txtDescription"
+			    			required 
+			    			type="text" 
+			    			ng-model="addProjectCtrl.newProject.description" 
+			    			class="form-control" 
+			    			name="description" 
+			    	>
+			    </textarea>
+			    <!-- Errors -->
+			    	<p 	ng-show="formAddProject.description.$dirty && 
+			    				 formAddProject.description.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar la descripción del proyecto.
+			    	</p>
+			</div>
 	  	</div>
 	  	<div class="row">
-		  	<div class="col-md-6">
-			  	<label>Palabra Clave</label>
-			    <input type="text" class="form-control"placeholder="">
+		  	<div class="col-md-12">
+			  	<label for="txtKeyWords">
+			  		Palabra Clave
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+			    		id="txtKeywords"
+			    		name="keywords"
+			    		ng-model="addProjectCtrl.newProject.keywords"
+			    		required
+			    	>
+			    	<!-- Errors -->
+			    		<p 	ng-show="formAddProject.keywords.$dirty && 
+			    				 	 formAddProject.keywords.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar las palabras clave del proyecto.
+				    	</p>
 	  		</div>
-	  		<button type="submit" class="btn btn-add">Agregar</button>
 	    </div>	
+	    <div>
+	    	<button type="submit" 
+	  				class="btn btn-add"
+	  				ng-disabled="formAddProject.$invalid"
+	  		>
+	  			Agregar
+	  		</button>
+	    </div>
 	</form>	
 </div>
