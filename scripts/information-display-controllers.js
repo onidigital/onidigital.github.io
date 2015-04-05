@@ -96,16 +96,148 @@ app.controller('addCourseController', function($scope){
 app.controller('addDeanController', function($scope){
 	var $this = this;
 
-	this.teams   = Query('teams','-','all');
-	this.newProject = {};
+	this.newDean = {};
 	this.sucess = false;
 
-	this.addProject = function(){
-		Insert('projects',$this.newProject);;
-		$this.newProject = {};
-		$scope.formAddProject.$setPristine();
+	this.addDean = function(){
+		$this.newDean.rol = 5;
+		Insert('users',$this.newDean);
+		$this.newDean = {};
+		$scope.formAddDean.$setPristine();
 		$this.sucess = true;
-		console.log( data['projects'] );
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addDirectorController',function($scope){
+
+var $this = this;
+
+	this.directorCareers = [];
+	this.newDirectorCareer = {};
+	this.careers   = Query('careers','-','all');
+	this.newDirector = {};
+	this.sucess = false;
+
+
+	this.asignCareer = function() {
+		$this.directorCareers.push( $this.newDirectorCareer );
+		$this.newDirector.careers = $this.directorCareers;
+		$this.newDirectorCareer = {};
+	};
+
+
+	this.deleteDirectorCareer = function( index ) {
+		$this.directorCareers.splice(index,1);
+		$this.newDirector.careers = $this.directorCareers;
+	};
+
+	this.addDirector = function() {
+		$this.newDirector['rol'] = 3;
+		Insert('users',$this.newDirector);
+		this.directorCareers = [];
+		$this.newDirector = {};
+
+		$scope.formAddDirector.$setPristine();
+		$this.sucess = true;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addRubricController',function($scope){
+
+var $this 	  = this,
+	defaultMP = 100; // Default max points.
+	
+	this.newRubric 			= {};
+	this.newRubric.aspects 	= [];
+	this.newAspect 			= {};
+	this.totalPoints 		= 0;
+	this.maxPoints 			= defaultMP;
+	this.sucess 			= false;
+
+
+	this.asignAspect = function() {
+		$this.newRubric.aspects.unshift( $this.newAspect );
+		$this.maxPoints = ($this.maxPoints - $this.newAspect.value) || 0;
+		$this.newAspect = {};
+	};
+
+
+	this.deleteAspect = function( index ) {
+		$this.maxPoints += $this.newRubric.aspects[index].value;
+		$this.newRubric.aspects.splice(index,1);
+	};
+
+	this.addRubric = function() {
+		console.table($this.newRubric);
+		Insert("rubrics",$this.newRubric);
+		$scope.formAddRubric.$setPristine();
+		$this.sucess = true;
+
+		$this.newRubric = {
+			'aspects' 	: []
+		}
+		$this.maxPoints = defaultMP;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addStudentController',function($scope){
+
+var $this = this;
+
+	this.studentCareers 	= [];
+	this.newStudentCareer 	= {};
+	this.careers   			= Query('careers','-','all');
+	this.newStudent 		= {};
+	this.sucess 			= false;
+
+
+	this.asignCareer = function() {
+		$this.studentCareers.push( $this.newStudentCareer );
+		$this.newStudent.careers = $this.studentCareers;
+		$this.newStudentCareer = {};
+	};
+
+
+	this.deleteStudentCareer = function( index ) {
+		$this.studentCareers.splice(index,1);
+		$this.newStudent.careers = $this.studentCareers;
+	};
+
+	this.addStudent = function() {
+		$this.newStudent['rol'] = 2;
+		Insert('users',$this.newStudent);
+		this.studentCareers = [];
+		$this.newStudent = {};
+
+		$scope.formAddStudent.$setPristine();
+		$this.sucess = true;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+app.controller('addTeacherController', function($scope){
+	var $this = this;
+
+	this.newTeacher = {};
+	this.sucess = false;
+
+	this.addTeacher = function(){
+		$this.newTeacher.rol = 4;
+		Insert('users',$this.newTeacher);
+		$this.newTeacher = {};
+		$scope.formAddTeacher.$setPristine();
+		$this.sucess = true;
 	}
 
 	this.removeSucessMessage = function(){ $this.sucess = false; }
@@ -124,7 +256,6 @@ app.controller('addProjectController', function($scope){
 		$this.newProject = {};
 		$scope.formAddProject.$setPristine();
 		$this.sucess = true;
-		console.log( data['projects'] );
 	}
 
 	this.removeSucessMessage = function(){ $this.sucess = false; }
@@ -157,11 +288,11 @@ app.controller('ConsultCourseController', function() {
 });
 
 app.controller('ConsultDeanController', function() {
-	this.deans = Query('users','rol',3);
+	this.deans = Query('users','rol',5);
 });
 
 app.controller('ConsultDirectorController', function() {
-	this.directors = Query('users','rol',4);
+	this.directors = Query('users','rol',3);
 });
 
 app.controller('ConsultGroupController', function() {

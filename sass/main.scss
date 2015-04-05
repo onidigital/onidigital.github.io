@@ -12,7 +12,6 @@ body {
 	background: $background;
 	color: $text;
 	font-family: Helvetica;
-	overflow-x: hidden;
 	min-height: 100vh;	
 }
 header {
@@ -32,6 +31,14 @@ button {
 	a {
 		color: $background;
 	}
+}
+
+h1 {
+	font-size: 2em;
+}
+
+strong, b {
+	font-weight: bold;
 }
 
 .title  {

@@ -17,7 +17,13 @@
                         <tr ng-repeat="director in cDirectorCtrl.directors | filter: buscador" class="displayInfo" >
                             <td class="text-center" >{{ director.name  }}</td>
                             <td class="text-center" >{{ director.pId   }}</td>
-                            <td class="text-center" >{{ director.careers }}</td>
+                            <td class="text-center" >
+                                <ul>
+                                    <li ng-repeat="career in director.careers">
+                                        {{ career }}
+                                    </li>
+                                </ul>
+                            </td>
                             <td class="text-center" >{{ director.email }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-4" type="button">

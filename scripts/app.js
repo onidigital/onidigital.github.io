@@ -140,7 +140,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.dean',{
 			url 		: '/dean',
-			templateUrl : '/Partials/form-add-dean.html'
+			templateUrl : '/Partials/form-add-dean.html',
+			controller  : 'addDeanController as addDeanCtrl' 
 		})
 		.state('admin.register.document', {
 			url 		: '/document',
@@ -148,7 +149,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.director', {
 			url 		: '/director',
-			templateUrl : '/Partials/form-add-director.html'
+			templateUrl : '/Partials/form-add-director.html',
+			controller 	: "addDirectorController as addDirectorCtrl"
 		})
 		.state('admin.register.group', {
 			url 		: '/group',
@@ -161,15 +163,18 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.rubric', {
 			url 		: '/rubric',
-			templateUrl : '/Partials/form-add-rubric.html'
+			templateUrl : '/Partials/form-add-rubric.html',
+			controller  : 'addRubricController as addRubricCtrl'
 		})
 		.state('admin.register.student', {
 			url 		: '/student',
-			templateUrl : '/Partials/form-add-student.html'
+			templateUrl : '/Partials/form-add-student.html',
+			controller  : 'addStudentController as addStudentCtrl'
 		})
 		.state('admin.register.teacher', {
 			url 		: '/teacher',
-			templateUrl : '/Partials/form-add-teacher.html'
+			templateUrl : '/Partials/form-add-teacher.html',
+			controller  : 'addTeacherController as addTeacherCtrl'
 		})
 		.state('admin.register.team', {
 			url 		: '/team',
@@ -280,4 +285,44 @@ app.controller('menuController', function($scope, $timeout, $mdSidenav, $log) {
 app.controller('InfoController', function() {
 	this.students = Query('users','rol',2); //this hace referencia al controlador
 	this.courses = Query('courses');
+});
+
+
+app.filter('unique', function () {
+
+  return function (items, filterOn) {
+
+    if (filterOn === false) {
+      return items;
+    }
+
+    if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+      var hashCheck = {}, newItems = [];
+
+      var extractValueToCompare = function (item) {
+        if (angular.isObject(item) && angular.isString(filterOn)) {
+          return item[filterOn];
+        } else {
+          return item;
+        }
+      };
+
+      angular.forEach(items, function (item) {
+        var valueToCheck, isDuplicate = false;
+
+        for (var i = 0; i < newItems.length; i++) {
+          if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+            isDuplicate = true;
+            break;
+          }
+        }
+        if (!isDuplicate) {
+          newItems.push(item);
+        }
+
+      });
+      items = newItems;
+    }
+    return items;
+  };
 });

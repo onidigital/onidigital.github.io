@@ -1,75 +1,208 @@
 <div class="col col-md-6 col-md-offset-3 ">
 	<form 	class="user-form" 
 			name="formAddDirector" 
-			ng-submit="formAddDirector.$valid && adCtrl.addDirector()" 
+			ng-submit="formAddDirector.$valid && 
+					   ((addDirectorCtrl.newDirector.careers).length) &&
+					   addDirectorCtrl.addDirector()" 
 			novalidate
 		>
+		<h2 class="text-center register-sucess" ng-show="addDirectorCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addDirectorCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			 	<label>Nombre</label>
-			  	<input type="text" class="form-control"placeholder="" ng-model="adCtrl.newDirector.name" required>
-			</div><!--col-md-6-->	
+			 	<label for="txtName" >
+			 		Nombre
+			 	</label>
+			  	<input  type="text" 
+			  			class="form-control"
+			  			id="txtName"
+			  			name="name"
+			  			ng-model="addDirectorCtrl.newDirector.name" 
+			  			required
+			  		>
+			  			<!-- Errors -->
+				  			<p class="error-feedback"
+				  				ng-show="formAddDirector.name.$dirty &&
+				  						 formAddDirector.name.$error.required"
+				  				>
+				  				Necesita ingresar el nombre del director.
+				  			</p>
+			</div>
 		  	<div class="col-md-6">
-		  		<label>Apellido</label>
-		  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.lastName" required>
-		  	</div><!--col-md-6-->
-		</div><!--row-->
+		  		<label for="txtLastName">
+		  			Apellido
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtLastName"
+		  				name="lastName"
+		  				class="form-control" 
+		  				ng-model="addDirectorCtrl.newDirector.lastName" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+			  			<p class="error-feedback"
+			  				ng-show="formAddDirector.lastName.$dirty &&
+			  						 formAddDirector.lastName.$error.required"
+			  				>
+			  				Necesita ingresar los apellidos del director.
+			  			</p>
+		  	</div>
+		</div>
 		<div class="row">	
 		  	<div class="col-md-6">
-		  		<label>Imagen</label>
-		  		<input type="txt" class="form-control" ng-model="adCtrl.newDirector.image" required>
+		  		<label for="fileImage">
+		  			Imagen
+		  		</label>
+		  		<input 	type="txt" 
+						id="fileImage"
+		  				class="form-control" 
+		  				name="image"
+		  				ng-model="addDirectorCtrl.newDirector.image" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+			  			<p class="error-feedback"
+			  				ng-show="formAddDirector.image.$dirty &&
+			  						 formAddDirector.image.$error.required"
+			  				>
+			  				Necesita ingresar el nombre del director.
+			  			</p>
 		  	</div><!--col-md-6-->
 		  	<div class="col-md-6">
-		  		<label>Contraseña</label>
-		  		<input type="text" class="form-control" ng-model="adCtrl.newDirector.password" required>
-		  	</div><!--col-md-6-->
+		  		<label for="txtPassword">
+		  			Contraseña
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtPassword"
+		  				name="password"
+		  				class="form-control" 
+		  				ng-minlength="8"
+		  				ng-maxlength="15"
+		  				ng-model="addDirectorCtrl.newDirector.password" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddDirector.password.$dirty && 
+				    				 formAddDirector.password.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una contraseña para el director.
+				    	</p>
+				    	<p 	ng-show="formAddDirector.password.$dirty && 
+				    				 formAddDirector.password.$error.minlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy corta, debe contener al menos 8 cáracteres.
+				    	</p>
+				    	<p 	ng-show="formAddDirector.password.$dirty && 
+				    				 formAddDirector.password.$error.maxlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy larga.
+				    	</p>
+		  	</div>
 		</div><!--row-->
 		<div class="row">
 			<div class="col-md-6">
-				<label for="">Cédula</label>
-				<input type="text" class="form-control" ng-model="adCtrl.newDirector.pId" required>
+				<label for="txtPersonalId">
+					Cédula
+				</label>
+				<input 	type="text" 
+						id="txtPersonalId"
+						class="form-control" 
+						name="personalId"
+						ng-model="addDirectorCtrl.newDirector.pId" 
+						required
+					>
+					<p 	ng-show="formAddDirector.personalId.$dirty && 
+				    				 formAddDirector.personalId.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar la cédula del director.
+			    	</p>
+
 			</div><!--col-md-6-->
 			<div class="col-md-6">
-				<label for="">Correo Electrónico</label>
-				<input type="email" class="form-control" ng-model="adCtrl.newDirector.email" required>
+				<label for="txtEmail">
+					Correo Electrónico
+				</label>
+				<input 	type="email"
+						id="txtEmail" 
+						class="form-control" 
+						name="email"
+						ng-model="addDirectorCtrl.newDirector.email" 
+						required
+					>
+					<p 	ng-show="formAddDirector.email.$dirty && 
+				    			 formAddDirector.email.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar el email del director.
+			    	</p>
+			    	<p 	ng-show="formAddDirector.email.$dirty && 
+				    			 formAddDirector.email.$error.email" 
+				    		class="error-feedback"
+				    	>
+			    		Por favor ingrese un email correcto.
+			    	</p>
 			</div><!--col-md-6-->
 		</div><!--row-->
 		<div class="row">
 			<div >
-				<div class="col-md-5">
+				<div class="col-md-12">
 					<label >Carrera</label>
-		  			<select ng-model="adCtrl.newDirectorCareer" class="form-control  select-arrow">
-		  				<option ng-repeat="career in adCtrl.careers" 
+		  			<select ng-model="addDirectorCtrl.newDirectorCareer" 
+		  					class="form-control "
+		  				>
+		  				<option ng-repeat="career in addDirectorCtrl.careers" 
 		  						value="{{career.name }}">
 		  						{{ career.name }}
 		  				</option>
 		  			</select>
-				</div><!--col-md-5-->
-				<div class="col-md-2">
-					<a href="#" ng-click="adCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
-				</div><!--col-md-2-->
-				<div class="col col-md-5 add-careers">
+		  			<span 	ng-click="addDirectorCtrl.asignCareer()" 
+		  					class="btn btn-primary btn-asign pull-left"
+		  				>
+		  				Asignar
+		  			</span>
+		  				<!-- Errors -->
+		  					<p 	class="error-feedback pull-right col-md-9"
+			
+		  						ng-show="!(addDirectorCtrl.newDirector.careers).length"
+		  						>
+		  						Por favor asigne al menos una carrera al nuevo director.
+		  					</p>
+				</div>
+				<div class="col col-md-12 add-careers">
 					<ul class="careers-list">
 						<li class="col col-md-12 list-group-item" 
-							ng-repeat="career in adCtrl.directorCareers" 
+							ng-repeat="career in addDirectorCtrl.directorCareers | unique: 'career'" 
 						>
-							<h5 class="pull-left" >{{ career }}</h5>
-							<a href="#" 
-								ng-click="adCtrl.deleteDirectorCareer( $index )"
-							>
-								<img src="../images/btnLess.png" alt="less" class="img-less">
-							</a>
+							<h5>
+								{{ career }}
+								<span
+									ng-click="addDirectorCtrl.deleteDirectorCareer( $index )"
+								>
+									<img src="../images/btnLess.png" alt="less" class="img-less">
+								</span>
+							</h5>
 						</li>
 					</ul>
 				</div><!--add-careers-->	
 			</div><!--newDirectorCareer-->
 		</div> <!--row-->
 		<div class="row">
-			<div class="col-md-6 message">
-				<p  ng-show="submitted&&formAddDirector.$invalid">¡Debe llenar todos los espacios!</p>
-			</div><!--col-md-6-->
-			<div class="col-md-6">
-				<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-director.html">Agregar</a></button>
+			<div class="col-md-12">
+				<button type="submit" 
+						class="btn btn-add"
+						ng-disabled="(!(addDirectorCtrl.newDirector.careers).length) ||
+									 formAddDirector.$invalid"
+					>
+					Agregar
+				</button>
 			</div>	
 		</div>
 	</form>	

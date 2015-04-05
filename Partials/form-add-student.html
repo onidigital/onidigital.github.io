@@ -1,73 +1,209 @@
 <div class="col col-md-6 col-md-offset-3 ">
-	<form class="user-form" name="formAddStudent" ng-submit="formAddStudent.$valid && asCtrl.addStudent()" novalidate>
+	<form 	class="user-form" 
+			name="formAddStudent" 
+			ng-submit="formAddStudent.$valid && 
+					   ((addStudentCtrl.newStudent.careers).length) &&
+					   addStudentCtrl.addStudent()" 
+			novalidate
+		>
+		<h2 class="text-center register-sucess" ng-show="addStudentCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addStudentCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			 	<label>Nombre</label>
-			  	<input type="text" class="form-control"placeholder="" ng-model="asCtrl.newStudent.name" required>
-			</div><!--col-md-6-->	
+			 	<label for="txtName" >
+			 		Nombre
+			 	</label>
+			  	<input  type="text" 
+			  			class="form-control"
+			  			id="txtName"
+			  			name="name"
+			  			ng-model="addStudentCtrl.newStudent.name" 
+			  			required
+			  		>
+			  			<!-- Errors -->
+				  			<p class="error-feedback"
+				  				ng-show="formAddStudent.name.$dirty &&
+				  						 formAddStudent.name.$error.required"
+				  				>
+				  				Necesita ingresar el nombre del estudiante.
+				  			</p>
+			</div>
 		  	<div class="col-md-6">
-		  		<label>Apellido</label>
-		  		<input type="text" class="form-control" ng-model="asCtrl.newStudent.lastName" required>
-		  	</div><!--col-md-6-->
-		</div><!--row-->
+		  		<label for="txtLastName">
+		  			Apellido
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtLastName"
+		  				name="lastName"
+		  				class="form-control" 
+		  				ng-model="addStudentCtrl.newStudent.lastName" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+			  			<p class="error-feedback"
+			  				ng-show="formAddStudent.lastName.$dirty &&
+			  						 formAddStudent.lastName.$error.required"
+			  				>
+			  				Necesita ingresar los apellidos del estudiante.
+			  			</p>
+		  	</div>
+		</div>
 		<div class="row">	
 		  	<div class="col-md-6">
-		  		<label>Imagen</label>
-		  		<input type="txt" class="form-control" ng-model="asCtrl.newStudent.image" required>
+		  		<label for="fileImage">
+		  			Imagen
+		  		</label>
+		  		<input 	type="txt" 
+						id="fileImage"
+		  				class="form-control" 
+		  				name="image"
+		  				ng-model="addStudentCtrl.newStudent.image" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+			  			<p class="error-feedback"
+			  				ng-show="formAddStudent.image.$dirty &&
+			  						 formAddStudent.image.$error.required"
+			  				>
+			  				Necesita ingresar el nombre del estudiante.
+			  			</p>
 		  	</div><!--col-md-6-->
 		  	<div class="col-md-6">
-		  		<label>Contraseña</label>
-		  		<input type="text" class="form-control" ng-model="asCtrl.newStudent.password" required>
-		  	</div><!--col-md-6-->
+		  		<label for="txtPassword">
+		  			Contraseña
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtPassword"
+		  				name="password"
+		  				class="form-control" 
+		  				ng-minlength="8"
+		  				ng-maxlength="15"
+		  				ng-model="addStudentCtrl.newStudent.password" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddStudent.password.$dirty && 
+				    				 formAddStudent.password.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una contraseña para el estudiante.
+				    	</p>
+				    	<p 	ng-show="formAddStudent.password.$dirty && 
+				    				 formAddStudent.password.$error.minlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy corta, debe contener al menos 8 cáracteres.
+				    	</p>
+				    	<p 	ng-show="formAddStudent.password.$dirty && 
+				    				 formAddStudent.password.$error.maxlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy larga.
+				    	</p>
+		  	</div>
 		</div><!--row-->
 		<div class="row">
 			<div class="col-md-6">
-				<label for="">Cédula</label>
-				<input type="text" class="form-control" ng-model="asCtrl.newStudent.pId" required>
+				<label for="txtPersonalId">
+					Cédula
+				</label>
+				<input 	type="text" 
+						id="txtPersonalId"
+						class="form-control" 
+						name="personalId"
+						ng-model="addStudentCtrl.newStudent.pId" 
+						required
+					>
+					<p 	ng-show="formAddStudent.personalId.$dirty && 
+				    				 formAddStudent.personalId.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar la cédula del estudiante.
+			    	</p>
+
 			</div><!--col-md-6-->
 			<div class="col-md-6">
-				<label for="">Correo Electrónico</label>
-				<input type="email" class="form-control" ng-model="asCtrl.newStudent.email" required>
+				<label for="txtEmail">
+					Correo Electrónico
+				</label>
+				<input 	type="email"
+						id="txtEmail" 
+						class="form-control" 
+						name="email"
+						ng-model="addStudentCtrl.newStudent.email" 
+						required
+					>
+					<p 	ng-show="formAddStudent.email.$dirty && 
+				    			 formAddStudent.email.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar el email del estudiante.
+			    	</p>
+			    	<p 	ng-show="formAddStudent.email.$dirty && 
+				    			 formAddStudent.email.$error.email" 
+				    		class="error-feedback"
+				    	>
+			    		Por favor ingrese un email correcto.
+			    	</p>
 			</div><!--col-md-6-->
 		</div><!--row-->
 		<div class="row">
-			<div ng-model="asCtrl.careerAspect">
-				<div class="col-md-5">
+			<div >
+				<div class="col-md-12">
 					<label >Carrera</label>
-		  			<select ng-model="asCtrl.newStudentCareer" class="form-control select-arrow">
-		  				<option ng-repeat="career in asCtrl.careers" value="{{career.name}}">{{ career.name }}</option>
+		  			<select ng-model="addStudentCtrl.newStudentCareer" 
+		  					class="form-control "
+		  				>
+		  				<option ng-repeat="career in addStudentCtrl.careers" 
+		  						value="{{career.name }}">
+		  						{{ career.name }}
+		  				</option>
 		  			</select>
-				</div><!--col-md-5-->
-				<div class="col-md-2">
-					<a href="#" ng-click="asCtrl.asignCareer()"><img src="../images/btnPlus.png" alt="plus" class="img-plus"></a>
-				</div><!--col-md-2-->
-				<div class="col col-md-5 add-careers">
+		  			<span 	ng-click="addStudentCtrl.asignCareer()" 
+		  					class="btn btn-primary btn-asign pull-left"
+		  				>
+		  				Asignar
+		  			</span>
+		  				<!-- Errors -->
+		  					<p 	class="error-feedback pull-right col-md-9"
+			
+		  						ng-show="!(addStudentCtrl.newStudent.careers).length"
+		  						>
+		  						Por favor asigne al menos una carrera al nuevo estudiante.
+		  					</p>
+				</div>
+				<div class="col col-md-12 add-careers">
 					<ul class="careers-list">
 						<li class="col col-md-12 list-group-item" 
-							ng-repeat="career in asCtrl.studentCareers" 
+							ng-repeat="career in addStudentCtrl.studentCareers | unique: 'career'" 
 						>
-							<h5 class="pull-left" >{{ career }}</h5>
-							<a href="#" 
-								ng-click="asCtrl.deleteStudentCareer( $index )"
-							>
-								<img src="../images/btnLess.png" alt="less" class="img-less">
-							</a>
+							<h5>
+								{{ career }}
+								<span
+									ng-click="addStudentCtrl.deleteStudentCareer( $index )"
+								>
+									<img src="../images/btnLess.png" alt="less" class="img-less">
+								</span>
+							</h5>
 						</li>
 					</ul>
-				</div>
-			</div><!--careerAspect-->
+				</div><!--add-careers-->	
+			</div><!--newStudentCareer-->
 		</div> <!--row-->
 		<div class="row">
-			<div class="col-md-6 message">
-				<p  ng-show="submitted&&formAddStudent.$invalid">¡Debe llenar todos los espacios!</p>
-			</div><!--col-md-6-->
-			<div class="col-md-6">
-				<button type="submit" ng-click="submitted=true" class="btn btn-add">
-					<a href="/Partials/info-consult-student.html">
-						Agregar
-					</a>
+			<div class="col-md-12">
+				<button type="submit" 
+						class="btn btn-add"
+						ng-disabled="(!(addStudentCtrl.newStudent.careers).length) ||
+									 formAddStudent.$invalid"
+					>
+					Agregar
 				</button>
-			</div>
+			</div>	
 		</div>
 	</form>	
-</div>		
+</div>

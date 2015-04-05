@@ -1,31 +1,148 @@
 <div class="col col-md-6 col-md-offset-3 ">
-	<form>
+	<form 	name="formAddRubric" 
+			novalidate
+			ng-submit="formAddRubric.name.$valid &&
+					   (addRubricCtrl.newRubric.aspects).length &&
+					   addRubricCtrl.maxPoints == 0 &&
+					   addRubricCtrl.addRubric();"
+		>
+		<h2 class="text-center register-sucess" ng-show="addRubricCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addRubricCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
-			<div class="col-md-12">
-			  	<label>Nombre</label>
-			    <input type="text" class="form-control" id="area" placeholder="">
+			<div class="col col-md-12">
+				<label for="txtName">
+					Nombre
+				</label>
+				<input 	type="text"
+						id="txtName"	
+						name="name"
+						class="form-control"
+						ng-model="addRubricCtrl.newRubric.name"
+						required
+					>
+						<!-- Errors -->
+							<p 	class="error-feedback"
+								ng-show="formAddRubric.name.$dirty &&
+										 formAddRubric.name.$error.required"
+								>
+								Necesita asignar un nombre a la rúbrica.
+							</p>
+
 			</div>
-	  	</div>
+		</div>
 		<div class="row">
-		  	<div class="col-md-5">
-		  		<label>Aspecto</label>
-		  		<select class="form-control select-arrow">
-		  			<option value=""></option>			 
-		  		</select>	
-		  	</div>
-		  	<div class="col-md-5">
-		  		<label>Valor</label>
-		  		<select class="form-control select-arrow">
-		  			<option value=""></option>			 
-		  		</select>	
-		  	</div>
-			<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-	  	</div>
+			<div class="col col-md-12">
+				<h3 class="available-points">
+					Puntos disponibles: <strong>{{ addRubricCtrl.maxPoints }}</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<label for="txtAspect">
+					Aspecto
+				</label>
+				<input 	type="text"
+						id="txtAspect"	
+						class="form-control"
+						name="aspect"
+						ng-model="addRubricCtrl.newAspect.name"
+						ng-disabled="addRubricCtrl.maxPoints == 0"
+						required
+					>
+						<!-- Errors -->
+							<!--
+							<p 	class="error-feedback"
+								ng-show="formAddRubric.aspect.$dirty &&
+										 formAddRubric.aspect.$error.required"
+								>
+								Necesita asignar un nombre al aspecto de la rúbrica.
+							</p>
+							-->
+			</div>
+			<div class="col col-md-6">
+				<label for="txtValue">
+					Valor
+				</label>
+				<input 	type="number"
+						id="txtValue"
+						name="value"	
+						class="form-control"
+						max="{{ addRubricCtrl.maxPoints }}"
+						ng-max="{{ addRubricCtrl.maxPoints }}"
+						min="0"
+						ng-min="0"
+						ng-model="addRubricCtrl.newAspect.value"
+						ng-disabled="addRubricCtrl.maxPoints == 0"
+						required
+					>
+					<!-- Errors -->
+						<!--
+						<p 	class="error-feedback"
+							ng-show="formAddRubric.value.$dirty &&
+									 formAddRubric.value.$error.required"
+							>
+							Necesita asignar valor al aspecto de la rúbrica.
+						</p>
+						<p 	class="error-feedback"
+							ng-show="formAddRubric.value.$dirty &&
+									 formAddRubric.value.$error.max"
+							>
+							El valor de un aspecto no puede exceder los puntos disponibles.
+						</p>
+						<p 	class="error-feedback"
+							ng-show="formAddRubric.value.$dirty &&
+									 formAddRubric.value.$error.min"
+							>
+							El valor de un aspecto no puede ser menor a 0.
+						</p>
+						-->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<span 	ng-click="addRubricCtrl.asignAspect()" 
+	  					class="btn btn-primary btn-asign"
+	  					ng-disabled="(addRubricCtrl.maxPoints <= 0) 		||
+	  								 (formAddRubric.aspect.$error.required) ||
+	  								 (formAddRubric.value.$error.min) 		||
+	  								 (formAddRubric.value.$error.max) 		||
+	  								 (formAddRubric.value.$error.required)"
+	  				>
+	  				Asignar
+	  			</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-12 add-careers">
+				<ul class="careers-list">
+					<li class="col col-md-12 list-group-item" 
+						ng-repeat="aspect in addRubricCtrl.newRubric.aspects | unique: 'name' " 
+					>
+						<h5>
+							{{ aspect.name }} - <strong>{{ aspect.value }}</strong>
+							<span
+								ng-click="addRubricCtrl.deleteAspect( $index )"
+							>
+								<img src="../images/btnLess.png" alt="less" class="img-less">
+							</span>
+						</h5>
+					</li>
+				</ul>
+			</div>
+		</div>
 	  	<div class="row">
-		  	<button type="submit" class="btn btn-add">
-		  		<a href="/Partials/info-rubric-dropdown-table.html">
+		  	<button type="submit" 
+		  			class="btn btn-add"
+		  			ng-disabled="formAddRubric.name.$invalid ||
+					   			 !(addRubricCtrl.newRubric.aspects).length ||
+					   			 addRubricCtrl.maxPoints != 0"
+		  		>
 		  			Agregar
-		  		</a>
 		  	</button>
 		</div>
 	</form>	

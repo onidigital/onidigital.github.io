@@ -96,7 +96,6 @@ select {
     border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
    	border: 1px solid #ccc;
-   	border-right: none;
     text-align: center;
     cursor: pointer;
     cursor: hand;
@@ -104,6 +103,15 @@ select {
 			text-align: left;
 			padding: .25em 1em;
     	}
+}
+
+.available-points {
+	font-size: 1.25em;
+	font-weight: normal;
+	padding: 1em 0;
+		strong {
+			color: $anchors;
+		}
 }
 
 form{
@@ -202,6 +210,10 @@ form{
 	font-size: 10px;
 	width: 30px;
 	height: 30px;
+}
+
+.btn-asign {
+	margin-top: 1em;
 }
 
 .register-sucess {

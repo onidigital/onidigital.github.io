@@ -1,44 +1,163 @@
 <div class="col col-md-6 col-md-offset-3 ">
 	<form 	class="user-form" 
 			name="formAddDean" 
-			ng-submit="formAddDean.$valid && addDean.addDean()" novalidate
+			ng-submit="formAddDean.$valid && addDeanCtrl.addDean()" 
+			novalidate
 		>
+		<h2 class="text-center register-sucess" ng-show="addDeanCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addDeanCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Nombre</label>
-			    <input type="text" class="form-control" placeholder="" ng-model="addDean.newDean.name" required>
+			  	<label for="txtName">
+			  		Nombre
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control" 
+			    		name="name"
+			    		id="txtName"
+			    		ng-model="addDeanCtrl.newDean.name" 
+			    		required
+			    	>
+			    	<!-- Errors -->
+				    	<p 	ng-show="formAddDean.name.$dirty && 
+				    				 formAddDean.name.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el nombre del decano.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-		  		<label>Apellido</label>
-		  		<input type="text" class="form-control" ng-model="addDean.newDean.lastName" required>
+		  		<label for="txtLastName">
+		  			Apellido
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtLastName"
+		  				name="lastName"
+		  				class="form-control" 
+		  				ng-model="addDeanCtrl.newDean.lastName" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddDean.lastName.$dirty && 
+				    				 formAddDean.lastName.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar los apellidos del decano.
+				    	</p>
 		  	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Imagen</label>
-			    <input type="text" class="form-control" ng-model="addDean.newDean.image" required>
+			  	<label for="txtImage">
+			  		Imagen
+			  	</label>
+			    <input 	type="text"
+			    		id="txtImage"
+			    		name="image"
+			    		class="form-control" 
+			    		ng-model="addDeanCtrl.newDean.image" 
+			    		required
+			    	>
+			    	<!-- Errors -->
+				    	<p 	ng-show="formAddDean.image.$dirty && 
+				    				 formAddDean.image.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una imágen de perfil para decano.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-		  		<label>Contraseña</label>
-		  		<input type="text" class="form-control" ng-model="addDean.newDean.password" required>
+		  		<label for="txtPassword">
+		  			Contraseña
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtPassword"
+		  				name="password"
+		  				class="form-control" 
+		  				ng-model="addDeanCtrl.newDean.password" 
+		  				ng-minlength="8"
+		  				ng-maxlength="15"
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddDean.password.$dirty && 
+				    				 formAddDean.password.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una contraseña para el decano.
+				    	</p>
+				    	<p 	ng-show="formAddDean.password.$dirty && 
+				    				 formAddDean.password.$error.minlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy corta, debe contener al menos 8 cáracteres.
+				    	</p>
+				    	<p 	ng-show="formAddDean.password.$dirty && 
+				    				 formAddDean.password.$error.maxlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy larga.
+				    	</p>
 		  	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<label for="">Cédula</label>
-				<input type="text" class="form-control" ng-model="addDean.newDean.pId" required>
+				<label for="txtPersonalId">
+					Cédula
+				</label>
+				<input 	type="text" 
+						id="txtPersonalId"
+						name="personalId"
+						class="form-control" 
+						ng-model="addDeanCtrl.newDean.pId" 
+						required
+					>
+					<!-- Errors -->
+				    	<p 	ng-show="formAddDean.personalId.$dirty && 
+				    				 formAddDean.personalId.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar la cédula del decano.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-				<label for="">Correo Electrónico</label>
-				<input type="email" class="form-control" ng-model="addDean.newDean.email" required>
+				<label for="txtEmail">
+					Correo Electrónico
+				</label>
+				<input 	type="email" 
+						id="txtEmail"
+						name="email"
+						class="form-control" 
+						ng-model="addDeanCtrl.newDean.email" 
+						required
+					>
+					<!-- Errors -->
+				    	<p 	ng-show="formAddDean.email.$dirty && 
+				    				 formAddDean.email.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el email del decano.
+				    	</p>
+				    	<p 	ng-show="formAddDean.email.$dirty && 
+				    				 formAddDean.email.$error.email" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita un email válido.
+				    	</p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<button type="submit" ng-click="submitted=true" class="btn btn-add">
-					Agregar
-				</button>
-			</div>
+			<button type="submit" 
+					ng-click="submitted=true" 
+					class="btn btn-add"
+					ng-disabled="formAddDean.$invalid"
+				>
+				Agregar
+			</button>
 		</div>
 	</form>	
 </div>

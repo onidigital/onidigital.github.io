@@ -139,6 +139,7 @@ var users = [
 	'name'		: 'María Eugenia',
 	'lastName'	: 'Ucrós',
 	'rol'		: 3,
+	'careers'	: [3],
 	'pId'		: 'd-6',
 	'image'		: ''
 }
@@ -155,6 +156,12 @@ careers = [
 	'name'		: 'Desarrollo Web',
 	'director'  : 'María Eugenia Ucrós',
 	'courses'	: [2]
+},
+{
+	'id'		: 3,
+	'name'		: 'Integración de tecnologías',
+	'director'  : 'María Eugenia Ucrós',
+	'courses'	: [3]
 }
 ],
 courses = [
@@ -222,55 +229,55 @@ studentRol = [
 rubrics = [
 {
 	'id'		: 1,
-	'nombre'	: 'ERS - Software - v.1',
-	'aspectos'	: 	[
+	'name'	: 'ERS - Software - v.1',
+	'aspects'	: 	[
 						{
-							'nombre' : 'Forma',
-							'valor'	 : 10
+							'name' 	 : 'Forma',
+							'value'	 : 10
 						},
 						{
-							'nombre' : 'contenido',
-							'valor'	 : 80
+							'name' 	 : 'contenido',
+							'value'	 : 80
 						},
 						{
-							'nombre' : 'Ortografia',
-							'valor'  : 10
+							'name' 	 : 'Ortografia',
+							'value'  : 10
 						}
 					]
 },
 {
 	'id'		: 2,
-	'nombre'	: 'ERS - Diseno web - v.1',
-	'aspectos'	: 	[
+	'name'	: 'ERS - Diseno web - v.1',
+	'aspects'	: 	[
 						{
-							'nombre' : 'Forma',
-							'valor'	 : 10
+							'name' 	 : 'Forma',
+							'value'	 : 10
 						},
 						{
-							'nombre' : 'contenido',
-							'valor'	 : 80
+							'name' 	 : 'contenido',
+							'value'	 : 80
 						},
 						{
-							'nombre' : 'Ortografia',
-							'valor'  : 10
+							'name' 	 : 'Ortografia',
+							'value'  : 10
 						}
 					]
 },
 {
 	'id'		: 3,
-	'nombre'	: 'ERS - TIC - v.1',
-	'aspectos'	: 	[
+	'name'	: 'ERS - TIC - v.1',
+	'aspects'	: 	[
 						{
-							'nombre' : 'Forma',
-							'valor'	 : 10
+							'name' 	 : 'Forma',
+							'value'	 : 10
 						},
 						{
-							'nombre' : 'contenido',
-							'valor'	 : 80
+							'name' 	 : 'contenido',
+							'value'	 : 80
 						},
 						{
-							'nombre' : 'Ortografia',
-							'valor'  : 10
+							'name' 	 : 'Ortografia',
+							'value'  : 10
 						}
 					]
 },

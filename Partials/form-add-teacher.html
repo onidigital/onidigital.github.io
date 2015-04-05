@@ -1,42 +1,164 @@
 <div class="col col-md-6 col-md-offset-3 ">
-	<form class="user-form" name="formAddTeacher" ng-submit="formAddTeacher.$valid && atCtrl.addTeacher()" novalidate>
+	<form 	class="user-form" 
+			name="formAddTeacher" 
+			ng-submit="formAddTeacher.$valid && addTeacherCtrl.addTeacher()" 
+			novalidate
+		>
+		<h2 class="text-center register-sucess" ng-show="addTeacherCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addTeacherCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Nombre</label>
-			    <input type="text" class="form-control" placeholder="" ng-model="atCtrl.newTeacher.name" required>
+			  	<label for="txtName">
+			  		Nombre
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control" 
+			    		name="name"
+			    		id="txtName"
+			    		ng-model="addTeacherCtrl.newTeacher.name" 
+			    		required
+			    	>
+			    	<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.name.$dirty && 
+				    				 formAddTeacher.name.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el nombre del profesor.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-		  		<label>Apellido</label>
-		  		<input type="text" class="form-control" ng-model="atCtrl.newTeacher.lastName" required>
+		  		<label for="txtLastName">
+		  			Apellido
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtLastName"
+		  				name="lastName"
+		  				class="form-control" 
+		  				ng-model="addTeacherCtrl.newTeacher.lastName" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.lastName.$dirty && 
+				    				 formAddTeacher.lastName.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar los apellidos del profesor.
+				    	</p>
 		  	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-			  	<label>Imagen</label>
-			    <input type="text" class="form-control"placeholder="" ng-model="atCtrl.newTeacher.image" required>
+			  	<label for="txtImage">
+			  		Imagen
+			  	</label>
+			    <input 	type="text"
+			    		id="txtImage"
+			    		name="image"
+			    		class="form-control" 
+			    		ng-model="addTeacherCtrl.newTeacher.image" 
+			    		required
+			    	>
+			    	<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.image.$dirty && 
+				    				 formAddTeacher.image.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una imágen de perfil para profesor.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-		  		<label>Contraseña</label>
-		  		<input type="text" class="form-control" ng-model="atCtrl.newTeacher.password" required>
+		  		<label for="txtPassword">
+		  			Contraseña
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtPassword"
+		  				name="password"
+		  				class="form-control" 
+		  				ng-model="addTeacherCtrl.newTeacher.password" 
+		  				ng-minlength="8"
+		  				ng-maxlength="15"
+		  				required
+		  			>
+		  			<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.password.$dirty && 
+				    				 formAddTeacher.password.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar una contraseña para el profesor.
+				    	</p>
+				    	<p 	ng-show="formAddTeacher.password.$dirty && 
+				    				 formAddTeacher.password.$error.minlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy corta, debe contener al menos 8 cáracteres.
+				    	</p>
+				    	<p 	ng-show="formAddTeacher.password.$dirty && 
+				    				 formAddTeacher.password.$error.maxlength" 
+				    		class="error-feedback"
+				    	>
+				    		La contraseña es muy larga.
+				    	</p>
 		  	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<label for="">Cédula</label>
-				<input type="text" class="form-control" ng-model="atCtrl.newTeacher.pId" required>
+				<label for="txtPersonalId">
+					Cédula
+				</label>
+				<input 	type="text" 
+						id="txtPersonalId"
+						name="personalId"
+						class="form-control" 
+						ng-model="addTeacherCtrl.newTeacher.pId" 
+						required
+					>
+					<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.personalId.$dirty && 
+				    				 formAddTeacher.personalId.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar la cédula del profesor.
+				    	</p>
 			</div>
 			<div class="col-md-6">
-				<label for="">Correo Electrónico</label>
-				<input type="email" class="form-control" ng-model="atCtrl.newTeacher.email" required>
+				<label for="txtEmail">
+					Correo Electrónico
+				</label>
+				<input 	type="email" 
+						id="txtEmail"
+						name="email"
+						class="form-control" 
+						ng-model="addTeacherCtrl.newTeacher.email" 
+						required
+					>
+					<!-- Errors -->
+				    	<p 	ng-show="formAddTeacher.email.$dirty && 
+				    				 formAddTeacher.email.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el email del profesor.
+				    	</p>
+				    	<p 	ng-show="formAddTeacher.email.$dirty && 
+				    				 formAddTeacher.email.$error.email" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita un email válido.
+				    	</p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6 message">
-				<p  ng-show="submitted&&formAddTeacher.$invalid">¡Debe llenar todos los espacios!</p>
-			</div>
-			<div class="col-md-6">
-				<button type="submit" ng-click="submitted=true" class="btn btn-add"><a href="/Partials/info-consult-teacher.html">Agregar</a></button>
-			</div>
+			<button type="submit" 
+					ng-click="submitted=true" 
+					class="btn btn-add"
+					ng-disabled="formAddTeacher.$invalid"
+				>
+				Agregar
+			</button>
 		</div>
 	</form>	
 </div>
+		
