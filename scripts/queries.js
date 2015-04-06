@@ -33,14 +33,15 @@ function Insert(target, newItem){
 
 }
 
-
-function Update( target, old, updated ){
+function Update( target, oldId, updated ){
 
 	for( var key in data[target] ){
-		if( data[target][key]['id'] === old['id'] ){
+		if( data[target][key]['id'] === oldId ){
 			data[target][key] = updated;
-			return data;
+			return true;
 		}
 	}
+
+	return false;
 
 }

@@ -189,6 +189,8 @@ var $this 	  = this,
 
 });
 
+
+
 app.controller('addStudentController',function($scope){
 
 var $this = this;
@@ -262,6 +264,88 @@ app.controller('addProjectController', function($scope){
 
 });
 
+app.controller('addTeamController',function($scope){
+
+var $this = this;
+
+	this.newTeam 			= {};
+	this.newTeam.members 	= [];
+	this.newTeamMember 		= {};
+	this.projects   		= Query('projects','-','all');
+	this.students 			= Query('users','rol',2);
+	this.rols 				= Query('studentRol','-','all');
+	this.sucess 			= false;
+
+
+	this.asignMember = function() {
+		$this.newTeam.members.unshift( $this.newTeamMember );
+		$this.newTeamMember = {};
+	};
+
+
+	this.deleteMember = function( index ) {
+		$this.newTeam.members.splice(index, 1);
+	};
+
+	this.addTeam = function() {
+		$this.newTeam.project = Number($this.newTeam.project); 
+		Insert('teams',$this.newTeam);
+
+		$this.newTeam = {
+			members : []
+		};
+		$scope.formAddTeam.$setPristine();
+		$this.sucess = true;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+});
+
+// Edit information controllers.
+
+app.controller('editRubricController',[ 'updateInformationModule',
+										function(updateModule){
+
+var $this 	  = this,
+	defaultMP = 0; // Default max points.
+	
+	this.updating  			= updateModule.updating['rubric']; 
+	this.newRubric 			= Query('rubrics','id',this.updating)[0];
+	this.newAspect 			= {};
+	this.totalPoints 		= 0;
+	this.maxPoints 			= defaultMP;
+	this.sucess 			= false;
+
+	this.asignAspect = function() {
+		$this.newRubric.aspects.unshift( $this.newAspect );
+		$this.maxPoints = ($this.maxPoints - $this.newAspect.value) || 0;
+		$this.newAspect = {};
+	};
+
+
+	this.deleteAspect = function( index ) {
+		$this.maxPoints += $this.newRubric.aspects[index].value;
+		$this.newRubric.aspects.splice(index,1);
+	};
+
+	this.addRubric = function() {
+		console.table($this.newRubric);
+		Update("rubrics",this.updating,$this.newRubric);
+		$scope.formAddRubric.$setPristine();
+		$this.sucess = true;
+
+		$this.newRubric = {
+			'aspects' 	: []
+		}
+		$this.maxPoints = defaultMP;
+	}
+
+	this.removeSucessMessage = function(){ $this.sucess = false; }
+
+}]);
+
+
 // Consult information controllers.
 
 app.controller("ConsultAreaController", function(){
@@ -304,9 +388,13 @@ app.controller('ConsultGroupController', function() {
 
 });
 
-app.controller('ConsultRubricController', function() {
+app.controller('ConsultRubricController', [ 'updateInformationModule', 
+											function( updateModule ) {
+
+	this.update = updateModule;
 	this.rubrics = Query('rubrics','-','all');
-});
+
+}]);
 
 app.controller('ConsultTeacherController', function() {
 	this.teachers = Query('users','rol',4);

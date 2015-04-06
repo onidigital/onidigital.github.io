@@ -1,0 +1,149 @@
+<div class="col col-md-6 col-md-offset-3 ">
+	<form 	name="formEditCtrl" 
+			novalidate
+			ng-submit="formEditCtrl.name.$valid &&
+					   (editRubricCtrl.newRubric.aspects).length &&
+					   editRubricCtrl.maxPoints == 0 &&
+					   editRubricCtrl.addRubric();"
+		>
+		<h2 class="text-center register-sucess" ng-show="editRubricCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="editRubricCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
+		<div class="row">
+			<div class="col col-md-12">
+				<label for="txtName">
+					Nombre {{ editRubricCtrl.msj }}
+				</label>
+				<input 	type="text"
+						id="txtName"	
+						name="name"
+						class="form-control"
+						ng-model="editRubricCtrl.newRubric.name"
+						required
+					>
+						<!-- Errors -->
+							<p 	class="error-feedback"
+								ng-show="formEditCtrl.name.$dirty &&
+										 formEditCtrl.name.$error.required"
+								>
+								Necesita asignar un nombre a la rúbrica.
+							</p>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-12">
+				<h3 class="available-points">
+					Puntos disponibles: <strong>{{ editRubricCtrl.maxPoints }}</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<label for="txtAspect">
+					Aspecto
+				</label>
+				<input 	type="text"
+						id="txtAspect"	
+						class="form-control"
+						name="aspect"
+						ng-model="editRubricCtrl.newAspect.name"
+						ng-disabled="editRubricCtrl.maxPoints == 0"
+						required
+					>
+						<!-- Errors -->
+							<!--
+							<p 	class="error-feedback"
+								ng-show="formEditCtrl.aspect.$dirty &&
+										 formEditCtrl.aspect.$error.required"
+								>
+								Necesita asignar un nombre al aspecto de la rúbrica.
+							</p>
+							-->
+			</div>
+			<div class="col col-md-6">
+				<label for="txtValue">
+					Valor
+				</label>
+				<input 	type="number"
+						id="txtValue"
+						name="value"	
+						class="form-control"
+						max="{{ editRubricCtrl.maxPoints }}"
+						ng-max="{{ editRubricCtrl.maxPoints }}"
+						min="0"
+						ng-min="0"
+						ng-model="editRubricCtrl.newAspect.value"
+						ng-disabled="editRubricCtrl.maxPoints == 0"
+						required
+					>
+					<!-- Errors -->
+						<!--
+						<p 	class="error-feedback"
+							ng-show="formEditCtrl.value.$dirty &&
+									 formEditCtrl.value.$error.required"
+							>
+							Necesita asignar valor al aspecto de la rúbrica.
+						</p>
+						<p 	class="error-feedback"
+							ng-show="formEditCtrl.value.$dirty &&
+									 formEditCtrl.value.$error.max"
+							>
+							El valor de un aspecto no puede exceder los puntos disponibles.
+						</p>
+						<p 	class="error-feedback"
+							ng-show="formEditCtrl.value.$dirty &&
+									 formEditCtrl.value.$error.min"
+							>
+							El valor de un aspecto no puede ser menor a 0.
+						</p>
+						-->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<span 	ng-click="editRubricCtrl.asignAspect()" 
+	  					class="btn btn-primary btn-asign"
+	  					ng-disabled="(editRubricCtrl.maxPoints <= 0) 		||
+	  								 (formEditCtrl.aspect.$error.required) ||
+	  								 (formEditCtrl.value.$error.min) 		||
+	  								 (formEditCtrl.value.$error.max) 		||
+	  								 (formEditCtrl.value.$error.required)"
+	  				>
+	  				Asignar
+	  			</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-12 add-careers">
+				<ul class="careers-list">
+					<li class="col col-md-12 list-group-item" 
+						ng-repeat="aspect in editRubricCtrl.newRubric.aspects | unique: 'name' " 
+					>
+						<h5>
+							{{ aspect.name }} - <strong>{{ aspect.value }}</strong>
+							<span
+								ng-click="editRubricCtrl.deleteAspect( $index )"
+							>
+								<img src="../images/btnLess.png" alt="less" class="img-less">
+							</span>
+						</h5>
+					</li>
+				</ul>
+			</div>
+		</div>
+	  	<div class="row">
+		  	<button type="submit" 
+		  			class="btn btn-add"
+		  			ng-disabled="formEditCtrl.name.$invalid ||
+					   			 !(editRubricCtrl.newRubric.aspects).length ||
+					   			 editRubricCtrl.maxPoints != 0"
+		  		>
+		  			Actualizar
+		  	</button>
+		</div>
+	</form>	
+</div>

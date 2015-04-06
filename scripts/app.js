@@ -38,6 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 	$urlRouterProvider.when('/admin','admin/profile');
 	$urlRouterProvider.when('/admin/register','/admin/register/areas');
 	$urlRouterProvider.when('/admin/search','/admin/search/areas');
+
 	$stateProvider
 		// Admin base template.
 		.state('admin',{
@@ -178,11 +179,22 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.team', {
 			url 		: '/team',
-			templateUrl : '/Partials/form-add-team.html'
+			templateUrl : '/Partials/form-add-team.html',
+			controller  : 'addTeamController as addTeamCtrl'
 		})
 		.state('admin.register.vote', {
 			url 		: '/vote',
 			templateUrl : '/Partials/form-add-vote.html'
+		})
+		// Admin update information
+		.state('admin.update', {
+			url 	 	: '/update', 
+			templateUrl	: '/Partials/update-information.html'
+		})
+		.state('admin.update.rubric', {
+			url 		: '/update/rubric',
+			templateUrl : '/Partials/form-edit-rubric.html',
+			controller  : 'editRubricController as editRubricCtrl'
 		});
 
 	// Admin views and partials.

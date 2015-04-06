@@ -1,64 +1,149 @@
 <div class="col col-md-6 col-md-offset-3 ">
-	<form name="formAddTeam" ng-submit="formAddTeam.$valid && teamCtrl.addTeam()" novalidate>
+	<form 	name="formAddTeam" 
+			novalidate
+			ng-submit="formAddTeam.teamName.$valid 			&&
+					   formAddTeam.teamLogo.$valid 			&&
+					   formAddTeam.project.$valid 			&&
+		   			   (addTeamCtrl.newTeam.members).length &&
+		   			   addTeamCtrl.addTeam()"
+		>
+		<h2 class="text-center register-sucess" ng-show="addTeamCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addTeamCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
 		<div class="row">
-			<div class="col-md-6">
-			  	<label>Equipo</label>
-			    <input type="text" ng-model="teamCtrl.newTeam.name"class="form-control" id="area" placeholder="" required>
+			<div class="col col-md-6">
+				<label for="txtName">
+					Nombre del equipo
+				</label>
+				<input 	type="text"
+						id="txtName"	
+						name="teamName"
+						class="form-control"
+						ng-model="addTeamCtrl.newTeam.name"
+						required
+					>
+						<!-- Errors -->
+							<p 	class="error-feedback"
+								ng-show="formAddTeam.teamName.$dirty &&
+										 formAddTeam.teamName.$error.required"
+								>
+								Necesita asignar un nombre al equipo.
+							</p>
+
 			</div>
-		  	<div class="col-md-6">
-		  		<label>Grupo</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.course"  required>
-		  			<option ng-repeat="course in teamCtrl.courses" value="{{ course.id }}">{{ course.name }}</option>
-				</select>	
-		  	</div>
-	  	</div>
+			<div class="col col-md-6">
+				<label>
+					Proyecto
+				</label>
+				<select class="form-control"
+						name="project"
+						ng-model="addTeamCtrl.newTeam.project"
+						required
+					>
+					<option value="{{ project.id }}" 
+							ng-repeat="project in addTeamCtrl.projects"
+						>
+						{{ project.name }}
+					</option>
+				</select>
+			</div>
+		</div>
 		<div class="row">
-		  	<div class="col-md-6">
-		  		<label>Estudiante</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student1"  required>
-		  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>		 
-		  		</select>	
-		  	</div>
-		  	<div class="col-md-6">
-		  		<label>Rol</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol1"  required>
-		  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>				 
-		  		</select>	
-		  	</div>
-	  	</div>
+			<div class="col col-md-6">
+				<label for="txtAspect">
+					Logo
+				</label>
+				<input 	type="text"
+						id="txtAspect"	
+						class="form-control"
+						name="teamLogo"
+						ng-model="addTeamCtrl.newTeam.logo"
+						ng-disabled="addTeamCtrl.maxPoints == 0"
+						required
+					>
+						<!-- Errors -->
+							<p 	class="error-feedback"
+								ng-show="formAddTeam.teamLogo.$dirty &&
+										 formAddTeam.teamLogo.$error.required"
+								>
+								Necesita asignar un logo al nuevo equipo.
+							</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<label for="txtValue">
+					Estudiante
+				</label>
+				<select class="form-control"
+						ng-model="addTeamCtrl.newTeamMember.student"
+						name="formAddTeam.newMemberName.$error.required">
+					<option value="{{ student.name +' '+ student.lastName }}" 
+							ng-repeat="student in addTeamCtrl.students"
+						>
+						{{ student.name +" "+ student.lastName +" - "+ student.pId }}
+					</option>
+				</select>
+			</div>
+			<div class="col col-md-6">
+				<label for="txtValue">
+					Rol
+				</label>
+				<select class="form-control"
+						name="newMemberRol"
+						ng-model="addTeamCtrl.newTeamMember.rol"
+						required
+					>
+					<option value="{{ rol.name }}" 
+							ng-repeat="rol in addTeamCtrl.rols"
+						>
+						{{ rol.name }}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<span 	ng-click="addTeamCtrl.asignMember()" 
+	  					class="btn btn-primary btn-asign"
+	  					ng-disabled="formAddTeam.newMemberRol.$error.required ||
+	  								 formAddTeam.newMemberName.$error.required"
+	  				>
+	  				Asignar
+	  			</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-12 add-careers">
+				<ul class="careers-list">
+					<li class="col col-md-12 list-group-item" 
+						ng-repeat="member in addTeamCtrl.newTeam.members" 
+					>
+						<h5>
+							<strong>{{ member.rol }}:</strong> {{ member.student }}
+							<span
+								ng-click="addTeamCtrl.deleteMember( $index )"
+							>
+								<img src="../images/btnLess.png" alt="less" class="img-less">
+							</span>
+						</h5>
+					</li>
+				</ul>
+			</div>
+		</div>
 	  	<div class="row">
-		  	<div class="col-md-6">
-		  		<label>Estudiante</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student2"  required>
-		  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>			 
-		  		</select>	
-		  	</div>
-		  	<div class="col-md-6">
-		  		<label>Rol</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol2"  required>
-		  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>			 
-		  		</select>	
-		  	</div>
-	  	</div>
-	  	<div class="row">
-		  	<div class="col-md-6">
-		  		<label>Estudiante</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.student3"  required>
-		  			<option ng-repeat="student in teamCtrl.students" value="{{ student.id }}">{{ student.name }} {{ student.lastName }}</option>		 
-		  		</select>	
-		  	</div>
-		  	<div class="col-md-6">
-		  		<label>Rol</label>
-		  		<select class="form-control select-arrow" ng-model="teamCtrl.newTeam.rol3"  required>
-		  			<option ng-repeat="rol in teamCtrl.roles" value="{{ rol.id }}">{{ rol.name }}</option>			 
-		  		</select>	
-		  	</div>
-		  	<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-	  	</div>
-	  	<div class="row">
-		  	<button type="submit" class="btn btn-add">
-		  		Agregar
+		  	<button type="submit" 
+		  			class="btn btn-add"
+		  			ng-disabled="formAddTeam.teamName.$invalid 			||
+		  						 formAddTeam.teamLogo.$invalid 			||
+		  						 formAddTeam.project.$invalid 			||
+					   			 !(addTeamCtrl.newTeam.members).length 	"
+		  		>
+		  			Agregar
 		  	</button>
-	  	</div>	
+		</div>
 	</form>	
-</div>		
+</div>
