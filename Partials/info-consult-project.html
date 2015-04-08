@@ -6,25 +6,25 @@
                     <div class="row">  
                         <thead>
                             <tr>
-                                <td class="text-center"  data-field="name">Equipo</td>
-                                <td class="text-center"  data-field="id">Proyecto</td>
+                                <td class="text-center"  data-field="name">Projecto</td>
+                                <td class="text-center"  data-field="id">Descripción</td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="team in cTeamCtrl.teams | filter: search" class="displayInfo" >
-                            <td class="text-center" >{{ team.name  }}</td>
-                            <td class="text-center" >{{ cTeamCtrl.getProject(team.project) }}</td>
+                        <tr ng-repeat="project in cProjectCtrl.projects | filter: search" class="displayInfo" >
+                            <td class="text-center" >{{ cProjectCtrl.getProject(project.id) }}
+                            <td class="text-center" >{{ project.description  }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cTeamCtrl.updateService.advancedView('team', team.id )";
+                                        ng-click="cProjectCtrl.updateService.advancedView('project', project.id )";
                                         >
                                     <i class="fa fa-pencil fa-2x"></i>
                                 </button>
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cTeamCtrl.deleteService.deleteItem('teams', team.id )";
+                                        ng-click="cProjectCtrl.deleteService.deleteItem('projects', project.id )";
                                         >
                                     <i class="fa fa-trash-o fa-2x"></i>
                                 </button>

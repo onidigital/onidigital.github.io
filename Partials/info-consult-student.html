@@ -6,25 +6,28 @@
                     <div class="row">  
                         <thead>
                             <tr>
-                                <td class="text-center"  data-field="name">Estudiante</td>
-                                <td class="text-center"  data-field="id">Cédula</td>
-                                <td class="text-center"  data-field="email">Email</td>
+                                <td class="text-center" >Estudiante</td>
+                                <td class="text-center" >Cédula</td>
+                                <td class="text-center" >Email</td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="student in cStudentCtrl.student | filter: buscador" class="displayInfo" >
+                        <tr ng-repeat="student in cStudentCtrl.students | filter: buscador" class="displayInfo" >
                             <td class="text-center" >{{ student.name  }}</td>
                             <td class="text-center" >{{ student.pId   }}</td>
                             <td class="text-center" >{{ student.email }}</td>
                             <td class="actions col col-md-3" >
-                                <button class="btn btnEdit col col-md-4" type="button">
-                                    <i class="fa fa-plus fa-2x"></i>
+                                <button class="btn btnEdit col col-md-6" 
+                                        type="button"
+                                        ng-click="cStudentCtrl.updateService.advancedView( 'students',student.id );"
+                                    >
+                                    <i class="fa fa-pencil fa-2x"></i>  
                                 </button>
-                                <button class="btn btnEdit col col-md-4" type="button">
-                                    <i class="fa fa-pencil fa-2x"></i>
-                                </button>
-                                <button class="btn btnEdit col col-md-4" type="button">
+                                <button class="btn btnEdit col col-md-6" 
+                                        type="button"
+                                        ng-click="cStudentCtrl.deleteService.deleteItem( 'students', student.id );"
+                                    >
                                     <i class="fa fa-trash-o fa-2x"></i>
                                 </button>
                             </td>

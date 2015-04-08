@@ -195,31 +195,13 @@ app.controller('addStudentController',function($scope){
 
 var $this = this;
 
-	this.studentCareers 	= [];
-	this.newStudentCareer 	= {};
 	this.careers   			= Query('careers','-','all');
 	this.newStudent 		= {};
 	this.sucess 			= false;
 
-
-	this.asignCareer = function() {
-		$this.studentCareers.push( $this.newStudentCareer );
-		$this.newStudent.careers = $this.studentCareers;
-		$this.newStudentCareer = {};
-	};
-
-
-	this.deleteStudentCareer = function( index ) {
-		$this.studentCareers.splice(index,1);
-		$this.newStudent.careers = $this.studentCareers;
-	};
-
 	this.addStudent = function() {
-		$this.newStudent['rol'] = 2;
-		Insert('users',$this.newStudent);
-		this.studentCareers = [];
+		Insert('students',$this.newStudent);
 		$this.newStudent = {};
-
 		$scope.formAddStudent.$setPristine();
 		$this.sucess = true;
 	}
@@ -249,7 +231,7 @@ app.controller('addTeacherController', function($scope){
 app.controller('addProjectController', function($scope){
 	var $this = this;
 
-	this.teams   = Query('teams','-','all');
+	this.teams   = QueryAll('teams');
 	this.newProject = {};
 	this.sucess = false;
 
@@ -271,8 +253,8 @@ var $this = this;
 	this.newTeam 			= {};
 	this.newTeam.members 	= [];
 	this.newTeamMember 		= {};
-	this.projects   		= Query('projects','-','all');
-	this.students 			= Query('users','rol',2);
+	this.projects   		= QueryAll('projects');
+	this.students 			= QueryAll('students');
 	this.rols 				= Query('studentRol','-','all');
 	this.sucess 			= false;
 
@@ -304,13 +286,13 @@ var $this = this;
 
 // Edit information controllers.
 
-app.controller('editRubricController',[ 'updateInformationModule',
-										function(updateModule){
+app.controller('editRubricController',[ 'updateInformationService',
+										function(updateService){
 
 var $this 	  = this,
 	defaultMP = 0; // Default max points.
 	
-	this.updating  			= updateModule.updating['rubric']; 
+	this.updating  			= updateService.updating['rubric']; 
 	this.newRubric 			= Query('rubrics','id',this.updating)[0];
 	this.newAspect 			= {};
 	this.totalPoints 		= 0;
@@ -345,22 +327,79 @@ var $this 	  = this,
 
 }]);
 
+app.controller('editTeamController', ['updateInformationService',
+									  function( updateService ){
+	var $ = this;
+
+
+	$.projects   			= QueryAll('projects');
+	$.students 				= QueryAll('students');
+	$.rols 					= Query('studentRol','-','all');
+	$.sucess 				= false;
+	$.updating  			= updateService.updating['team']; 
+	$.teamToUpdate  		= angular.copy(Query('teams','id',$.updating)[0]);
+	$.newTeamMember 		= {};
+	$.teamBackUp 			= angular.copy($.teamToUpdate);
+
+	$.asignMember = function() {
+		$.teamToUpdate.members.unshift( $.newTeamMember );
+		$.newTeamMember = {};
+	};
+
+
+	$.deleteMember = function( index ) {
+		$.teamToUpdate.members.splice(index, 1);
+	};
+
+	$.updateTeam = function() {
+		$.teamToUpdate.project = Number($.teamToUpdate.project); 
+		Update('teams',$.teamToUpdate.id,$.teamToUpdate);
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.teamBackUp = angular.copy($.teamToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.teamToUpdate = angular.copy($.teamBackUp);
+		$.sucess  = false;
+	}
+
+
+	console.log($.teamToUpdate.project);
+
+}]);
+
 
 // Consult information controllers.
 
-app.controller("ConsultAreaController", function(){
-	var $this = this;
+app.controller("ConsultAreaController", ['deleteInformationService',
+										 'updateInformationService',
+										 function( deleteService,
+										 		   updateService
+										 		  ){
+	var $ = this;
 
-	this.areas = data['areas'];
-	this.deleteArea = function( i ){
-		$this.areas.splice(i,1);
-	}
+	$.areas 		= data['areas'];
+	$.updateService = updateService;
+	$.deleteService = deleteService; 
 
-});
+}]);
 
-app.controller('ConsultStudentController', function() {
-	this.student = Query('users','rol',2);
-});
+app.controller('ConsultStudentController', [ 'deleteInformationService',
+											 'updateInformationService',
+											 function( deleteService,
+											 		   updateService
+											 		  ){
+    var $ = this;
+
+    $.updateService = updateService;
+	$.deleteService = deleteService; 
+	$.students 		= QueryAll('students');
+
+}]);
 
 app.controller('ConsultCareerController', function() {
 	this.careers = Query('careers');
@@ -388,23 +427,49 @@ app.controller('ConsultGroupController', function() {
 
 });
 
-app.controller('ConsultRubricController', [ 'updateInformationModule', 
-											function( updateModule ) {
+app.controller('ConsultRubricController', [ 'updateInformationService', 
+											function( updateService ) {
 
-	this.update = updateModule;
+	this.update = updateService;
 	this.rubrics = Query('rubrics','-','all');
 
 }]);
 
-app.controller('ConsultTeacherController', function() {
+app.controller('ConsultTeacherController', [ 'updateInformationService', 
+											function( updateService ) {
 	this.teachers = Query('users','rol',4);
-});
+}]);
 
-app.controller('ConsultTeamController', function() {
-	this.teams = Query('teams','-','all');
+app.controller('ConsultProjectController', [ 'deleteInformationService',
+											 'updateInformationService',
+											 function( deleteService,
+										 		   updateService
+										 		  ){
+	var $ = this;
 
-	this.getProject = function ($id){
+	$.updateService = updateService;
+	$.deleteService = deleteService; 
+	$.projects 	= QueryAll('projects');
+
+	$.getProject = function ($id){
 		return Query('projects','id',$id)[0].name;
 	}
 
-});
+}]);
+
+app.controller('ConsultTeamController', [ 'deleteInformationService',
+											 'updateInformationService',
+											 function( deleteService,
+										 		   updateService
+										 		  ){
+	var $ = this;
+
+	$.updateService = updateService;
+	$.deleteService = deleteService; 
+	$.teams = QueryAll('teams');
+
+	$.getProject = function ($id){
+		return Query('projects','id',$id)[0].name;
+	}
+
+}]);

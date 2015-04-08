@@ -11,13 +11,13 @@ app.service('configurationModule', function(){
 	var $ = this,
 		sesion = Storage.get('sesion');
 
-	$.searching    = sesion.rolCode+'.search.areas';
-	$.registering  = sesion.rolCode+'.register.areas';
+	$.searching    = sesion.rolCode+'.search.project';
+	$.registering  = sesion.rolCode+'.register.project';
 
 });
 
 
-app.service('updateInformationModule', ['$state', function($state){
+app.service('updateInformationService', ['$state', function($state){
 	var $ = this;
 
 	$.updating = {
@@ -34,12 +34,36 @@ app.service('updateInformationModule', ['$state', function($state){
 		team	 : 0
 	}
 
-	$.goToUpdate = function( target, id ){
+	$.advancedView = function( target, id ){
 		var rol 	 = 'admin',
 			newState = rol+'.update.'+target;
 
 		$.updating[target] = id;
 		$state.go(newState);
+	}
+
+}]);
+
+app.service('deleteInformationService', ['$state', function($state){
+	var $ = this;
+
+	$.deleteItem = function( target, id ){
+		
+		if( confirm('¿Está seguro de que desea eliminar este registro?') ){
+			var objToDelete = {};
+
+			for( var key in data[target] ){
+				if( data[target][key]['id'] === id ){
+					objToDelete = data[target][key];
+					break;
+				}
+			}
+
+			data[target].splice( data[target].indexOf(objToDelete), 1 );
+
+			return data[target];
+		}
+
 	}
 
 }]);

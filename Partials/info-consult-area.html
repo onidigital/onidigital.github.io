@@ -42,7 +42,9 @@
                                 </button>
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cAreaCtrl.deleteArea( $index );"
+                                        ng-click="cAreaCtrl.deleteService.deleteItem( 'areas', 
+                                                                                      area.id
+                                                                                    );"
                                       >
                                     <a  href="/info_Consult.html">
                                         <i class="fa fa-trash-o fa-2x"></i>

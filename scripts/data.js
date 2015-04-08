@@ -22,52 +22,6 @@ var users = [
 	'image'		: '../images/user.png'
 },
 {
-	'id'		: 2,
-	'email'		: 'dvargasa@ucenfotec.ac.cr',
-	'password'	: 'estudiante',
-	'name'		: 'Diego',
-	'lastName'	: 'Vargas',
-	'rol'		: 2,
-	'pId'		: 's-1',
-	'careers'	: [1, 2],
-	'courses'	: [1, 2],
-	'proyects'	: [1, 2],
-	'teams'		: [1, 2],
-	'image'		: ''	,
-	'document' :	[1,2,3]//agregó Carolina	
-
-},
-{
-	'id'		: 3,
-	'email'		: 'cborge@ucenfotec.ac.cr',
-	'password'	: 'estudiante',
-	'name'		: 'Carolina',
-	'lastName'	: 'Borge',
-	'rol'		: 2,
-	'pId'		: 's-2',
-	'careers'	: [2],
-	'courses'	: [2],
-	'proyects'	: [2],
-	'teams'		: [2],
-	'image'		: ''	,
-	'document' :	[1,2,3]	//agregó Carolina	
-},
-{
-	'id'		: 4,
-	'email'		: 'iaraya@ucenfotec.ac.cr',
-	'password'	: 'estudiante',
-	'name'		: 'Irene',
-	'lastName'	: 'Araya',
-	'rol'		: 2,
-	'pId'		: 's-3',
-	'careers'	: [1],
-	'courses'	: [1],
-	'proyects'	: [1],
-	'teams'		: [1],
-	'image'		: '',
-	'document' :	[1,2,3]	//agregó Carolina		
-},
-{
 	'id'		: 5,
 	'email'		: 'pmonestel@ucenfotec.ac.cr',
 	'password'	: 'director',
@@ -207,7 +161,37 @@ rol = [
 	'name'	: 'Decano'
 }
 ],
-// agregó carolina
+// Estudiantes
+students = [
+	{
+		'id'		: 1,
+		'email'		: 'dvargasa@ucenfotec.ac.cr',
+		'name'		: 'Diego',
+		'lastName'	: 'Vargas',
+		'pId'		: 's-1',
+		'proyects'	: [1, 2],
+		'teams'		: [1, 2],
+
+	},
+	{
+		'id'		: 3,
+		'email'		: 'cborge@ucenfotec.ac.cr',
+		'name'		: 'Carolina',
+		'lastName'	: 'Borge',
+		'pId'		: 's-2',
+		'proyects'	: [2],
+		'teams'		: [2],
+	},
+	{
+		'id'		: 4,
+		'email'		: 'iaraya@ucenfotec.ac.cr',
+		'password'	: 'estudiante',
+		'name'		: 'Irene',
+		'lastName'	: 'Araya',
+		'pId'		: 's-3',
+		'teams'		: [1],
+	}
+]
 studentRol = [
 {
 	'id' 	: 1,
@@ -482,6 +466,7 @@ voting = [
 
 var data 				= {};
 data.users 				= users;
+data.students 			= students;
 data.rol 				= rol;
 data.studentRol     	= studentRol;
 data.careers 			= careers;

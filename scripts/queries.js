@@ -18,6 +18,8 @@ function Query( object, query, value ){
 	return queryResult;
 }
 
+function QueryAll(target){ return data[target]; }
+
 function Insert(target, newItem){
 	var newId = 1;
 	for(var item in data[target]){

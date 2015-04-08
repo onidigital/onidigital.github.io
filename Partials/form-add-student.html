@@ -2,7 +2,6 @@
 	<form 	class="user-form" 
 			name="formAddStudent" 
 			ng-submit="formAddStudent.$valid && 
-					   ((addStudentCtrl.newStudent.careers).length) &&
 					   addStudentCtrl.addStudent()" 
 			novalidate
 		>
@@ -52,60 +51,6 @@
 			  			</p>
 		  	</div>
 		</div>
-		<div class="row">	
-		  	<div class="col-md-6">
-		  		<label for="fileImage">
-		  			Imagen
-		  		</label>
-		  		<input 	type="txt" 
-						id="fileImage"
-		  				class="form-control" 
-		  				name="image"
-		  				ng-model="addStudentCtrl.newStudent.image" 
-		  				required
-		  			>
-		  			<!-- Errors -->
-			  			<p class="error-feedback"
-			  				ng-show="formAddStudent.image.$dirty &&
-			  						 formAddStudent.image.$error.required"
-			  				>
-			  				Necesita ingresar el nombre del estudiante.
-			  			</p>
-		  	</div><!--col-md-6-->
-		  	<div class="col-md-6">
-		  		<label for="txtPassword">
-		  			Contraseña
-		  		</label>
-		  		<input 	type="text" 
-		  				id="txtPassword"
-		  				name="password"
-		  				class="form-control" 
-		  				ng-minlength="8"
-		  				ng-maxlength="15"
-		  				ng-model="addStudentCtrl.newStudent.password" 
-		  				required
-		  			>
-		  			<!-- Errors -->
-				    	<p 	ng-show="formAddStudent.password.$dirty && 
-				    				 formAddStudent.password.$error.required" 
-				    		class="error-feedback"
-				    	>
-				    		Necesita ingresar una contraseña para el estudiante.
-				    	</p>
-				    	<p 	ng-show="formAddStudent.password.$dirty && 
-				    				 formAddStudent.password.$error.minlength" 
-				    		class="error-feedback"
-				    	>
-				    		La contraseña es muy corta, debe contener al menos 8 cáracteres.
-				    	</p>
-				    	<p 	ng-show="formAddStudent.password.$dirty && 
-				    				 formAddStudent.password.$error.maxlength" 
-				    		class="error-feedback"
-				    	>
-				    		La contraseña es muy larga.
-				    	</p>
-		  	</div>
-		</div><!--row-->
 		<div class="row">
 			<div class="col-md-6">
 				<label for="txtPersonalId">
@@ -152,54 +97,10 @@
 			</div><!--col-md-6-->
 		</div><!--row-->
 		<div class="row">
-			<div >
-				<div class="col-md-12">
-					<label >Carrera</label>
-		  			<select ng-model="addStudentCtrl.newStudentCareer" 
-		  					class="form-control "
-		  				>
-		  				<option ng-repeat="career in addStudentCtrl.careers" 
-		  						value="{{career.name }}">
-		  						{{ career.name }}
-		  				</option>
-		  			</select>
-		  			<span 	ng-click="addStudentCtrl.asignCareer()" 
-		  					class="btn btn-primary btn-asign pull-left"
-		  				>
-		  				Asignar
-		  			</span>
-		  				<!-- Errors -->
-		  					<p 	class="error-feedback pull-right col-md-9"
-			
-		  						ng-show="!(addStudentCtrl.newStudent.careers).length"
-		  						>
-		  						Por favor asigne al menos una carrera al nuevo estudiante.
-		  					</p>
-				</div>
-				<div class="col col-md-12 add-careers">
-					<ul class="careers-list">
-						<li class="col col-md-12 list-group-item" 
-							ng-repeat="career in addStudentCtrl.studentCareers | unique: 'career'" 
-						>
-							<h5>
-								{{ career }}
-								<span
-									ng-click="addStudentCtrl.deleteStudentCareer( $index )"
-								>
-									<img src="../images/btnLess.png" alt="less" class="img-less">
-								</span>
-							</h5>
-						</li>
-					</ul>
-				</div><!--add-careers-->	
-			</div><!--newStudentCareer-->
-		</div> <!--row-->
-		<div class="row">
 			<div class="col-md-12">
 				<button type="submit" 
 						class="btn btn-add"
-						ng-disabled="(!(addStudentCtrl.newStudent.careers).length) ||
-									 formAddStudent.$invalid"
+						ng-disabled="formAddStudent.$invalid"
 					>
 					Agregar
 				</button>

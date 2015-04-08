@@ -147,6 +147,12 @@ table {
 						background: $main-color;
 						color: $text-clear;
 						font-weight: bold;
+							button {
+								&:hover {
+									color: $main-color;
+									background: $text-clear;
+								}
+							}
 					}
 				}
 		}

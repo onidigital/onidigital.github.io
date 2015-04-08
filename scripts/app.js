@@ -36,8 +36,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 	
 	// Admin views and partials.
 	$urlRouterProvider.when('/admin','admin/profile');
-	$urlRouterProvider.when('/admin/register','/admin/register/areas');
-	$urlRouterProvider.when('/admin/search','/admin/search/areas');
+	$urlRouterProvider.when('/admin/register','/admin/register/project');
+	$urlRouterProvider.when('/admin/search','/admin/search/project');
 
 	$stateProvider
 		// Admin base template.
@@ -96,7 +96,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.project', {
 			url 		: '/project',
-			template 	: '<h1>Esta tabla no existe</h1>'
+			templateUrl : '/Partials/info-consult-project.html',
+			controller  : 'ConsultProjectController as cProjectCtrl'
 		})
 		.state('admin.search.rubric', {
 			url 		: '/rubric',
@@ -195,20 +196,17 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			url 		: '/update/rubric',
 			templateUrl : '/Partials/form-edit-rubric.html',
 			controller  : 'editRubricController as editRubricCtrl'
+		})
+		.state('admin.update.project', {
+			url 		: '/update/project',
+			templateUrl : '/Partials/form-add-project.html'
+		})
+		.state('admin.update.team', {
+			url 		: '/update/team',
+			templateUrl : '/Partials/form-edit-team.html',
+			controller  : 'editTeamController as editTeamCtrl'
 		});
 
-	// Admin views and partials.
-	$urlRouterProvider.when('/student','student/profile');
-	$stateProvider
-		// Admin base template.
-		.state('student',{
-			url 		: '/student',
-			templateUrl : 'Partials/student.html'
-		})
-		.state('student.profile',{
-			url 		: '/profile',
-			templateUrl	: '/Partials/profile-student.html'
-		});
 
 });
 

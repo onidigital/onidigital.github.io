@@ -1,6 +1,0 @@
-
-app.controller('PortfolioController', function() {
-	
-	
-	}
-});
