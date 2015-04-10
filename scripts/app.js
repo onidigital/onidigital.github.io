@@ -145,10 +145,6 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			templateUrl : '/Partials/form-add-dean.html',
 			controller  : 'addDeanController as addDeanCtrl' 
 		})
-		.state('admin.register.document', {
-			url 		: '/document',
-			template 	: '<h1 class="text-center">Formulario de documento aun no existe.</h1>'
-		})
 		.state('admin.register.director', {
 			url 		: '/director',
 			templateUrl : '/Partials/form-add-director.html',
@@ -186,6 +182,11 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		.state('admin.register.vote', {
 			url 		: '/vote',
 			templateUrl : '/Partials/form-add-vote.html'
+		})
+		.state('admin.register.document', {
+			url 		: '/document',
+			templateUrl : '/Partials/form-add-document.html',
+			controller  : 'addDocumentController as addDocumentCtrl'
 		})
 		// Admin update information
 		.state('admin.update', {
