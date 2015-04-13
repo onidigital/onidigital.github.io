@@ -372,6 +372,58 @@ app.controller('editTeamController', ['updateInformationService',
 
 }]);
 
+app.controller('editProjectController', ['updateInformationService',
+									  	 function( updateService ){
+	var $ = this;
+
+	$.updating        = updateService.updating['project'];
+	$.projectToUpdate = angular.copy(Query('projects','id',$.updating)[0]);
+	$.projectBackUp   = angular.copy($.projectToUpdate);
+	$.sucess 		  = false;
+
+	$.updateProject = function(){
+		Update('projects',$.projectToUpdate.id,$.projectToUpdate);
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.projectBackUp = angular.copy($.projectToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.projectToUpdate = angular.copy($.projectBackUp);
+		$.sucess  = false;
+	}
+
+}]);
+
+app.controller('editStudentController', ['updateInformationService',
+									  	 function( updateService ){
+	var $ = this;
+
+	$.updating        = updateService.updating['student'];
+	$.studentToUpdate = angular.copy(Query('students','id',$.updating)[0]);
+	$.studentBackUp   = angular.copy($.studentToUpdate);
+	$.sucess 		  = false;
+
+	$.updateStudent = function(){
+		Update('students',$.studentToUpdate.id,$.studentToUpdate);
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.studentBackUp = angular.copy($.studentToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.studentToUpdate = angular.copy($.studentBackUp);
+		$.sucess  = false;
+	}
+
+}]);
+
 
 // Consult information controllers.
 
@@ -401,44 +453,9 @@ app.controller('ConsultStudentController', [ 'deleteInformationService',
 
 }]);
 
-app.controller('ConsultCareerController', function() {
-	this.careers = Query('careers');
-	this.directores = Query('users','rol',3);
-});
-
-app.controller('ConsultCourseController', function() {
-	this.courses = Query('courses','-','all');
-});
-
-app.controller('ConsultDeanController', function() {
-	this.deans = Query('users','rol',5);
-});
-
 app.controller('ConsultDirectorController', function() {
 	this.directors = Query('users','rol',3);
 });
-
-app.controller('ConsultGroupController', function() {
-	this.groups = Query('groups','-','all'); 
-
-	this.getCourse = function ($id){
-		return Query('courses','id',$id)[0].name;
-	}
-
-});
-
-app.controller('ConsultRubricController', [ 'updateInformationService', 
-											function( updateService ) {
-
-	this.update = updateService;
-	this.rubrics = Query('rubrics','-','all');
-
-}]);
-
-app.controller('ConsultTeacherController', [ 'updateInformationService', 
-											function( updateService ) {
-	this.teachers = Query('users','rol',4);
-}]);
 
 app.controller('ConsultProjectController', [ 'deleteInformationService',
 											 'updateInformationService',

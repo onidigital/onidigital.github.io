@@ -401,7 +401,7 @@ projects = [
 	'id'			: 1,
 	'name'  		: 'Biblioteca Virtual',
 	'description' 	: 'Una biblioteca virtual muy completa.',
-	'team'			: 1
+	'keywords'		: 'biblioteca virtual completa'
 }
 ],
 teams = [

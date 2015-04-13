@@ -6,7 +6,6 @@ app.directive('adminHeader', function(){
 	};
 });
 
-
 app.directive('appFilereader', function($q) {
     var slice = Array.prototype.slice;
 
@@ -46,4 +45,4 @@ app.directive('appFilereader', function($q) {
 
             } //link
     }; //return
-});
+}); 

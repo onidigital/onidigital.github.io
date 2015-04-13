@@ -63,21 +63,31 @@
 				<label for="txtAspect">
 					Logo
 				</label>
-				<input 	type="text"
-						id="txtAspect"	
-						class="form-control"
-						name="teamLogo"
-						ng-model="editTeamCtrl.teamToUpdate.logo"
-						ng-disabled="editTeamCtrl.maxPoints == 0"
-						required
-					>
-						<!-- Errors -->
-							<p 	class="error-feedback"
-								ng-show="formEditTeam.teamLogo.$dirty &&
-										 formEditTeam.teamLogo.$error.required"
-								>
-								Necesita asignar un logo al nuevo equipo.
-							</p>
+				<div class="btn btn-primary fileUpload" >
+					<p>
+						Subir logo
+					</p>
+					<input 	type="file"
+							id="txtAspect"
+							name="teamLogo" 
+							ng-model="editTeamCtrl.teamToUpdateMember.logo"
+							accept="image/*" 
+							class="upload"
+							required
+							app-filereader 
+						/>
+				</div>
+					<!-- Errors -->
+						<p 	class="error-feedback"
+							ng-show="formEditTeam.teamLogo.$dirty &&
+									 formEditTeam.teamLogo.$error.required"
+							>
+							Necesita asignar un logo al nuevo equipo.
+						</p>
+			
+				<img 	ng-src="{{editTeamCtrl.teamToUpdateMember.logo}}" 
+						class="img-responsive"
+					/>
 			</div>
 		</div>
 		<div class="row">

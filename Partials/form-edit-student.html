@@ -1,80 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-</head>
-	<body>
-		<div class="full-screen fs-modal" >
-			<div class="col col-md-6">
-				<header>
-					<h1>Modificar Estudiante</h1>
-				</header>
-				<form class="user-form">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="foto">
-								<span class="btn btn-file">
-    								Agregar Foto <input type="file">
-								</span>
-							</div>
-						</div>
-						<div class="col-md-9">
-							<div class="row">
-								<div class="col-md-12">
-						  			<label>Nombre</label>
-						    		<input type="text" class="form-control"placeholder="">
-								</div>
-							</div>
-							<div class="row">	
-					  			<div class="col-md-6">
-					  				<label>Apellido 1</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  			<div class="col-md-6">
-					  				<label>Apellido 2</label>
-					  				<input type="text" class="form-control">
-					  			</div>
-					  		</div>
-				  		</div>
-				  	</div>
-					<div class="row">
-						<div class="col-md-5">
-							<label for="">Cédula</label>
-							<input type="text" class="form-control">
-						</div>
-						<div class="col-md-7">
-							<label for="">Correo Electrónico</label>
-							<input type="text" class="form-control">
-						</div>
-					</div>
-					<div class="row">
-					  	<div class="col-md-6">
-						  	<label>Carrera</label>
-						    <input type="text" class="form-control"placeholder="">
-						</div>
-					</div>
-					<div class="row">
-					  	<div class="col-md-6">
-						  	<label>Carrera</label>
-						    <input type="text" class="form-control"placeholder="">
-						</div>
-						<div class="col-md-2">
-							<a href="#"><img src="../images/btnLess.png" class="img-plus" alt="plus"></a>
-							<a href="#"><img src="../images/btnPlus.png" class="img-plus" alt="plus"></a>
-						</div>
-						<button type="submit" class="btn btn-edit"><a href="/Partials/info-consult-student.html">Modificar</a></button>	
-					</div>
-				</form>	
+<div class="col col-md-6 col-md-offset-3 ">
+	<form 	class="user-form" 
+			name="formEditStudent" 
+			ng-submit="formEditStudent.$valid && 
+					   editStudentCtrl.updateStudent()" 
+			novalidate
+		>
+		<div class="row" ng-show="editStudentCtrl.sucess" >
+			<h2 class="text-center register-sucess col-md-7" >
+				¡Actualización exitosa!
+			</h2>
+			<div class="col col-md-5">
+				<span class="btn btn-danger col col-md-6 border-no-radius"
+						ng-click="editStudentCtrl.undo();"
+					>
+					Deshacer
+				</span>
+				<span class="btn btn-primary col col-md-6 border-no-radius"
+						ng-click="editStudentCtrl.save();"
+					>
+					Aceptar
+				</span>
 			</div>
 		</div>
-	</body>
-</html>
+		<div class="row">
+			<div class="col-md-6">
+			 	<label for="txtName" >
+			 		Nombre
+			 	</label>
+			  	<input  type="text" 
+			  			class="form-control"
+			  			id="txtName"
+			  			name="name"
+			  			ng-model="editStudentCtrl.studentToUpdate.name" 
+			  			required
+			  		>
+			  			<!-- Errors -->
+				  			<p class="error-feedback"
+				  				ng-show="formEditStudent.name.$dirty &&
+				  						 formEditStudent.name.$error.required"
+				  				>
+				  				Necesita ingresar el nombre del estudiante.
+				  			</p>
+			</div>
+		  	<div class="col-md-6">
+		  		<label for="txtLastName">
+		  			Apellido
+		  		</label>
+		  		<input 	type="text" 
+		  				id="txtLastName"
+		  				name="lastName"
+		  				class="form-control" 
+		  				ng-model="editStudentCtrl.studentToUpdate.lastName" 
+		  				required
+		  			>
+		  			<!-- Errors -->
+			  			<p class="error-feedback"
+			  				ng-show="formEditStudent.lastName.$dirty &&
+			  						 formEditStudent.lastName.$error.required"
+			  				>
+			  				Necesita ingresar los apellidos del estudiante.
+			  			</p>
+		  	</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label for="txtPersonalId">
+					Cédula
+				</label>
+				<input 	type="text" 
+						id="txtPersonalId"
+						class="form-control" 
+						name="personalId"
+						ng-model="editStudentCtrl.studentToUpdate.pId" 
+						required
+					>
+					<p 	ng-show="formEditStudent.personalId.$dirty && 
+				    				 formEditStudent.personalId.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar la cédula del estudiante.
+			    	</p>
+
+			</div><!--col-md-6-->
+			<div class="col-md-6">
+				<label for="txtEmail">
+					Correo Electrónico
+				</label>
+				<input 	type="email"
+						id="txtEmail" 
+						class="form-control" 
+						name="email"
+						ng-model="editStudentCtrl.studentToUpdate.email" 
+						required
+					>
+					<p 	ng-show="formEditStudent.email.$dirty && 
+				    			 formEditStudent.email.$error.required" 
+				    		class="error-feedback"
+				    	>
+			    		Necesita ingresar el email del estudiante.
+			    	</p>
+			    	<p 	ng-show="formEditStudent.email.$dirty && 
+				    			 formEditStudent.email.$error.email" 
+				    		class="error-feedback"
+				    	>
+			    		Por favor ingrese un email correcto.
+			    	</p>
+			</div><!--col-md-6-->
+		</div><!--row-->
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" 
+						class="btn btn-add"
+						ng-disabled="formEditStudent.$invalid"
+					>
+					Actualizar
+				</button>
+			</div>	
+		</div>
+	</form>	
+</div>

@@ -194,16 +194,22 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			templateUrl	: '/Partials/update-information.html'
 		})
 		.state('admin.update.rubric', {
-			url 		: '/update/rubric',
+			url 		: '/rubric',
 			templateUrl : '/Partials/form-edit-rubric.html',
 			controller  : 'editRubricController as editRubricCtrl'
 		})
 		.state('admin.update.project', {
-			url 		: '/update/project',
-			templateUrl : '/Partials/form-add-project.html'
+			url 		: '/project',
+			templateUrl : '/Partials/form-edit-project.html',
+			controller  : 'editProjectController as editProjectCtrl'
+		})
+		.state('admin.update.student', {
+			url 		: '/student',
+			templateUrl : '/Partials/form-edit-student.html',
+			controller  : 'editStudentController as editStudentCtrl'
 		})
 		.state('admin.update.team', {
-			url 		: '/update/team',
+			url 		: '/team',
 			templateUrl : '/Partials/form-edit-team.html',
 			controller  : 'editTeamController as editTeamCtrl'
 		});

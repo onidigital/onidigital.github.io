@@ -53,24 +53,34 @@
 		</div>
 		<div class="row">
 			<div class="col col-md-6">
-				<label for="txtAspect">
+				<label for="fileLogo">
 					Logo
 				</label>
-				<input 	type="text"
-						id="txtAspect"	
-						class="form-control"
-						name="teamLogo"
-						ng-model="addTeamCtrl.newTeam.logo"
-						ng-disabled="addTeamCtrl.maxPoints == 0"
-						required
-					>
-						<!-- Errors -->
-							<p 	class="error-feedback"
-								ng-show="formAddTeam.teamLogo.$dirty &&
-										 formAddTeam.teamLogo.$error.required"
-								>
-								Necesita asignar un logo al nuevo equipo.
-							</p>
+				<div class="btn btn-primary fileUpload" >
+					<p>
+						Subir logo
+					</p>
+					<input 	type="file"
+							id="fileLogo"
+							name="teamLogo" 
+							ng-model="addTeamCtrl.newTeam.logo"
+							accept="image/*" 
+							class="upload"
+							required
+							app-filereader 
+						/>
+				</div>
+					<!-- Errors -->
+						<p 	class="error-feedback"
+							ng-show="formAddTeam.teamLogo.$dirty &&
+									 formAddTeam.teamLogo.$error.required"
+							>
+							Necesita asignar un logo al nuevo equipo.
+						</p>
+			
+				<img 	ng-src="{{addTeamCtrl.newTeam.logo}}" 
+						class="img-responsive"
+					/>
 			</div>
 		</div>
 		<div class="row">
@@ -132,6 +142,26 @@
 						</h5>
 					</li>
 				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<label for="fileDocument">
+					Entregable
+				</label>
+				<div class="btn btn-primary fileUpload" >
+					<p>
+						Subir documento
+					</p>
+					<input 	type="file"
+							id="fileDocument"
+							name="teamLogo" 
+							ng-model="addTeamCtrl.newTeam.logo"
+							class="upload"
+							required
+							app-filereader 
+						/>
+				</div>
 			</div>
 		</div>
 	  	<div class="row">

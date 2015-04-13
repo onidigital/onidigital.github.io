@@ -1,51 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Oni Digital Solutions">
-
-    <title>Oni Digital Solutions</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../stylesheets/Vendor/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/main.css">
-</head>
-	<body>
-		<div class="full-screen fs-modal" >
-			<div class="col col-md-6">
-				<header>
-					<h1>Modificar Proyecto</h1>
-				</header>
-				<form>
-					<div class="row">
-						<div class="col-md-6">
-						  	<label>Proyecto</label>
-						    <input type="text" class="form-control"placeholder="">
-						</div>
-					  	<div class="col-md-6">
-					  		<label>Equipo</label>
-					  			<select class="form-control select-arrow">
-					  			<option value=""></option>			 
-					  		</select>	
-					  	</div>
-				  	</div>
-					<div class="row">
-					  	<div class="col-md-12">
-					  		<label>Descripci&oacute;n</label>
-					  		<textarea class="form-control col-md-6" rows="6"></textarea>
-					  	</div>
-				  	</div>
-				  	<div class="row">
-					  	<div class="col-md-6">
-						  	<label>Palabra Clave</label>
-						    <input type="text" class="form-control"placeholder="">
-				  		</div>
-				  		<button type="submit" class="btn btn-edit">Modificar</button>
-				    </div>
-				</form>	
+<div class="col col-md-6 col-md-offset-3 ">
+	<form name="formEditProject" ng-submit="formEditProject.$valid &&
+										   editProjectCtrl.updateProject();"
+								novalidate
+		>
+		<div class="row" ng-show="editProjectCtrl.sucess" >
+			<h2 class="text-center register-sucess col-md-7" >
+				¡Actualización exitosa!
+			</h2>
+			<div class="col col-md-5">
+				<span class="btn btn-danger col col-md-6 border-no-radius"
+						ng-click="editProjectCtrl.undo();"
+					>
+					Deshacer
+				</span>
+				<span class="btn btn-primary col col-md-6 border-no-radius"
+						ng-click="editProjectCtrl.save();"
+					>
+					Aceptar
+				</span>
 			</div>
 		</div>
-	</body>
-</html>
+		<div class="row">
+			<div class="col-md-6">
+			  	<label for="txtProject">
+			  		Proyecto
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+						id="txtProject"
+						name="project"
+						ng-model="editProjectCtrl.projectToUpdate.name"
+						required
+			    	>
+			    		<!-- Errors -->
+			    		<p 	ng-show="formEditProject.project.$dirty && 
+			    				 	 formEditProject.project.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el nombre del proyecto.
+				    	</p>
+			</div>
+	  	</div>
+		<div class="row">
+			<div class="col-md-12">
+			  	<label for="txtDescription">
+			  		Descripción
+			  	</label>
+			    <textarea	id="txtDescription"
+			    			required 
+			    			type="text" 
+			    			ng-model="editProjectCtrl.projectToUpdate.description" 
+			    			class="form-control" 
+			    			name="description" 
+			    	>
+			    </textarea>
+			    <!-- Errors -->
+			    	<p 	ng-show="formEditProject.description.$dirty && 
+			    				 formEditProject.description.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar la descripción del proyecto.
+			    	</p>
+			</div>
+	  	</div>
+	  	<div class="row">
+		  	<div class="col-md-12">
+			  	<label for="txtKeyWords">
+			  		Palabra Clave
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+			    		id="txtKeywords"
+			    		name="keywords"
+			    		ng-model="editProjectCtrl.projectToUpdate.keywords"
+			    		required
+			    	>
+			    	<!-- Errors -->
+			    		<p 	ng-show="formEditProject.keywords.$dirty && 
+			    				 	 formEditProject.keywords.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar las palabras clave del proyecto.
+				    	</p>
+	  		</div>
+	    </div>	
+	    <div>
+	    	<button type="submit" 
+	  				class="btn btn-add"
+	  				ng-disabled="formEditProject.$invalid"
+	  		>
+	  			Actualizar
+	  		</button>
+	    </div>
+	</form>	
+</div>
