@@ -1,7 +1,7 @@
 app.directive('adminHeader', function(){
 	return { 
 		restrict 	: 'E',
- 		templateUrl	: '/Partials/menu-admin.html',
+ 		templateUrl	: 'Partials/menu-admin.html',
  		controller 	: 'menuController as menuCtrl'
 	};
 });
