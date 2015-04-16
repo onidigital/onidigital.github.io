@@ -47,37 +47,37 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.profile',{
 			url 		: '/profile',
-			templateUrl	: '/Partials/profile-admin.html'
+			templateUrl	: 'Partials/profile-admin.html'
 		})
 		// Admin search information.
 		.state('admin.search',{
 			url 		: '/search',
-			templateUrl : '/Partials/admin-search.html',
+			templateUrl : 'Partials/admin-search.html',
 			controller  : 'searchInformationController as sInfoCtrl'
 		})
 		.state('admin.search.areas', {
 			url 		: '/areas', 		
-			templateUrl : '/Partials/info-consult-area.html',
+			templateUrl : 'Partials/info-consult-area.html',
 			controller  : 'ConsultAreaController as cAreaCtrl'
 		})
 		.state('admin.search.students', {
 			url 		: '/students', 		
-			templateUrl : '/Partials/info-consult-student.html',
+			templateUrl : 'Partials/info-consult-student.html',
 			controller  : 'ConsultStudentController as cStudentCtrl'
 		})
 		.state('admin.search.career', {
 			url 		: '/career',
-			templateUrl : '/Partials/info-consult-career.html',
+			templateUrl : 'Partials/info-consult-career.html',
 			controller  : 'ConsultCareerController as cCareerCtrl'
 		})
 		.state('admin.search.course', {
 			url 		: '/course',
-			templateUrl : '/Partials/info-consult-course.html',
+			templateUrl : 'Partials/info-consult-course.html',
 			controller  : 'ConsultCourseController as cCourseCtrl'
 		})
 		.state('admin.search.dean',{
 			url 		: '/dean',
-			templateUrl : '/Partials/info-consult-dean.html',
+			templateUrl : 'Partials/info-consult-dean.html',
 			controller  : 'ConsultDeanController as cDeanCtrl'
 		})
 		.state('admin.search.document', {
@@ -86,131 +86,131 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.director', {
 			url 		: '/director',
-			templateUrl : '/Partials/info-consult-director.html',
+			templateUrl : 'Partials/info-consult-director.html',
 			controller  : 'ConsultDirectorController as cDirectorCtrl'
 		})
 		.state('admin.search.group', {
 			url 		: '/group',
-			templateUrl : '/Partials/info-consult-group.html',
+			templateUrl : 'Partials/info-consult-group.html',
 			controller  : 'ConsultGroupController as cGroupCtrl'
 		})
 		.state('admin.search.project', {
 			url 		: '/project',
-			templateUrl : '/Partials/info-consult-project.html',
+			templateUrl : 'Partials/info-consult-project.html',
 			controller  : 'ConsultProjectController as cProjectCtrl'
 		})
 		.state('admin.search.rubric', {
 			url 		: '/rubric',
-			templateUrl : '/Partials/info-consult-rubric.html',
+			templateUrl : 'Partials/info-consult-rubric.html',
 			controller  : 'ConsultRubricController as cRubricCtrl'
 		})
 		.state('admin.search.student', {
 			url 		: '/student',
-			templateUrl : '/Partials/info-consult-student.html',
+			templateUrl : 'Partials/info-consult-student.html',
 			controller  : 'ConsultStudentController as cStudentCtrl'
 		})
 		.state('admin.search.teacher', {
 			url 		: '/teacher',
-			templateUrl : '/Partials/info-consult-teacher.html',
+			templateUrl : 'Partials/info-consult-teacher.html',
 			controller  : 'ConsultTeacherController as cTeacherCtrl'
 		})
 		.state('admin.search.team', {
 			url 		: '/team',
-			templateUrl : '/Partials/info-consult-team.html',
+			templateUrl : 'Partials/info-consult-team.html',
 			controller  : 'ConsultTeamController as cTeamCtrl'
 		})
 		// Admin register information
 		.state('admin.register', {
 			url 		: '/register',
-			templateUrl : '/Partials/admin-register.html',
+			templateUrl : 'Partials/admin-register.html',
 			controller  : 'registerInformationController as rInfoCtrl'
 		})
 		.state('admin.register.areas', {
 			url 		: '/areas',
-			templateUrl : '/Partials/form-add-area.html',
+			templateUrl : 'Partials/form-add-area.html',
 			controller  : 'addAreaController as addAreaCtrl'
 		})
 		.state('admin.register.career', {
 			url 		: '/career',
-			templateUrl : '/Partials/form-add-career.html',
+			templateUrl : 'Partials/form-add-career.html',
 			controller  : 'addCareerController as addCareerCtrl'
 		})
 		.state('admin.register.course', {
 			url 		: '/course',
-			templateUrl : '/Partials/form-add-course.html',
+			templateUrl : 'Partials/form-add-course.html',
 			controller  : 'addCourseController as addCourseCtrl'
 		})
 		.state('admin.register.dean',{
 			url 		: '/dean',
-			templateUrl : '/Partials/form-add-dean.html',
+			templateUrl : 'Partials/form-add-dean.html',
 			controller  : 'addDeanController as addDeanCtrl' 
 		})
 		.state('admin.register.director', {
 			url 		: '/director',
-			templateUrl : '/Partials/form-add-director.html',
+			templateUrl : 'Partials/form-add-director.html',
 			controller 	: "addDirectorController as addDirectorCtrl"
 		})
 		.state('admin.register.group', {
 			url 		: '/group',
-			templateUrl : '/Partials/form-add-group.html'
+			templateUrl : 'Partials/form-add-group.html'
 		})
 		.state('admin.register.project', {
 			url 		: '/project',
-			templateUrl : '/Partials/form-add-project.html',
+			templateUrl : 'Partials/form-add-project.html',
 			controller  : 'addProjectController as addProjectCtrl' 
 		})
 		.state('admin.register.rubric', {
 			url 		: '/rubric',
-			templateUrl : '/Partials/form-add-rubric.html',
+			templateUrl : 'Partials/form-add-rubric.html',
 			controller  : 'addRubricController as addRubricCtrl'
 		})
 		.state('admin.register.student', {
 			url 		: '/student',
-			templateUrl : '/Partials/form-add-student.html',
+			templateUrl : 'Partials/form-add-student.html',
 			controller  : 'addStudentController as addStudentCtrl'
 		})
 		.state('admin.register.teacher', {
 			url 		: '/teacher',
-			templateUrl : '/Partials/form-add-teacher.html',
+			templateUrl : 'Partials/form-add-teacher.html',
 			controller  : 'addTeacherController as addTeacherCtrl'
 		})
 		.state('admin.register.team', {
 			url 		: '/team',
-			templateUrl : '/Partials/form-add-team.html',
+			templateUrl : 'Partials/form-add-team.html',
 			controller  : 'addTeamController as addTeamCtrl'
 		})
 		.state('admin.register.vote', {
 			url 		: '/vote',
-			templateUrl : '/Partials/form-add-vote.html'
+			templateUrl : 'Partials/form-add-vote.html'
 		})
 		.state('admin.register.document', {
 			url 		: '/document',
-			templateUrl : '/Partials/form-add-document.html',
+			templateUrl : 'Partials/form-add-document.html',
 			controller  : 'addDocumentController as addDocumentCtrl'
 		})
 		// Admin update information
 		.state('admin.update', {
 			url 	 	: '/update', 
-			templateUrl	: '/Partials/update-information.html'
+			templateUrl	: 'Partials/update-information.html'
 		})
 		.state('admin.update.rubric', {
 			url 		: '/rubric',
-			templateUrl : '/Partials/form-edit-rubric.html',
+			templateUrl : 'Partials/form-edit-rubric.html',
 			controller  : 'editRubricController as editRubricCtrl'
 		})
 		.state('admin.update.project', {
 			url 		: '/project',
-			templateUrl : '/Partials/form-edit-project.html',
+			templateUrl : 'Partials/form-edit-project.html',
 			controller  : 'editProjectController as editProjectCtrl'
 		})
 		.state('admin.update.student', {
 			url 		: '/student',
-			templateUrl : '/Partials/form-edit-student.html',
+			templateUrl : 'Partials/form-edit-student.html',
 			controller  : 'editStudentController as editStudentCtrl'
 		})
 		.state('admin.update.team', {
 			url 		: '/team',
-			templateUrl : '/Partials/form-edit-team.html',
+			templateUrl : 'Partials/form-edit-team.html',
 			controller  : 'editTeamController as editTeamCtrl'
 		});
 
