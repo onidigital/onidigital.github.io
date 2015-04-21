@@ -427,29 +427,31 @@ app.controller('editStudentController', ['updateInformationService',
 
 // Consult information controllers.
 
-app.controller("ConsultAreaController", ['deleteInformationService',
-										 'updateInformationService',
-										 function( deleteService,
-										 		   updateService
-										 		  ){
-	var $ = this;
-
-	$.areas 		= data['areas'];
-	$.updateService = updateService;
-	$.deleteService = deleteService; 
-
-}]);
-
 app.controller('ConsultStudentController', [ 'deleteInformationService',
 											 'updateInformationService',
+											 '$http',
 											 function( deleteService,
-											 		   updateService
+											 		   updateService,
+											 		   $http
 											 		  ){
     var $ = this;
 
     $.updateService = updateService;
 	$.deleteService = deleteService; 
-	$.students 		= QueryAll('students');
+	$.students 		= [];
+	$.phpUrl		= 'Queries/getStudents.php';
+
+	$.getStudents = function(){
+		$http.post($.phpUrl)
+			 .success(function(data, status){
+ 			 	$.students = data;
+ 			 })
+			 .error(function(data, status){
+ 			 	alert('Error.');
+ 			 });
+	}
+
+	$.getStudents();
 
 }]);
 
