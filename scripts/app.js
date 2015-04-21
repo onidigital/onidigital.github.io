@@ -82,7 +82,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.search.document', {
 			url 		: '/document',
-			template 	: '<h1 class="text-center">Formulario de documento aun no existe.</h1>'
+			templateUrl : 'Partials/info-consult-document.html',
+			controller  : 'ConsultDocumentController as cDocumentCtrl'
 		})
 		.state('admin.search.director', {
 			url 		: '/director',
@@ -207,6 +208,11 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			url 		: '/student',
 			templateUrl : 'Partials/form-edit-student.html',
 			controller  : 'editStudentController as editStudentCtrl'
+		})
+		.state('admin.update.document', {
+			url 		: '/document',
+			templateUrl : 'Partials/form-edit-document.html',
+			controller  : 'editDocumentController as editDocumentCtrl'
 		})
 		.state('admin.update.team', {
 			url 		: '/team',

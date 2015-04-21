@@ -1,0 +1,96 @@
+<div class="col col-md-6 col-md-offset-3 ">
+	<form name="formEditDocument" ng-submit="formEditDocument.$valid &&
+										   editDocumentCtrl.updateDocument();"
+								novalidate
+		>
+		<div class="row" ng-show="editDocumentCtrl.sucess" >
+			<h2 class="text-center register-sucess col-md-7" >
+				¡Actualización exitosa!
+			</h2>
+			<div class="col col-md-5">
+				<span class="btn btn-danger col col-md-6 border-no-radius"
+						ng-click="editDocumentCtrl.undo();"
+					>
+					Deshacer
+				</span>
+				<span class="btn btn-primary col col-md-6 border-no-radius"
+						ng-click="editDocumentCtrl.save();"
+					>
+					Aceptar
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+			  	<label for="txtDocument">
+			  		Proyecto
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+						id="txtDocument"
+						name="document"
+						ng-model="editDocumentCtrl.documentToUpdate.name"
+						required
+			    	>
+			    		<!-- Errors -->
+			    		<p 	ng-show="formEditDocument.document.$dirty && 
+			    				 	 formEditDocument.document.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar el nombre del documento.
+				    	</p>
+			</div>
+	  	</div>
+		<div class="row">
+			<div class="col-md-12">
+			  	<label for="txtDescription">
+			  		Descripción
+			  	</label>
+			    <textarea	id="txtDescription"
+			    			required 
+			    			type="text" 
+			    			ng-model="editDocumentCtrl.documentToUpdate.description" 
+			    			class="form-control" 
+			    			name="description" 
+			    	>
+			    </textarea>
+			    <!-- Errors -->
+			    	<p 	ng-show="formEditDocument.description.$dirty && 
+			    				 formEditDocument.description.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar la descripción del documento.
+			    	</p>
+			</div>
+	  	</div>
+	<!--<div class="row">
+		  	<div class="col-md-12">
+			  	<label for="txtKeyWords">
+			  		Palabra Clave
+			  	</label>
+			    <input 	type="text" 
+			    		class="form-control"
+			    		id="txtKeywords"
+			    		name="keywords"
+			    		ng-model="editProjectCtrl.projectToUpdate.keywords"
+			    		required
+			    	>
+			    	<!-- Errors -->
+	<!--		    		<p 	ng-show="formEditProject.keywords.$dirty && 
+			    				 	 formEditProject.keywords.$error.required" 
+				    		class="error-feedback"
+				    	>
+				    		Necesita ingresar las palabras clave del proyecto.
+				    	</p>
+	  		</div>
+	    </div>	-->
+	    <div>
+	    	<button type="submit" 
+	  				class="btn btn-add"
+	  				ng-disabled="formEditDocument.$invalid"
+	  		>
+	  			Actualizar
+	  		</button>
+	    </div>
+	</form>	
+</div>

@@ -4,10 +4,10 @@ app.controller('addDocumentController', function($scope){
 	this.newArea = {};
 	this.sucess = false;
 
-	this.addArea = function(){
-		Insert('areas',$this.newArea);
-		$this.newArea = {};
-		$scope.formAddArea.$setPristine();
+	this.addDocument = function(){
+		Insert('documents',$this.newDocument);
+		$this.newDocument = {};
+		$scope.formAddDocument.$setPristine();
 		$this.sucess = true;
 	}
 
@@ -15,7 +15,7 @@ app.controller('addDocumentController', function($scope){
 
 });
 
-app.controller("ConsultAreaController", ['deleteInformationService',
+app.controller("ConsultDocumentController", ['deleteInformationService',
 										 'updateInformationService',
 										 function( deleteService,
 										 		   updateService
@@ -25,5 +25,31 @@ app.controller("ConsultAreaController", ['deleteInformationService',
 	$.documents		= QueryAll('documents');
 	$.updateService = updateService;
 	$.deleteService = deleteService; 
+
+}]);
+
+app.controller('editDocumentController', ['updateInformationService',
+									  	 function( updateService ){
+	var $ = this;
+
+	$.updating        = updateService.updating['document'];
+	$.documentToUpdate = angular.copy(Query('documents','id',$.updating)[0]);
+	$.documentBackUp   = angular.copy($.documentToUpdate);
+	$.sucess 		  = false;
+
+	$.updateDocument = function(){
+		Update('documents',$.documentToUpdate.id,$.documentToUpdate);
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.documentBackUp = angular.copy($.documentToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.documentToUpdate = angular.copy($.documentBackUp);
+		$.sucess  = false;
+	}
 
 }]);

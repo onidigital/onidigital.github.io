@@ -1,0 +1,59 @@
+<div class="col col-md-6 col-md-offset-3">
+	<form name="formAddDocument" ng-submit="formAddDocument.$valid && addDocumentCtrl.addDocument()" novalidate>
+		<h2 class="text-center register-sucess" ng-show="addDocumentCtrl.sucess" >
+			¡Registro exitoso!
+			<button class="btn btn-close" ng-click="addDocumentCtrl.removeSucessMessage();">
+				X
+			</button>
+		</h2>
+		<div class="row">
+			<div class="col-md-12">
+			  	<label for="txtDocument">
+			  		Documento
+			  	</label>
+			    <input 	id="txtDocument"
+			    		required 
+			    		type="text" 
+			    		ng-model="addDocumentCtrl.newDocument.name" 
+			    		class="form-control" 
+			    		name="area" 
+			    		placeholder="Nombre del Documento"
+			    	>
+			    <!-- Errors -->
+			    	<p 	ng-show="formAddDocument.document.$dirty && 
+			    				 formAddDocument.document.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar el nombre del documento.
+			    	</p>
+			</div>
+	  	</div>
+		<div class="row">
+			<div class="col-md-12">
+			  	<label for="txtDescription">
+			  		Descripción
+			  	</label>
+			    <textarea	id="txtDescription"
+			    			required 
+			    			type="text" 
+			    			ng-model="addDocumentCtrl.newDocument.description" 
+			    			class="form-control" 
+			    			name="description" 
+			    	>
+			    </textarea>
+			    <!-- Errors -->
+			    	<p 	ng-show="formAddDocument.description.$dirty && 
+			    				 formAddDocument.description.$error.required" 
+			    		class="error-feedback"
+			    	>
+			    		Necesita ingresar la descripción del documento.
+			    	</p>
+			</div>
+	  	</div>
+	  	<div class="row">
+		  	<button  ng-disabled="formAddDocument.$invalid" type="submit" class="btn btn-add">
+		  		Agregar
+		  	</button>
+	  	</div>	
+	</form>	
+</div>
