@@ -2,8 +2,8 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2015 a las 04:56:56
+-- Servidor: localhost:3307
+-- Tiempo de generación: 22-04-2015 a las 23:37:32
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -24,17 +24,57 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getProject`(IN `project` INT(11))
+    NO SQL
+    COMMENT 'Devuelve el proyecto solicitado.'
+begin
+    Select *
+    From   project
+    Where  project.idProject = project;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getProjects`()
+    NO SQL
+    COMMENT 'Retorna todos los proyectos.'
+begin
+    Select * 
+    From   project;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getStudent`(IN `pIdPerson` INT(11))
+    NO SQL
+Begin
+
+	Select *
+    From   person as p
+    Where  p.idPerson = pIdPerson;
+
+End$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getStudents`()
     NO SQL
     COMMENT 'Retorna todos los estudiantes.'
 begin
-    Select  p.idPersonal as pId,
-    		p.first_name as name,
-            p.last_name  as lastName,
+    Select  p.idPerson,
+    		p.idPersonal,
+    		p.first_name,
+            p.last_name,
             p.email
     From	person as p
     		Inner Join student as s
             	On s.idPerson = p.idPerson;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeams`()
+    NO SQL
+    COMMENT 'Retorna todos los equipos.'
+begin
+	Select t.idTeam,
+    	   t.teamName    as name,
+    	   p.projectName as project
+    From   team as t
+           Inner Join project as p
+           	On p.idProject = t.idProject;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUser`(IN `ced` VARCHAR(50))
@@ -51,6 +91,81 @@ begin
             	on p.idPerson = u.idPerson
     Where ced = p.idPersonal;
 end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProject`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500), IN `pKeywords` VARCHAR(250))
+    NO SQL
+    COMMENT 'Inserta un proyecto.'
+Begin
+
+Insert Into bdonidigital.project 
+	(
+       idProject, 
+       projectName, 
+       description, 
+       keywords
+    ) 
+	Values 
+    (	
+        NULL, 
+     	pName, 
+     	pDescription, 	 
+        pKeywords
+     );
+
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertStudent`(IN `pFirst_Name` VARCHAR(500), IN `pLast_Name` VARCHAR(500), IN `pPersonalId` VARCHAR(50), IN `pEmail` VARCHAR(50))
+    NO SQL
+    COMMENT 'Inserta una nueva persona.'
+Begin 
+
+INSERT INTO bdonidigital.person 
+	(
+        idPerson, 
+        first_name, 
+        last_name, 
+        idPersonal, 
+        email
+     )
+    VALUES 
+    	(
+            NULL, 
+            pFirst_Name, 
+            pLast_Name, 
+            pPersonalId, 
+            pEmail
+         );
+    
+    Set @udIdPersonal = (	Select p.idPerson
+    						From   person as p
+                     Where  p.idPersonal = pPersonalId);
+ 
+    
+    INSERT INTO bdonidigital.student 
+	(
+        idStudent, 
+        idPerson 
+     )
+    VALUES 
+    	(
+            NULL, 
+            @udIdPersonal
+         );
+  
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateStudent`(IN `pFirstName` VARCHAR(500), IN `pPastName` VARCHAR(500), IN `pIdPersonal` VARCHAR(50), IN `pEmail` VARCHAR(50), IN `pIdPerson` INT)
+    NO SQL
+Begin
+
+	Update bdonidigital.person
+    	Set first_name = pFirstName, 
+        	last_name  = pLastName, 
+            idPersonal = pIdPersonal, 
+            email 	   = pEmail
+        WHERE person.idPerson = pIdPerson;
+
+End$$
 
 DELIMITER ;
 
@@ -90,14 +205,17 @@ CREATE TABLE IF NOT EXISTS `person` (
   `last_name` varchar(500) NOT NULL,
   `idPersonal` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `person`
 --
 
 INSERT INTO `person` (`idPerson`, `first_name`, `last_name`, `idPersonal`, `email`) VALUES
-(1, 'Jorge Daniel', 'Valverde Matarrita', '304870421', 'jvalverdem@ucenfotec.ac.cr');
+(1, 'Jorge ', 'Valverde ', '30487042', 'jvalverdem@ucenfotec.ac.cr'),
+(2, 'Leslie Daniela', 'Andrade', '3045871', 'landrade@ucenfotec.ac.cr'),
+(8, 'Brandon De Jesus', 'Rojas', '30584561', 'brojas@ucenfotec.ac.cr'),
+(14, 'Rebeca Raquel', 'Poveda Rojas', '30578456', 'rpovedar@ucenfotec.ac.cr');
 
 -- --------------------------------------------------------
 
@@ -108,8 +226,20 @@ INSERT INTO `person` (`idPerson`, `first_name`, `last_name`, `idPersonal`, `emai
 CREATE TABLE IF NOT EXISTS `project` (
 `idProject` int(10) NOT NULL,
   `projectName` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `description` varchar(500) NOT NULL,
+  `keywords` varchar(250) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `project`
+--
+
+INSERT INTO `project` (`idProject`, `projectName`, `description`, `keywords`) VALUES
+(1, 'Biblioteca Virtual', 'Una biblioteca virtual muy completa.', 'biblioteca virtual completa.'),
+(2, 'Registro medico', 'Registro medico para el hospital de San Jose.', 'Registro medico hospital San Jose'),
+(3, 'Red social', 'Una red social para estudiantes de una universidad.', 'red social universidad'),
+(4, 'Tienda virtual', 'Tienda virtual de articulos varios', 'tienda virtual articulos varios'),
+(7, 'Nuevo Proyecto', 'Aqui una descripcion para un nuevo proyecto.', 'nuevo proyecto');
 
 -- --------------------------------------------------------
 
@@ -120,14 +250,16 @@ CREATE TABLE IF NOT EXISTS `project` (
 CREATE TABLE IF NOT EXISTS `student` (
 `idStudent` int(10) NOT NULL,
   `idPerson` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `student`
 --
 
 INSERT INTO `student` (`idStudent`, `idPerson`) VALUES
-(1, 1);
+(1, 1),
+(2, 2),
+(10, 14);
 
 -- --------------------------------------------------------
 
@@ -146,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `tbuser` (
 --
 
 INSERT INTO `tbuser` (`idUser`, `idPerson`, `password`) VALUES
-(1, 1, 'admin');
+(1, 8, 'admin');
 
 -- --------------------------------------------------------
 
@@ -159,7 +291,14 @@ CREATE TABLE IF NOT EXISTS `team` (
   `teamName` varchar(50) NOT NULL,
   `idProject` int(10) NOT NULL,
   `logo` binary(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `team`
+--
+
+INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`) VALUES
+(1, 'Oni', 2, 0x31303130313000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000);
 
 -- --------------------------------------------------------
 
@@ -173,6 +312,14 @@ CREATE TABLE IF NOT EXISTS `teammembers` (
   `rol` varchar(50) NOT NULL,
   `grade` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `teammembers`
+--
+
+INSERT INTO `teammembers` (`idTeam`, `idStudent`, `rol`, `grade`) VALUES
+(1, 1, 'Coordinador', 90),
+(1, 2, 'Calidad', 95);
 
 -- --------------------------------------------------------
 
@@ -273,17 +420,17 @@ ALTER TABLE `voters`
 -- AUTO_INCREMENT de la tabla `person`
 --
 ALTER TABLE `person`
-MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT;
+MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `student`
 --
 ALTER TABLE `student`
-MODIFY `idStudent` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idStudent` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tbuser`
 --
@@ -293,7 +440,7 @@ MODIFY `idUser` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT;
+MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `vote`
 --
