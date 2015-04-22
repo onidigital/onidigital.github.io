@@ -9,8 +9,8 @@
 		echo "Failed to connect to MySQL:" . mysqli_connect_error();
 	}
 
-
-	$sql 	= 'CALL getStudents()';
+	$id     = $jsonData->id;
+	$sql 	= 'CALL getStudent("'.$id.'")';
 	$result = mysqli_query($con, $sql);
 
 	if( !$result ){
@@ -30,6 +30,6 @@
 	mysqli_free_result($result);
 	mysqli_close($con);
 
-	echo json_encode($rows);
+	echo json_encode($rows[0]);
 
 ?>

@@ -14,7 +14,7 @@
                     <tbody>
                         <tr ng-repeat="team in cTeamCtrl.teams | filter: search" class="displayInfo" >
                             <td class="text-center" >{{ team.name  }}</td>
-                            <td class="text-center" >{{ cTeamCtrl.getProject(team.project) }}</td>
+                            <td class="text-center" >{{ team.project }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"

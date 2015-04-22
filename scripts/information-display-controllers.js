@@ -191,24 +191,38 @@ var $this 	  = this,
 
 
 
-app.controller('addStudentController',function($scope){
+app.controller('addStudentController',[	'$scope',
+										'$http',
+										function(
+													$scope, 
+													$http
+												){
 
-var $this = this;
+var $ = this;
+	
+	$.phpUrl 	 = 'Queries/insertStudent.php';	
+	$.newStudent = {};
+	$.sucess 	 = false;
 
-	this.careers   			= Query('careers','-','all');
-	this.newStudent 		= {};
-	this.sucess 			= false;
-
-	this.addStudent = function() {
-		Insert('students',$this.newStudent);
-		$this.newStudent = {};
-		$scope.formAddStudent.$setPristine();
-		$this.sucess = true;
+	$.addStudent = function() {
+		$http.post($.phpUrl, $.newStudent)
+			.success(function(data, status){
+				$.clear();
+			})
+			.error(function(data, status){
+				alert('Error: '+status);
+			});
 	}
 
-	this.removeSucessMessage = function(){ $this.sucess = false; }
+	$.clear = function(){
+		$.newStudent = {};
+		$scope.formAddStudent.$setPristine();
+		$.sucess = true;
+	}
 
-});
+	$.removeSucessMessage = function(){ $.sucess = false; }
+
+}]);
 
 app.controller('addTeacherController', function($scope){
 	var $this = this;
@@ -228,23 +242,39 @@ app.controller('addTeacherController', function($scope){
 
 });
 
-app.controller('addProjectController', function($scope){
-	var $this = this;
+app.controller('addProjectController', [ '$scope',
+										 '$http',
+										 function( $scope,
+										 		   $http
+										 		  ){
+    var $ = this;
 
-	this.teams   = QueryAll('teams');
-	this.newProject = {};
-	this.sucess = false;
+	$.teams   	 = [];
+	$.newProject = {};
+	$.sucess 	 = false;
+	$.phpUrl 	 = 'Queries/insertProject.php';
 
-	this.addProject = function(){
-		Insert('projects',$this.newProject);;
-		$this.newProject = {};
-		$scope.formAddProject.$setPristine();
-		$this.sucess = true;
+	$.addProject = function(){
+
+		$http.post($.phpUrl, $.newProject)
+			.success(function(data, status){
+				console.log(status);
+				$.clean();
+			})
+			.error(function(data, status){
+				alert('Error :'+status);
+			});
 	}
 
-	this.removeSucessMessage = function(){ $this.sucess = false; }
+	$.removeSucessMessage = function(){ $.sucess = false; }
 
-});
+	$.clean = function(){
+		$.newProject = {};
+		$scope.formAddProject.$setPristine();
+		$.sucess = true;
+	}
+
+}]);
 
 app.controller('addTeamController',function($scope){
 
@@ -399,17 +429,40 @@ app.controller('editProjectController', ['updateInformationService',
 }]);
 
 app.controller('editStudentController', ['updateInformationService',
-									  	 function( updateService ){
+										 '$http',
+									  	 function( updateService, $http ){
 	var $ = this;
 
-	$.updating        = updateService.updating['student'];
-	$.studentToUpdate = angular.copy(Query('students','id',$.updating)[0]);
+	$.phpUrl 		  = 	{
+								'getStudent' : 'Queries/getStudent.php',
+								'update' 	 : 'Queries/updateStudent.php'
+							};
+	$.updating        = Number(updateService.updating['student']);
+	$.studentToUpdate = {};
 	$.studentBackUp   = angular.copy($.studentToUpdate);
 	$.sucess 		  = false;
 
 	$.updateStudent = function(){
-		Update('students',$.studentToUpdate.id,$.studentToUpdate);
-		$.sucess = true;
+		console.log($.updating);
+		$.studentToUpdate.idPerson = $.updating;
+		$http.post( $.phpUrl.update, $.studentToUpdate )
+			.success(function(data, status){
+				$.sucess = true;		
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
+		
+	}
+
+	$.getStudent = function(){
+		$http.post( $.phpUrl.getStudent, { 'id' :  $.updating } )
+			.success(function(data, status){
+				$.studentToUpdate = data;		
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
 	}
 
 	$.save = function(){ 
@@ -421,6 +474,8 @@ app.controller('editStudentController', ['updateInformationService',
 		$.studentToUpdate = angular.copy($.studentBackUp);
 		$.sucess  = false;
 	}
+
+	$.getStudent();
 
 }]);
 
@@ -461,34 +516,60 @@ app.controller('ConsultDirectorController', function() {
 
 app.controller('ConsultProjectController', [ 'deleteInformationService',
 											 'updateInformationService',
+											 '$http',
 											 function( deleteService,
-										 		   updateService
-										 		  ){
+											 		   updateService,
+											 		   $http
+											 		  ){
 	var $ = this;
 
 	$.updateService = updateService;
 	$.deleteService = deleteService; 
-	$.projects 	= QueryAll('projects');
+	$.projects 		= [];
+	$.phpUrl		= 'Queries/getProjects.php';
 
-	$.getProject = function ($id){
-		return Query('projects','id',$id)[0].name;
+	$.getProjects = function(){
+		$http.post($.phpUrl)
+			 .success(function(data, status){
+ 			 	$.projects = data;
+ 			 })
+			 .error(function(data, status){
+ 			 	alert('Error.');
+ 			 });
 	}
+
+	$.getProjects();
 
 }]);
 
 app.controller('ConsultTeamController', [ 'deleteInformationService',
-											 'updateInformationService',
+										  'updateInformationService',
+										  '$http',
 											 function( deleteService,
-										 		   updateService
-										 		  ){
+											 		   updateService,
+											 		   $http
+											 		  ){
 	var $ = this;
 
 	$.updateService = updateService;
 	$.deleteService = deleteService; 
-	$.teams = QueryAll('teams');
+	$.phpUrl 		= 'Queries/getTeams.php';
+	$.teams 		= [];
 
 	$.getProject = function ($id){
 		return Query('projects','id',$id)[0].name;
 	}
+
+	$.getProjects = function(){
+		$http.post($.phpUrl)
+			.success(function(data, status){
+				$.teams = data;
+			})
+			.error(function(data, status){
+				console.log('Error: '+status);
+			});
+	}
+
+	$.getProjects();
 
 }]);

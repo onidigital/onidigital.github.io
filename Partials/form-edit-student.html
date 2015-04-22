@@ -31,7 +31,7 @@
 			  			class="form-control"
 			  			id="txtName"
 			  			name="name"
-			  			ng-model="editStudentCtrl.studentToUpdate.name" 
+			  			ng-model="editStudentCtrl.studentToUpdate.first_name" 
 			  			required
 			  		>
 			  			<!-- Errors -->
@@ -50,7 +50,7 @@
 		  				id="txtLastName"
 		  				name="lastName"
 		  				class="form-control" 
-		  				ng-model="editStudentCtrl.studentToUpdate.lastName" 
+		  				ng-model="editStudentCtrl.studentToUpdate.last_name" 
 		  				required
 		  			>
 		  			<!-- Errors -->
@@ -71,7 +71,7 @@
 						id="txtPersonalId"
 						class="form-control" 
 						name="personalId"
-						ng-model="editStudentCtrl.studentToUpdate.pId" 
+						ng-model="editStudentCtrl.studentToUpdate.idPersonal" 
 						required
 					>
 					<p 	ng-show="formEditStudent.personalId.$dirty && 

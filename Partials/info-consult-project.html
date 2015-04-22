@@ -13,8 +13,8 @@
                     </div>
                     <tbody>
                         <tr ng-repeat="project in cProjectCtrl.projects | filter: search" class="displayInfo" >
-                            <td class="text-center" >{{ cProjectCtrl.getProject(project.id) }}
-                            <td class="text-center" >{{ project.description  }}</td>
+                            <td class="text-center" > {{ project.projectName }} </td>
+                            <td class="text-center" > {{ project.description }} </td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"

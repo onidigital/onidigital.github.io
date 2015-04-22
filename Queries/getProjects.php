@@ -10,7 +10,7 @@
 	}
 
 
-	$sql 	= 'CALL getStudents()';
+	$sql 	= 'CALL getProjects()';
 	$result = mysqli_query($con, $sql);
 
 	if( !$result ){

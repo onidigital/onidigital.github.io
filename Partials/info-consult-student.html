@@ -14,19 +14,21 @@
                     </div>
                     <tbody>
                         <tr ng-repeat="student in cStudentCtrl.students | filter: buscador" class="displayInfo" >
-                            <td class="text-center" >{{ student.name  }}</td>
-                            <td class="text-center" >{{ student.pId   }}</td>
+                            <td class="text-center" >
+                                {{ student.first_name +' '+ student.last_name }}
+                            </td>
+                            <td class="text-center" >{{ student.idPersonal   }}</td>
                             <td class="text-center" >{{ student.email }}</td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cStudentCtrl.updateService.advancedView( 'student',student.id );"
+                                        ng-click="cStudentCtrl.updateService.advancedView( 'student',student.idPerson );"
                                     >
                                     <i class="fa fa-pencil fa-2x"></i>  
                                 </button>
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cStudentCtrl.deleteService.deleteItem( 'students', student.id );"
+                                        ng-click="cStudentCtrl.deleteService.deleteItem( 'students', student.idPerson );"
                                     >
                                     <i class="fa fa-trash-o fa-2x"></i>
                                 </button>
