@@ -1,39 +1,73 @@
-<form class="col col-md-12" >
-	<h1 class="text-center title" >
-		¿Qué desea consultar?
-	</h1>
-	<select class="col col-md-6 col-md-offset-3" 
-			ng-model="sInfoCtrl.displayedInformation" 
-			ng-change="sInfoCtrl.changeState();" 
-		>
-		<option value="admin.search.project" >
-			Proyecto
-		</option>
-		<option value="admin.search.team" >
-			Equipo
-		</option>
-		<option value="admin.search.student" >
-			Estudiantes
-		</option>
-		<option value="admin.search.document" >
-			Documento
-		</option>
-		<option value="admin.search.vote" >
-			Votación
-		</option>
-	</select>
-</form>
 
-<div class="container">
-    <div class="col-md-4" >
-        <input type="text" class="form-control" class="search" type="text" ng-model="search" placeholder="Filtrar">
-    </div>
-   	<div class="col-md-2 pull-right">
-   		 <button ng-click="sInfoCtrl.goToRegister();" class="col-md-12 btn btn-primary">
-	    	Agregar
-	    </button>
-   	</div>	
+<div>
+	
+	<nav class="navbar navbar-default" >
+	  	<div class="col col-md-10 col-md-offset-1">
+	    	<div class="navbar-header">
+	      		<button type="button" 
+	      				class="navbar-toggle collapsed" 
+	      				data-toggle="collapse" 
+	      				data-target="#consultOptions"
+	      			>
+		        	<span class="sr-only">
+		        		Toggle navigation
+		        	</span>
+		        	<h2>
+		        		Consultar
+		        	</h2>
+	      		</button>
+	      		<h1 class="navbar-brand" >
+					¿Qué desea consultar?
+				</h1>
+	    	</div>
+		    <div class="collapse navbar-collapse" id="consultOptions">
+
+		      	<ul class="nav navbar-nav navbar-left">
+			        <li class="active">
+				  		<a ui-sref="admin.search.project">
+				  			Proyecto
+				  		</a>
+				  	</li>
+				  	<li>
+						<a ui-sref="admin.search.team">
+							Equipo
+						</a>
+					</li>
+					<li>
+						<a ui-sref="admin.search.student">
+							Estudiantes
+						</a>
+					</li>
+					<li>
+						<a ui-sref="admin.search.document">
+							Documento
+						</a>
+					</li>
+					<li>
+						<a ui-sref="admin.search.vote">
+							Votación
+						</a>
+					</li>
+		      	</ul>
+		    </div>
+	  	</div>
+	</nav>
+	<div class="col col-md-3" >
+	    <input 	type="text" 
+	    		class="form-control" 
+	    		class="search" 
+	    		type="text" 
+	    		ng-model="search" 
+	    		placeholder="Buscar: "
+	    	>
+	</div>
+	<button ng-click="sInfoCtrl.goToRegister();" 
+			class="btn"
+		>
+    	Agregar
+    </button>
 </div>
+
 
 <section ui-view >
 	<!-- Content -->

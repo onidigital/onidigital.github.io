@@ -18,9 +18,23 @@ nav .navbar-nav {
 
 
 .navbar-toggle {
-  background-color: $anchors;
+  background-color: $main-color;
+  color: $text-clear;
+    &:hover, &:focus {
+      background-color: $text-clear;
+      color: $main-color;
+    }
 }
 
 .navbar-default {
   border-color: #ccc;
+}
+
+.navbar-main {
+  border-bottom: 0 !important;
+  margin: 0 !important;
+}
+
+h2.title {
+  color: $main-color;
 }

@@ -1,14 +1,9 @@
 <?php 
+	
+	include 'config.php';
+
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
-
-	$con = mysqli_connect("localhost", "root", "", "bdonidigital");
-
-	// Check connection
-	if( mysqli_connect_errno() ){
-		echo "Failed to connect to MySQL:" . mysqli_connect_error();
-	}
-
 	$first_name = $jsonData->name;
 	$last_name  = $jsonData->lastName;
 	$idPersonal	= $jsonData->pId; // personalId;
