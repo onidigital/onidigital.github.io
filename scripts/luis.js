@@ -1,4 +1,42 @@
-app.controller('addDocumentController', function($scope){
+app.controller('addDocumentController', [ '$scope',
+										 '$http',
+										 function( $scope,
+										 		   $http
+										 		  ){
+    var $ = this;
+
+	$.documents   	 = [];
+	$.newDocument = {};
+	$.sucess 	 = false;
+	$.phpUrl 	 = 'Queries/insertDocument.php';
+
+	$.addDocument = function(){
+
+		$http.post($.phpUrl, $.newDocument)
+			.success(function(data, status){
+				console.log(status);
+				$.clean();
+			})
+			.error(function(data, status){
+				alert('Error :'+status);
+			});
+	}
+
+	$.removeSucessMessage = function(){ $.sucess = false; }
+
+	$.clean = function(){
+		$.newDocument = {};
+		$scope.formAddDocument.$setPristine();
+		$.sucess = true;
+	}
+
+}]);
+
+
+
+
+
+/*app.controller('addDocumentController', function($scope){
 	var $this = this;
 
 	this.newArea = {};
@@ -13,7 +51,7 @@ app.controller('addDocumentController', function($scope){
 
 	this.removeSucessMessage = function(){ $this.sucess = false; }
 
-});
+});*/
 
 /*app.controller("ConsultDocumentController", ['deleteInformationService',
 										 'updateInformationService',
