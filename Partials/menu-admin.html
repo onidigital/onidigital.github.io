@@ -13,12 +13,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="menu-item" >
-          <a ui-sref="admin.search" >
+          <a ng-click="menuCtrl.changeState();" >
             Consultar información
           </a>
         </li>
         <li class="menu-item" >
-          <a ui-sref="admin.register" >
+          <a ng-click="menuCtrl.goToRegister();" >
             Registrar información
           </a>
         </li>

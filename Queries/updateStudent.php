@@ -2,7 +2,7 @@
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
 
-	$con = mysqli_connect("localhost:3307", "root", "", "bdonidigital");
+	$con = mysqli_connect("localhost", "root", "", "bdonidigital");
 
 	// Check connection
 	if( mysqli_connect_errno() ){
@@ -14,7 +14,7 @@
 	$idPersonal	 = $jsonData->idPersonal;
 	$email	 	 = $jsonData->email;
 	$idPerson    = $jsonData->idPerson;
-	$sql 		 = 'CALL updateStudent("'.$name.'","'. $lastName .'","'. $idPersonal .'","'.$email.'",'.$idPerson.')';
+	$sql 		 = 'CALL updateStudent("'.$name.'","'. $lastName .'","'. $idPersonal .'","'.$email.'","'.$idPerson.'")';
 	$result 	 = mysqli_query($con, $sql);
 
 	if( !$result ){

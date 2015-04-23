@@ -2,29 +2,39 @@
     <div class=" content container viewInfo center-block"  >
         <div class="infoTable ">
             <div class="input-group tableWidth">
+                <dir-pagination-controls    
+                    boundary-links="true" 
+                    on-page-change="pageChangeHandler(newPageNumber)" 
+                    template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
+                >
+                </dir-pagination-controls>
                 <table class="dataTable table table-striped">
                     <div class="row">  
                         <thead>
                             <tr>
-                                <td class="text-center"  data-field="name">Projecto</td>
+                                <td class="text-center"  data-field="name">Proyecto</td>
                                 <td class="text-center"  data-field="id">Descripción</td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="project in cProjectCtrl.projects | filter: search" class="displayInfo" >
+                        <tr dir-paginate="project in cProjectCtrl.projects | 
+                                          filter        : search           |
+                                          itemsPerPage  : 10"
+                            class="displayInfo" 
+                        >
                             <td class="text-center" > {{ project.projectName }} </td>
                             <td class="text-center" > {{ project.description }} </td>
                             <td class="actions col col-md-3" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cProjectCtrl.updateService.advancedView('project', project.id )";
+                                        ng-click="cProjectCtrl.updateService.advancedView('project', project.idProject )";
                                         >
                                     <i class="fa fa-pencil fa-2x"></i>
                                 </button>
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
-                                        ng-click="cProjectCtrl.deleteService.deleteItem('projects', project.id )";
+                                        ng-click="cProjectCtrl.deleteService.deleteItem('projects', project.idProject )";
                                         >
                                     <i class="fa fa-trash-o fa-2x"></i>
                                 </button>
@@ -35,4 +45,4 @@
             </div><!-- /input-group -->
         </div>
     </div>
-</section>
+</section> 

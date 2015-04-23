@@ -10,7 +10,7 @@
 	}
 
 	$id     = $jsonData->id;
-	$sql 	= 'CALL getStudent("'.$id.'")';
+	$sql 	= 'CALL getProject("'.$id.'")';
 	$result = mysqli_query($con, $sql);
 
 	if( !$result ){

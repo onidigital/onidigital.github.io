@@ -397,23 +397,44 @@ app.controller('editTeamController', ['updateInformationService',
 		$.sucess  = false;
 	}
 
-
-	console.log($.teamToUpdate.project);
-
 }]);
 
 app.controller('editProjectController', ['updateInformationService',
-									  	 function( updateService ){
+										 '$http',
+									  	 function( updateService, $http ){
 	var $ = this;
 
+	$.phpUrl 		  = 	{
+								'getProject' : 'Queries/getProject.php',
+								'update' 	 : 'Queries/updateProject.php'
+							};
 	$.updating        = updateService.updating['project'];
-	$.projectToUpdate = angular.copy(Query('projects','id',$.updating)[0]);
-	$.projectBackUp   = angular.copy($.projectToUpdate);
+	$.projectToUpdate = {};
+	$.projectBackUp   = {};
 	$.sucess 		  = false;
 
-	$.updateProject = function(){
-		Update('projects',$.projectToUpdate.id,$.projectToUpdate);
-		$.sucess = true;
+	$.getProject = function(){
+		$http.post( $.phpUrl.getProject, { 'id' :  $.updating } )
+			.success(function(data, status){
+				console.table(data);
+				$.projectToUpdate = data;
+				$.projectBackUp = angular.copy($.projectToUpdate)
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
+	}
+
+	$.updateProject = function(state){
+		$.projectToUpdate.idPerson = $.updating;
+		$http.post( $.phpUrl.update, $.projectToUpdate )
+			.success(function(data, status){
+				$.sucess = state;		
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
+		
 	}
 
 	$.save = function(){ 
@@ -423,8 +444,10 @@ app.controller('editProjectController', ['updateInformationService',
 
 	$.undo = function(){
 		$.projectToUpdate = angular.copy($.projectBackUp);
-		$.sucess  = false;
+		$.updateProject(false);
 	}
+
+	$.getProject(true);
 
 }]);
 
@@ -439,15 +462,14 @@ app.controller('editStudentController', ['updateInformationService',
 							};
 	$.updating        = Number(updateService.updating['student']);
 	$.studentToUpdate = {};
-	$.studentBackUp   = angular.copy($.studentToUpdate);
+	$.studentBackUp   = {};
 	$.sucess 		  = false;
 
-	$.updateStudent = function(){
-		console.log($.updating);
+	$.updateStudent = function(state){
 		$.studentToUpdate.idPerson = $.updating;
 		$http.post( $.phpUrl.update, $.studentToUpdate )
 			.success(function(data, status){
-				$.sucess = true;		
+				$.sucess = state;		
 			})
 			.error(function(data, error){
 				alert('Error: '+error);
@@ -458,7 +480,8 @@ app.controller('editStudentController', ['updateInformationService',
 	$.getStudent = function(){
 		$http.post( $.phpUrl.getStudent, { 'id' :  $.updating } )
 			.success(function(data, status){
-				$.studentToUpdate = data;		
+				$.studentToUpdate = data;
+				$.studentBackUp = angular.copy($.studentToUpdate)
 			})
 			.error(function(data, error){
 				alert('Error: '+error);
@@ -472,10 +495,10 @@ app.controller('editStudentController', ['updateInformationService',
 
 	$.undo = function(){
 		$.studentToUpdate = angular.copy($.studentBackUp);
-		$.sucess  = false;
+		$.updateStudent(false);
 	}
 
-	$.getStudent();
+	$.getStudent(true);
 
 }]);
 

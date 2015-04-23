@@ -2,6 +2,12 @@
     <div class=" content container viewInfo center-block"  >
         <div class="infoTable ">
             <div class="input-group tableWidth">
+                <dir-pagination-controls    
+                    boundary-links="true" 
+                    on-page-change="pageChangeHandler(newPageNumber)" 
+                    template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
+                >
+                </dir-pagination-controls>
                 <table class="dataTable table table-striped">
                     <div class="row">  
                         <thead>
@@ -13,7 +19,11 @@
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="student in cStudentCtrl.students | filter: buscador" class="displayInfo" >
+                        <tr dir-paginate="student in cStudentCtrl.students | 
+                                          filter        : search           |
+                                          itemsPerPage  : 4" 
+                            class="displayInfo" 
+                        >
                             <td class="text-center" >
                                 {{ student.first_name +' '+ student.last_name }}
                             </td>

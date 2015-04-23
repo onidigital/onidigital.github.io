@@ -2,7 +2,7 @@
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
 
-	$con = mysqli_connect("localhost:3307", "root", "", "bdonidigital");
+	$con = mysqli_connect("localhost", "root", "", "bdonidigital");
 
 	// Check connection
 	if( mysqli_connect_errno() ){

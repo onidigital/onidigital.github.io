@@ -1,4 +1,4 @@
-<form class="row" >
+<form class="col col-md-12" >
 	<h1 class="text-center title" >
 		¿Qué desea registrar? {{ rInfoCtrl.currentRol }}
 	</h1>
@@ -6,41 +6,17 @@
 			ng-model="rInfoCtrl.displayedForm" 
 			ng-change="rInfoCtrl.changeState();" 
 		>
-		<option value="admin.register.areas" >
-			Área
-		</option>
-		<option value="admin.register.career" >
-			Carrera
-		</option>
-		<option value="admin.register.course" >
-			Cursos
-		</option>
-		<option value="admin.register.dean" >
-			Decano
-		</option>
-		<option value="admin.register.document" >
-			Documento
-		</option>
-		<option value="admin.register.director" >
-			Director académico
-		</option>
-		<option value="admin.register.group" >
-			Grupo
-		</option>
 		<option value="admin.register.project" >
 			Proyecto
 		</option>
-		<option value="admin.register.rubric" >
-			Rúbrica
+		<option value="admin.register.team" >
+			Equipo
 		</option>
 		<option value="admin.register.student" >
 			Estudiantes
 		</option>
-		<option value="admin.register.teacher" >
-			Profesores
-		</option>
-		<option value="admin.register.team" >
-			Equipo
+		<option value="admin.register.document" >
+			Documento
 		</option>
 		<option value="admin.register.vote" >
 			Votación

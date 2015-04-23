@@ -35,7 +35,7 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		});
 	
 	// Admin views and partials.
-	$urlRouterProvider.when('/admin','admin/profile');
+	$urlRouterProvider.when('/admin','admin/search/project');
 	$urlRouterProvider.when('/admin/register','/admin/register/project');
 	$urlRouterProvider.when('/admin/search','/admin/search/project');
 
@@ -292,18 +292,7 @@ app.controller('PasswordRecoverController', function(){
 	}
 
 })
-// Menu Controller.
-app.controller('menuController', function($scope, $timeout, $mdSidenav, $log) {
-    $scope.toggle = function() {
-        $mdSidenav('sideNav').toggle();
-    };
-    $scope.close = function() {
-        $mdSidenav('sideNav').close();
-    };
-    this.logOut = function(){
-    	localStorage.setItem('sesion','{}');
-    };
-});
+
 //Tables controller.
 app.controller('InfoController', function() {
 	this.students = Query('users','rol',2); //this hace referencia al controlador

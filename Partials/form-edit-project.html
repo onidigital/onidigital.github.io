@@ -1,6 +1,6 @@
 <div class="col col-md-6 col-md-offset-3 ">
 	<form name="formEditProject" ng-submit="formEditProject.$valid &&
-										   editProjectCtrl.updateProject();"
+										   editProjectCtrl.updateProject(true);"
 								novalidate
 		>
 		<div class="row" ng-show="editProjectCtrl.sucess" >
@@ -29,7 +29,7 @@
 			    		class="form-control"
 						id="txtProject"
 						name="project"
-						ng-model="editProjectCtrl.projectToUpdate.name"
+						ng-model="editProjectCtrl.projectToUpdate.projectName"
 						required
 			    	>
 			    		<!-- Errors -->
