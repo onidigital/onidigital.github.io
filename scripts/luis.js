@@ -15,7 +15,7 @@ app.controller('addDocumentController', function($scope){
 
 });
 
-app.controller("ConsultDocumentController", ['deleteInformationService',
+/*app.controller("ConsultDocumentController", ['deleteInformationService',
 										 'updateInformationService',
 										 function( deleteService,
 										 		   updateService
@@ -25,6 +25,34 @@ app.controller("ConsultDocumentController", ['deleteInformationService',
 	$.documents		= QueryAll('documents');
 	$.updateService = updateService;
 	$.deleteService = deleteService; 
+
+}]);**/
+
+app.controller('ConsultDocumentController', [ 'deleteInformationService',
+											 'updateInformationService',
+											 '$http',
+											 function( deleteService,
+											 		   updateService,
+											 		   $http
+											 		  ){
+	var $ = this;
+
+	$.updateService = updateService;
+	$.deleteService = deleteService; 
+	$.documents 		= [];
+	$.phpUrl		= 'Queries/getDocuments.php';
+
+	$.getDocuments = function(){
+		$http.post($.phpUrl)
+			 .success(function(data, status){
+ 			 	$.documents = data;
+ 			 })
+			 .error(function(data, status){
+ 			 	alert('Error.');
+ 			 });
+	}
+
+	$.getDocuments();
 
 }]);
 
