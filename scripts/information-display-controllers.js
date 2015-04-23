@@ -1,20 +1,15 @@
 app.controller('searchInformationController',['$state', 'configurationModule',
 // Function
 function($state, configModule){
-	var $this= this;
+
+	var $ = this;
 			
-	this.displayedInformation = configModule.searching;
+	$.displaying = configModule.searching;
 
-	this.changeState = function(){
-		configModule.searching = $this.displayedInformation;
-		$state.go( $this.displayedInformation );
+	$.changeDisplayedInfo = function(newDisplayedInformation){
+		$.displaying = newDisplayedInformation;
 	}
 
-	this.goToRegister = function(){
-		configModule.registering = $this.displayedInformation.replace('search','register');
-		$state.go( configModule.registering );
-	}
-	
 }]);
 
 // Register information controllers.

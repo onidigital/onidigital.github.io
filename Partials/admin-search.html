@@ -23,27 +23,37 @@
 		    <div class="collapse navbar-collapse" id="consultOptions">
 
 		      	<ul class="nav navbar-nav navbar-left">
-			        <li class="active">
+			        <li ng-class="{ active : (menuCtrl.displaying === 'project') }" 
+			        	ng-click="menuCtrl.changeDisplayedInfo('project');"
+			        >
 				  		<a ui-sref="admin.search.project">
 				  			Proyecto
 				  		</a>
 				  	</li>
-				  	<li>
+				  	<li ng-class="{ active : (menuCtrl.displaying === 'team') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('team');"
+				  	>
 						<a ui-sref="admin.search.team">
 							Equipo
 						</a>
 					</li>
-					<li>
+					<li ng-class="{ active : (menuCtrl.displaying === 'student') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('student');"
+					>
 						<a ui-sref="admin.search.student">
 							Estudiantes
 						</a>
 					</li>
-					<li>
+					<li ng-class="{ active : (menuCtrl.displaying === 'document') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('document');"
+					>
 						<a ui-sref="admin.search.document">
 							Documento
 						</a>
 					</li>
-					<li>
+					<li ng-class="{ active : (menuCtrl.displaying === 'vote') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('vote');"
+					>
 						<a ui-sref="admin.search.vote">
 							Votación
 						</a>
@@ -52,20 +62,14 @@
 		    </div>
 	  	</div>
 	</nav>
-	<div class="col col-md-3" >
+	<div class="container" >
 	    <input 	type="text" 
-	    		class="form-control" 
-	    		class="search" 
+	    		class="search-bar col col-md-3" 
 	    		type="text" 
 	    		ng-model="search" 
 	    		placeholder="Buscar: "
 	    	>
 	</div>
-	<button ng-click="sInfoCtrl.goToRegister();" 
-			class="btn"
-		>
-    	Agregar
-    </button>
 </div>
 
 

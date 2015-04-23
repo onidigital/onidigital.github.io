@@ -8,23 +8,30 @@
                     template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
                 >
                 </dir-pagination-controls>
-                <table class="dataTable table table-striped">
+                <table class="flatTable dataTable table-striped">
                     <div class="row">  
                         <thead>
-                            <tr>
-                                <td class="text-center">
-                                  Nombre
+                            <tr class="titleTr">
+                                <td class="titleTd">
+                                    DOCUMENTO
                                 </td>
-                                <td class="text-center">
-                                  Descripción
+                                <td colspan="1"></td>
+                                <td class="plusTd button"
+                                    ui-sref="admin.register.document"    
+                                >
                                 </td>
+                            </tr>
+                            <tr class="headingTr" >
+                                <td class="text-center" >Nombre</td>
+                                <td class="text-center" >Descripción</td>
+                                <td></td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
                         <tr dir-paginate="document in cDocumentCtrl.documents   |
                                           filter        : search    |
-                                          itemsPerPage  : 5" 
+                                          itemsPerPage  : 10" 
                             class="displayInfo" >
                             <td class="text-center" >
                               {{ document.name }}
@@ -32,7 +39,7 @@
                             <td class="text-center" >
                               {{ document.description }}
                             </td>
-                            <td class="actions" >
+                            <td class="actions col-md-1" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
                                         ng-click="cDocumentCtrl.updateService.advancedView('document', document.id )";

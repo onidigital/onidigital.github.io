@@ -8,25 +8,31 @@
                     template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
                 >
                 </dir-pagination-controls>
-                <table class="dataTable table table-striped">
+                <table class="flatTable dataTable table-striped">
                     <div class="row">  
                         <thead>
                             <tr class="titleTr">
-                                <td class="titleTd">ESTUDIANTES</td>
+                                <td class="titleTd">
+                                    ESTUDIANTES
+                                </td>
                                 <td colspan="2"></td>
-                                <td class="plusTd button"></td>
+                                <td class="plusTd button"
+                                    ui-sref="admin.register.student"    
+                                >
+                                </td>
                             </tr>
                             <tr class="headingTr" >
                                 <td class="text-center" >Estudiante</td>
                                 <td class="text-center" >Cédula</td>
                                 <td class="text-center" >Email</td>
+                                <td></td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
                         <tr dir-paginate="student in cStudentCtrl.students | 
                                           filter        : search           |
-                                          itemsPerPage  : 4" 
+                                          itemsPerPage  : 10" 
                             class="displayInfo" 
                         >
                             <td class="text-center" >
@@ -34,7 +40,7 @@
                             </td>
                             <td class="text-center" >{{ student.idPersonal   }}</td>
                             <td class="text-center" >{{ student.email }}</td>
-                            <td class="actions col col-md-3" >
+                            <td class="actions col col-md-1" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
                                         ng-click="cStudentCtrl.updateService.advancedView( 'student',student.idPerson );"

@@ -11,8 +11,8 @@ app.service('configurationModule', function(){
 	var $ = this,
 		sesion = Storage.get('sesion');
 
-	$.searching    = sesion.rolCode+'.search.project';
-	$.registering  = sesion.rolCode+'.register.project';
+	$.searching    = 'project';
+	$.registering  = 'project';
 
 });
 

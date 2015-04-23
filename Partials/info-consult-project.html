@@ -8,12 +8,23 @@
                     template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
                 >
                 </dir-pagination-controls>
-                <table class="dataTable table table-striped">
+                <table class="flatTable dataTable table-striped">
                     <div class="row">  
                         <thead>
-                            <tr>
-                                <td class="text-center"  data-field="name">Proyecto</td>
-                                <td class="text-center"  data-field="id">Descripción</td>
+                            <tr class="titleTr">
+                                <td class="titleTd">
+                                    PROYECTO
+                                </td>
+                                <td colspan="1"></td>
+                                <td class="plusTd button"
+                                    ui-sref="admin.register.project"    
+                                >
+                                </td>
+                            </tr>
+                            <tr class="headingTr" >
+                                <td class="text-center" >Proyecto</td>
+                                <td class="text-center" >Descripción</td>
+                                <td></td>
                             </tr>
                         </thead>
                     </div>
@@ -25,7 +36,7 @@
                         >
                             <td class="text-center" > {{ project.projectName }} </td>
                             <td class="text-center" > {{ project.description }} </td>
-                            <td class="actions col col-md-3" >
+                            <td class="actions col col-md-1" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
                                         ng-click="cProjectCtrl.updateService.advancedView('project', project.idProject )";

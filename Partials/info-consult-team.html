@@ -2,20 +2,41 @@
     <div class=" content container viewInfo center-block"  >
         <div class="infoTable ">
             <div class="input-group tableWidth">
-                <table class="dataTable table table-striped">
+                <dir-pagination-controls    
+                    boundary-links="true" 
+                    on-page-change="pageChangeHandler(newPageNumber)" 
+                    template-url="scripts/Vendor/dirPagination/dirPagination.tpl.html"
+                >
+                </dir-pagination-controls>
+                <table class="flatTable dataTable table-striped">
                     <div class="row">  
                         <thead>
-                            <tr>
-                                <td class="text-center"  data-field="name">Equipo</td>
-                                <td class="text-center"  data-field="id">Proyecto</td>
+                            <tr class="titleTr">
+                                <td class="titleTd">
+                                    EQUIPO
+                                </td>
+                                <td colspan="1"></td>
+                                <td class="plusTd button"
+                                    ui-sref="admin.register.team"    
+                                >
+                                </td>
+                            </tr>
+                            <tr class="headingTr" >
+                                <td class="text-center" >Equipo</td>
+                                <td class="text-center" >Proyecto</td>
+                                <td></td>
                             </tr>
                         </thead>
                     </div>
                     <tbody>
-                        <tr ng-repeat="team in cTeamCtrl.teams | filter: search" class="displayInfo" >
+                        <tr class="displayInfo" 
+                            dir-paginate="team in cTeamCtrl.teams | 
+                                          filter        : search  |
+                                          itemsPerPage  : 10" 
+                        >
                             <td class="text-center" >{{ team.name  }}</td>
                             <td class="text-center" >{{ team.project }}</td>
-                            <td class="actions col col-md-3" >
+                            <td class="actions col col-md-1" >
                                 <button class="btn btnEdit col col-md-6" 
                                         type="button"
                                         ng-click="cTeamCtrl.updateService.advancedView('team', team.id )";
