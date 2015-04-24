@@ -1,0 +1,47 @@
+<section >
+
+    <div class=" content container viewInfo center-block "  >
+        <div class="infoTable ">
+            <div class="input-group tableWidth">
+
+                <table class="flatTable dataTable table-striped vote pro" ng-repeat="project in cVoteCtrl.projects
+                                                                                     | filter : search">
+
+                    <div class="row">  
+                        <thead >
+                            <tr class="titleTr ">
+                                <td class="titleTd">
+                                    Votar
+                                </td>
+                                <td ></td>
+                                <td ></td>
+                                <td class="plusTd button" ng-click="addVote()"></td>
+                            </tr>
+                            <tr class="headingTr" >
+                                <td class="text-center" >Proyecto</td>
+                                <td class="text-center" >Logo</td>
+                                <td class="text-center" >Equipo</td>
+                                <td class="text-center" >Video</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <tr 
+                            class="displayInfo" 
+                        >
+                            <td class="text-center col col-md-3" > {{project.name}} </td>
+                            <td class="text-center col col-md-3" > <img src="images/LOGOONI.png" alt="Logo Oni" height="50%" width="auto"> </td>
+                            <td class="text-center col col-md-3" > Nombre de equipo </td>
+                            <td class="actions col col-md-3" >
+                                <iframe width="100%" height="215"
+                                    src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0">
+                                </iframe>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+</section> 

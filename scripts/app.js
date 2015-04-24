@@ -120,6 +120,11 @@ app.config(function($stateProvider, $urlRouterProvider ){
 			templateUrl : 'Partials/info-consult-team.html',
 			controller  : 'ConsultTeamController as cTeamCtrl'
 		})
+		.state('admin.search.vote', {
+			url 		: '/vote',
+			templateUrl : 'Partials/info-consult-vote.html',
+			controller  : 'consultVoteController as cVoteCtrl'
+		})
 		// Admin register information
 		.state('admin.register', {
 			url 		: '/register',
@@ -182,7 +187,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		})
 		.state('admin.register.vote', {
 			url 		: '/vote',
-			templateUrl : 'Partials/form-add-vote.html'
+			templateUrl : 'Partials/form-add-voteProbar.html',
+			controller  : 'AddVoteController as addVoteCtrl'
 		})
 		.state('admin.register.document', {
 			url 		: '/document',

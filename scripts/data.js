@@ -77,6 +77,72 @@ var users = [
 	'image'		: ''
 },
 {
+	'id'		: 7,
+	'email'		: 'aguevara@ucenfotec.ac.cr',
+	'password'	: 'angular',
+	'name'		: 'Alonso',
+	'lastName'	: 'Guevara',
+	'rol'		: 4,
+	'courses'	: [1],
+	'pId'		: 'p-1',
+	'image'		: ''
+},
+{
+	'id'		: 8,
+	'email'		: 'acordero@ucenfotec.ac.cr',
+	'password'	: 'liga',
+	'name'		: 'Álvaro',
+	'lastName'	: 'Cordero',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-2',
+	'image'		: ''
+},
+{
+	'id'		: 9,
+	'email'		: 'jbeita@ucenfotec.ac.cr',
+	'password'	: 'beita',
+	'name'		: 'Jose',
+	'lastName'	: 'Beita',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-3',
+	'image'		: ''
+},
+{
+	'id'		: 7,
+	'email'		: 'aguevara@ucenfotec.ac.cr',
+	'password'	: 'angular',
+	'name'		: 'Alonso',
+	'lastName'	: 'Guevara',
+	'rol'		: 4,
+	'courses'	: [1],
+	'pId'		: 'p-1',
+	'image'		: ''
+},
+{
+	'id'		: 8,
+	'email'		: 'acordero@ucenfotec.ac.cr',
+	'password'	: 'liga',
+	'name'		: 'Álvaro',
+	'lastName'	: 'Cordero',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-2',
+	'image'		: ''
+},
+{
+	'id'		: 9,
+	'email'		: 'jbeita@ucenfotec.ac.cr',
+	'password'	: 'beita',
+	'name'		: 'Jose',
+	'lastName'	: 'Beita',
+	'rol'		: 4,
+	'courses'	: [1, 2],
+	'pId'		: 'p-3',
+	'image'		: ''
+},
+{
 	'id'		: 10,
 	'email'		: 'lvindas@ucenfotec.ac.cr',
 	'password'	: 'decano',
@@ -397,6 +463,18 @@ groups = [
 }
 ],
 projects = [
+{
+	'id'			: 1,
+	'name'  		: 'Biblioteca Virtual',
+	'description' 	: 'Una biblioteca virtual muy completa.',
+	'keywords'		: 'biblioteca virtual completa'
+},
+{
+	'id'			: 1,
+	'name'  		: 'Biblioteca Virtual',
+	'description' 	: 'Una biblioteca virtual muy completa.',
+	'keywords'		: 'biblioteca virtual completa'
+},
 {
 	'id'			: 1,
 	'name'  		: 'Biblioteca Virtual',
