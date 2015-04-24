@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 22-04-2015 a las 23:37:32
+-- Tiempo de generación: 24-04-2015 a las 04:09:10
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -24,6 +24,35 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteDocument`(IN `pIdDocument` INT(11))
+    NO SQL
+Begin
+
+	Delete 
+    From bdonidigital.document
+    Where document.idDocument = pIdDocument;
+    
+    Call getDocuments();
+
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getDocument`(IN `pIdDocument` INT(11))
+    NO SQL
+begin
+    Select *
+    From   document
+    Where document.idDocument = pIdDocument;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getDocuments`()
+    NO SQL
+begin
+
+	Select *
+	From document;
+
+end$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getProject`(IN `project` INT(11))
     NO SQL
     COMMENT 'Devuelve el proyecto solicitado.'
@@ -92,6 +121,25 @@ begin
     Where ced = p.idPersonal;
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertDocument`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500))
+    NO SQL
+Begin
+
+Insert Into bdonidigital.document 
+	(
+       idDocument, 
+       documentName, 
+       description 
+    ) 
+	Values 
+    (	
+        NULL,
+     	pName, 
+     	pDescription	 
+     );
+
+End$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProject`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500), IN `pKeywords` VARCHAR(250))
     NO SQL
     COMMENT 'Inserta un proyecto.'
@@ -154,7 +202,7 @@ INSERT INTO bdonidigital.person
   
 End$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateStudent`(IN `pFirstName` VARCHAR(500), IN `pPastName` VARCHAR(500), IN `pIdPersonal` VARCHAR(50), IN `pEmail` VARCHAR(50), IN `pIdPerson` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateStudent`(IN `pFirstName` VARCHAR(500), IN `pLastName` VARCHAR(500), IN `pIdPersonal` VARCHAR(50), IN `pEmail` VARCHAR(50), IN `pIdPerson` INT(11))
     NO SQL
 Begin
 
@@ -176,10 +224,18 @@ DELIMITER ;
 --
 
 CREATE TABLE IF NOT EXISTS `document` (
-  `idDocument` int(10) DEFAULT NULL,
+`idDocument` int(10) NOT NULL,
   `documentName` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `document`
+--
+
+INSERT INTO `document` (`idDocument`, `documentName`, `description`) VALUES
+(39, 'ERS', 'Especificacion de Requerimientos de Software'),
+(40, 'IAS', 'Informe de Analisis de Software');
 
 -- --------------------------------------------------------
 
@@ -205,17 +261,24 @@ CREATE TABLE IF NOT EXISTS `person` (
   `last_name` varchar(500) NOT NULL,
   `idPersonal` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `person`
 --
 
 INSERT INTO `person` (`idPerson`, `first_name`, `last_name`, `idPersonal`, `email`) VALUES
-(1, 'Jorge ', 'Valverde ', '30487042', 'jvalverdem@ucenfotec.ac.cr'),
+(1, 'Jorge', 'Valverde Matarrita', '304870421', 'jvalverde@ucenfotec.ac.cr'),
 (2, 'Leslie Daniela', 'Andrade', '3045871', 'landrade@ucenfotec.ac.cr'),
 (8, 'Brandon De Jesus', 'Rojas', '30584561', 'brojas@ucenfotec.ac.cr'),
-(14, 'Rebeca Raquel', 'Poveda Rojas', '30578456', 'rpovedar@ucenfotec.ac.cr');
+(14, 'Rebeca Raquel', 'Poveda Rojas', '30578456', 'rpovedar@ucenfotec.ac.cr'),
+(15, 'Brandon', 'Rojas Sanabria', '30635465', 'brojass@ucenfotec.ac.cr'),
+(16, 'Alberto', 'Palacios', '3065123', 'apalacios@ucenfotec.ac.cr'),
+(17, 'Placeholder', 'apellido', '30487821', 'papellido@ucenfotec.ac.cr'),
+(18, 'aiupsd', 'apsuid', 'aspiuon', 'asoidn@u'),
+(19, 'a', 'a', 'a', 'aasoidn@u'),
+(20, 'd', 'd', 'd', 'dasoidn@u'),
+(22, 'asasdsa', 'asdas', 'asdaads', 'asoidn@uadasd');
 
 -- --------------------------------------------------------
 
@@ -228,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `projectName` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
   `keywords` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `project`
@@ -239,7 +302,13 @@ INSERT INTO `project` (`idProject`, `projectName`, `description`, `keywords`) VA
 (2, 'Registro medico', 'Registro medico para el hospital de San Jose.', 'Registro medico hospital San Jose'),
 (3, 'Red social', 'Una red social para estudiantes de una universidad.', 'red social universidad'),
 (4, 'Tienda virtual', 'Tienda virtual de articulos varios', 'tienda virtual articulos varios'),
-(7, 'Nuevo Proyecto', 'Aqui una descripcion para un nuevo proyecto.', 'nuevo proyecto');
+(7, 'Nuevo Proyecto', 'Aqui una descripcion para un nuevo proyecto.', 'nuevo proyecto'),
+(8, 'Una pÃ¡gina similar a Spotify', 'Una pÃ¡gina similar a Spotify', 'spotify'),
+(11, 'Nuevo Proyecto', 'asduygbauipsdhasduipahsduipashdipausdhasuipdahsduipasdhasd', 'adsadas'),
+(12, 'asdasd', 'asdasd', 'asdas'),
+(13, 'AASDAS', 'ASDAD', 'DD'),
+(14, 'AFDFDSAS', 'AFDFAS', 'FFF'),
+(15, 'ASDASFDASFDAFDS', 'ADSFAFDSAFDS', 'FADSAFFDS');
 
 -- --------------------------------------------------------
 
@@ -250,7 +319,7 @@ INSERT INTO `project` (`idProject`, `projectName`, `description`, `keywords`) VA
 CREATE TABLE IF NOT EXISTS `student` (
 `idStudent` int(10) NOT NULL,
   `idPerson` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `student`
@@ -259,7 +328,14 @@ CREATE TABLE IF NOT EXISTS `student` (
 INSERT INTO `student` (`idStudent`, `idPerson`) VALUES
 (1, 1),
 (2, 2),
-(10, 14);
+(10, 14),
+(11, 15),
+(12, 16),
+(13, 17),
+(14, 18),
+(15, 19),
+(16, 20),
+(18, 22);
 
 -- --------------------------------------------------------
 
@@ -417,20 +493,25 @@ ALTER TABLE `voters`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `document`
+--
+ALTER TABLE `document`
+MODIFY `idDocument` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+--
 -- AUTO_INCREMENT de la tabla `person`
 --
 ALTER TABLE `person`
-MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `student`
 --
 ALTER TABLE `student`
-MODIFY `idStudent` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `idStudent` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `tbuser`
 --

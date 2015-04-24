@@ -66,28 +66,42 @@ app.controller('addDocumentController', [ '$scope',
 
 }]);**/
 
-app.controller('ConsultDocumentController', [ 'deleteInformationService',
-											 'updateInformationService',
+app.controller('ConsultDocumentController', ['updateInformationService',
 											 '$http',
-											 function( deleteService,
-											 		   updateService,
+											 function( updateService,
 											 		   $http
 											 		  ){
 	var $ = this;
 
 	$.updateService = updateService;
-	$.deleteService = deleteService; 
-	$.documents 		= [];
-	$.phpUrl		= 'Queries/getDocuments.php';
+	$.documents 	= [];
+	$.phpUrl		= 	{
+							'getDocuments' 	 : 'Queries/getDocuments.php',
+							'deleteDocument' : 'Queries/deleteDocument.php'
+						};
 
 	$.getDocuments = function(){
-		$http.post($.phpUrl)
+		$http.post($.phpUrl.getDocuments)
 			 .success(function(data, status){
  			 	$.documents = data;
  			 })
 			 .error(function(data, status){
  			 	alert('Error.');
  			 });
+	}
+
+	$.deleteDocument = function(id){
+
+		if( confirm('¿Desea eliminar este registro?') ){
+			$http.post( $.phpUrl.deleteDocument, { 'id' : id } )
+			.success(function(data, status){
+				$.documents = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
+		}
+		
 	}
 
 	$.getDocuments();

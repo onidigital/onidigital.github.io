@@ -44,25 +44,18 @@ app.service('updateInformationService', ['$state', function($state){
 
 }]);
 
-app.service('deleteInformationService', ['$state', function($state){
+app.service('deleteInformationService', ['$state', 
+										 '$http',
+										 '$rootScope',
+										 function(
+										 			$state,
+										 			$http,
+										 			$rootScope
+										 		){
 	var $ = this;
 
-	$.deleteItem = function( target, id ){
-		
-		if( confirm('¿Está seguro de que desea eliminar este registro?') ){
-			var objToDelete = {};
-
-			for( var key in data[target] ){
-				if( data[target][key]['id'] === id ){
-					objToDelete = data[target][key];
-					break;
-				}
-			}
-
-			data[target].splice( data[target].indexOf(objToDelete), 1 );
-
-			return data[target];
-		}
+	$.deleteItem = function( phpUrl, id ){
+		// Obsoleto;
 
 	}
 
