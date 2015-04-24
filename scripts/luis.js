@@ -291,5 +291,11 @@ app.controller('AddVoteController', function() {
 
 app.controller('consultVoteController', function() {
 	var $this = this;
+	this.hide = true;
 	this.projects	= Query('projects');
+
+
+	this.addVote = function(){
+	this.hide = false;
+	}
 });
