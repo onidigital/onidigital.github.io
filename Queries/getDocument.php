@@ -4,10 +4,10 @@
 
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
-
-	$id     = $jsonData->id;
-	$sql 	= 'CALL getDocument("'.$id.'")';
-	$result = mysqli_query($con, $sql);
+	
+	$id    	  = $jsonData->id;
+	$sql 	  = 'CALL getDocument("'.$id.'")';
+	$result   = mysqli_query($con, $sql);
 
 	if( !$result ){
 		echo "DB Error, could not list documents.";

@@ -1,15 +1,9 @@
 <?php 
+
+	include 'config.php';
+
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
-
-	$con = mysqli_connect("localhost", "root", "", "bdonidigital");
-
-	// Check connection
-	if( mysqli_connect_errno() ){
-		echo "Failed to connect to MySQL:" . mysqli_connect_error();
-	}
-
-
 	$sql 	= 'CALL getDocuments()';
 	$result = mysqli_query($con, $sql);
 
