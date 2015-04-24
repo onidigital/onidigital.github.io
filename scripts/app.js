@@ -252,31 +252,44 @@ app.run(function($rootScope, $state){
 
 
 // Login controller
-app.controller('loginController', ['$state',function($state){
+app.controller('loginController', [ '$state',
+									'$http',
+									function(
+												$state,
+												$http
+											){
 	var $this = this;
-	this.user = {};
-	this.user.email;
-	this.user.password;
 
-	this.validate = function(){
-		var user 	= Query('users','email',$this.user.email)[0],
-			rol  	= Query('rol','id',user.rol)[0];
+	$this.user = {};
+	$this.givenUser = {};
+	$this.phpUrl = 'Queries/getUser.php'
 
-		if( user ){
-			if(user.password === $this.user.password){
-				var session = {
-					rolCode	: rol['code'],
-					user  	: user,
-					rol 	: rol['name']
+	$this.validate = function(){
+		$http.post($this.phpUrl, { 'email' : $this.user.email })
+			.success(function(data, status){
+				// Success function.
+				$this.givenUser = data;
+
+				if( $this.givenUser.email ){
+					if( $this.givenUser.password === $this.user.password){
+						var session = {
+							rolCode	: 'admin',
+							user  	: $this.givenUser,
+							rol 	: 'admin'
+						}
+						localStorage.setItem('sesion',JSON.stringify(session));
+						$state.go(session.rolCode);
+					} else {
+						alert("contraseña invalida.");
+					}
+				} else {
+					alert("Usuario invalido.");
 				}
-				localStorage.setItem('sesion',JSON.stringify(session));
-				$state.go(session.rolCode);
-			} else {
-				alert("contraseña invalida.");
-			}
-		} else {
-			alert("Usuario invalido.");
-		}
+
+			})
+			.error(function(){
+				alert('Error de conexión.');
+			});
 
 	}
 
@@ -345,3 +358,15 @@ app.filter('unique', function () {
     return items;
   };
 });
+
+var Storage = {
+	get   : function(key){
+		return JSON.parse( localStorage.getItem(key) );
+	},
+	set   : function(key,item){
+		localStorage.setItem(key, JSON.stringify(item) );
+	},
+	clear : function(){ 
+		localStorage.clear() 
+	}
+};

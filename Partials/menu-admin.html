@@ -7,7 +7,7 @@
         <h2>Menu</h2>
       </button>
       <h2 class="navbar-brand">
-        admin@ucenfotec.ac.cr
+        {{ menuCtrl.user.first_name +' '+ menuCtrl.user.last_name }}
       </h2>
     </div>
 
@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="log-out" >
-          <a ui-sref="home" >
+          <a ng-click="menuCtrl.logOut();">
             Cerrar sesión
           </a>
         </li>

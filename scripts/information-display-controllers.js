@@ -273,43 +273,67 @@ app.controller('addProjectController', [ '$scope',
 
 }]);
 
-app.controller('addTeamController',function($scope){
+app.controller('addTeamController', ['$http', '$scope',function($http, $scope){
 
-var $this = this;
+var $ = this;
 
-	this.newTeam 			= {};
-	this.newTeam.members 	= [];
-	this.newTeamMember 		= {};
-	this.projects   		= QueryAll('projects');
-	this.students 			= QueryAll('students');
-	this.rols 				= Query('studentRol','-','all');
-	this.sucess 			= false;
-
-
-	this.asignMember = function() {
-		$this.newTeam.members.unshift( $this.newTeamMember );
-		$this.newTeamMember = {};
-	};
+	$.newTeam 			= {};
+	$.projects   		= [];
+	$.students 			= [];
+	$.sucess 			= false;
+	$.phpUrl 			= 	{
+								'getStudents' : 'Queries/getStudents.php',
+								'getProjects' : 'Queries/getProjects.php',
+								'getTeamRols' : 'Queries/getTeamRols.php',
+								'insertTeam'  : 'Queries/insertTeam.php'
+							};
 
 
-	this.deleteMember = function( index ) {
-		$this.newTeam.members.splice(index, 1);
-	};
 
-	this.addTeam = function() {
-		$this.newTeam.project = Number($this.newTeam.project); 
-		Insert('teams',$this.newTeam);
 
-		$this.newTeam = {
-			members : []
-		};
-		$scope.formAddTeam.$setPristine();
-		$this.sucess = true;
+
+	$.addTeam = function() {
+
+		$http.post($.phpUrl.insertTeam, $.newTeam)
+			.success(function(data, status){
+				$.clean();
+			})
+			.error(function(data, status){
+				alert('Error: '+status);
+			});
+
+		
 	}
 
-	this.removeSucessMessage = function(){ $this.sucess = false; }
+	$.initForm = function(){
+		$http.post($.phpUrl.getStudents)
+			.success(function(data, status){
+				$.students = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
 
-});
+		$http.post($.phpUrl.getProjects)
+			.success(function(data, status){
+				$.projects = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
+	}
+
+	$.removeSucessMessage = function(){ $.sucess = false; }
+
+	$.clean = function(){
+		$scope.formAddTeam.$setPristine();
+		$.newTeam = {};
+		$.sucess = true;
+	}
+
+	$.initForm();
+
+}]);
 
 // Edit information controllers.
 
@@ -633,4 +657,19 @@ app.controller('ConsultTeamController', [ 'deleteInformationService',
 
 	$.getTeams();
 
+}]);
+
+
+app.controller('menuController', ['$state', function($state){
+
+	var $ = this;
+
+	$.sesion = Storage.get('sesion') || {};
+	$.user   = $.sesion.user;
+
+	$.logOut = function(){
+		Storage.clear();
+		$state.go('home');
+	}
+	
 }]);

@@ -2,7 +2,7 @@ app.directive('adminHeader', function(){
 	return { 
 		restrict 	: 'E',
  		templateUrl	: 'Partials/menu-admin.html',
- 		controller 	: 'searchInformationController as menuCtrl'
+ 		controller 	: 'menuController as menuCtrl'
 	};
 });
 
