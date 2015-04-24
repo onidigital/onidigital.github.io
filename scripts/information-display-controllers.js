@@ -4,10 +4,11 @@ function($state, configModule){
 
 	var $ = this;
 			
-	$.displaying = configModule.searching;
+	$.displaying = configModule.displaying;
 
 	$.changeDisplayedInfo = function(newDisplayedInformation){
 		$.displaying = newDisplayedInformation;
+		configModule.updateDisplaying($.displaying);
 	}
 
 }]);
@@ -16,21 +17,22 @@ function($state, configModule){
 app.controller('registerInformationController',['$state', 'configurationModule',
 // Function
 function($state, configModule){
-	var $this  = this,
-		sesion = Storage.get('sesion');
 
-	this.displayedForm = configModule.registering;
+	var $ = this;
+			
+	$.displaying = configModule.displaying;
 
-	this.changeState = function(){
-		configModule.registering = $this.displayedForm;
-		$state.go( $this.displayedForm );
-	}
-
-	this.goToSearching = function(){
-		configModule.searching = $this.displayedForm.replace('register','search');
-		$state.go( configModule.searching );
+	$.changeDisplayedInfo = function(newDisplayedInformation){
+		$.displaying = newDisplayedInformation;
+		configModule.updateDisplaying($.displaying);
 	}
 	
+	$.goToSearching = function(){
+		var newState = 'admin.search.'+$.displaying;
+		configModule.updateDisplaying($.displaying);
+		$state.go(newState);
+	}
+
 }]);
 
 
@@ -411,7 +413,6 @@ app.controller('editProjectController', ['updateInformationService',
 	$.getProject = function(){
 		$http.post( $.phpUrl.getProject, { 'id' :  $.updating } )
 			.success(function(data, status){
-				console.table(data);
 				$.projectToUpdate = data;
 				$.projectBackUp = angular.copy($.projectToUpdate)
 			})
@@ -421,7 +422,8 @@ app.controller('editProjectController', ['updateInformationService',
 	}
 
 	$.updateProject = function(state){
-		$.projectToUpdate.idPerson = $.updating;
+		$.projectToUpdate.idProject = $.updating;
+		
 		$http.post( $.phpUrl.update, $.projectToUpdate )
 			.success(function(data, status){
 				$.sucess = state;		

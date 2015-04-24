@@ -8,11 +8,15 @@ app.service("stateChanger", ['$state', function($state){
 }]);
 
 app.service('configurationModule', function(){
-	var $ = this,
-		sesion = Storage.get('sesion');
+	var $ 			= this,
+		defaultView = Storage.get('displayingViews') || 'project';
 
-	$.searching    = 'project';
-	$.registering  = 'project';
+	$.displaying    = defaultView;
+
+	$.updateDisplaying = function(newView){
+		Storage.set('displayingViews', newView);
+		$.displaying = newView;
+	}
 
 });
 

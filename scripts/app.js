@@ -192,7 +192,8 @@ app.config(function($stateProvider, $urlRouterProvider ){
 		// Admin update information
 		.state('admin.update', {
 			url 	 	: '/update', 
-			templateUrl	: 'Partials/update-information.html'
+			templateUrl	: 'Partials/admin-update.html',
+			controller  : 'registerInformationController as rInfoCtrl'
 		})
 		.state('admin.update.rubric', {
 			url 		: '/rubric',

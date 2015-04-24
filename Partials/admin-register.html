@@ -1,37 +1,74 @@
-<form class="col col-md-12" >
-	<h1 class="text-center title" >
-		¿Qué desea registrar?
-	</h1>
-	<select class="col col-md-6 col-md-offset-3" 
-			ng-model="rInfoCtrl.displayedForm" 
-			ng-change="rInfoCtrl.changeState();" 
-		>
-		<option value="admin.register.project" >
-			Proyecto
-		</option>
-		<option value="admin.register.team" >
-			Equipo
-		</option>
-		<option value="admin.register.student" >
-			Estudiantes
-		</option>
-		<option value="admin.register.document" >
-			Documento
-		</option>
-		<option value="admin.register.vote" >
-			Votación
-		</option>
-	</select>
-</form>
+<div>
+	
+	<nav class="navbar navbar-default" >
+	  	<div class="col col-md-10 col-md-offset-1">
+	    	<div class="navbar-header">
+	      		<button type="button" 
+	      				class="navbar-toggle collapsed" 
+	      				data-toggle="collapse" 
+	      				data-target="#registerOptions"
+	      			>
+		        	<span class="sr-only">
+		        		Toggle navigation
+		        	</span>
+		        	<h2>
+		        		Registrar
+		        	</h2>
+	      		</button>
+	      		<h1 class="navbar-brand" >
+					¿Qué desea Registrar?
+				</h1>
+	    	</div>
+		    <div class="collapse navbar-collapse" id="registerOptions">
 
-<div class="container">
-    <button ng-click="rInfoCtrl.goToSearching();" class="col-md-2 btn btn-primary pull-right">
-    	Consultar registros
-    </button>
+		      	<ul class="nav navbar-nav navbar-left">
+			        <li ng-class="{ active : (rInfoCtrl.displaying === 'project') }" 
+			        	ng-click="rInfoCtrl.changeDisplayedInfo('project');"
+			        >
+				  		<a ui-sref="admin.register.project">
+				  			Proyecto
+				  		</a>
+				  	</li>
+				  	<li ng-class="{ active : (rInfoCtrl.displaying === 'team') }" 
+						ng-click="rInfoCtrl.changeDisplayedInfo('team');"
+				  	>
+						<a ui-sref="admin.register.team">
+							Equipo
+						</a>
+					</li>
+					<li ng-class="{ active : (rInfoCtrl.displaying === 'student') }" 
+						ng-click="rInfoCtrl.changeDisplayedInfo('student');"
+					>
+						<a ui-sref="admin.register.student">
+							Estudiantes
+						</a>
+					</li>
+					<li ng-class="{ active : (rInfoCtrl.displaying === 'document') }" 
+						ng-click="rInfoCtrl.changeDisplayedInfo('document');"
+					>
+						<a ui-sref="admin.register.document">
+							Documento
+						</a>
+					</li>
+					<li ng-class="{ active : (rInfoCtrl.displaying === 'vote') }" 
+						ng-click="rInfoCtrl.changeDisplayedInfo('vote');"
+					>
+						<a ui-sref="admin.register.vote">
+							Votación
+						</a>
+					</li>
+		      	</ul>
+		    </div>
+	  	</div>
+	</nav>
+	<div class="container" >
+	    <button ng-click="rInfoCtrl.goToSearching();" class="col-md-2 btn btn-primary pull-right">
+	    	Consultar registros
+	    </button>
+	</div>
 </div>
+
 
 <section ui-view >
 	<!-- Content -->
 </section>
-
-<div class="col col-md-6 col-md-offset-3 ">
