@@ -500,28 +500,42 @@ app.controller('editStudentController', ['updateInformationService',
 
 // Consult information controllers.
 
-app.controller('ConsultStudentController', [ 'deleteInformationService',
-											 'updateInformationService',
+app.controller('ConsultStudentController', [ 'updateInformationService',
 											 '$http',
-											 function( deleteService,
-											 		   updateService,
+											 function( updateService,
 											 		   $http
 											 		  ){
     var $ = this;
 
     $.updateService = updateService;
-	$.deleteService = deleteService; 
 	$.students 		= [];
-	$.phpUrl		= 'Queries/getStudents.php';
+	$.phpUrl		= 	{
+							'getStudents' 	:'Queries/getStudents.php',
+							'deleteStudent' :'Queries/deleteStudent.php'
+						};
 
 	$.getStudents = function(){
-		$http.post($.phpUrl)
+		$http.post($.phpUrl.getStudents)
 			 .success(function(data, status){
  			 	$.students = data;
  			 })
 			 .error(function(data, status){
  			 	alert('Error.');
  			 });
+	}
+
+	$.deleteStudent = function(id){
+
+		if( confirm('¿Desea eliminar este registro?') ){
+			$http.post( $.phpUrl.deleteStudent, { 'id' : id } )
+			.success(function(data, status){
+				$.students = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
+		}
+		
 	}
 
 	$.getStudents();
@@ -532,28 +546,42 @@ app.controller('ConsultDirectorController', function() {
 	this.directors = Query('users','rol',3);
 });
 
-app.controller('ConsultProjectController', [ 'deleteInformationService',
-											 'updateInformationService',
+app.controller('ConsultProjectController', [ 'updateInformationService',
 											 '$http',
-											 function( deleteService,
-											 		   updateService,
+											 function( updateService,
 											 		   $http
 											 		  ){
 	var $ = this;
 
 	$.updateService = updateService;
-	$.deleteService = deleteService; 
 	$.projects 		= [];
-	$.phpUrl		= 'Queries/getProjects.php';
+	$.phpUrl		= 	{
+							'getProject' 	: 'Queries/getProjects.php',
+							'deleteProject' : 'Queries/deleteProject.php'
+						};
 
 	$.getProjects = function(){
-		$http.post($.phpUrl)
+		$http.post($.phpUrl.getProject)
 			 .success(function(data, status){
  			 	$.projects = data;
  			 })
 			 .error(function(data, status){
  			 	alert('Error.');
  			 });
+	}
+
+	$.deleteProject = function(id){
+
+		if( confirm('¿Desea eliminar este registro?') ){
+			$http.post( $.phpUrl.deleteProject, { 'id' : id } )
+			.success(function(data, status){
+				$.projects = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
+		}
+		
 	}
 
 	$.getProjects();
@@ -571,15 +599,14 @@ app.controller('ConsultTeamController', [ 'deleteInformationService',
 
 	$.updateService = updateService;
 	$.deleteService = deleteService; 
-	$.phpUrl 		= 'Queries/getTeams.php';
+	$.phpUrl 		= 	{
+							'getTeams'	 : 'Queries/getTeams.php',
+							'deleteTeam' : 'Queries/deleteTeam.php'
+						}
 	$.teams 		= [];
 
-	$.getProject = function ($id){
-		return Query('projects','id',$id)[0].name;
-	}
-
-	$.getProjects = function(){
-		$http.post($.phpUrl)
+	$.getTeams = function(){
+		$http.post($.phpUrl.getTeams)
 			.success(function(data, status){
 				$.teams = data;
 			})
@@ -588,6 +615,20 @@ app.controller('ConsultTeamController', [ 'deleteInformationService',
 			});
 	}
 
-	$.getProjects();
+	$.deleteTeam = function(id){
+		
+		if( confirm('¿Desea eliminar este registro?') ){
+			$http.post( $.phpUrl.deleteTeam, { 'id' : id } )
+			.success(function(data, status){
+				$.teams = data;
+			})
+			.error(function(data, status){
+				alert("Error: "+status);
+			});
+		}
+		
+	}
+
+	$.getTeams();
 
 }]);
