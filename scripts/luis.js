@@ -291,11 +291,17 @@ app.controller('AddVoteController', function() {
 
 app.controller('consultVoteController', function() {
 	var $this = this;
-	this.hide = true;
+	this.show = true;
+	this.hide = false;
 	this.projects	= Query('projects');
 
 
 	this.addVote = function(){
-	this.hide = false;
+	this.show = false;
+	this.hide = true;
+	}
+
+	this.social = function(){
+		alert('codigo jorge');
 	}
 });

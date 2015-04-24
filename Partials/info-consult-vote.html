@@ -14,8 +14,9 @@
                                     <h3>Votar</h3>
                                 </td>
                                 <td ></td>
-                                <td ><h5 ng-hide="cVoteCtrl.hide">Compartir en redes sociales</h5></td>
-                                <td class="plusTd button" ng-click="cVoteCtrl.addVote()"></td>
+                                <td ng-hide="cVoteCtrl.show"  ></td>
+                                <td ><h5 ng-hide="cVoteCtrl.show" ng-click="cVoteCtrl.social()" class="button" >Compartir en redes sociales</h5></td>
+                                <td class="plusTd button" ng-hide="cVoteCtrl.hide" ng-click="cVoteCtrl.addVote()"></td>
                             </tr>
                             <tr class="headingTr" >
                                 <td class="text-center" >Proyecto</td>
