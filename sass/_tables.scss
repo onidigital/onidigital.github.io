@@ -320,3 +320,39 @@ tr:nth-child(3){
 .openIcon{
    width:80px; 
 }
+.colorBack{
+  height: 70px;
+  color: #f6f3f7;
+  background: #7c2a90;
+  border: 0px solid;
+}
+.titleProyects{
+  height: 70px;
+  color: #f6f3f7;
+  background: #7c2a90;
+  border: 0px solid;
+}
+
+.titleProyects h4{
+  color: #f6f3f7;
+
+}
+
+ .titleOptions{
+ 	padding-top: 0.3em;
+    height: 30px;
+    background: #9e4cb2;
+    color: #f6f3f7;
+    border: 0px solid;
+}
+.teamsBorder{
+	border: 5px solid  #7c2a90;
+}
+.vote.pro{
+	border-left: 1px  solid #7c2a90;
+	border-bottom: 6px  solid #7c2a90;
+}
+.vote.pro td{
+	padding-left: 0px;
+	text-align:center;
+}

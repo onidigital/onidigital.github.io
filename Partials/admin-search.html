@@ -51,8 +51,15 @@
 							Documento
 						</a>
 					</li>
-					<li ng-class="{ active : (sInfoCtrl.displaying === 'vote') }" 
-						ng-click="sInfoCtrl.changeDisplayedInfo('vote');"
+					<li ng-class="{ active : (menuCtrl.displaying === 'voteEdit') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('voteEdit');"
+					>
+						<a ui-sref="admin.register.vote">
+							Registrar Votación
+						</a>
+					</li>
+					<li ng-class="{ active : (menuCtrl.displaying === 'vote') }" 
+						ng-click="menuCtrl.changeDisplayedInfo('vote');"
 					>
 						<a ui-sref="admin.search.vote">
 							Votación
