@@ -94,7 +94,7 @@ app.controller('ConsultDocumentController', [ 'deleteInformationService',
 
 }]);
 
-app.controller('editDocumentController', ['updateInformationService',
+/*app.controller('editDocumentController', ['updateInformationService',
 									  	 function( updateService ){
 	var $ = this;
 
@@ -117,5 +117,54 @@ app.controller('editDocumentController', ['updateInformationService',
 		$.documentToUpdate = angular.copy($.documentBackUp);
 		$.sucess  = false;
 	}
+
+}]);*/
+app.controller('editDocumentController', ['updateInformationService',
+										 '$http',
+									  	 function( updateService, $http ){
+	var $ = this;
+
+	$.phpUrl 		  = 	{
+								'getDocument' : 'Queries/getDocument.php',
+								'update' 	 : 'Queries/updateDocument.php'
+							};
+	$.updating        = Number(updateService.updating['document']);
+	$.documentToUpdate = {};
+	$.documentBackUp   = {};
+	$.sucess 		  = false;
+
+	$.updateStudent = function(state){
+		$.documentToUpdate.idDocument = $.updating;
+		$http.post( $.phpUrl.update, $.documentToUpdate )
+			.success(function(data, status){
+				$.sucess = state;
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
+
+	}
+	$.getDocument = function(){
+		$http.post( $.phpUrl.getDocument, { 'id' :  $.updating } )
+			.success(function(data, status){
+				$.documentToUpdate = data;
+				$.documentBackUp = angular.copy($.documentToUpdate)
+			})
+			.error(function(data, error){
+				alert('Error: '+error);
+			});
+	}
+
+	$.save = function(){ 
+		$.documentBackUp = angular.copy($.documentToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.documentToUpdate = angular.copy($.documentBackUp);
+		$.updateDocument(false);
+	}
+
+	$.getDocument(true);
 
 }]);
