@@ -13,7 +13,9 @@ body {
 	color: $text;
 	font-family: Helvetica;
 	min-height: 100vh;	
+	padding-bottom: 70px;
 }
+
 header {
 	background: $main-color;
 	color: $text-clear;
@@ -25,6 +27,7 @@ header {
 		outline: none !important;
 	}
 	box-sizing: border-box;
+	font-family: Helvetica;
 }
 
 button {
@@ -39,6 +42,10 @@ h1 {
 
 strong, b {
 	font-weight: bold;
+}
+
+.text-clear {
+	color: $text-clear !important;
 }
 
 .title  {
@@ -108,4 +115,11 @@ textarea{
 
 .border-no-radius {
 	border-radius: 0 !important;
+}
+
+footer.navbar {
+	background: rgba(255, 255, 255, 0.8);
+		.navbar-brand {
+			//color: $text-clear;
+		}
 }

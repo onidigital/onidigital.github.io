@@ -147,8 +147,9 @@ app.controller('editDocumentController', ['updateInformationService',
 	$.documentBackUp    = {};
 	$.sucess 		  	= false;
 
-	$.updateStudent = function(state){
+	$.updateDocument = function(state){
 		$.documentToUpdate.idDocument = $.updating;
+		
 		$http.post( $.phpUrl.update, $.documentToUpdate )
 			.success(function(data, status){
 				$.sucess = state;
@@ -161,7 +162,6 @@ app.controller('editDocumentController', ['updateInformationService',
 	$.getDocument = function(){
 		$http.post( $.phpUrl.getDocument, { 'id' :  $.updating } )
 			.success(function(data, status){
-				console.table(data);
 				$.documentToUpdate = data;
 				$.documentBackUp = angular.copy($.documentToUpdate)
 			})
@@ -180,7 +180,7 @@ app.controller('editDocumentController', ['updateInformationService',
 		$.updateDocument(false);
 	}
 
-	$.getDocument(true);
+	$.getDocument();
 
 }]);
 

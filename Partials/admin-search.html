@@ -17,7 +17,7 @@
 		        	</h2>
 	      		</button>
 	      		<h1 class="navbar-brand" >
-					¿Qué desea consultar?
+					¿Qué desea consultar? 
 				</h1>
 	    	</div>
 		    <div class="collapse navbar-collapse" id="consultOptions">
@@ -58,8 +58,8 @@
 							Registrar Votación
 						</a>
 					</li> -->
-					<li ng-class="{ active : (menuCtrl.displaying === 'vote') }" 
-						ng-click="menuCtrl.changeDisplayedInfo('vote');"
+					<li ng-class="{ active : (sInfoCtrl.displaying === 'vote') }" 
+						ng-click="sInfoCtrl.changeDisplayedInfo('vote');"
 					>
 						<a ui-sref="admin.search.vote">
 							Votación

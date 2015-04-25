@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 25-04-2015 a las 03:43:28
+-- Tiempo de generación: 25-04-2015 a las 05:38:43
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -318,6 +318,17 @@ Insert Into bdonidigital.team
 
 End$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateDocument`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500), IN `pIdProject` VARCHAR(11))
+    NO SQL
+Begin
+
+	Update bdonidigital.document
+    	Set documentName = pName, 
+        	description  = pDescription
+        WHERE document.idDocument = pIdProject;
+
+End$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateProject`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500), IN `pKeywords` VARCHAR(250), IN `pIdProject` INT(11))
     NO SQL
 Begin
@@ -362,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `document` (
 --
 
 INSERT INTO `document` (`idDocument`, `documentName`, `description`) VALUES
-(39, 'ERS', 'Especificacion de Requerimientos de Software'),
+(39, 'ERS.v2', 'Especificacion de Requerimientos de Software'),
 (40, 'IAS', 'Informe de Analisis de Software');
 
 -- --------------------------------------------------------
@@ -413,18 +424,17 @@ CREATE TABLE IF NOT EXISTS `project` (
   `projectName` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
   `keywords` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `project`
 --
 
 INSERT INTO `project` (`idProject`, `projectName`, `description`, `keywords`) VALUES
-(1, 'Biblioteca', 'Una biblioteca virtual muy completa.', 'biblioteca virtual completa.'),
-(2, 'Registro medico', 'Registro medico para el hospital de San Jose.', 'Registro medico hospital San Jose'),
-(3, 'Red social', 'Una red social para estudiantes de una universidad.', 'red social universidad'),
-(4, 'Tienda virtual', 'Tienda virtual de articulos varios', 'tienda virtual articulos varios'),
-(8, 'Una pÃ¡gina similar a Spotify', 'Una pÃ¡gina similar a Spotify', 'spotify');
+(8, 'Una pÃ¡gina similar a Spotify', 'Una pÃ¡gina similar a Spotify', 'spotify'),
+(9, 'Tienda virtual', 'Una tienda virtual', 'tienda virutal'),
+(10, 'Registro medico', 'Un registro medico', 'registro medico'),
+(11, 'Pagina de cine', 'Una pagina de cine', 'pagina cine');
 
 -- --------------------------------------------------------
 
@@ -476,19 +486,19 @@ CREATE TABLE IF NOT EXISTS `team` (
 `idTeam` int(10) NOT NULL,
   `teamName` varchar(50) NOT NULL,
   `idProject` int(10) NOT NULL,
-  `logo` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  `logo` varchar(500) NOT NULL,
+  `video` varchar(500) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `team`
 --
 
-INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`) VALUES
-(4, 'Innova', 3, '101010\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),
-(6, 'Ion', 1, '10101010\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),
-(7, 'Avalon', 3, 'Images/logos/avalon.jpg'),
-(18, 'Los Ultra mejores', 4, 'Images/logos/placeholder.png'),
-(19, 'Geezbla', 3, 'Images/logos/placeholder.png');
+INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`, `video`) VALUES
+(20, 'Avalon', 10, 'Images/logos/placeholder.png', ''),
+(22, 'Geekz', 9, 'Images/logos/placeholder.png', ''),
+(23, 'Ion Software', 11, 'Images/logos/placeholder.png', ''),
+(24, 'asdsasdadsa', 8, 'Images/logos/placeholder.png', '');
 
 -- --------------------------------------------------------
 
@@ -667,7 +677,7 @@ MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `student`
 --
@@ -682,7 +692,7 @@ MODIFY `idUser` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `teamrols`
 --

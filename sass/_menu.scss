@@ -38,6 +38,12 @@ nav .navbar-nav {
 .navbar-main {
   border-bottom: 0 !important;
   margin: 0 !important;
+  background: #9E4CB2;
+  color: $text-clear;
+}
+
+.navbar-default .navbar-brand .text-clear {
+  color: $text-clear;
 }
 
 h2.title {

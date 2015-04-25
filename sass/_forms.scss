@@ -1,8 +1,8 @@
 /* Login page styles */
 	
 
-.ng-invalid {
-	border-color: red;
+.ng-invalid.ng-dirty.ng-touched {
+	border-color: #F1868D;
 }
 
 .fileUpload {

@@ -1,12 +1,14 @@
 <?php 
 	
 	include 'config.php'; 
+
 	$data 	  = file_get_contents("php://input");
 	$jsonData = json_decode($data);
+	
 	$documentName    = $jsonData->documentName;
 	$description 	 = $jsonData->description;
 	$idDocument      = $jsonData->idDocument;
-	$sql 		     = 'CALL updateDocument("'.$name.'","'. $lastName .'","'.$idDocument.'")';
+	$sql 		     = 'CALL updateDocument("'.$documentName.'","'. $description .'","'.$idDocument.'")';
 	$result 	     = mysqli_query($con, $sql);
 
 	if( !$result ){
