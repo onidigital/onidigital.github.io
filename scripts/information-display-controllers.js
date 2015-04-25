@@ -395,11 +395,11 @@ app.controller('editTeamController', ['updateInformationService',
 								'getProjects' : 'Queries/getProjects.php',
 								'getTeamRols' : 'Queries/getTeamRols.php',
 								'getTeam' 	  : 'Queries/getTeam.php',
+								'basicInfo'   : 'Queries/getTeamBasicInfo.php',
 								'insertTeam'  : 'Queries/insertTeam.php'
 							};
 	$.updating  			= updateService.updating['team']; 
 	$.teamToUpdate  		= {};
-	$.teamBackUp 			= {};
 
 	$.updateTeam = function() {
 		$.teamToUpdate.project = Number($.teamToUpdate.project); 
@@ -418,14 +418,25 @@ app.controller('editTeamController', ['updateInformationService',
 	}
 
 	$.initForm = function(){
-		$http.post($.phpUrl.getTeam, { 'id' : $.updating })
+
+		$http.post($.phpUrl.getProjects, { 'id' : $.updating })
 			.success(function(data, status){
-				$.teamToUpdate = data;
-				angular.copy($.teamToUpdate)
+				$.projects = data;
+				
+				$http.post($.phpUrl.basicInfo, { 'id' : $.updating })
+				.success(function(data, status){
+					$.teamToUpdate = data;
+				})
+				.error(function(data, status){
+
+				});
+
 			})
 			.error(function(data, status){
 
 			});
+
+		
 	}
 
 	$.initForm();

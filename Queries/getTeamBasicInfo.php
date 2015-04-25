@@ -6,7 +6,7 @@
 	$jsonData = json_decode($data);
 	
 	$id    	  = $jsonData->id;
-	$sql 	  = 'CALL getDocument("'.$id.'")';
+	$sql 	  = 'CALL getTeamBasicInfo("'.$id.'")';
 	$result   = mysqli_query($con, $sql);
 
 	if( !$result ){
