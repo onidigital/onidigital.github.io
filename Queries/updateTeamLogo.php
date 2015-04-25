@@ -1,9 +1,7 @@
 <?php	
 
 	include 'config.php';
-
-	echo $POST_['file'];
-
+	
 	if(isset($_FILES['file'])){
 		$file = $_FILES['file'];
 

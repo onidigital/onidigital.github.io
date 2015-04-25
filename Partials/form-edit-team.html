@@ -207,9 +207,11 @@
 			<input type="file" name="file">
 			<input type="submit" value="submit">
 		</form>
-		<form novalidate ng-submit="logoCtrl.upload();">
-		<img ng-src="{{logoCtrl.teamToUpdate.logo }}" class="col col-md-8 col-md-offset-2">
-			<input type="file" name="file" ng-model="logoCtrl.file">
+		<form novalidate ng-submit="logoCtrl.upload(); ">
+		<img src="http://www.gettyimages.co.uk/CMS/StaticContent/1391099215267_hero2.jpg" class="col col-md-8 col-md-offset-2">
+
+			<input type="text" ng-model="logoCtrl.file">
+
 			<input type="submit" value="submit">
 		</form>
 	</div>
