@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 25-04-2015 a las 01:28:11
+-- Tiempo de generación: 25-04-2015 a las 03:43:28
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -133,6 +133,52 @@ begin
     		Inner Join student as s
             	On s.idPerson = p.idPerson;
 end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeam`(IN `pIdTeam` INT(11))
+    NO SQL
+begin
+
+	Select  t.teamName,
+    		t.idProject,
+            t.logo,
+            p.first_name,
+            p.last_name,
+            p.idPersonal,
+            d.idDocument,
+            d.documentName,
+            td.documentLocation
+    From	team as t
+    			Inner Join 
+                	teammembers as tm
+                     On tm.idTeam = t.idTeam
+                Inner Join 
+                	teamdocuments as td
+                     On td.idTeam = t.idTeam
+                Inner Join 
+                	student as s
+                	 On s.idStudent = tm.idStudent
+                Inner Join
+                	person as p
+                     on p.idPerson = s.idPerson
+                Inner Join 
+                	project as pj
+                	 On pj.idProject = t.idProject
+                Inner Join 
+                	document as d
+              On d.idDocument = td.idDocument                	    Where	t.idTeam = pIdTeam;
+    
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeamBasicInfo`(IN `pIdTeam` INT(11))
+    NO SQL
+Begin
+
+	Select t.teamName,
+    	   t.idProject
+    From   team as t
+    Where  t.idTeam = pIdTeam;
+
+End$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeamRols`()
     NO SQL
@@ -309,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `document` (
 `idDocument` int(10) NOT NULL,
   `documentName` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `document`
@@ -374,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `project` (
 --
 
 INSERT INTO `project` (`idProject`, `projectName`, `description`, `keywords`) VALUES
-(1, 'Biblioteca Virtual', 'Una biblioteca virtual muy completa.', 'biblioteca virtual completa.'),
+(1, 'Biblioteca', 'Una biblioteca virtual muy completa.', 'biblioteca virtual completa.'),
 (2, 'Registro medico', 'Registro medico para el hospital de San Jose.', 'Registro medico hospital San Jose'),
 (3, 'Red social', 'Una red social para estudiantes de una universidad.', 'red social universidad'),
 (4, 'Tienda virtual', 'Tienda virtual de articulos varios', 'tienda virtual articulos varios'),
@@ -431,7 +477,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `teamName` varchar(50) NOT NULL,
   `idProject` int(10) NOT NULL,
   `logo` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `team`
@@ -441,7 +487,8 @@ INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`) VALUES
 (4, 'Innova', 3, '101010\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),
 (6, 'Ion', 1, '10101010\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),
 (7, 'Avalon', 3, 'Images/logos/avalon.jpg'),
-(18, 'Los Ultra mejores', 4, 'Images/logos/placeholder.png');
+(18, 'Los Ultra mejores', 4, 'Images/logos/placeholder.png'),
+(19, 'Geezbla', 3, 'Images/logos/placeholder.png');
 
 -- --------------------------------------------------------
 
@@ -451,8 +498,17 @@ INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `teamdocuments` (
   `idTeam` int(11) NOT NULL,
-  `documentLocation` varchar(500) NOT NULL
+  `documentLocation` varchar(500) NOT NULL,
+  `idDocument` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `teamdocuments`
+--
+
+INSERT INTO `teamdocuments` (`idTeam`, `documentLocation`, `idDocument`) VALUES
+(7, 'documents/', 39),
+(7, 'documents/', 40);
 
 -- --------------------------------------------------------
 
@@ -463,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `teamdocuments` (
 CREATE TABLE IF NOT EXISTS `teammembers` (
   `idTeam` int(10) NOT NULL,
   `idStudent` int(10) NOT NULL,
-  `rol` varchar(50) NOT NULL,
+  `idRol` int(11) NOT NULL,
   `grade` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -471,9 +527,9 @@ CREATE TABLE IF NOT EXISTS `teammembers` (
 -- Volcado de datos para la tabla `teammembers`
 --
 
-INSERT INTO `teammembers` (`idTeam`, `idStudent`, `rol`, `grade`) VALUES
-(1, 1, 'Coordinador', 90),
-(1, 2, 'Calidad', 95);
+INSERT INTO `teammembers` (`idTeam`, `idStudent`, `idRol`, `grade`) VALUES
+(7, 2, 1, 90),
+(7, 8, 3, 85);
 
 -- --------------------------------------------------------
 
@@ -573,7 +629,7 @@ ALTER TABLE `team`
 -- Indices de la tabla `teammembers`
 --
 ALTER TABLE `teammembers`
- ADD UNIQUE KEY `idTeam` (`idTeam`,`idStudent`,`rol`);
+ ADD UNIQUE KEY `idTeam` (`idTeam`,`idStudent`,`idRol`);
 
 --
 -- Indices de la tabla `teamrols`
@@ -601,7 +657,7 @@ ALTER TABLE `voters`
 -- AUTO_INCREMENT de la tabla `document`
 --
 ALTER TABLE `document`
-MODIFY `idDocument` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+MODIFY `idDocument` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `person`
 --
@@ -626,7 +682,7 @@ MODIFY `idUser` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `teamrols`
 --

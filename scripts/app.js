@@ -1,7 +1,8 @@
 var app = angular.module("libreriaVirtual", ['ui.router',	
 											 'ngMaterial',
 											 'resettableForm',
-											 'angularUtils.directives.dirPagination'
+											 'angularUtils.directives.dirPagination',
+											 'ngFileUpload'
 											]);
 
 app.config(function($stateProvider, $urlRouterProvider ){

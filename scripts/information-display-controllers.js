@@ -379,28 +379,27 @@ var $this 	  = this,
 }]);
 
 app.controller('editTeamController', ['updateInformationService',
-									  function( updateService ){
-	var $ = this;
+									  '$http',
+									  function 	( 
+									  				updateService,
+									  				$http
+									  			){
+	var $     = this,
+		$this = this;
 
-
-	$.projects   			= QueryAll('projects');
-	$.students 				= QueryAll('students');
-	$.rols 					= Query('studentRol','-','all');
-	$.sucess 				= false;
+	$.projects   		= [];
+	$.students 			= [];
+	$.sucess 			= false;
+	$.phpUrl 			= 	{
+								'getStudents' : 'Queries/getStudents.php',
+								'getProjects' : 'Queries/getProjects.php',
+								'getTeamRols' : 'Queries/getTeamRols.php',
+								'getTeam' 	  : 'Queries/getTeam.php',
+								'insertTeam'  : 'Queries/insertTeam.php'
+							};
 	$.updating  			= updateService.updating['team']; 
-	$.teamToUpdate  		= angular.copy(Query('teams','id',$.updating)[0]);
-	$.newTeamMember 		= {};
-	$.teamBackUp 			= angular.copy($.teamToUpdate);
-
-	$.asignMember = function() {
-		$.teamToUpdate.members.unshift( $.newTeamMember );
-		$.newTeamMember = {};
-	};
-
-
-	$.deleteMember = function( index ) {
-		$.teamToUpdate.members.splice(index, 1);
-	};
+	$.teamToUpdate  		= {};
+	$.teamBackUp 			= {};
 
 	$.updateTeam = function() {
 		$.teamToUpdate.project = Number($.teamToUpdate.project); 
@@ -418,7 +417,22 @@ app.controller('editTeamController', ['updateInformationService',
 		$.sucess  = false;
 	}
 
+	$.initForm = function(){
+		$http.post($.phpUrl.getTeam, { 'id' : $.updating })
+			.success(function(data, status){
+				$.teamToUpdate = data;
+				angular.copy($.teamToUpdate)
+			})
+			.error(function(data, status){
+
+			});
+	}
+
+	$.initForm();
+
 }]);
+
+
 
 app.controller('editProjectController', ['updateInformationService',
 										 '$http',

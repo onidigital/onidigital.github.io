@@ -1,11 +1,7 @@
-<div class="col col-md-6 col-md-offset-3 ">
+<div class="col col-md-6 col-md-offset-3 ">	
 	<form 	name="formEditTeam" 
 			novalidate
-			ng-submit="formEditTeam.teamName.$valid 		 &&
-					   formEditTeam.teamLogo.$valid 		 &&
-					   formEditTeam.project.$valid 			 &&
-		   			   (editTeamCtrl.teamToUpdate.members).length &&
-		   			   editTeamCtrl.updateTeam()"
+			ng-submit="editTeamCtrl.updateTeam()"
 		>
 		<div class="row" ng-show="editTeamCtrl.sucess" >
 			<h2 class="text-center register-sucess col-md-7" >
@@ -25,7 +21,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col col-md-6">
+			<div class="col col-md-12">
 				<label for="txtName">
 					Nombre del equipo
 				</label>
@@ -44,122 +40,34 @@
 								Necesita asignar un nombre al equipo.
 							</p>
 
-			</div>
-			<div class="col col-md-6">
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col col-md-12">
 				<label>
-					Proyecto {{ editTeamCtrl.teamToUpdate.project }}
+					Proyecto
 				</label>
 				<select class="form-control"
 						name="project"
-						ng-model="editTeamCtrl.teamToUpdate.project"
-				ng-options="project.name for project in editTeamCtrl.projects track by project.id"
+						ng-model="editTeamCtrl.teamToUpdate.idProject"
 						required
 					>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-md-6">
-				<label for="txtAspect">
-					Logo
-				</label>
-				<div class="btn btn-primary fileUpload" >
-					<p>
-						Subir logo
-					</p>
-					<input 	type="file"
-							id="txtAspect"
-							name="teamLogo" 
-							ng-model="editTeamCtrl.teamToUpdateMember.logo"
-							accept="image/*" 
-							class="upload"
-							required
-							app-filereader 
-						/>
-				</div>
-					<!-- Errors -->
-						<p 	class="error-feedback"
-							ng-show="formEditTeam.teamLogo.$dirty &&
-									 formEditTeam.teamLogo.$error.required"
-							>
-							Necesita asignar un logo al nuevo equipo.
-						</p>
-			
-				<img 	ng-src="{{editTeamCtrl.teamToUpdateMember.logo}}" 
-						class="img-responsive"
-					/>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-md-6">
-				<label for="txtValue">
-					Estudiante
-				</label>
-				<select class="form-control"
-						ng-model="editTeamCtrl.teamToUpdateMember.student"
-						name="formEditTeam.newMemberName.$error.required">
-					<option value="{{ student.name +' '+ student.lastName }}" 
-							ng-repeat="student in editTeamCtrl.students"
+					<option value="{{ project.idProject }}" 
+							ng-repeat="project in editTeamCtrl.projects"
 						>
-						{{ student.name +" "+ student.lastName +" - "+ student.pId }}
-					</option>
-				</select>
-			</div>
-			<div class="col col-md-6">
-				<label for="txtValue">
-					Rol
-				</label>
-				<select class="form-control"
-						name="newMemberRol"
-						ng-model="editTeamCtrl.teamToUpdateMember.rol"
-						required
-					>
-					<option value="{{ rol.name }}" 
-							ng-repeat="rol in editTeamCtrl.rols"
-						>
-						{{ rol.name }}
+						{{ project.projectName }}
 					</option>
 				</select>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col col-md-6">
-				<span 	ng-click="editTeamCtrl.asignMember()" 
-	  					class="btn btn-primary btn-asign"
-	  					ng-disabled="formEditTeam.newMemberRol.$error.required ||
-	  								 formEditTeam.newMemberName.$error.required"
-	  				>
-	  				Asignar
-	  			</span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-md-12 add-careers">
-				<ul class="careers-list">
-					<li class="col col-md-12 list-group-item" 
-						ng-repeat="member in editTeamCtrl.teamToUpdate.members" 
-					>
-						<h5>
-							<strong>{{ member.rol }}:</strong> {{ member.student }}
-							<span
-								ng-click="editTeamCtrl.deleteMember( $index )"
-							>
-								<img src="../images/btnLess.png" alt="less" class="img-less">
-							</span>
-						</h5>
-					</li>
-				</ul>
-			</div>
-		</div>
+		
 	  	<div class="row">
 		  	<button type="submit" 
 		  			class="btn btn-add"
-		  			ng-disabled="formEditTeam.teamName.$invalid 			||
-		  						 formEditTeam.teamLogo.$invalid 			||
-		  						 formEditTeam.project.$invalid 			    ||
-					   			 !(editTeamCtrl.teamToUpdate.members).length 	"
+		  			ng-disabled="formEditTeam.teamName.$invalid	||
+		  						 formEditTeam.project.$invalid"
 		  		>
-		  			Actualizar
+		  			Agregar
 		  	</button>
 		</div>
 	</form>	
