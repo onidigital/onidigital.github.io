@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 25-04-2015 a las 05:38:43
+-- Tiempo de generación: 25-04-2015 a las 11:56:51
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -76,6 +76,18 @@ Begin
 
 End$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteTeamMember`(IN `pIdStudent` INT(11), IN `pIdTeam` INT(11))
+    NO SQL
+Begin
+
+	Delete 
+    From  bdonidigital.teammembers
+    Where teammembers.idStudent = pIdStudent && teammembers.idTeam = pIdTeam;
+    
+    Call getTeamMembers(pIdTeam);
+
+End$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getDocument`(IN `pIdDocument` INT(11))
     NO SQL
 begin
@@ -125,6 +137,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getStudents`()
     COMMENT 'Retorna todos los estudiantes.'
 begin
     Select  p.idPerson,
+    		s.idStudent,
     		p.idPersonal,
     		p.first_name,
             p.last_name,
@@ -174,9 +187,38 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeamBasicInfo`(IN `pIdTeam` INT(
 Begin
 
 	Select t.teamName,
-    	   t.idProject
+    	   t.idProject,
+           t.logo
     From   team as t
     Where  t.idTeam = pIdTeam;
+
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTeamMembers`(IN `pIdTeam` INT(11))
+    NO SQL
+Begin
+
+	Select	p.idPersonal,
+    		s.idStudent,
+    		p.idPerson,
+            p.first_name,
+            p.last_name,
+            tm.grade,
+            tr.rolName
+    From	teammembers as tm
+    			Inner Join 
+                	student as s
+                	 On s.idStudent = tm.idStudent
+                Inner Join
+                	person as p
+                     On p.idPerson =  s.idPerson
+                Inner Join
+                	team as t
+                     On t.idTeam = tm.idTeam
+                Inner Join
+                	teamrols as tr
+                     On tr.idRol = tm.idRol
+    Where 	t.idTeam = pIdTeam;
 
 End$$
 
@@ -318,6 +360,40 @@ Insert Into bdonidigital.team
 
 End$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertTeamMember`(IN `pIdTeam` INT(11), IN `pIdStudent` INT(11), IN `pIdRol` INT(11), IN `pGrade` INT(11))
+    NO SQL
+Begin
+
+Insert Into bdonidigital.teammembers
+	(
+       idTeam, 
+       idStudent, 
+       idRol, 
+       grade
+    ) 
+	Values 
+    (	
+        pIdTeam, 
+     	pIdStudent, 
+     	pIdRol, 	 
+        pGrade
+     );
+     
+    Call getTeamMembers(pIdTeam);
+
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateBasicTeamInfo`(IN `pName` VARCHAR(50), IN `pIdProject` INT(11), IN `pIdTeam` INT(11))
+    NO SQL
+Begin
+
+	Update bdonidigital.team
+    	Set teamName = pName, 
+        	idProject = pIdProject
+        WHERE team.idTeam = pIdTeam;
+
+End$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateDocument`(IN `pName` VARCHAR(50), IN `pDescription` VARCHAR(500), IN `pIdProject` VARCHAR(11))
     NO SQL
 Begin
@@ -351,6 +427,16 @@ Begin
             idPersonal = pIdPersonal, 
             email 	   = pEmail
         WHERE person.idPerson = pIdPerson;
+
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateTeamLogo`(IN `pLogo` VARCHAR(500))
+    NO SQL
+Begin
+
+	UPDATE bdonidigital.team 
+    SET logo = pLogo
+    WHERE team.idTeam = 20;
 
 End$$
 
@@ -407,7 +493,7 @@ CREATE TABLE IF NOT EXISTS `person` (
 --
 
 INSERT INTO `person` (`idPerson`, `first_name`, `last_name`, `idPersonal`, `email`) VALUES
-(1, 'Jorge Daniel', 'Valverde Matarrita', '304870421', 'jvalverde@ucenfotec.ac.cr'),
+(1, 'Jorge Daniel', 'Valverde Matarrita', '304870421', 'jvalverdem@ucenfotec.ac.cr'),
 (2, 'Leslie Daniela', 'Andrade', '3045871', 'landrade@ucenfotec.ac.cr'),
 (8, 'Alonso', 'Guevara', '30584561', 'aguevara@ucenfotec.ac.cr'),
 (14, 'Rebeca Raquel', 'Poveda Rojas', '30578456', 'rpovedar@ucenfotec.ac.cr'),
@@ -424,7 +510,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `projectName` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
   `keywords` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `project`
@@ -488,17 +574,18 @@ CREATE TABLE IF NOT EXISTS `team` (
   `idProject` int(10) NOT NULL,
   `logo` varchar(500) NOT NULL,
   `video` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `team`
 --
 
 INSERT INTO `team` (`idTeam`, `teamName`, `idProject`, `logo`, `video`) VALUES
-(20, 'Avalon', 10, 'Images/logos/placeholder.png', ''),
+(10, 'Innova', 9, 'Images/logos/placeholder.png', ''),
+(20, 'Avalon', 8, 'uploads/logo_553b628145ecc5.57222696.jpg', ''),
 (22, 'Geekz', 9, 'Images/logos/placeholder.png', ''),
-(23, 'Ion Software', 11, 'Images/logos/placeholder.png', ''),
-(24, 'asdsasdadsa', 8, 'Images/logos/placeholder.png', '');
+(23, 'Ion Software', 10, 'Images/logos/placeholder.png', ''),
+(25, 'El mejor equipo', 11, 'Images/logos/placeholder.png', '');
 
 -- --------------------------------------------------------
 
@@ -538,8 +625,12 @@ CREATE TABLE IF NOT EXISTS `teammembers` (
 --
 
 INSERT INTO `teammembers` (`idTeam`, `idStudent`, `idRol`, `grade`) VALUES
-(7, 2, 1, 90),
-(7, 8, 3, 85);
+(10, 1, 1, 90),
+(10, 10, 4, 85),
+(20, 1, 4, 90),
+(20, 10, 3, 85),
+(20, 12, 1, 90),
+(22, 1, 2, 100);
 
 -- --------------------------------------------------------
 
@@ -677,7 +768,7 @@ MODIFY `idPerson` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `idProject` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `student`
 --
@@ -692,7 +783,7 @@ MODIFY `idUser` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `idTeam` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `teamrols`
 --
