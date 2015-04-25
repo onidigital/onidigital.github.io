@@ -444,6 +444,18 @@ app.controller('editTeamController', ['updateInformationService',
 }]);
 
 
+app.controller('updateTeamBasicInfoController', ['updateInformationService',
+											  	 '$http',
+											  	 function 	( 
+												  				updateService,
+												  				$http
+												  			){
+
+	var $ = this;
+
+
+
+}]);
 
 app.controller('editProjectController', ['updateInformationService',
 										 '$http',

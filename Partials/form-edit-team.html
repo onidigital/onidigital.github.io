@@ -1,74 +1,79 @@
-<div class="col col-md-6 col-md-offset-3 ">	
-	<form 	name="formEditTeam" 
-			novalidate
-			ng-submit="editTeamCtrl.updateTeam()"
-		>
-		<div class="row" ng-show="editTeamCtrl.sucess" >
-			<h2 class="text-center register-sucess col-md-7" >
-				¡Actualización exitosa!
-			</h2>
-			<div class="col col-md-5">
-				<span class="btn btn-danger col col-md-6 border-no-radius"
-						ng-click="editTeamCtrl.undo();"
-					>
-					Deshacer
-				</span>
-				<span class="btn btn-primary col col-md-6 border-no-radius"
-						ng-click="editTeamCtrl.save();"
-					>
-					Aceptar
-				</span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-md-12">
-				<label for="txtName">
-					Nombre del equipo
-				</label>
-				<input 	type="text"
-						id="txtName"	
-						name="teamName"
-						class="form-control"
-						ng-model="editTeamCtrl.teamToUpdate.teamName"
-						required
-					>
-						<!-- Errors -->
-							<p 	class="error-feedback"
-								ng-show="formEditTeam.teamName.$dirty &&
-										 formEditTeam.teamName.$error.required"
-								>
-								Necesita asignar un nombre al equipo.
-							</p>
+<div class="col col-md-6 col-md-offset-3">
 
-			</div>			
-		</div>
-		<div class="row">
-			<div class="col col-md-12">
-				<label>
-					Proyecto {{ editTeamCtrl.teamToUpdate.idProject }}
-				</label>
-				<select class="form-control"
-						name="project"
-						ng-model="editTeamCtrl.teamToUpdate.idProject"
-						required
-					>
-					<option value="{{ project.idProject }}" 
-							ng-repeat="project in editTeamCtrl.projects"
+	<div class="well" ng-controller="updateTeamBasicInfoController as basicInfoCtrl" >
+		<h2 class="title text-center">Editar Información básica</h2>
+		<form 	name="formEditTeam" 
+				novalidate
+				ng-submit="editTeamCtrl.updateTeam()"
+		>
+			<div class="row" ng-show="editTeamCtrl.sucess" >
+				<h2 class="text-center register-sucess col-md-7" >
+					¡Actualización exitosa!
+				</h2>
+				<div class="col col-md-5">
+					<span class="btn btn-danger col col-md-6 border-no-radius"
+							ng-click="editTeamCtrl.undo();"
 						>
-						{{ project.projectName }}
-					</option>
-				</select>
+						Deshacer
+					</span>
+					<span class="btn btn-primary col col-md-6 border-no-radius"
+							ng-click="editTeamCtrl.save();"
+						>
+						Aceptar
+					</span>
+				</div>
 			</div>
-		</div>
-		
-	  	<div class="row">
-		  	<button type="submit" 
-		  			class="btn btn-add"
-		  			ng-disabled="formEditTeam.teamName.$invalid	||
-		  						 formEditTeam.project.$invalid"
-		  		>
-		  			Agregar
-		  	</button>
-		</div>
-	</form>	
+			<div class="row">
+				<div class="col col-md-12">
+					<label for="txtName">
+						Nombre del equipo
+					</label>
+					<input 	type="text"
+							id="txtName"	
+							name="teamName"
+							class="form-control"
+							ng-model="editTeamCtrl.teamToUpdate.teamName"
+							required
+						>
+							<!-- Errors -->
+								<p 	class="error-feedback"
+									ng-show="formEditTeam.teamName.$dirty &&
+											 formEditTeam.teamName.$error.required"
+									>
+									Necesita asignar un nombre al equipo.
+								</p>
+
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col col-md-12">
+					<label>
+						Proyecto {{ editTeamCtrl.teamToUpdate.idProject }}
+					</label>
+					<select class="form-control"
+							name="project"
+							ng-model="editTeamCtrl.teamToUpdate.idProject"
+							required
+						>
+						<option value="{{ project.idProject }}" 
+								ng-repeat="project in editTeamCtrl.projects"
+							>
+							{{ project.projectName }}
+						</option>
+					</select>
+				</div>
+			</div>
+			
+		  	<div class="row">
+			  	<button type="submit" 
+			  			class="btn btn-add"
+			  			ng-disabled="formEditTeam.teamName.$invalid	||
+			  						 formEditTeam.project.$invalid"
+			  		>
+			  			Agregar
+			  	</button>
+			</div>
+		</form>	
+	</div>
+
 </div>

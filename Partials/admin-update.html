@@ -1,21 +1,22 @@
-<div class="container" >
-    
-</div>
-
 <nav class="navbar navbar-default" >
   	<div class="col col-md-10 col-md-offset-1">
     	<div class="navbar-header  col col-md-12	">
       		<h1 class="navbar-brand text-center col col-md-12" >
-				Módulo de edición /
-				<span>
-					<a ng-click="rInfoCtrl.goToSearching();" >
-						Consultar registros
-					</a>
-				</span>
+				Módulo de edición
 			</h1>
     	</div>
   	</div>
 </nav>
+
+<div class="clearfix">
+	<div class="col col-md-6 col-md-offset-3" >
+	    <h2 ng-click="rInfoCtrl.goToSearching();" 
+	    	class="text-center btn btn-consultRegisters pull-right"
+	    >
+	    	Consultar registros
+	    </h2>
+	</div>
+</div>
 
 <section ui-view >
 	

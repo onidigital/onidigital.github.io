@@ -1,6 +1,6 @@
 <?php
 
-	$con = mysqli_connect("localhost", "root", "", "bdonidigital");
+	$con = mysqli_connect("localhost:3307", "root", "", "bdonidigital");
 
 	// Check connection
 	if( mysqli_connect_errno() ){
