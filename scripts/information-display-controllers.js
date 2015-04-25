@@ -384,6 +384,17 @@ app.controller('editTeamController', ['updateInformationService',
 									  				updateService,
 									  				$http
 									  			){
+	// Obsoleto;	
+}]);
+
+
+app.controller('updateTeamBasicInfoController', ['updateInformationService',
+											  	 '$http',
+											  	 function 	( 
+												  				updateService,
+												  				$http
+												  			){
+
 	var $     = this,
 		$this = this;
 
@@ -394,15 +405,24 @@ app.controller('editTeamController', ['updateInformationService',
 								'getStudents' : 'Queries/getStudents.php',
 								'getProjects' : 'Queries/getProjects.php',
 								'getTeamRols' : 'Queries/getTeamRols.php',
-								'getTeam' 	  : 'Queries/getTeam.php',
 								'basicInfo'   : 'Queries/getTeamBasicInfo.php',
+								'updateBasic' : 'Queries/updateBasicTeamInfo.php',
 								'insertTeam'  : 'Queries/insertTeam.php'
 							};
 	$.updating  			= updateService.updating['team']; 
 	$.teamToUpdate  		= {};
 
 	$.updateTeam = function() {
-		$.teamToUpdate.project = Number($.teamToUpdate.project); 
+		$.teamToUpdate.idTeam = $.updating; 
+
+		$http.post($.phpUrl.updateBasic, $.teamToUpdate)
+			.success(function(data, status){
+				$.sucess = true;
+			})
+			.error(function(data, status){
+				alert('Error: '+status);
+			});
+
 		Update('teams',$.teamToUpdate.id,$.teamToUpdate);
 		$.sucess = true;
 	}
@@ -441,19 +461,193 @@ app.controller('editTeamController', ['updateInformationService',
 
 	$.initForm();
 
+
+
 }]);
 
-
-app.controller('updateTeamBasicInfoController', ['updateInformationService',
+app.controller('updateTeamMembers', ['updateInformationService',
 											  	 '$http',
 											  	 function 	( 
 												  				updateService,
 												  				$http
 												  			){
 
-	var $ = this;
+	var $     = this,
+		$this = this;
+
+	$.newMember	= {};
+	$.members	= [];
+	$.students	= [];
+	$.rols 		= [];
+	$.sucess	= false;
+	$.phpUrl	= 	{
+						'getStudents'   : 'Queries/getStudents.php',
+						'getTeamRols'   : 'Queries/getTeamRols.php',
+						'getTeam' 	    : 'Queries/getTeam.php',
+						'getMembers'    : 'Queries/getTeamMembers.php',
+						'deleteMember'  : 'Queries/deleteTeamMember.php',
+						'updateMembers' : 'Queries/updateTeamMembers.php'
+					};
+	$.updating  			= updateService.updating['team']; 
+	$.teamToUpdate  		= {};
+
+	$.updateTeam = function() {
+
+		$.newMember.idTeam = Number($.updating);
+
+		$http.post($.phpUrl.updateMembers, $.newMember)
+			.success(function(data, status){
+				$.members = data;
+				$.newmember = {};
+			})
+			.error(function(data, status){
+				alert('Error: '+status);
+			});
+
+		
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.teamBackUp = angular.copy($.teamToUpdate);
+		$.sucess  = false;
+	}
+
+	$.undo = function(){
+		$.teamToUpdate = angular.copy($.teamBackUp);
+		$.sucess  = false;
+	}
+
+	$.deleteMember = function( idMember ){
+
+		var memberToDelete = {
+			'idStudent' : idMember,
+			'idTeam' 	: $.updating
+		};
+
+		$http.post($.phpUrl.deleteMember, memberToDelete )
+			.success(function(data, status){
+				$.members = data;
+			})
+			.error(function(data, status){
+
+			});
+	}
+
+	$.initForm = function(){
+
+		$http.post($.phpUrl.getStudents)
+			.success(function(data, status){
+				$.students = data;
+			})
+			.error(function(data, status){
+
+			});
+
+		$http.post($.phpUrl.getTeamRols )
+			.success(function(data, status){
+				$.rols = data;
+			})
+			.error(function(data, status){
+
+			});
 
 
+		$http.post($.phpUrl.getMembers, { 'id' : $.updating } )
+			.success(function(data, status){
+				$.members = data || [];
+			})
+			.error(function(data, status){
+
+			});
+		
+	}
+
+	$.initForm();
+
+
+
+}]);
+
+app.controller('updateLogoController', ['updateInformationService',
+									  	 '$http',
+									  	 '$scope',
+									  	 '$upload',
+									  	 function 	( 
+										  				updateService,
+										  				$http,
+										  				$scope,
+										  				$upload
+										  			){
+
+	var $     = this,
+		$this = this;
+
+	$.newMember	= {};
+	$.members	= [];
+	$.students	= [];
+	$.rols 		= [];
+	$.sucess	= false;
+	$.phpUrl	= 	{
+						'getStudents'   : 'Queries/getStudents.php',
+						'getTeamRols'   : 'Queries/getTeamRols.php',
+						'getTeam' 	    : 'Queries/getTeam.php',
+						'getMembers'    : 'Queries/getTeamMembers.php',
+						'deleteMember'  : 'Queries/deleteTeamMember.php',
+						'basicInfo'   	: 'Queries/getTeamBasicInfo.php',
+						'updateMembers' : 'Queries/updateTeamMembers.php'
+					};
+	$.updating  			= updateService.updating['team']; 
+	$.teamToUpdate  		= {};
+
+	$.updateTeam = function() {
+
+		$.newMember.idTeam = Number($.updating);
+
+		$http.post($.phpUrl.updateMembers, $.newMember)
+			.success(function(data, status){
+				$.members = data;
+				$.newmember = {};
+			})
+			.error(function(data, status){
+				alert('Error: '+status);
+			});
+
+		
+		$.sucess = true;
+	}
+
+	$.save = function(){ 
+		$.sucess  = false;
+	}
+
+	$.initForm = function(){
+
+		$http.post($.phpUrl.basicInfo )
+			.success(function(data, status){
+				console.log(data);
+				$.teamToUpdate = data;
+			})
+			.error(function(data, status){
+
+			});
+		
+	}
+
+	
+	$.path = '';
+	$.file;
+
+    $.upload = function () {
+    	console.log($.file);
+       $http.post('Queries/updateTeamLogo.php', { 'file' : $.file } )
+       	.success(function(data, status){
+       		console.log(data);
+       		$.path = data;
+       	});
+    };
+
+    $.initForm();
 
 }]);
 

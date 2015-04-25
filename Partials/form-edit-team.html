@@ -1,23 +1,25 @@
 <div class="col col-md-6 col-md-offset-3">
+	
+	<!-- Configurar información básica -->
 
 	<div class="well" ng-controller="updateTeamBasicInfoController as basicInfoCtrl" >
 		<h2 class="title text-center">Editar Información básica</h2>
-		<form 	name="formEditTeam" 
+		<form 	name="formEditBasicTeam" 
 				novalidate
-				ng-submit="editTeamCtrl.updateTeam()"
+				ng-submit="basicInfoCtrl.updateTeam()"
 		>
-			<div class="row" ng-show="editTeamCtrl.sucess" >
+			<div class="row" ng-show="basicInfoCtrl.sucess" >
 				<h2 class="text-center register-sucess col-md-7" >
 					¡Actualización exitosa!
 				</h2>
 				<div class="col col-md-5">
 					<span class="btn btn-danger col col-md-6 border-no-radius"
-							ng-click="editTeamCtrl.undo();"
+							ng-click="basicInfoCtrl.undo();"
 						>
 						Deshacer
 					</span>
 					<span class="btn btn-primary col col-md-6 border-no-radius"
-							ng-click="editTeamCtrl.save();"
+							ng-click="basicInfoCtrl.save();"
 						>
 						Aceptar
 					</span>
@@ -32,13 +34,13 @@
 							id="txtName"	
 							name="teamName"
 							class="form-control"
-							ng-model="editTeamCtrl.teamToUpdate.teamName"
+							ng-model="basicInfoCtrl.teamToUpdate.teamName"
 							required
 						>
 							<!-- Errors -->
 								<p 	class="error-feedback"
-									ng-show="formEditTeam.teamName.$dirty &&
-											 formEditTeam.teamName.$error.required"
+									ng-show="formEditBasicTeam.teamName.$dirty &&
+											 formEditBasicTeam.teamName.$error.required"
 									>
 									Necesita asignar un nombre al equipo.
 								</p>
@@ -48,15 +50,15 @@
 			<div class="row">
 				<div class="col col-md-12">
 					<label>
-						Proyecto {{ editTeamCtrl.teamToUpdate.idProject }}
+						Proyecto
 					</label>
 					<select class="form-control"
 							name="project"
-							ng-model="editTeamCtrl.teamToUpdate.idProject"
+							ng-model="basicInfoCtrl.teamToUpdate.idProject"
 							required
 						>
 						<option value="{{ project.idProject }}" 
-								ng-repeat="project in editTeamCtrl.projects"
+								ng-repeat="project in basicInfoCtrl.projects"
 							>
 							{{ project.projectName }}
 						</option>
@@ -67,13 +69,150 @@
 		  	<div class="row">
 			  	<button type="submit" 
 			  			class="btn btn-add"
-			  			ng-disabled="formEditTeam.teamName.$invalid	||
-			  						 formEditTeam.project.$invalid"
+			  			ng-disabled="formEditBasicTeam.teamName.$invalid	||
+			  						 formEditBasicTeam.project.$invalid"
 			  		>
 			  			Agregar
 			  	</button>
 			</div>
 		</form>	
 	</div>
+	
+	<!-- Configurar Estudiantes -->
+
+	<div class="well" ng-controller="updateTeamMembers as membersCtrl" >
+		<h2 class="title text-center">Configurar estudiantes</h2>
+		<form 	name="formEditMembers" 
+				novalidate
+				ng-submit="formEditMembers.$valid &&
+						   membersCtrl.updateTeam()"
+		>
+			<div class="row" ng-show="membersCtrl.sucess" >
+				<h2 class="text-center register-sucess col-md-7" >
+					¡Actualización exitosa!
+				</h2>
+				<div class="col col-md-5">
+					<span class="btn btn-primary col col-md-12 border-no-radius"
+							ng-click="membersCtrl.save();"
+						>
+						Aceptar
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-md-12">
+					<label for="txtName">
+						Estudiante
+					</label>
+					<select class="form-control"
+							name="student"
+							ng-model="membersCtrl.newMember.idStudent"
+							required
+						>
+						<option value="{{ student.idStudent }}" 
+								ng-repeat="student in membersCtrl.students"
+							>
+							{{ student.first_name +' '+ student.last_name +' - '+student.idPersonal }}
+						</option>
+					</select>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col col-md-12">
+					<label>
+						Rol
+					</label>
+					<select class="form-control"
+							name="rol"
+							ng-model="membersCtrl.newMember.rol"
+							required
+						>
+						<option value="{{ rol.idRol }}" 
+								ng-repeat="rol in membersCtrl.rols"
+							>
+							{{ rol.rolName }}
+						</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-md-12">
+					<label>
+						Calificación
+					</label>
+					<input  class="form-control"
+							name="grade"
+							ng-model="membersCtrl.newMember.grade"
+							type="number"
+							min="0"
+							max="100"
+							ng-min="0"
+							ng-max="100"
+							required
+						/>
+				</div>
+			</div>
+			
+			<div class="row">
+			  	<button type="submit" 
+			  			class="btn btn-add"
+			  			ng-disabled="formEditMembers.grade.$invalid	   ||
+			  						 formEditMembers.student.$invalid  ||
+			  						 formEditMembers.rol.$invalid"
+			  		>
+			  			Agregar
+			  	</button>
+			</div>
+
+			<div class="row teamMemberList">
+				<ul class="clear-fix" >
+					<li ng-repeat="member in membersCtrl.members" 
+						class="clearfix well" >
+
+						<ul class="list-group" >
+							<li class="list-group-item" >
+								<strong>
+									{{ member.rolName }} :
+								</strong>
+								{{ member.first_name +' '+ member.last_name}}
+							</li>
+							<li class="list-group-item" >
+								<strong>
+									Nota:
+								</strong>
+								{{ member.grade }}
+							</li>
+							<li>
+								 <button 	class="btn btn-primary col col-md-12"
+								 			ng-click="membersCtrl.deleteMember(member.idStudent);"
+								 		>
+								 	delete
+								 </button>
+							</li>
+						</ul>
+
+					</li>
+				</ul>
+			</div>
+
+		</form>	
+	</div>
+
+	<!-- Configurar logo -->
+
+	<div class="well" ng-controller="updateLogoController as logoCtrl" >
+		<h2 class="title text-center">Configurar logo</h2>
+		<form action="Queries/updateTeamLogo.php" method="post" enctype="multipart/form-data">
+			<input type="file" name="file">
+			<input type="submit" value="submit">
+		</form>
+		<form novalidate ng-submit="logoCtrl.upload();">
+		<img ng-src="{{logoCtrl.teamToUpdate.logo }}" class="col col-md-8 col-md-offset-2">
+			<input type="file" name="file" ng-model="logoCtrl.file">
+			<input type="submit" value="submit">
+		</form>
+	</div>
+
 
 </div>

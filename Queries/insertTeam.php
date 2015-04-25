@@ -7,7 +7,8 @@
 
 	$name 	  = $jsonData->name;
 	$project  = $jsonData->idProject;
-	$image	  = 'Images/logos/placeholder.png';
+	$image	  = 'uploads/default-logo.jpg';
+	$image	  = 'uploads/default-video.mp4';
 
 	$sql 		 = 'CALL insertTeam("'.$name.'","'. $project .'","'. $image .'")';
 	$result 	 = mysqli_query($con, $sql);
